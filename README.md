@@ -1,0 +1,72 @@
+# Construction Train — premier prototype
+
+Mod local pour **Factorio 2.1.24 ou ultérieur**. Un bâtiment possède une seule machine de chantier **locomotive — wagon central — locomotive**. Le train construit les rails planifiés au contact, puis revient poser les accessoires sur les portions qu’il a desservies.
+
+Les graphismes actuels sont provisoires : bâtiment représenté par un grand coffre et véhicules dérivés des modèles vanilla. La [planche concept](docs/concepts/train-depot-v1.png) reste la référence pour les futurs graphismes ; ce n’est pas une capture du prototype.
+
+## Essayer le prototype
+
+1. Activer **Construction Train** dans le menu des mods et redémarrer Factorio.
+2. Rechercher **Construction ferroviaire spécialisée**, après la recherche ferroviaire automatisée.
+3. Préparer une voie **droite nord-sud**, libre sur au moins 28 cases, raccordée au réseau.
+4. Poser le dépôt **à droite de cette voie**, entre 3 et 8 cases du centre des rails. Un placement invalide est refusé et l’objet est restitué dans sa qualité lors d’une pose par joueur ou robot.
+5. La pose valide génère automatiquement les deux locomotives, le wagon central et le quai de service. Pour une deuxième machine, poser un deuxième bâtiment avec son propre quai.
+6. Ouvrir le bâtiment, remplir son inventaire et régler les objectifs de chargement. Valeurs initiales : **400 rails, 50 signaux, 50 chain signals, 10 arrêts et une réserve de carburant équivalant à 100 charbons (50 par locomotive)**. Mettre à zéro les lignes inutiles si leurs matériaux ne doivent pas conditionner le départ.
+7. Poser un blueprint ferroviaire raccordé à des rails réels accessibles. Le train cherche son chantier et démarre lorsque son chargement est prêt.
+
+Le stock du bâtiment est un inventaire natif de 100 emplacements, accessible à la main ou avec des bras. Le wagon central possède son propre stock de 100 emplacements. Le chargement automatique accepte les carburants compatibles avec les locomotives, y compris ceux des mods et leurs qualités. La réserve est comptée en énergie, en incluant le combustible déjà en cours de consommation ; un carburant plus puissant demande moins d’objets. Le panneau indique les matériaux ou la réserve d’énergie manquants au départ.
+
+Le panneau permet de démarrer, mettre en pause, rappeler la machine ou récupérer l’ensemble. Les locomotives spécialisées disposent d’une puissance et d’un freinage quadruplés, avec la même vitesse maximale ; leur consommation augmente. Les trajets utilisent le moteur et la signalisation de Factorio : aucune navigation sur les ghosts ni génération de tracé.
+
+## Rails, puis accessoires
+
+Les matériaux viennent du wagon central. Une rupture de stock pendant la pose des rails provoque un retour au quai, un rechargement et la reprise du chantier. Le dépôt accepte les deux sens d’accostage. Si un retour direct est impossible, le train cherche un dégagement sur les rails déjà desservis pour inverser sa marche ; quatre manœuvres au maximum sont tentées, puis un blocage explicite attend une correction du réseau.
+
+La passe d’accessoires vient après la pose des rails atteignables du lot connu. Signaux, chain signals et arrêts sont construits uniquement sur les rails desservis, avec vérification du contact et du rattachement. Le train privilégie les accessoires proches et choisit un trajet accessible. Plusieurs accessoires déjà à portée des têtes peuvent être posés à l’arrêt avant le déplacement suivant. Les signaux qui compromettraient le retour sont différés ; un sens unique impossible ou une branche trop courte peut donc laisser des travaux en attente.
+
+Un ghost ferroviaire isolé n’est pas un chantier accessible. Les arbres, rochers, falaises, eau et autres obstacles doivent être traités séparément.
+
+## Réserver les rails aux trains
+
+Le réglage du bâtiment concerne les **rails au sol, signaux, chain signals et arrêts pris en charge, sur toute la même planète/surface pour la même force**. Il est activé par défaut après la pose réelle du bâtiment et peut être désactivé.
+
+Avec plusieurs bâtiments, l’exclusion reste active tant qu’au moins l’un d’eux la demande. Le panneau indique ce nombre. À la dernière désactivation ou au retrait du dernier bâtiment demandeur, les ghosts sont restitués progressivement aux robots. Un robot déjà en route est autorisé à finir sa pose.
+
+Le prototype conserve de vrais ghosts dans une force technique amie de leur propriétaire. La copie native de blueprint, les robots de réseau et les robots personnels ont été exercés. L’édition complète des plans, les fils, les upgrades et les interactions avec d’autres mods restent à qualifier.
+
+**Avant de désinstaller le mod**, désactiver l’option dans tous ses bâtiments ou récupérer ces bâtiments, puis laisser le jeu terminer la restitution. L’indexation et la restitution sont progressives ; leur durée augmente avec la carte. Ne pas retirer le mod alors que des ghosts appartiennent encore à sa force technique.
+
+## Récupération et sécurité
+
+Le bouton de récupération retire aussi les véhicules éloignés, après vérification de tous les composants. Les matériaux et carburants stockés sont déposés près des véhicules ; ils ne sont pas téléportés jusqu’au bâtiment. Un joueur à bord ou un véhicule encore mobile diffère l’opération.
+
+Le minage natif et la récupération par script ne remboursent pas deux fois le bâtiment et conservent sa qualité. Une machine endommagée ne génère pas de remplaçante gratuite. Une modification du planning par le joueur ou une prise de contrôle suspend l’automatisation, y compris juste avant une pose.
+
+## État de qualification
+
+Le lot 1 a été accepté en sandbox le 1er novembre 2026 : chantier complet rails puis signaux, puis reprise après déconstruction par les robots et restauration du plan. La phase suivante porte sur les branches et la concurrence de plusieurs machines sur un même réseau.
+
+Le scénario moteur réel couvre : génération unique, découverte et construction de 52 rails, ravitaillement, signal, chain signal et arrêt, retour, deux bâtiments indépendants, désactivation de la dernière demande et retrait éloigné avec comptage des stocks.
+
+Une sauvegarde créée en cours de mission est rechargée et termine le même scénario. Le test graphique utilise un vrai joueur, les vrais éléments GUI et un roboport personnel. Les corrections de retrait/reprise ont également des tests ciblés et des mutations en copies temporaires : réintroduire les défauts couverts doit faire échouer les tests correspondants.
+
+Ce premier prototype ne constitue pas la qualification finale du mod : performances megabase, concurrence de plusieurs trains en chantier, toutes les géométries d’accessoires, paramètres copiés dans les blueprints, packs de conversion et graphismes définitifs restent à compléter. Les rails surélevés et rampes sont hors périmètre.
+
+## Développement et installation locale
+
+```sh
+./build.sh lint            # syntaxe, métadonnées et tests ciblés
+./build.sh test            # non-régressions, moteur réel et reprise d’une sauvegarde
+python3 tests/visual.py    # GUI, robots personnels, garde de retrait et capture hors écran
+./build.sh package         # archive dans dist/
+./build.sh devlink         # lien local dans ~/.factorio/mods
+./build.sh unlink
+```
+
+Les tests utilisent des profils temporaires isolés et ne modifient pas la partie du joueur. Le test de sauvegarde ouvre un serveur temporaire privé lié uniquement à 127.0.0.1. Les tests graphiques utilisent le pilote SDL hors écran.
+
+Dépendances locales des tests : Python 3, liblua5.4, le binaire Factorio installé et un contexte OpenGL hors écran pour la vérification visuelle. FACTORIO_BIN permet de sélectionner le binaire ; MODS_DIR choisit le dossier de mods pour le lien de développement.
+
+Les journaux sont dans tests/last-engine.log et tests/last-visual.log. La [capture en jeu](docs/prototype-preview.png) représente les graphismes provisoires actuels. Les sondes indépendantes et leurs preuves restent sous tools/ et docs/ ; elles sont distinctes des tests du mod réel.
+
+Le [LLD](docs/LLD.md) et la [spécification](specs/001-construction-train.md) décrivent la cible complète. Aucune publication n’est effectuée par le packaging.

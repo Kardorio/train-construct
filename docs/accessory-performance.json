@@ -1,0 +1,20 @@
+{
+  "before": {
+    "initial_tick": 161109,
+    "initial_built": 1216,
+    "simulation_ticks": 9000,
+    "accessories_built": 13,
+    "selection_gap_median_seconds": 6.333333333333333,
+    "selection_gap_max_seconds": 6.333333333333333,
+    "gap_samples": 13
+  },
+  "after": {
+    "initial_tick": 161109,
+    "initial_built": 1216,
+    "simulation_ticks": 9000,
+    "accessories_built": 74,
+    "selection_gap_median_seconds": 0.16666666666666666,
+    "selection_gap_max_seconds": 0.3333333333333333,
+    "gap_samples": 69
+  }
+}

@@ -1,0 +1,232 @@
+# Idée de mod Factorio 2.1 : Construction Train
+
+Je veux développer un mod Factorio 2.1 autour d'un concept de **train de construction ferroviaire autonome**.
+
+## Concept
+
+Le but est de résoudre un problème de megabase : lorsque l'on blueprint de grandes quantités de rails, les construction bots deviennent très lents parce qu'ils doivent transporter individuellement les rails/signaux jusqu'au chantier.
+
+Le mod ajoute donc une infrastructure spécialisée permettant à des trains de construire **l'infrastructure ferroviaire elle-même**.
+
+Le joueur continue à utiliser les blueprints Factorio normalement. Le mod ne doit PAS générer automatiquement le tracé des rails.
+
+### Règle fondamentale
+
+> **Le train construit uniquement ce qu'il touche.**
+
+Il n'existe aucune notion de portée de construction, de roboport ou de construction à distance.
+
+Le train roule jusqu'à l'extrémité du réseau ferroviaire réellement construit, puis construit les ghosts ferroviaires directement devant lui. Une fois le rail construit, il peut avancer dessus et continuer.
+
+Exemple :
+
+```text
+Rails existants                 Rails ghost
+══════════════════════🚂═══════┄┄┄┄┄┄┄┄┄┄
+                              ↑
+                         prochain chantier
+```
+
+Le train construit le prochain rail, avance, puis recommence.
+
+## Infrastructure construite
+
+Le train doit pouvoir construire au minimum :
+
+- rails
+- rail signals
+- chain signals
+- train stops
+
+D'autres éléments ferroviaires pourront éventuellement être ajoutés plus tard :
+
+- supports de rails surélevés
+- rampes
+- autres infrastructures ferroviaires selon les possibilités de Factorio 2.1
+
+Le train ne doit PAS devenir un constructeur généraliste.
+
+Les bâtiments, machines, tuyaux, murs, coffres, etc. restent du ressort des construction bots.
+
+## Train spécialisé
+
+Le mod doit fournir un élément de train spécialisé, probablement un **Construction Wagon**.
+
+Ce wagon permet au train de réaliser les constructions ferroviaires.
+
+Le design exact est à déterminer, mais le principe est celui d'une véritable machine de chantier ferroviaire, pas d'un roboport mobile.
+
+Le train doit transporter les matériaux nécessaires dans son inventaire.
+
+Exemple de composition possible :
+
+```text
+Locomotive + Construction Wagon + Cargo Wagon(s)
+```
+
+Le joueur doit pouvoir dimensionner son train en fonction de la taille des chantiers.
+
+## Construction
+
+Le train doit détecter les ghosts ferroviaires correspondant à sa position / progression.
+
+Il ne doit jamais construire un élément ferroviaire éloigné.
+
+Un signal ghost situé sur une voie que le train ne parcourt pas reste un ghost.
+
+Exemple :
+
+```text
+             ghost branch
+                  ┄┄🚦┄┄
+                 /
+════════════════🚂════════════════
+```
+
+Le signal de la branche n'est pas construit puisque le train ne passe pas dessus.
+
+À l'inverse, si le train construit une voie portant un signal ghost à son emplacement, il construit également ce signal.
+
+## Extension du réseau
+
+Le point important est que le train ne doit pas avoir besoin d'un pathfinding complet sur des rails qui n'existent pas encore.
+
+Le réseau réel constitue la partie navigable.
+
+Les ghosts constituent une extension future du réseau.
+
+Le train doit progressivement transformer :
+
+```text
+réel → ghost → réel → ghost → réel
+```
+
+Il ne doit pas téléporter ou naviguer magiquement sur les ghosts.
+
+Une première approche à étudier est donc de rechercher les **frontières de construction**, c'est-à-dire les ghosts ferroviaires connectés au réseau ferroviaire réel accessible au train.
+
+## Embranchements
+
+Un chantier peut contenir des bifurcations.
+
+Exemple :
+
+```text
+                       ┄┄┄┄┄┄┄
+                      /
+═════════════════════●
+                      \
+                       ┄┄┄┄┄┄┄
+```
+
+Le train doit pouvoir construire une branche, puis éventuellement revenir et construire l'autre.
+
+Il faut concevoir un mécanisme de gestion des branches/chantiers sans introduire prématurément un pathfinder complexe sur les ghosts.
+
+Le comportement exact est à concevoir dans le LLD.
+
+## Dépôt de construction
+
+Ajouter un bâtiment **Construction Depot**.
+
+Son rôle :
+
+1. fournir les matériaux aux trains de construction ;
+2. éventuellement récupérer les trains lorsqu'un chantier est terminé ;
+3. gérer les stocks nécessaires ;
+4. permettre plusieurs trains de construction.
+
+Le train peut avoir des objectifs de stock configurables, par exemple :
+
+```text
+Rails           800
+Rail signals    100
+Chain signals   100
+Train stops      20
+```
+
+Le système doit rester cohérent avec les mécaniques logistiques de Factorio.
+
+## Chantiers
+
+Un chantier correspond à un ensemble de ghosts ferroviaires qu'un train peut progressivement construire.
+
+Un chantier ne doit être considéré comme accessible que s'il peut être atteint depuis le réseau réel.
+
+Un ghost ferroviaire totalement isolé dans le vide ne doit pas être pris en charge tant qu'il n'est pas connecté au réseau existant.
+
+## Construction bots
+
+Le mod doit proposer une option permettant de réserver certains éléments ferroviaires aux construction trains.
+
+Objectif :
+
+```text
+Construction bots
+→ bâtiments, machines, tuyaux, etc.
+
+Construction trains
+→ infrastructure ferroviaire
+```
+
+Les ghosts ferroviaires concernés doivent donc pouvoir être ignorés par les bots lorsque cette option est activée.
+
+Il faut déterminer la meilleure implémentation Factorio 2.1 pour cela, sans créer un système de faux ghosts si l'API permet de conserver de vrais ghosts.
+
+## Automatisation
+
+Le but final est que le joueur puisse :
+
+1. poser un énorme blueprint ferroviaire ;
+2. continuer à jouer normalement ;
+3. laisser un ou plusieurs construction trains prendre les chantiers ;
+4. les trains se ravitaillent ;
+5. construisent progressivement le réseau ;
+6. reviennent au dépôt lorsque leur travail est terminé ou lorsqu'ils doivent se ravitailler.
+
+Le mod doit donc être une **alternative automatisée aux construction bots pour les gros travaux ferroviaires**.
+
+Ce n'est PAS un mod qui invente les rails à la place du joueur.
+
+## Ce que je veux de toi
+
+À partir de cette idée, produis un **LLD complet pour un mod Factorio 2.1**, suffisamment précis pour commencer l'implémentation.
+
+Le LLD doit notamment couvrir :
+
+- architecture du mod ;
+- entités Factorio ;
+- prototypes ;
+- inventaires ;
+- recettes ;
+- GUI éventuelles ;
+- états du train ;
+- gestion des chantiers ;
+- détection des ghosts ;
+- algorithme de progression ;
+- gestion des embranchements ;
+- dispatch des trains ;
+- ravitaillement ;
+- réservation des chantiers ;
+- interaction avec les construction bots ;
+- événements Factorio utilisés ;
+- persistance ;
+- performances ;
+- cas limites ;
+- découpage des fichiers/classes/modules ;
+- stratégie de tests.
+
+### Contraintes importantes
+
+- Factorio 2.1.
+- Ne pas résoudre un problème qui n'existe pas.
+- Ne pas ajouter de pathfinding complexe sur les ghosts sans justification.
+- Pas de construction à distance.
+- Pas de génération automatique de rails.
+- Le joueur reste responsable du tracé.
+- Le train construit uniquement ce qu'il touche.
+- Le train doit réellement transporter les matériaux nécessaires.
+- Le système doit être compatible avec de très gros réseaux / megabases.
+- Privilégier une architecture simple, robuste et performante.
+
+Avant de proposer l'architecture finale, analyse également les API Factorio 2.1 réellement disponibles pour les ghosts, les trains, les rails et les construction bots afin de ne pas concevoir une mécanique impossible à implémenter.

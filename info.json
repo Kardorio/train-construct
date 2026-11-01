@@ -1,0 +1,11 @@
+{
+  "name": "construction-train",
+  "version": "0.1.0",
+  "title": "Construction Train",
+  "author": "kardagan",
+  "factorio_version": "2.1",
+  "dependencies": [
+    "base >= 2.1.24"
+  ],
+  "description": "Prototype: one depot owns one bidirectional railway construction machine."
+}

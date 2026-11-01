@@ -1,0 +1,1353 @@
+   0.000 2026-11-01 11:39:36; Factorio 2.1.24 (build 87808, linux64, steam, space-age)
+   0.017 Operating system: Linux (Ubuntu 24.04)
+   0.017 Program arguments: "/home/vador/.steam/steam/steamapps/common/Factorio/bin/x64/../x64_/factorio" "--config" "/tmp/ct-debug-save-qpnikfe4/config.ini" "--mod-directory" "/tmp/ct-debug-save-qpnikfe4/mods" "--disable-audio" "--benchmark" "/home/vador/.factorio/saves/ct-debug.zip" "--benchmark-ticks" "9000" "--benchmark-runs" "1" 
+   0.017 Config path: /tmp/ct-debug-save-qpnikfe4/config.ini
+   0.017 Read data path: /home/vador/.steam/debian-installation/steamapps/common/Factorio/data
+   0.017 Write data path: /tmp/ct-debug-save-qpnikfe4/write [32611/475492MB]
+   0.017 Binaries path: /home/vador/.steam/debian-installation/steamapps/common/Factorio/bin
+   0.033 System info: [CPU: 13th Gen Intel(R) Core(TM) i5-1345U, 12 cores, RAM: 63959 MB]
+   0.033 Environment: DISPLAY=<unset> WAYLAND_DISPLAY=<unset> DESKTOP_SESSION=<unset> XDG_SESSION_DESKTOP=<unset> XDG_CURRENT_DESKTOP=<unset> SDL_VIDEO_DRIVER=<unset> SDL_ENABLE_STEAM_SCREEN_KEYBOARD=<unset> SteamDeck=<unset> __GL_FSAA_MODE=<unset> __GL_LOG_MAX_ANISO=<unset> __GL_SYNC_TO_VBLANK=<unset> __GL_SORT_FBCONFIGS=<unset> __GL_YIELD=<unset>
+   0.136 Info ModManager.cpp:280: Found duplicate mod RateCalculator, using highest version (3.4.2).
+   0.136 Info ModManager.cpp:280: Found duplicate mod pyalienlife, using highest version (3.1.8).
+   0.136 Info ModManager.cpp:280: Found duplicate mod pyalternativeenergy, using highest version (3.2.11).
+   0.136 Info ModManager.cpp:280: Found duplicate mod pycoalprocessing, using highest version (3.1.8).
+   0.136 Info ModManager.cpp:280: Found duplicate mod pyfusionenergy, using highest version (3.1.6).
+   0.136 Info ModManager.cpp:280: Found duplicate mod pyhightech, using highest version (3.1.5).
+   0.136 Info ModManager.cpp:280: Found duplicate mod pypetroleumhandling, using highest version (3.1.5).
+   0.136 Info ModManager.cpp:280: Found duplicate mod pypostprocessing, using highest version (3.1.7).
+   0.139 Running in headless mode
+   0.139 Audio is disabled
+   0.157 Info ModManager.cpp:455: FeatureFlag: expansion, expansion-shaders, freezing, quality, rail-bridges, segmented-units, space-travel, spoiling
+   0.161 Loading mod settings aai-loaders 0.3.0 (settings.lua)
+   0.163 Loading mod settings auto-splitter-block 0.9.2 (settings.lua)
+   0.163 Loading mod settings AutoDeconstruct 1.1.2 (settings.lua)
+   0.164 Loading mod settings BeltCapacityHelper 0.4.0 (settings.lua)
+   0.165 Loading mod settings btqbuslodtswfowap 1.2.3 (settings.lua)
+   0.166 Loading mod settings DisplayPlatesForked 1.7.0 (settings.lua)
+   0.167 Loading mod settings FasterStart 2.1.0 (settings.lua)
+   0.168 Loading mod settings filter-combinator-improved 4.1.3 (settings.lua)
+   0.174 Loading mod settings Flow Control 3.2.4 (settings.lua)
+   0.175 Loading mod settings ghost-counter 2.1.1 (settings.lua)
+   0.176 Loading mod settings Milestones 1.5.2 (settings.lua)
+   0.177 Loading mod settings RoboportRangeMultiplier 1.3.0 (settings.lua)
+   0.178 Loading mod settings RobotPowerMultiplier 1.1.0 (settings.lua)
+   0.178 Loading mod settings show-max-underground-distance 0.1.1 (settings.lua)
+   0.179 Loading mod settings smaller-shortcut-icons 1.0.6 (settings.lua)
+   0.180 Loading mod settings BottleneckLite 1.4.1 (settings.lua)
+   0.181 Loading mod settings plate-group 1.0.0 (settings.lua)
+   0.182 Loading mod settings pycoalprocessing 3.1.8 (settings.lua)
+   0.183 Loading mod settings RateCalculator 3.4.2 (settings.lua)
+   0.184 Loading mod settings smart-train-combinator 1.10.0 (settings.lua)
+   0.185 Loading mod settings pyindustry 3.1.6 (settings.lua)
+   0.186 Loading mod settings pypetroleumhandling 3.1.5 (settings.lua)
+   0.187 Loading mod settings pyalienlife 3.1.8 (settings.lua)
+   0.188 Loading mod settings pyalternativeenergy 3.2.11 (settings.lua)
+   0.189 Loading mod settings pypostprocessing 3.1.7 (settings.lua)
+   0.191 Loading mod settings pypostprocessing 3.1.7 (settings-updates.lua)
+   0.192 Loading mod settings AutoDeconstruct 1.1.2 (settings-final-fixes.lua)
+   0.193 Loading mod settings pypostprocessing 3.1.7 (settings-final-fixes.lua)
+   0.199 Loading mod core 0.0.0 (data.lua)
+   0.228 Loading mod base 2.1.24 (data.lua)
+   0.468 Loading mod enable-all-feature-flags 1.1.0 (data.lua)
+   0.481 Loading mod aai-loaders 0.3.0 (data.lua)
+   0.483 Script @__aai-loaders__/data.lua:5: Log mods once: {
+  AutoDeconstruct = "1.1.2",
+  BeltCapacityHelper = "0.4.0",
+  BottleneckLite = "1.4.1",
+  DisplayPlatesForked = "1.7.0",
+  DoNotRemove = "1.0.0",
+  FasterStart = "2.1.0",
+  ["Flow Control"] = "3.2.4",
+  Milestones = "1.5.2",
+  PatchFR = "2.1.4",
+  RateCalculator = "3.4.2",
+  RoboportRangeMultiplier = "1.3.0",
+  RobotPowerMultiplier = "1.1.0",
+  ["aai-loaders"] = "0.3.0",
+  ["auto-splitter-block"] = "0.9.2",
+  base = "2.1.24",
+  ["belt-reverser-forked"] = "2.2.1",
+  btqbuslodtswfowap = "1.2.3",
+  ["construction-train"] = "0.1.0",
+  ["crash-site-extended"] = "0.2.0",
+  ["elevated-rails"] = "2.1.24",
+  ["enable-all-feature-flags"] = "1.1.0",
+  ["filter-combinator-improved"] = "4.1.3",
+  flib = "0.17.2",
+  ["ghost-counter"] = "2.1.1",
+  holographic_signs = "2.1.0",
+  ["lane-balancers"] = "1.3.0",
+  mferrari_lib = "0.7.7",
+  ["plate-group"] = "1.0.0",
+  pyalienlife = "3.1.8",
+  pyalienlifegraphics = "3.1.1",
+  pyalienlifegraphics2 = "3.1.0",
+  pyalienlifegraphics3 = "3.1.0",
+  pyalternativeenergy = "3.2.11",
+  pyalternativeenergygraphics = "3.1.1",
+  pycoalprocessing = "3.1.8",
+  pycoalprocessinggraphics = "3.1.1",
+  pyfusionenergy = "3.1.6",
+  pyfusionenergygraphics = "3.1.1",
+  pyhightech = "3.1.5",
+  pyhightechgraphics = "3.1.1",
+  pyindustry = "3.1.6",
+  pyindustrygraphics = "3.1.1",
+  pymodpack = "3.1.0",
+  pypetroleumhandling = "3.1.5",
+  pypetroleumhandlinggraphics = "3.1.1",
+  pypostprocessing = "3.1.7",
+  pyrawores = "3.1.4",
+  pyraworesgraphics = "3.1.1",
+  ["show-max-underground-distance"] = "0.1.1",
+  ["smaller-shortcut-icons"] = "1.0.6",
+  ["smart-train-combinator"] = "1.10.0",
+  ["snouz-useful-icons"] = "1.0.3",
+  ["sushi-splitters"] = "0.3.1",
+  textplates = "0.8.0",
+  ["train-foundry"] = "1.4.4",
+  ["train-foundry-stc"] = "1.4.4",
+  ["vehicle-loading-dock"] = "1.2.0"
+}
+   0.497 Loading mod AutoDeconstruct 1.1.2 (data.lua)
+   0.508 Loading mod belt-reverser-forked 2.2.1 (data.lua)
+   0.520 Loading mod BeltCapacityHelper 0.4.0 (data.lua)
+   0.535 Loading mod construction-train 0.1.0 (data.lua)
+   0.551 Loading mod DisplayPlatesForked 1.7.0 (data.lua)
+   0.568 Loading mod DoNotRemove 1.0.0 (data.lua)
+   0.579 Loading mod elevated-rails 2.1.24 (data.lua)
+   0.602 Loading mod FasterStart 2.1.0 (data.lua)
+   0.616 Loading mod filter-combinator-improved 4.1.3 (data.lua)
+   0.640 Loading mod flib 0.17.2 (data.lua)
+   0.658 Loading mod Flow Control 3.2.4 (data.lua)
+   0.678 Loading mod ghost-counter 2.1.1 (data.lua)
+   0.693 Loading mod lane-balancers 1.3.0 (data.lua)
+   0.710 Loading mod mferrari_lib 0.7.7 (data.lua)
+   0.734 Loading mod Milestones 1.5.2 (data.lua)
+   0.753 Loading mod snouz-useful-icons 1.0.3 (data.lua)
+   0.775 Loading mod textplates 0.8.0 (data.lua)
+   0.832 Loading mod train-foundry 1.4.4 (data.lua)
+   0.875 Loading mod holographic_signs 2.1.0 (data.lua)
+   0.901 Loading mod pycoalprocessing 3.1.8 (data.lua)
+   0.906 Script @__pypostprocessing__/lib/log.lua:10: log level: 1
+   0.947 Script @__pypostprocessing__/lib/metas/recipe.lua:255: WARNING @ 'py-stack-inserter':add_ingredient(): Ingredient small-parts-01 does not exist
+   0.947 Script @__pypostprocessing__/lib/metas/recipe.lua:255: WARNING @ 'py-stack-inserter':add_ingredient(): Ingredient belt does not exist
+   1.016 Script @__pypostprocessing__/lib/metas/technology.lua:69: WARNING @ 'effect-transmission':add_prereq(): Technology diet-beacon does not exist
+   1.049 Loading mod RateCalculator 3.4.2 (data.lua)
+   1.077 Loading mod smart-train-combinator 1.10.0 (data.lua)
+   1.107 Loading mod pyfusionenergy 3.1.6 (data.lua)
+   1.119 Script @__pypostprocessing__/lib/metas/recipe.lua:106: WARNING @ 'phytoplankton':add_unlock(): Technology xyhiphoe does not exist
+   1.119 Script @__pypostprocessing__/lib/metas/recipe.lua:106: WARNING @ 'arthropod-blood':add_unlock(): Technology xyhiphoe does not exist
+   1.119 Script @__pypostprocessing__/lib/metas/recipe.lua:106: WARNING @ 'xyhiphoe-hydrocyclone':add_unlock(): Technology xyhiphoe does not exist
+   1.119 Script @__pypostprocessing__/lib/metas/recipe.lua:106: WARNING @ 'wastewater-filtration':add_unlock(): Technology xyhiphoe does not exist
+   1.131 Script @__pypostprocessing__/lib/metas/recipe.lua:106: WARNING @ 'plankton-farm':add_unlock(): Technology xyhiphoe does not exist
+   1.132 Script @__pypostprocessing__/lib/metas/recipe.lua:106: WARNING @ 'xyhiphoe-pool-mk01':add_unlock(): Technology xyhiphoe does not exist
+   1.215 Loading mod train-foundry-stc 1.4.4 (data.lua)
+   1.263 Loading mod pyindustry 3.1.6 (data.lua)
+   1.284 Script @__pypostprocessing__/lib/metas/recipe.lua:255: WARNING @ 'py-logistic-robot-mk01':add_ingredient(): Ingredient fish-oil does not exist
+   1.318 Loading mod pyrawores 3.1.4 (data.lua)
+   1.400 Script @__pypostprocessing__/lib/metas/recipe.lua:106: WARNING @ 'powdered-ralesia-seeds':add_unlock(): Technology starch does not exist
+   1.400 Script @__pypostprocessing__/lib/metas/recipe.lua:106: WARNING @ 'starch':add_unlock(): Technology starch does not exist
+   1.400 Script @__pypostprocessing__/lib/metas/recipe.lua:106: WARNING @ 'starch-2':add_unlock(): Technology starch does not exist
+   1.439 Loading mod pyhightech 3.1.5 (data.lua)
+   1.446 Script @__pypostprocessing__/lib/metas/recipe.lua:106: WARNING @ 'urea2':add_unlock(): Technology auog-2 does not exist
+   1.447 Script @__pypostprocessing__/lib/metas/recipe.lua:106: WARNING @ 'fiber':add_unlock(): Technology kicalk-2 does not exist
+   1.506 Loading mod pypetroleumhandling 3.1.5 (data.lua)
+   1.580 Loading mod pyalienlife 3.1.8 (data.lua)
+   1.785 Script @__pypostprocessing__/lib/metas/recipe.lua:106: WARNING @ 'biobattery':add_unlock(): Technology biobattery does not exist
+   1.801 Script @__pypostprocessing__/lib/metas/recipe.lua:255: WARNING @ 'dhilmos-mk03r':add_ingredient(): Ingredient fatty-acids does not exist
+   1.804 Script @__pypostprocessing__/lib/metas/recipe.lua:255: WARNING @ 'dingrits-mk04r':add_ingredient(): Ingredient crude-enzyme does not exist
+   1.812 Script @__pypostprocessing__/lib/metas/recipe.lua:255: WARNING @ 'kmauts-mk04r':add_ingredient(): Ingredient crude-enzyme does not exist
+   1.816 Script @__pypostprocessing__/lib/metas/recipe.lua:255: WARNING @ 'korlex-mk02r':add_ingredient(): Ingredient fatty-acids does not exist
+   1.816 Script @__pypostprocessing__/lib/metas/recipe.lua:255: WARNING @ 'korlex-mk03r':add_ingredient(): Ingredient fatty-acids does not exist
+   1.816 Script @__pypostprocessing__/lib/metas/recipe.lua:255: WARNING @ 'korlex-mk04r':add_ingredient(): Ingredient mpa does not exist
+   1.816 Script @__pypostprocessing__/lib/metas/recipe.lua:255: WARNING @ 'korlex-mk04r':add_ingredient(): Ingredient clean-organic-pulp does not exist
+   1.819 Script @__pypostprocessing__/lib/metas/recipe.lua:255: WARNING @ 'mukmoux-mk02r':add_ingredient(): Ingredient fatty-acids does not exist
+   1.819 Script @__pypostprocessing__/lib/metas/recipe.lua:255: WARNING @ 'mukmoux-mk04r':add_ingredient(): Ingredient clean-organic-pulp does not exist
+   1.819 Script @__pypostprocessing__/lib/metas/recipe.lua:255: WARNING @ 'mukmoux-mk04r':add_ingredient(): Ingredient nanocarrier does not exist
+   1.824 Script @__pypostprocessing__/lib/metas/recipe.lua:255: WARNING @ 'phadai-mk02r':add_ingredient(): Ingredient fatty-acids does not exist
+   1.824 Script @__pypostprocessing__/lib/metas/recipe.lua:255: WARNING @ 'phadai-mk03r':add_ingredient(): Ingredient fatty-acids does not exist
+   1.824 Script @__pypostprocessing__/lib/metas/recipe.lua:255: WARNING @ 'phadai-mk04r':add_ingredient(): Ingredient crude-enzyme does not exist
+   1.824 Script @__pypostprocessing__/lib/metas/recipe.lua:255: WARNING @ 'phadai-mk04r':add_ingredient(): Ingredient mpa does not exist
+   1.824 Script @__pypostprocessing__/lib/metas/recipe.lua:255: WARNING @ 'phadai-mk04r':add_ingredient(): Ingredient clean-organic-pulp does not exist
+   1.831 Script @__pypostprocessing__/lib/metas/recipe.lua:255: WARNING @ 'scrondrix-mk04r':add_ingredient(): Ingredient mpa does not exist
+   1.831 Script @__pypostprocessing__/lib/metas/recipe.lua:255: WARNING @ 'scrondrix-mk04r':add_ingredient(): Ingredient nanocarrier does not exist
+   1.841 Script @__pypostprocessing__/lib/metas/recipe.lua:255: WARNING @ 'simik-mk02':add_ingredient(): Ingredient reactor-waste-1 does not exist
+   1.841 Script @__pypostprocessing__/lib/metas/recipe.lua:255: WARNING @ 'simik-mk03':add_ingredient(): Ingredient advanced-substrate does not exist
+   1.841 Script @__pypostprocessing__/lib/metas/recipe.lua:255: WARNING @ 'simik-mk03':add_ingredient(): Ingredient plutonium-peroxide does not exist
+   1.841 Script @__pypostprocessing__/lib/metas/recipe.lua:255: WARNING @ 'simik-mk04':add_ingredient(): Ingredient advanced-substrate does not exist
+   1.841 Script @__pypostprocessing__/lib/metas/recipe.lua:255: WARNING @ 'simik-mk04':add_ingredient(): Ingredient fluorine-gas does not exist
+   1.841 Script @__pypostprocessing__/lib/metas/recipe.lua:255: WARNING @ 'simik-mk04r':add_ingredient(): Ingredient nanocarrier does not exist
+   1.844 Script @__pypostprocessing__/lib/metas/recipe.lua:255: WARNING @ 'trits-mk04r':add_ingredient(): Ingredient nanocarrier does not exist
+   1.850 Script @__pypostprocessing__/lib/metas/recipe.lua:106: WARNING @ 'vonix-mk04':add_unlock(): Technology vonix-mk04 does not exist
+   1.855 Script @__pypostprocessing__/lib/metas/recipe.lua:255: WARNING @ 'xeno-mk04r':add_ingredient(): Ingredient crude-enzyme does not exist
+   1.863 Script @__pypostprocessing__/lib/metas/recipe.lua:255: WARNING @ 'zipir-mk03r':add_ingredient(): Ingredient fatty-acids does not exist
+   1.863 Script @__pypostprocessing__/lib/metas/recipe.lua:255: WARNING @ 'zipir-mk04r':add_ingredient(): Ingredient clean-organic-pulp does not exist
+   1.863 Script @__pypostprocessing__/lib/metas/recipe.lua:255: WARNING @ 'zipir-mk04r':add_ingredient(): Ingredient nanocarrier does not exist
+   1.864 Script @__pypostprocessing__/lib/metas/recipe.lua:106: WARNING @ 'zungror-mk04':add_unlock(): Technology zungror-mk04 does not exist
+   1.864 Script @__pypostprocessing__/lib/metas/recipe.lua:255: WARNING @ 'zungror-mk03r':add_ingredient(): Ingredient fatty-acids does not exist
+   1.864 Script @__pypostprocessing__/lib/metas/recipe.lua:106: WARNING @ 'zungror-mk04r':add_unlock(): Technology zungror-mk04 does not exist
+   1.864 Script @__pypostprocessing__/lib/metas/recipe.lua:255: WARNING @ 'zungror-mk04r':add_ingredient(): Ingredient crude-enzyme does not exist
+   1.865 Script @__pypostprocessing__/lib/metas/recipe.lua:255: WARNING @ 'zungror-mk04r':add_ingredient(): Ingredient nanocarrier does not exist
+   1.865 Script @__pypostprocessing__/lib/metas/recipe.lua:106: WARNING @ 'compile-zungror-ai':add_unlock(): Technology zungror-mk04 does not exist
+   1.867 Script @__pypostprocessing__/lib/metas/recipe.lua:106: WARNING @ 'energy-drinkb':add_unlock(): Technology ethanol-boost does not exist
+   1.910 Loading mod vehicle-loading-dock 1.2.0 (data.lua)
+   1.968 Loading mod pyalternativeenergy 3.2.11 (data.lua)
+   2.102 Loading mod pypostprocessing 3.1.7 (data.lua)
+   2.104 Script @__pypostprocessing__/data.lua:4: MODSET:
+{
+  AutoDeconstruct = "1.1.2",
+  BeltCapacityHelper = "0.4.0",
+  BottleneckLite = "1.4.1",
+  DisplayPlatesForked = "1.7.0",
+  DoNotRemove = "1.0.0",
+  FasterStart = "2.1.0",
+  ["Flow Control"] = "3.2.4",
+  Milestones = "1.5.2",
+  PatchFR = "2.1.4",
+  RateCalculator = "3.4.2",
+  RoboportRangeMultiplier = "1.3.0",
+  RobotPowerMultiplier = "1.1.0",
+  ["aai-loaders"] = "0.3.0",
+  ["auto-splitter-block"] = "0.9.2",
+  base = "2.1.24",
+  ["belt-reverser-forked"] = "2.2.1",
+  btqbuslodtswfowap = "1.2.3",
+  ["construction-train"] = "0.1.0",
+  ["crash-site-extended"] = "0.2.0",
+  ["elevated-rails"] = "2.1.24",
+  ["enable-all-feature-flags"] = "1.1.0",
+  ["filter-combinator-improved"] = "4.1.3",
+  flib = "0.17.2",
+  ["ghost-counter"] = "2.1.1",
+  holographic_signs = "2.1.0",
+  ["lane-balancers"] = "1.3.0",
+  mferrari_lib = "0.7.7",
+  ["plate-group"] = "1.0.0",
+  pyalienlife = "3.1.8",
+  pyalienlifegraphics = "3.1.1",
+  pyalienlifegraphics2 = "3.1.0",
+  pyalienlifegraphics3 = "3.1.0",
+  pyalternativeenergy = "3.2.11",
+  pyalternativeenergygraphics = "3.1.1",
+  pycoalprocessing = "3.1.8",
+  pycoalprocessinggraphics = "3.1.1",
+  pyfusionenergy = "3.1.6",
+  pyfusionenergygraphics = "3.1.1",
+  pyhightech = "3.1.5",
+  pyhightechgraphics = "3.1.1",
+  pyindustry = "3.1.6",
+  pyindustrygraphics = "3.1.1",
+  pymodpack = "3.1.0",
+  pypetroleumhandling = "3.1.5",
+  pypetroleumhandlinggraphics = "3.1.1",
+  pypostprocessing = "3.1.7",
+  pyrawores = "3.1.4",
+  pyraworesgraphics = "3.1.1",
+  ["show-max-underground-distance"] = "0.1.1",
+  ["smaller-shortcut-icons"] = "1.0.6",
+  ["smart-train-combinator"] = "1.10.0",
+  ["snouz-useful-icons"] = "1.0.3",
+  ["sushi-splitters"] = "0.3.1",
+  textplates = "0.8.0",
+  ["train-foundry"] = "1.4.4",
+  ["train-foundry-stc"] = "1.4.4",
+  ["vehicle-loading-dock"] = "1.2.0"
+}
+   2.105 Script @__pypostprocessing__/data.lua:7: SETTINGS:
+{
+  startup = {
+    ["bnl-enable"] = {
+      value = true
+    },
+    ["bnl-glow"] = {
+      value = true
+    },
+    ["bnl-include-mining-drills"] = {
+      value = true
+    },
+    ["bnl-indicator-size"] = {
+      value = "small"
+    },
+    ["bnl-color-disabled"] = {
+      value = {
+        r = 1,
+        g = 0,
+        b = 0,
+        a = 1
+      }
+    },
+    ["bnl-color-full_output"] = {
+      value = {
+        r = 1,
+        g = 1,
+        b = 0,
+        a = 1
+      }
+    },
+    ["bnl-color-idle"] = {
+      value = {
+        r = 1,
+        g = 0,
+        b = 0,
+        a = 1
+      }
+    },
+    ["bnl-color-insufficient_input"] = {
+      value = {
+        r = 1,
+        g = 0,
+        b = 0,
+        a = 1
+      }
+    },
+    ["bnl-color-low_power"] = {
+      value = {
+        r = 1,
+        g = 0.5,
+        b = 0,
+        a = 1
+      }
+    },
+    ["bnl-color-no_minable_resources"] = {
+      value = {
+        r = 1,
+        g = 0,
+        b = 0,
+        a = 1
+      }
+    },
+    ["bnl-color-no_power"] = {
+      value = {
+        r = 1,
+        g = 0,
+        b = 0,
+        a = 1
+      }
+    },
+    ["bnl-color-working"] = {
+      value = {
+        r = 0,
+        g = 1,
+        b = 0,
+        a = 1
+      }
+    },
+    ["display-plates-text-above"] = {
+      value = true
+    },
+    ["disable-crashsite"] = {
+      value = false
+    },
+    ["skip-intro"] = {
+      value = false
+    },
+    ["flow-control-new-group"] = {
+      value = true
+    },
+    ["flow-control-revert-to-normal-pipe"] = {
+      value = true
+    },
+    ["RoboportRangeMultiplier-construction-range-factor"] = {
+      value = 2.2000000000000002
+    },
+    ["RoboportRangeMultiplier-logistics-range-factor"] = {
+      value = 2.2000000000000002
+    },
+    ["RoboportRangeMultiplier-personal-construction-range-factor"] = {
+      value = 1
+    },
+    ["RoboportRangeMultiplier-radar-range-factor"] = {
+      value = 1
+    },
+    ["RobotPowerMultiplier-robot-approach-distance-factor"] = {
+      value = 1
+    },
+    ["RobotPowerMultiplier-robot-charging-energy-factor"] = {
+      value = 1
+    },
+    ["RobotPowerMultiplier-robot-max-energy-factor"] = {
+      value = 2.2000000000000002
+    },
+    ["RobotPowerMultiplier-robot-movement-energy-consumption-factor"] = {
+      value = 1
+    },
+    ["RobotPowerMultiplier-robot-speed-factor"] = {
+      value = 1
+    },
+    ["aai-loaders-mode"] = {
+      value = "lubricated"
+    },
+    ["aai-loaders-require-electricity"] = {
+      value = false
+    },
+    ["aai-loaders-lubricant-recipe"] = {
+      value = "auto"
+    },
+    ["aai-loaders-fit-assemblers"] = {
+      value = true
+    },
+    ["aai-loaders-belt-stacking-mode"] = {
+      value = "off"
+    },
+    ["auto-splitter-block-filter-item"] = {
+      value = "no-item"
+    },
+    ["auto-splitter-block-unhide-no-item"] = {
+      value = false
+    },
+    ["hps__fc-debug-mode"] = {
+      value = "0"
+    },
+    ["plate-group-subgroups"] = {
+      value = "textplates, display-plates"
+    },
+    ["plate-group-items"] = {
+      value = ""
+    },
+    ["plate-group-order"] = {
+      value = "d-b"
+    },
+    ["enable-cranes"] = {
+      value = false
+    },
+    ["py-enable-decay"] = {
+      value = false
+    },
+    rpm_entity = {
+      value = 30
+    },
+    rpm_items = {
+      value = 30
+    },
+    overload = {
+      value = 0
+    },
+    ["future-beacons"] = {
+      value = true
+    },
+    ["py-generator-equipment-manager"] = {
+      value = true
+    },
+    ["py-tank-adjust"] = {
+      value = false
+    },
+    ["py-braided-pipes"] = {
+      value = true
+    },
+    ["py-show-voiding-in-stats"] = {
+      value = true
+    },
+    ["pypp-big-inventory-gui"] = {
+      value = false
+    },
+    ["pypp-compactified-recipe-tooltips"] = {
+      value = true
+    },
+    ["pypp-extended-recipe-signals"] = {
+      value = false
+    },
+    ["pypp-no-globals"] = {
+      value = false
+    },
+    ["pypp-tests"] = {
+      value = false
+    },
+    ["pypp-log-level"] = {
+      value = "info"
+    },
+    ["show-max-underground-distance-icon"] = {
+      value = "thick"
+    },
+    ["show-max-underground-distance-on-hover"] = {
+      value = false
+    },
+    ["smaller-shortcut-icons-override-calculator-ui"] = {
+      value = false
+    },
+    ["smaller-shortcut-icons-override-display-panel"] = {
+      value = false
+    },
+    ["smaller-shortcut-icons-override-power-grid-comb"] = {
+      value = false
+    },
+    ["smaller-shortcut-icons-use-legacy"] = {
+      value = false
+    }
+  }
+}
+   2.151 Loading mod base 2.1.24 (data-updates.lua)
+   2.225 Loading mod aai-loaders 0.3.0 (data-updates.lua)
+   2.275 Loading mod DisplayPlatesForked 1.7.0 (data-updates.lua)
+   2.322 Loading mod filter-combinator-improved 4.1.3 (data-updates.lua)
+   2.372 Loading mod Flow Control 3.2.4 (data-updates.lua)
+   2.421 Loading mod lane-balancers 1.3.0 (data-updates.lua)
+   2.476 Loading mod smaller-shortcut-icons 1.0.6 (data-updates.lua)
+   2.533 Loading mod sushi-splitters 0.3.1 (data-updates.lua)
+   2.581 Loading mod textplates 0.8.0 (data-updates.lua)
+   2.635 Loading mod holographic_signs 2.1.0 (data-updates.lua)
+   2.725 Loading mod pycoalprocessing 3.1.8 (data-updates.lua)
+   2.728 Script @__pypostprocessing__/lib/metas/technology.lua:44: research-speed-1: 128
+   2.728 Script @__pypostprocessing__/lib/metas/technology.lua:44: research-speed-2: 128
+   2.728 Script @__pypostprocessing__/lib/metas/technology.lua:44: research-speed-3: 128
+   2.728 Script @__pypostprocessing__/lib/metas/technology.lua:44: research-speed-4: 128
+   2.728 Script @__pypostprocessing__/lib/metas/technology.lua:44: research-speed-5: 128
+   2.728 Script @__pypostprocessing__/lib/metas/technology.lua:44: research-speed-6: 128
+   2.763 Script @__pycoalprocessing__/prototypes/item-sounds.lua:17: Item Sounds: Could not find item methanol-canister
+   2.764 Script @__pycoalprocessing__/prototypes/item-sounds.lua:17: Item Sounds: Could not find item 20-u-powder
+   2.764 Script @__pycoalprocessing__/prototypes/item-sounds.lua:17: Item Sounds: Could not find item 40-u-powder
+   2.764 Script @__pycoalprocessing__/prototypes/item-sounds.lua:17: Item Sounds: Could not find item 70-u-powder
+   2.766 Script @__pypostprocessing__/lib/metas/technology.lua:44: automation-science-pack: 64
+   2.766 Script @__pypostprocessing__/lib/metas/technology.lua:44: logistic-science-pack: 64
+   2.766 Script @__pypostprocessing__/lib/metas/technology.lua:44: chemical-science-pack: 64
+   2.771 Script @__pypostprocessing__/lib/metas/recipe.lua:89: WARNING @ allow_productivity(): Recipe combustion-mixture2 does not exist
+   2.771 Script @__pypostprocessing__/lib/metas/recipe.lua:89: WARNING @ allow_productivity(): Recipe combustion-olefin does not exist
+   2.771 Script @__pypostprocessing__/lib/metas/recipe.lua:89: WARNING @ allow_productivity(): Recipe eva-ree-dust does not exist
+   2.771 Script @__pypostprocessing__/lib/metas/recipe.lua:89: WARNING @ allow_productivity(): Recipe fuelrod-mk01 does not exist
+   2.771 Script @__pypostprocessing__/lib/metas/recipe.lua:89: WARNING @ allow_productivity(): Recipe niobium-ore does not exist
+   2.771 Script @__pypostprocessing__/lib/metas/recipe.lua:89: WARNING @ allow_productivity(): Recipe oleo-solidfuel does not exist
+   2.771 Script @__pypostprocessing__/lib/metas/recipe.lua:89: WARNING @ allow_productivity(): Recipe raw-borax does not exist
+   2.771 Script @__pypostprocessing__/lib/metas/recipe.lua:89: WARNING @ allow_productivity(): Recipe rich-re does not exist
+   2.771 Script @__pypostprocessing__/lib/metas/recipe.lua:442: WARNING @ 'beacon':replace_category(): Category crafting not present for replacement
+   2.825 Loading mod pyfusionenergy 3.1.6 (data-updates.lua)
+   2.826 Script @__pypostprocessing__/lib/metas/technology.lua:44: production-science-pack: 64
+   2.869 Loading mod pyindustry 3.1.6 (data-updates.lua)
+   2.871 Script @__pypostprocessing__/lib/metas/recipe.lua:167: WARNING @ 'py-coal-tile':replace_ingredient(): Ingredient py-coal-tile does not exist
+   2.871 Script @__pypostprocessing__/lib/metas/recipe.lua:167: WARNING @ 'py-aluminium':replace_ingredient(): Ingredient py-aluminium does not exist
+   3.028 Loading mod pyrawores 3.1.4 (data-updates.lua)
+   3.035 Script @__pypostprocessing__/lib/metas/recipe.lua:138: WARNING @ 'nichrome':remove_unlock(): Technology chromium does not exist
+   3.035 Script @__pypostprocessing__/lib/metas/recipe.lua:138: WARNING @ 'sand-casting':remove_unlock(): Technology nexelit does not exist
+   3.052 Script @__pypostprocessing__/lib/metas/recipe.lua:167: WARNING @ 'heavy-fermion':replace_ingredient(): Ingredient 40-u-powder does not exist
+   3.059 Script @__pypostprocessing__/lib/metas/recipe.lua:89: WARNING @ allow_productivity(): Recipe ammo-initial does not exist
+   3.059 Script @__pypostprocessing__/lib/metas/recipe.lua:89: WARNING @ allow_productivity(): Recipe pregnant-solution-01 does not exist
+   3.059 Script @__pypostprocessing__/lib/metas/recipe.lua:89: WARNING @ allow_productivity(): Recipe vanadium-mixture does not exist
+   3.134 Loading mod pyhightech 3.1.5 (data-updates.lua)
+   3.137 Script @__pypostprocessing__/lib/metas/recipe.lua:106: WARNING @ 'centrifuge':add_unlock(): Technology kicalk-2 does not exist
+   3.137 Script @__pypostprocessing__/lib/metas/recipe.lua:138: WARNING @ 'speed-module':remove_unlock(): Technology crafting does not exist
+   3.137 Script @__pypostprocessing__/lib/metas/recipe.lua:106: WARNING @ 'speed-module':add_unlock(): Technology pcb does not exist
+   3.137 Script @__pypostprocessing__/lib/metas/recipe.lua:138: WARNING @ 'speed-module-2':remove_unlock(): Technology crafting does not exist
+   3.137 Script @__pypostprocessing__/lib/metas/recipe.lua:106: WARNING @ 'speed-module-2':add_unlock(): Technology pcb does not exist
+   3.138 Script @__pypostprocessing__/lib/metas/recipe.lua:138: WARNING @ 'speed-module-3':remove_unlock(): Technology crafting does not exist
+   3.138 Script @__pypostprocessing__/lib/metas/recipe.lua:106: WARNING @ 'speed-module-3':add_unlock(): Technology pcb does not exist
+   3.138 Script @__pypostprocessing__/lib/metas/recipe.lua:138: WARNING @ 'efficiency-module':remove_unlock(): Technology crafting does not exist
+   3.138 Script @__pypostprocessing__/lib/metas/recipe.lua:106: WARNING @ 'efficiency-module':add_unlock(): Technology pcb does not exist
+   3.138 Script @__pypostprocessing__/lib/metas/recipe.lua:138: WARNING @ 'efficiency-module-2':remove_unlock(): Technology crafting does not exist
+   3.138 Script @__pypostprocessing__/lib/metas/recipe.lua:106: WARNING @ 'efficiency-module-2':add_unlock(): Technology pcb does not exist
+   3.138 Script @__pypostprocessing__/lib/metas/recipe.lua:138: WARNING @ 'efficiency-module-3':remove_unlock(): Technology crafting does not exist
+   3.138 Script @__pypostprocessing__/lib/metas/recipe.lua:106: WARNING @ 'efficiency-module-3':add_unlock(): Technology pcb does not exist
+   3.138 Script @__pypostprocessing__/lib/metas/recipe.lua:138: WARNING @ 'productivity-module':remove_unlock(): Technology crafting does not exist
+   3.138 Script @__pypostprocessing__/lib/metas/recipe.lua:106: WARNING @ 'productivity-module':add_unlock(): Technology pcb does not exist
+   3.138 Script @__pypostprocessing__/lib/metas/recipe.lua:138: WARNING @ 'productivity-module-2':remove_unlock(): Technology crafting does not exist
+   3.138 Script @__pypostprocessing__/lib/metas/recipe.lua:106: WARNING @ 'productivity-module-2':add_unlock(): Technology pcb does not exist
+   3.138 Script @__pypostprocessing__/lib/metas/recipe.lua:138: WARNING @ 'productivity-module-3':remove_unlock(): Technology crafting does not exist
+   3.138 Script @__pypostprocessing__/lib/metas/recipe.lua:106: WARNING @ 'productivity-module-3':add_unlock(): Technology pcb does not exist
+   3.138 Script @__pypostprocessing__/lib/metas/technology.lua:44: utility-science-pack: 64
+   3.139 Script @__pypostprocessing__/lib/metas/recipe.lua:89: WARNING @ allow_productivity(): Recipe bone-briquette does not exist
+   3.139 Script @__pypostprocessing__/lib/metas/recipe.lua:89: WARNING @ allow_productivity(): Recipe coal-briquette3 does not exist
+   3.139 Script @__pypostprocessing__/lib/metas/recipe.lua:89: WARNING @ allow_productivity(): Recipe electronic-circuit-initial does not exist
+   3.140 Script @__pypostprocessing__/lib/metas/recipe.lua:89: WARNING @ allow_productivity(): Recipe phosporic-acid2 does not exist
+   3.140 Script @__pypostprocessing__/lib/metas/recipe.lua:89: WARNING @ allow_productivity(): Recipe tar-lightoil does not exist
+   3.140 Script @__pypostprocessing__/lib/metas/recipe.lua:89: WARNING @ allow_productivity(): Recipe valve does not exist
+   3.205 Loading mod pypetroleumhandling 3.1.5 (data-updates.lua)
+   3.271 Script @__pypostprocessing__/lib/metas/recipe.lua:138: WARNING @ 'xyhiphoe-hydrocyclone':remove_unlock(): Technology xyhiphoe does not exist
+   3.324 Loading mod pyalienlife 3.1.8 (data-updates.lua)
+   3.347 Script @__pyalienlife__/prototypes/items/biomass-composting.lua:505: WARNING @ biomass_conversion: deadhead is not a valid item or fluid.
+   3.348 Script @__pyalienlife__/prototypes/items/biomass-composting.lua:505: WARNING @ biomass_conversion: biocarnation is not a valid item or fluid.
+   3.348 Script @__pyalienlife__/prototypes/items/biomass-composting.lua:505: WARNING @ biomass_conversion: biocrud is not a valid item or fluid.
+   3.348 Script @__pyalienlife__/prototypes/items/biomass-composting.lua:505: WARNING @ biomass_conversion: rich-biocrud is not a valid item or fluid.
+   3.348 Script @__pyalienlife__/prototypes/items/biomass-composting.lua:505: WARNING @ biomass_conversion: floraspollinin is not a valid item or fluid.
+   3.349 Script @__pypostprocessing__/lib/metas/technology.lua:44: automation-science-pack: 64
+   3.352 Script @__pypostprocessing__/lib/metas/recipe.lua:138: WARNING @ 'plankton-farm-mk03':remove_unlock(): Technology macgines-mk04 does not exist
+   3.352 Script @__pypostprocessing__/lib/metas/recipe.lua:138: WARNING @ 'xyhiphoe-pool-mk01':remove_unlock(): Technology xyhiphoe does not exist
+   3.352 Script @__pypostprocessing__/lib/metas/recipe.lua:138: WARNING @ 'arthropod-blood':remove_unlock(): Technology xyhiphoe does not exist
+   3.366 Script @__pypostprocessing__/lib/metas/recipe.lua:255: WARNING @ 'simik-den-mk02':add_ingredient(): Ingredient cooling-system does not exist
+   3.367 Script @__pypostprocessing__/lib/metas/recipe.lua:138: WARNING @ 'urea2':remove_unlock(): Technology auog-2 does not exist
+   3.367 Script @__pypostprocessing__/lib/metas/recipe.lua:106: WARNING @ 'lithium-chloride':add_unlock(): Technology biobattery does not exist
+   3.367 Script @__pypostprocessing__/lib/metas/recipe.lua:106: WARNING @ 'lithium-niobate':add_unlock(): Technology biobattery does not exist
+   3.368 Script @__pypostprocessing__/lib/metas/recipe.lua:138: WARNING @ 'fiber':remove_unlock(): Technology kicalk-2 does not exist
+   3.430 Script @__pypostprocessing__/lib/metas/recipe.lua:138: WARNING @ 'lithium-chloride':remove_unlock(): Technology biobattery does not exist
+   3.430 Script @__pypostprocessing__/lib/metas/recipe.lua:138: WARNING @ 'lithium-niobate':remove_unlock(): Technology biobattery does not exist
+   3.506 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-zipir-laser':multiply_result_amount(): Result blood not found
+   3.506 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-zipir-laser':multiply_result_amount(): Result sulfuric-acid not found
+   3.506 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-zipir-laser':multiply_result_amount(): Result bones not found
+   3.506 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-dhilmoss-laser':multiply_result_amount(): Result blood not found
+   3.506 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-dhilmoss-laser':multiply_result_amount(): Result sulfuric-acid not found
+   3.506 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-dhilmoss-laser':multiply_result_amount(): Result bones not found
+   3.506 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-xenos-laser':multiply_result_amount(): Result blood not found
+   3.506 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-xenos-laser':multiply_result_amount(): Result mukmoux-fat not found
+   3.506 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-kor-laser':multiply_result_amount(): Result sulfuric-acid not found
+   3.506 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-auogs-laser':multiply_result_amount(): Result sulfuric-acid not found
+   3.506 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'ex-used-auog-laser':multiply_result_amount(): Result mukmoux-fat not found
+   3.506 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'ex-used-auog-laser':multiply_result_amount(): Result sulfuric-acid not found
+   3.506 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-mukmoux-laser':multiply_result_amount(): Result sulfuric-acid not found
+   3.506 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-scrondrixs-laser':multiply_result_amount(): Result sulfuric-acid not found
+   3.506 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-ulrics-laser':multiply_result_amount(): Result sulfuric-acid not found
+   3.506 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-ulrics-laser':multiply_result_amount(): Result bones not found
+   3.506 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-phagnots-laser':multiply_result_amount(): Result mukmoux-fat not found
+   3.506 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-phagnots-laser':multiply_result_amount(): Result sulfuric-acid not found
+   3.507 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-simik-laser':multiply_result_amount(): Result blood not found
+   3.507 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-simik-laser':multiply_result_amount(): Result sulfuric-acid not found
+   3.507 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-cottongut-laser':multiply_result_amount(): Result sulfuric-acid not found
+   3.507 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-arthurian-laser':multiply_result_amount(): Result sulfuric-acid not found
+   3.507 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-arqads-laser':multiply_result_amount(): Result blood not found
+   3.507 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-arqads-laser':multiply_result_amount(): Result mukmoux-fat not found
+   3.507 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-arqads-laser':multiply_result_amount(): Result sulfuric-acid not found
+   3.507 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-arqads-laser':multiply_result_amount(): Result bones not found
+   3.507 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-phadais-laser':multiply_result_amount(): Result sulfuric-acid not found
+   3.507 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'ex-used-dingrits-laser':multiply_result_amount(): Result blood not found
+   3.507 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'ex-used-dingrits-laser':multiply_result_amount(): Result mukmoux-fat not found
+   3.507 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'ex-used-dingrits-laser':multiply_result_amount(): Result sulfuric-acid not found
+   3.507 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-dingrits-laser':multiply_result_amount(): Result mukmoux-fat not found
+   3.507 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-dingrits-laser':multiply_result_amount(): Result sulfuric-acid not found
+   3.507 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-kmauts-laser':multiply_result_amount(): Result blood not found
+   3.507 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-kmauts-laser':multiply_result_amount(): Result sulfuric-acid not found
+   3.507 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-kmauts-laser':multiply_result_amount(): Result bones not found
+   3.507 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-trit-laser':multiply_result_amount(): Result sulfuric-acid not found
+   3.507 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-vonix-laser':multiply_result_amount(): Result blood not found
+   3.507 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-vonix-laser':multiply_result_amount(): Result sulfuric-acid not found
+   3.507 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-vonix-laser':multiply_result_amount(): Result bones not found
+   3.507 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-vrauks-laser':multiply_result_amount(): Result blood not found
+   3.507 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-vrauks-laser':multiply_result_amount(): Result mukmoux-fat not found
+   3.507 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-vrauks-laser':multiply_result_amount(): Result sulfuric-acid not found
+   3.507 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-vrauks-laser':multiply_result_amount(): Result bones not found
+   3.507 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-xyhiphoe-laser':multiply_result_amount(): Result blood not found
+   3.507 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-xyhiphoe-laser':multiply_result_amount(): Result mukmoux-fat not found
+   3.507 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-xyhiphoe-laser':multiply_result_amount(): Result sulfuric-acid not found
+   3.507 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-xyhiphoe-laser':multiply_result_amount(): Result bones not found
+   3.507 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-fish-laser':multiply_result_amount(): Result blood not found
+   3.507 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-fish-laser':multiply_result_amount(): Result mukmoux-fat not found
+   3.507 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-fish-laser':multiply_result_amount(): Result sulfuric-acid not found
+   3.507 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-num-laser':multiply_result_amount(): Result blood not found
+   3.507 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-num-laser':multiply_result_amount(): Result mukmoux-fat not found
+   3.507 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-num-laser':multiply_result_amount(): Result sulfuric-acid not found
+   3.507 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-num-laser':multiply_result_amount(): Result bones not found
+   3.508 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-zun-laser':multiply_result_amount(): Result blood not found
+   3.508 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-zun-laser':multiply_result_amount(): Result sulfuric-acid not found
+   3.508 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-zun-laser':multiply_result_amount(): Result bones not found
+   3.508 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-zipir-music':multiply_result_amount(): Result carapace not found
+   3.508 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-zipir-music':multiply_result_amount(): Result pelt not found
+   3.508 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-zipir-music':multiply_result_amount(): Result chitin not found
+   3.508 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-zipir-music':multiply_result_amount(): Result shell not found
+   3.508 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-zipir-music':multiply_result_amount(): Result fish-oil not found
+   3.508 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-zipir-music':multiply_result_amount(): Result photophore not found
+   3.508 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-dhilmoss-music':multiply_result_amount(): Result skin not found
+   3.508 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-dhilmoss-music':multiply_result_amount(): Result carapace not found
+   3.508 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-dhilmoss-music':multiply_result_amount(): Result pelt not found
+   3.508 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-dhilmoss-music':multiply_result_amount(): Result shell not found
+   3.508 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-dhilmoss-music':multiply_result_amount(): Result fish-oil not found
+   3.508 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-dhilmoss-music':multiply_result_amount(): Result photophore not found
+   3.508 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-xenos-music':multiply_result_amount(): Result skin not found
+   3.508 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-xenos-music':multiply_result_amount(): Result carapace not found
+   3.508 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-xenos-music':multiply_result_amount(): Result pelt not found
+   3.508 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-xenos-music':multiply_result_amount(): Result shell not found
+   3.508 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-xenos-music':multiply_result_amount(): Result fish-oil not found
+   3.508 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-xenos-music':multiply_result_amount(): Result photophore not found
+   3.508 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-kor-music':multiply_result_amount(): Result carapace not found
+   3.508 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-kor-music':multiply_result_amount(): Result pelt not found
+   3.508 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-kor-music':multiply_result_amount(): Result chitin not found
+   3.508 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-kor-music':multiply_result_amount(): Result shell not found
+   3.508 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-kor-music':multiply_result_amount(): Result fish-oil not found
+   3.508 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-kor-music':multiply_result_amount(): Result photophore not found
+   3.508 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-auogs-music':multiply_result_amount(): Result carapace not found
+   3.508 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-auogs-music':multiply_result_amount(): Result pelt not found
+   3.508 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-auogs-music':multiply_result_amount(): Result chitin not found
+   3.508 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-auogs-music':multiply_result_amount(): Result shell not found
+   3.508 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-auogs-music':multiply_result_amount(): Result fish-oil not found
+   3.508 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-auogs-music':multiply_result_amount(): Result photophore not found
+   3.508 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'ex-used-auog-music':multiply_result_amount(): Result carapace not found
+   3.508 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'ex-used-auog-music':multiply_result_amount(): Result pelt not found
+   3.508 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'ex-used-auog-music':multiply_result_amount(): Result chitin not found
+   3.508 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'ex-used-auog-music':multiply_result_amount(): Result shell not found
+   3.508 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'ex-used-auog-music':multiply_result_amount(): Result fish-oil not found
+   3.508 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'ex-used-auog-music':multiply_result_amount(): Result photophore not found
+   3.508 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-mukmoux-music':multiply_result_amount(): Result carapace not found
+   3.508 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-mukmoux-music':multiply_result_amount(): Result pelt not found
+   3.508 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-mukmoux-music':multiply_result_amount(): Result chitin not found
+   3.508 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-mukmoux-music':multiply_result_amount(): Result shell not found
+   3.508 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-mukmoux-music':multiply_result_amount(): Result fish-oil not found
+   3.508 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-mukmoux-music':multiply_result_amount(): Result photophore not found
+   3.508 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-scrondrixs-music':multiply_result_amount(): Result carapace not found
+   3.508 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-scrondrixs-music':multiply_result_amount(): Result pelt not found
+   3.508 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-scrondrixs-music':multiply_result_amount(): Result chitin not found
+   3.508 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-scrondrixs-music':multiply_result_amount(): Result shell not found
+   3.508 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-scrondrixs-music':multiply_result_amount(): Result fish-oil not found
+   3.508 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-scrondrixs-music':multiply_result_amount(): Result photophore not found
+   3.508 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-ulrics-music':multiply_result_amount(): Result carapace not found
+   3.508 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-ulrics-music':multiply_result_amount(): Result pelt not found
+   3.508 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-ulrics-music':multiply_result_amount(): Result chitin not found
+   3.508 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-ulrics-music':multiply_result_amount(): Result shell not found
+   3.508 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-ulrics-music':multiply_result_amount(): Result fish-oil not found
+   3.508 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-ulrics-music':multiply_result_amount(): Result photophore not found
+   3.508 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-phagnots-music':multiply_result_amount(): Result carapace not found
+   3.508 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-phagnots-music':multiply_result_amount(): Result pelt not found
+   3.508 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-phagnots-music':multiply_result_amount(): Result chitin not found
+   3.508 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-phagnots-music':multiply_result_amount(): Result shell not found
+   3.508 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-phagnots-music':multiply_result_amount(): Result fish-oil not found
+   3.508 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-phagnots-music':multiply_result_amount(): Result photophore not found
+   3.509 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-simik-music':multiply_result_amount(): Result skin not found
+   3.509 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-simik-music':multiply_result_amount(): Result carapace not found
+   3.509 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-simik-music':multiply_result_amount(): Result pelt not found
+   3.509 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-simik-music':multiply_result_amount(): Result shell not found
+   3.509 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-simik-music':multiply_result_amount(): Result fish-oil not found
+   3.509 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-simik-music':multiply_result_amount(): Result photophore not found
+   3.509 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-cottongut-music':multiply_result_amount(): Result carapace not found
+   3.509 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-cottongut-music':multiply_result_amount(): Result pelt not found
+   3.509 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-cottongut-music':multiply_result_amount(): Result chitin not found
+   3.509 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-cottongut-music':multiply_result_amount(): Result shell not found
+   3.509 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-cottongut-music':multiply_result_amount(): Result fish-oil not found
+   3.509 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-cottongut-music':multiply_result_amount(): Result photophore not found
+   3.509 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-arthurian-music':multiply_result_amount(): Result carapace not found
+   3.509 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-arthurian-music':multiply_result_amount(): Result pelt not found
+   3.509 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-arthurian-music':multiply_result_amount(): Result chitin not found
+   3.509 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-arthurian-music':multiply_result_amount(): Result shell not found
+   3.509 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-arthurian-music':multiply_result_amount(): Result fish-oil not found
+   3.509 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-arthurian-music':multiply_result_amount(): Result photophore not found
+   3.509 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-arqads-music':multiply_result_amount(): Result skin not found
+   3.509 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-arqads-music':multiply_result_amount(): Result carapace not found
+   3.509 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-arqads-music':multiply_result_amount(): Result pelt not found
+   3.509 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-arqads-music':multiply_result_amount(): Result shell not found
+   3.509 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-arqads-music':multiply_result_amount(): Result fish-oil not found
+   3.509 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-arqads-music':multiply_result_amount(): Result photophore not found
+   3.509 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-phadais-music':multiply_result_amount(): Result skin not found
+   3.509 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-phadais-music':multiply_result_amount(): Result pelt not found
+   3.509 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-phadais-music':multiply_result_amount(): Result chitin not found
+   3.509 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-phadais-music':multiply_result_amount(): Result shell not found
+   3.509 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-phadais-music':multiply_result_amount(): Result fish-oil not found
+   3.509 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-phadais-music':multiply_result_amount(): Result photophore not found
+   3.509 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'ex-used-dingrits-music':multiply_result_amount(): Result skin not found
+   3.509 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'ex-used-dingrits-music':multiply_result_amount(): Result carapace not found
+   3.509 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'ex-used-dingrits-music':multiply_result_amount(): Result chitin not found
+   3.509 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'ex-used-dingrits-music':multiply_result_amount(): Result shell not found
+   3.509 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'ex-used-dingrits-music':multiply_result_amount(): Result fish-oil not found
+   3.509 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'ex-used-dingrits-music':multiply_result_amount(): Result photophore not found
+   3.509 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-dingrits-music':multiply_result_amount(): Result skin not found
+   3.509 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-dingrits-music':multiply_result_amount(): Result carapace not found
+   3.509 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-dingrits-music':multiply_result_amount(): Result chitin not found
+   3.509 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-dingrits-music':multiply_result_amount(): Result shell not found
+   3.509 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-dingrits-music':multiply_result_amount(): Result fish-oil not found
+   3.509 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-dingrits-music':multiply_result_amount(): Result photophore not found
+   3.509 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-kmauts-music':multiply_result_amount(): Result skin not found
+   3.509 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-kmauts-music':multiply_result_amount(): Result carapace not found
+   3.509 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-kmauts-music':multiply_result_amount(): Result pelt not found
+   3.509 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-kmauts-music':multiply_result_amount(): Result chitin not found
+   3.509 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-kmauts-music':multiply_result_amount(): Result shell not found
+   3.509 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-kmauts-music':multiply_result_amount(): Result fish-oil not found
+   3.509 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-kmauts-music':multiply_result_amount(): Result photophore not found
+   3.509 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-trit-music':multiply_result_amount(): Result carapace not found
+   3.509 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-trit-music':multiply_result_amount(): Result pelt not found
+   3.509 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-trit-music':multiply_result_amount(): Result chitin not found
+   3.509 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-trit-music':multiply_result_amount(): Result shell not found
+   3.509 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-trit-music':multiply_result_amount(): Result fish-oil not found
+   3.509 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-vonix-music':multiply_result_amount(): Result carapace not found
+   3.509 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-vonix-music':multiply_result_amount(): Result pelt not found
+   3.509 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-vonix-music':multiply_result_amount(): Result chitin not found
+   3.509 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-vonix-music':multiply_result_amount(): Result shell not found
+   3.509 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-vonix-music':multiply_result_amount(): Result fish-oil not found
+   3.509 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-vonix-music':multiply_result_amount(): Result photophore not found
+   3.509 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-vrauks-music':multiply_result_amount(): Result skin not found
+   3.509 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-vrauks-music':multiply_result_amount(): Result carapace not found
+   3.509 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-vrauks-music':multiply_result_amount(): Result pelt not found
+   3.509 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-vrauks-music':multiply_result_amount(): Result shell not found
+   3.509 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-vrauks-music':multiply_result_amount(): Result fish-oil not found
+   3.509 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-vrauks-music':multiply_result_amount(): Result photophore not found
+   3.509 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-xyhiphoe-music':multiply_result_amount(): Result skin not found
+   3.509 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-xyhiphoe-music':multiply_result_amount(): Result carapace not found
+   3.509 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-xyhiphoe-music':multiply_result_amount(): Result pelt not found
+   3.509 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-xyhiphoe-music':multiply_result_amount(): Result chitin not found
+   3.509 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-xyhiphoe-music':multiply_result_amount(): Result fish-oil not found
+   3.509 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-xyhiphoe-music':multiply_result_amount(): Result photophore not found
+   3.510 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-fish-music':multiply_result_amount(): Result carapace not found
+   3.510 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-fish-music':multiply_result_amount(): Result pelt not found
+   3.510 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-fish-music':multiply_result_amount(): Result chitin not found
+   3.510 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-fish-music':multiply_result_amount(): Result shell not found
+   3.510 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-fish-music':multiply_result_amount(): Result photophore not found
+   3.510 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-num-music':multiply_result_amount(): Result skin not found
+   3.510 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-num-music':multiply_result_amount(): Result carapace not found
+   3.510 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-num-music':multiply_result_amount(): Result pelt not found
+   3.510 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-num-music':multiply_result_amount(): Result shell not found
+   3.510 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-num-music':multiply_result_amount(): Result fish-oil not found
+   3.510 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-num-music':multiply_result_amount(): Result photophore not found
+   3.510 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-zun-music':multiply_result_amount(): Result carapace not found
+   3.510 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-zun-music':multiply_result_amount(): Result pelt not found
+   3.510 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-zun-music':multiply_result_amount(): Result chitin not found
+   3.510 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-zun-music':multiply_result_amount(): Result shell not found
+   3.510 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-zun-music':multiply_result_amount(): Result fish-oil not found
+   3.510 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-zun-music':multiply_result_amount(): Result photophore not found
+   3.510 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-zipir-lard':multiply_result_amount(): Result formic-acid not found
+   3.510 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-zipir-lard':multiply_result_amount(): Result bonemeal not found
+   3.510 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-zipir-lard':multiply_result_amount(): Result tendon not found
+   3.510 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-zipir-lard':multiply_result_amount(): Result keratin not found
+   3.510 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-dhilmoss-lard':multiply_result_amount(): Result formic-acid not found
+   3.510 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-dhilmoss-lard':multiply_result_amount(): Result bonemeal not found
+   3.510 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-dhilmoss-lard':multiply_result_amount(): Result tendon not found
+   3.510 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-dhilmoss-lard':multiply_result_amount(): Result keratin not found
+   3.510 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-xenos-lard':multiply_result_amount(): Result arthropod-blood not found
+   3.510 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-xenos-lard':multiply_result_amount(): Result guts not found
+   3.510 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-xenos-lard':multiply_result_amount(): Result formic-acid not found
+   3.510 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-xenos-lard':multiply_result_amount(): Result bonemeal not found
+   3.510 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-xenos-lard':multiply_result_amount(): Result tendon not found
+   3.510 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-xenos-lard':multiply_result_amount(): Result keratin not found
+   3.510 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-kor-lard':multiply_result_amount(): Result arthropod-blood not found
+   3.510 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-kor-lard':multiply_result_amount(): Result formic-acid not found
+   3.510 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-kor-lard':multiply_result_amount(): Result bonemeal not found
+   3.510 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-kor-lard':multiply_result_amount(): Result tendon not found
+   3.510 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-kor-lard':multiply_result_amount(): Result keratin not found
+   3.510 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-auogs-lard':multiply_result_amount(): Result arthropod-blood not found
+   3.510 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-auogs-lard':multiply_result_amount(): Result formic-acid not found
+   3.510 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-auogs-lard':multiply_result_amount(): Result bonemeal not found
+   3.510 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-auogs-lard':multiply_result_amount(): Result tendon not found
+   3.510 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-auogs-lard':multiply_result_amount(): Result keratin not found
+   3.510 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'ex-used-auog-lard':multiply_result_amount(): Result arthropod-blood not found
+   3.510 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'ex-used-auog-lard':multiply_result_amount(): Result formic-acid not found
+   3.510 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'ex-used-auog-lard':multiply_result_amount(): Result bonemeal not found
+   3.510 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'ex-used-auog-lard':multiply_result_amount(): Result tendon not found
+   3.510 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'ex-used-auog-lard':multiply_result_amount(): Result keratin not found
+   3.510 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-mukmoux-lard':multiply_result_amount(): Result arthropod-blood not found
+   3.510 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-mukmoux-lard':multiply_result_amount(): Result formic-acid not found
+   3.510 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-mukmoux-lard':multiply_result_amount(): Result bonemeal not found
+   3.510 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-mukmoux-lard':multiply_result_amount(): Result tendon not found
+   3.510 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-mukmoux-lard':multiply_result_amount(): Result keratin not found
+   3.510 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-scrondrixs-lard':multiply_result_amount(): Result arthropod-blood not found
+   3.510 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-scrondrixs-lard':multiply_result_amount(): Result formic-acid not found
+   3.510 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-scrondrixs-lard':multiply_result_amount(): Result bonemeal not found
+   3.510 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-scrondrixs-lard':multiply_result_amount(): Result tendon not found
+   3.510 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-scrondrixs-lard':multiply_result_amount(): Result keratin not found
+   3.510 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-ulrics-lard':multiply_result_amount(): Result arthropod-blood not found
+   3.510 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-ulrics-lard':multiply_result_amount(): Result formic-acid not found
+   3.510 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-ulrics-lard':multiply_result_amount(): Result tendon not found
+   3.510 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-ulrics-lard':multiply_result_amount(): Result keratin not found
+   3.510 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-phagnots-lard':multiply_result_amount(): Result arthropod-blood not found
+   3.510 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-phagnots-lard':multiply_result_amount(): Result formic-acid not found
+   3.510 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-phagnots-lard':multiply_result_amount(): Result bonemeal not found
+   3.510 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-phagnots-lard':multiply_result_amount(): Result tendon not found
+   3.510 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-phagnots-lard':multiply_result_amount(): Result keratin not found
+   3.511 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-simik-lard':multiply_result_amount(): Result arthropod-blood not found
+   3.511 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-simik-lard':multiply_result_amount(): Result formic-acid not found
+   3.511 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-simik-lard':multiply_result_amount(): Result bonemeal not found
+   3.511 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-simik-lard':multiply_result_amount(): Result tendon not found
+   3.511 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-cottongut-lard':multiply_result_amount(): Result arthropod-blood not found
+   3.511 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-cottongut-lard':multiply_result_amount(): Result formic-acid not found
+   3.511 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-cottongut-lard':multiply_result_amount(): Result bonemeal not found
+   3.511 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-cottongut-lard':multiply_result_amount(): Result tendon not found
+   3.511 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-cottongut-lard':multiply_result_amount(): Result keratin not found
+   3.511 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-arthurian-lard':multiply_result_amount(): Result arthropod-blood not found
+   3.511 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-arthurian-lard':multiply_result_amount(): Result formic-acid not found
+   3.511 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-arthurian-lard':multiply_result_amount(): Result bonemeal not found
+   3.511 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-arthurian-lard':multiply_result_amount(): Result tendon not found
+   3.511 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-arthurian-lard':multiply_result_amount(): Result keratin not found
+   3.511 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-arqads-lard':multiply_result_amount(): Result formic-acid not found
+   3.511 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-arqads-lard':multiply_result_amount(): Result bonemeal not found
+   3.511 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-arqads-lard':multiply_result_amount(): Result tendon not found
+   3.511 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-arqads-lard':multiply_result_amount(): Result keratin not found
+   3.511 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-phadais-lard':multiply_result_amount(): Result arthropod-blood not found
+   3.511 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-phadais-lard':multiply_result_amount(): Result formic-acid not found
+   3.511 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-phadais-lard':multiply_result_amount(): Result bonemeal not found
+   3.511 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-phadais-lard':multiply_result_amount(): Result tendon not found
+   3.511 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-phadais-lard':multiply_result_amount(): Result keratin not found
+   3.511 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'ex-used-dingrits-lard':multiply_result_amount(): Result meat not found
+   3.511 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'ex-used-dingrits-lard':multiply_result_amount(): Result arthropod-blood not found
+   3.511 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'ex-used-dingrits-lard':multiply_result_amount(): Result formic-acid not found
+   3.511 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'ex-used-dingrits-lard':multiply_result_amount(): Result bonemeal not found
+   3.511 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'ex-used-dingrits-lard':multiply_result_amount(): Result tendon not found
+   3.511 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'ex-used-dingrits-lard':multiply_result_amount(): Result keratin not found
+   3.511 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-dingrits-lard':multiply_result_amount(): Result arthropod-blood not found
+   3.511 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-dingrits-lard':multiply_result_amount(): Result formic-acid not found
+   3.511 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-dingrits-lard':multiply_result_amount(): Result bonemeal not found
+   3.511 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-dingrits-lard':multiply_result_amount(): Result tendon not found
+   3.511 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-dingrits-lard':multiply_result_amount(): Result keratin not found
+   3.511 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-kmauts-lard':multiply_result_amount(): Result formic-acid not found
+   3.511 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-kmauts-lard':multiply_result_amount(): Result bonemeal not found
+   3.511 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-kmauts-lard':multiply_result_amount(): Result keratin not found
+   3.511 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-trit-lard':multiply_result_amount(): Result arthropod-blood not found
+   3.511 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-trit-lard':multiply_result_amount(): Result formic-acid not found
+   3.511 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-trit-lard':multiply_result_amount(): Result bonemeal not found
+   3.511 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-trit-lard':multiply_result_amount(): Result tendon not found
+   3.511 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-trit-lard':multiply_result_amount(): Result keratin not found
+   3.511 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-vonix-lard':multiply_result_amount(): Result formic-acid not found
+   3.511 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-vonix-lard':multiply_result_amount(): Result bonemeal not found
+   3.511 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-vonix-lard':multiply_result_amount(): Result tendon not found
+   3.511 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-vonix-lard':multiply_result_amount(): Result keratin not found
+   3.511 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-vrauks-lard':multiply_result_amount(): Result arthropod-blood not found
+   3.511 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-vrauks-lard':multiply_result_amount(): Result bonemeal not found
+   3.511 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-vrauks-lard':multiply_result_amount(): Result tendon not found
+   3.511 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-vrauks-lard':multiply_result_amount(): Result keratin not found
+   3.511 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-xyhiphoe-lard':multiply_result_amount(): Result formic-acid not found
+   3.511 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-xyhiphoe-lard':multiply_result_amount(): Result bonemeal not found
+   3.511 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-xyhiphoe-lard':multiply_result_amount(): Result tendon not found
+   3.511 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-xyhiphoe-lard':multiply_result_amount(): Result keratin not found
+   3.511 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-fish-lard':multiply_result_amount(): Result arthropod-blood not found
+   3.511 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-fish-lard':multiply_result_amount(): Result formic-acid not found
+   3.511 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-fish-lard':multiply_result_amount(): Result bonemeal not found
+   3.511 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-fish-lard':multiply_result_amount(): Result tendon not found
+   3.511 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-fish-lard':multiply_result_amount(): Result keratin not found
+   3.512 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-num-lard':multiply_result_amount(): Result formic-acid not found
+   3.512 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-num-lard':multiply_result_amount(): Result bonemeal not found
+   3.512 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-num-lard':multiply_result_amount(): Result tendon not found
+   3.512 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-num-lard':multiply_result_amount(): Result keratin not found
+   3.512 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-zun-lard':multiply_result_amount(): Result formic-acid not found
+   3.512 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-zun-lard':multiply_result_amount(): Result bonemeal not found
+   3.512 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-zun-lard':multiply_result_amount(): Result tendon not found
+   3.512 Script @__pypostprocessing__/lib/metas/recipe.lua:322: WARNING @ 'full-render-zun-lard':multiply_result_amount(): Result keratin not found
+   3.527 Script @__pypostprocessing__/lib/metas/recipe.lua:340: WARNING @ 'sea-sponge-1-no-zonga':multiply_ingredient_amount(): Ingredient phytoplankton not found
+   3.527 Script @__pypostprocessing__/lib/metas/recipe.lua:340: WARNING @ 'sea-sponge-2-no-zonga':multiply_ingredient_amount(): Ingredient muddy-sludge not found
+   3.552 Script @__pypostprocessing__/lib/metas/recipe.lua:358: WARNING @ 'yotoi-2-nutrient':add_result_amount(): Result yotoi-fruit not found
+   3.552 Script @__pypostprocessing__/lib/metas/recipe.lua:358: WARNING @ 'yotoi-3-nutrient':add_result_amount(): Result yotoi-fruit not found
+   3.552 Script @__pypostprocessing__/lib/metas/recipe.lua:358: WARNING @ 'yotoi-4-nutrient':add_result_amount(): Result yotoi-fruit not found
+   3.552 Script @__pypostprocessing__/lib/metas/recipe.lua:358: WARNING @ 'yotoi-fruit-2-nutrient':add_result_amount(): Result yotoi not found
+   3.552 Script @__pypostprocessing__/lib/metas/recipe.lua:358: WARNING @ 'yotoi-fruit-3-nutrient':add_result_amount(): Result yotoi not found
+   3.552 Script @__pypostprocessing__/lib/metas/recipe.lua:358: WARNING @ 'yotoi-fruit-4-nutrient':add_result_amount(): Result yotoi not found
+   3.558 Script @__pypostprocessing__/lib/metas/recipe.lua:340: WARNING @ 'zipir-a-1-suicide':multiply_ingredient_amount(): Ingredient zipir-food-01 not found
+   3.558 Script @__pypostprocessing__/lib/metas/recipe.lua:340: WARNING @ 'zipir-a-1-suicide':multiply_ingredient_amount(): Ingredient zipir-food-02 not found
+   3.558 Script @__pypostprocessing__/lib/metas/recipe.lua:340: WARNING @ 'zipir-a-2-suicide':multiply_ingredient_amount(): Ingredient zipir-food-01 not found
+   3.558 Script @__pypostprocessing__/lib/metas/recipe.lua:340: WARNING @ 'zipir-a-2-suicide':multiply_ingredient_amount(): Ingredient zipir-food-02 not found
+   3.558 Script @__pypostprocessing__/lib/metas/recipe.lua:340: WARNING @ 'zipir-a-3-suicide':multiply_ingredient_amount(): Ingredient zipir-food-01 not found
+   3.558 Script @__pypostprocessing__/lib/metas/recipe.lua:340: WARNING @ 'zipir-a-3-suicide':multiply_ingredient_amount(): Ingredient zipir-food-02 not found
+   3.558 Script @__pypostprocessing__/lib/metas/recipe.lua:340: WARNING @ 'zipir-a-4-suicide':multiply_ingredient_amount(): Ingredient zipir-food-02 not found
+   3.558 Script @__pypostprocessing__/lib/metas/recipe.lua:340: WARNING @ 'zipir-a-5-suicide':multiply_ingredient_amount(): Ingredient zipir-food-02 not found
+   3.558 Script @__pypostprocessing__/lib/metas/recipe.lua:340: WARNING @ 'zipir-a-6-suicide':multiply_ingredient_amount(): Ingredient zipir-food-01 not found
+   4.415 Loading mod pyalternativeenergy 3.2.11 (data-updates.lua)
+   4.562 Script @__pypostprocessing__/lib/metas/recipe.lua:89: WARNING @ allow_productivity(): Recipe blade-mk04 does not exist
+   4.562 Script @__pypostprocessing__/lib/metas/recipe.lua:89: WARNING @ allow_productivity(): Recipe rotor-mk04 does not exist
+   4.562 Script @__pypostprocessing__/lib/metas/recipe.lua:89: WARNING @ allow_productivity(): Recipe vane-mk04 does not exist
+   4.562 Script @__pypostprocessing__/lib/metas/recipe.lua:89: WARNING @ allow_productivity(): Recipe jacket-bio-oil does not exist
+   4.562 Script @__pypostprocessing__/lib/metas/recipe.lua:89: WARNING @ allow_productivity(): Recipe jacket-bio-ore does not exist
+   4.562 Script @__pypostprocessing__/lib/metas/recipe.lua:89: WARNING @ allow_productivity(): Recipe liquid-manure-oxygen does not exist
+   4.607 Loading mod pypostprocessing 3.1.7 (data-updates.lua)
+   4.756 Loading mod aai-loaders 0.3.0 (data-final-fixes.lua)
+   4.899 Loading mod auto-splitter-block 0.9.2 (data-final-fixes.lua)
+   5.013 Loading mod crash-site-extended 0.2.0 (data-final-fixes.lua)
+   5.082 Loading mod FasterStart 2.1.0 (data-final-fixes.lua)
+   5.161 Loading mod filter-combinator-improved 4.1.3 (data-final-fixes.lua)
+   5.217 Loading mod lane-balancers 1.3.0 (data-final-fixes.lua)
+   5.277 Loading mod PatchFR 2.1.4 (data-final-fixes.lua)
+   5.278 Script @__PatchFR__/data-final-fixes.lua:1: > CHARGEMENT DU FICHIER : mods-list.lua
+   5.279 Script @__PatchFR__/data-final-fixes.lua:52: > le mod suivant est actif : base
+   5.280 Script @__PatchFR__/data-final-fixes.lua:23: > prototype_type (name):  achievement-name
+   5.280 Script @__PatchFR__/classes/CommuPrototype.lua:227: > WARN: data.raw[achievement][computer-age-1] -> retourne nil ! Recherche de variant...
+   5.280 Script @__PatchFR__/classes/CommuPrototype.lua:227: > WARN: data.raw[achievement][computer-age-2] -> retourne nil ! Recherche de variant...
+   5.280 Script @__PatchFR__/classes/CommuPrototype.lua:227: > WARN: data.raw[achievement][computer-age-3] -> retourne nil ! Recherche de variant...
+   5.280 Script @__PatchFR__/classes/CommuPrototype.lua:227: > WARN: data.raw[achievement][computer-age-1] -> retourne nil ! Recherche de variant...
+   5.280 Script @__PatchFR__/classes/CommuPrototype.lua:227: > WARN: data.raw[achievement][computer-age-2] -> retourne nil ! Recherche de variant...
+   5.280 Script @__PatchFR__/classes/CommuPrototype.lua:227: > WARN: data.raw[achievement][computer-age-3] -> retourne nil ! Recherche de variant...
+   5.280 Script @__PatchFR__/classes/CommuPrototype.lua:227: > WARN: data.raw[achievement][lazy-bastard] -> retourne nil ! Recherche de variant...
+   5.280 Script @__PatchFR__/data-final-fixes.lua:23: > prototype_type (name):  ammo-category-name
+   5.280 Script @__PatchFR__/data-final-fixes.lua:23: > prototype_type (name):  entity-name
+   5.344 Script @__PatchFR__/data-final-fixes.lua:23: > prototype_type (name):  equipment-name
+   5.344 Script @__PatchFR__/data-final-fixes.lua:23: > prototype_type (name):  fuel-category-name
+   5.344 Script @__PatchFR__/data-final-fixes.lua:23: > prototype_type (name):  item-name
+   5.348 Script @__PatchFR__/data-final-fixes.lua:23: > prototype_type (name):  item-group-name
+   5.348 Script @__PatchFR__/data-final-fixes.lua:23: > prototype_type (name):  recipe-name
+   5.348 Script @__PatchFR__/classes/CommuPrototype.lua:227: > WARN: data.raw[shortcut][make-spidertron-remote] -> retourne nil ! Recherche de variant...
+   5.348 Script @__PatchFR__/data-final-fixes.lua:23: > prototype_type (name):  technology-name
+   5.349 Script @__PatchFR__/classes/CommuPrototype.lua:227: > WARN: data.raw[technology][electric-energy-accumulators-1] -> retourne nil ! Recherche de variant...
+   5.349 Script @__PatchFR__/classes/CommuPrototype.lua:230: > ERROR: Variant non trouvé !
+   5.349 Script @__PatchFR__/classes/CommuPrototype.lua:227: > WARN: data.raw[technology][inserter-capacity-bonus] -> retourne nil ! Recherche de variant...
+   5.349 Script @__PatchFR__/classes/CommuPrototype.lua:227: > WARN: data.raw[technology][laser-weapons-damage] -> retourne nil ! Recherche de variant...
+   5.350 Script @__PatchFR__/classes/CommuPrototype.lua:227: > WARN: data.raw[technology][oil-gathering] -> retourne nil ! Recherche de variant...
+   5.350 Script @__PatchFR__/classes/CommuPrototype.lua:230: > ERROR: Variant non trouvé !
+   5.350 Script @__PatchFR__/classes/CommuPrototype.lua:227: > WARN: data.raw[technology][physical-projectile-damage] -> retourne nil ! Recherche de variant...
+   5.351 Script @__PatchFR__/classes/CommuPrototype.lua:227: > WARN: data.raw[technology][stronger-explosives] -> retourne nil ! Recherche de variant...
+   5.352 Script @__PatchFR__/classes/CommuPrototype.lua:227: > WARN: data.raw[technology][weapon-shooting-speed] -> retourne nil ! Recherche de variant...
+   5.353 Script @__PatchFR__/classes/CommuPrototype.lua:227: > WARN: data.raw[technology][inserter-capacity-bonus] -> retourne nil ! Recherche de variant...
+   5.353 Script @__PatchFR__/classes/CommuPrototype.lua:227: > WARN: data.raw[technology][laser-shooting-speed] -> retourne nil ! Recherche de variant...
+   5.354 Script @__PatchFR__/classes/CommuPrototype.lua:227: > WARN: data.raw[technology][laser-weapons-damage] -> retourne nil ! Recherche de variant...
+   5.354 Script @__PatchFR__/classes/CommuPrototype.lua:227: > WARN: data.raw[technology][oil-gathering] -> retourne nil ! Recherche de variant...
+   5.354 Script @__PatchFR__/classes/CommuPrototype.lua:230: > ERROR: Variant non trouvé !
+   5.354 Script @__PatchFR__/classes/CommuPrototype.lua:227: > WARN: data.raw[technology][physical-projectile-damage] -> retourne nil ! Recherche de variant...
+   5.355 Script @__PatchFR__/classes/CommuPrototype.lua:227: > WARN: data.raw[technology][stronger-explosives] -> retourne nil ! Recherche de variant...
+   5.355 Script @__PatchFR__/classes/CommuPrototype.lua:227: > WARN: data.raw[technology][weapon-shooting-speed] -> retourne nil ! Recherche de variant...
+   5.355 Script @__PatchFR__/classes/CommuPrototype.lua:227: > WARN: data.raw[technology][worker-robots-speed] -> retourne nil ! Recherche de variant...
+   5.356 Script @__PatchFR__/data-final-fixes.lua:23: > prototype_type (name):  tile-name
+   5.357 Script @__PatchFR__/data-final-fixes.lua:23: > prototype_type (name):  virtual-signal-name
+   5.357 Script @__PatchFR__/data-final-fixes.lua:52: > le mod suivant est actif : lane-balancers
+   5.357 Script @__PatchFR__/data-final-fixes.lua:23: > prototype_type (name):  entity-name
+   5.358 Script @__PatchFR__/data-final-fixes.lua:52: > le mod suivant est actif : mferrari_lib
+   5.358 Script @__PatchFR__/data-final-fixes.lua:23: > prototype_type (name):  entity-name
+   5.358 Script @__PatchFR__/classes/CommuPrototype.lua:97: > ERROR: [getEntityType]: type d'entité non trouvé pour [maf_flying_saucer]
+   5.358 Script @__PatchFR__/classes/CommuPrototype.lua:215: > Erreur localisation: type: entity | name: maf_flying_saucer
+   5.358 Script @__PatchFR__/data-final-fixes.lua:52: > le mod suivant est actif : pyalienlife
+   5.358 Script @__PatchFR__/data-final-fixes.lua:23: > prototype_type (name):  entity-name
+   5.358 Script @__PatchFR__/classes/CommuPrototype.lua:97: > ERROR: [getEntityType]: type d'entité non trouvé pour [crash-site-lab-repaired]
+   5.358 Script @__PatchFR__/classes/CommuPrototype.lua:215: > Erreur localisation: type: entity | name: crash-site-lab-repaired
+   5.361 Script @__PatchFR__/data-final-fixes.lua:23: > prototype_type (name):  fluid-name
+   5.361 Script @__PatchFR__/data-final-fixes.lua:23: > prototype_type (name):  item-name
+   5.362 Script @__PatchFR__/classes/CommuPrototype.lua:227: > WARN: data.raw[shortcut][make-spidertron-remote] -> retourne nil ! Recherche de variant...
+   5.362 Script @__PatchFR__/data-final-fixes.lua:23: > prototype_type (name):  technology-name
+   5.362 Script @__PatchFR__/data-final-fixes.lua:52: > le mod suivant est actif : pyalternativeenergy
+   5.362 Script @__PatchFR__/data-final-fixes.lua:23: > prototype_type (name):  entity-name
+   5.364 Script @__PatchFR__/data-final-fixes.lua:23: > prototype_type (name):  fluid-name
+   5.364 Script @__PatchFR__/data-final-fixes.lua:23: > prototype_type (name):  item-name
+   5.364 Script @__PatchFR__/data-final-fixes.lua:23: > prototype_type (name):  recipe-name
+   5.364 Script @__PatchFR__/data-final-fixes.lua:23: > prototype_type (name):  technology-name
+   5.364 Script @__PatchFR__/classes/CommuPrototype.lua:227: > WARN: data.raw[tips-and-tricks-item][spoilables-research] -> retourne nil ! Recherche de variant...
+   5.364 Script @__PatchFR__/classes/CommuPrototype.lua:227: > WARN: data.raw[tips-and-tricks-item][spoilables-result] -> retourne nil ! Recherche de variant...
+   5.364 Script @__PatchFR__/data-final-fixes.lua:52: > le mod suivant est actif : pycoalprocessing
+   5.364 Script @__PatchFR__/classes/CommuPrototype.lua:227: > WARN: data.raw[achievement][lazy-bastard] -> retourne nil ! Recherche de variant...
+   5.364 Script @__PatchFR__/data-final-fixes.lua:23: > prototype_type (name):  entity-name
+   5.368 Script @__PatchFR__/data-final-fixes.lua:23: > prototype_type (name):  item-name
+   5.369 Script @__PatchFR__/data-final-fixes.lua:23: > prototype_type (name):  recipe-name
+   5.369 Script @__PatchFR__/data-final-fixes.lua:23: > prototype_type (name):  technology-name
+   5.369 Script @__PatchFR__/classes/CommuPrototype.lua:227: > WARN: data.raw[technology][cargo-landing-pad-capacity] -> retourne nil ! Recherche de variant...
+   5.369 Script @__PatchFR__/classes/CommuPrototype.lua:230: > ERROR: Variant non trouvé !
+   5.369 Script @__PatchFR__/classes/CommuPrototype.lua:227: > WARN: data.raw[technology][transport-belt-capacity] -> retourne nil ! Recherche de variant...
+   5.369 Script @__PatchFR__/classes/CommuPrototype.lua:230: > ERROR: Variant non trouvé !
+   5.369 Script @__PatchFR__/classes/CommuPrototype.lua:227: > WARN: data.raw[technology][belt-capacity] -> retourne nil ! Recherche de variant...
+   5.369 Script @__PatchFR__/classes/CommuPrototype.lua:230: > ERROR: Variant non trouvé !
+   5.369 Script @__PatchFR__/data-final-fixes.lua:52: > le mod suivant est actif : pyfusionenergy
+   5.369 Script @__PatchFR__/data-final-fixes.lua:23: > prototype_type (name):  entity-name
+   5.370 Script @__PatchFR__/data-final-fixes.lua:23: > prototype_type (name):  fluid-name
+   5.370 Script @__PatchFR__/data-final-fixes.lua:23: > prototype_type (name):  item-name
+   5.370 Script @__PatchFR__/data-final-fixes.lua:23: > prototype_type (name):  technology-name
+   5.370 Script @__PatchFR__/data-final-fixes.lua:52: > le mod suivant est actif : pyhightech
+   5.370 Script @__PatchFR__/data-final-fixes.lua:23: > prototype_type (name):  entity-name
+   5.371 Script @__PatchFR__/classes/CommuPrototype.lua:97: > ERROR: [getEntityType]: type d'entité non trouvé pour [crash-site-assembling-machine-1-repaired]
+   5.371 Script @__PatchFR__/classes/CommuPrototype.lua:215: > Erreur localisation: type: entity | name: crash-site-assembling-machine-1-repaired
+   5.371 Script @__PatchFR__/data-final-fixes.lua:23: > prototype_type (name):  item-name
+   5.371 Script @__PatchFR__/data-final-fixes.lua:23: > prototype_type (name):  recipe-name
+   5.371 Script @__PatchFR__/data-final-fixes.lua:23: > prototype_type (name):  technology-name
+   5.372 Script @__PatchFR__/data-final-fixes.lua:52: > le mod suivant est actif : pyindustry
+   5.372 Script @__PatchFR__/data-final-fixes.lua:23: > prototype_type (name):  equipment-name
+   5.372 Script @__PatchFR__/data-final-fixes.lua:23: > prototype_type (name):  item-name
+   5.372 Script @__PatchFR__/data-final-fixes.lua:23: > prototype_type (name):  technology-name
+   5.372 Script @__PatchFR__/data-final-fixes.lua:23: > prototype_type (name):  tile-name
+   5.372 Script @__PatchFR__/data-final-fixes.lua:52: > le mod suivant est actif : pypetroleumhandling
+   5.372 Script @__PatchFR__/data-final-fixes.lua:23: > prototype_type (name):  fluid-name
+   5.372 Script @__PatchFR__/data-final-fixes.lua:23: > prototype_type (name):  technology-name
+   5.372 Script @__PatchFR__/data-final-fixes.lua:52: > le mod suivant est actif : pyrawores
+   5.373 Script @__PatchFR__/data-final-fixes.lua:23: > prototype_type (name):  fluid-name
+   5.373 Script @__PatchFR__/data-final-fixes.lua:23: > prototype_type (name):  item-name
+   5.373 Script @__PatchFR__/data-final-fixes.lua:23: > prototype_type (name):  technology-name
+   5.373 Script @__PatchFR__/data-final-fixes.lua:63: > FIN du chargement des traductions
+   5.444 Loading mod RoboportRangeMultiplier 1.3.0 (data-final-fixes.lua)
+   5.509 Loading mod RobotPowerMultiplier 1.1.0 (data-final-fixes.lua)
+   5.585 Loading mod show-max-underground-distance 0.1.1 (data-final-fixes.lua)
+   5.667 Loading mod sushi-splitters 0.3.1 (data-final-fixes.lua)
+   5.724 Loading mod train-foundry 1.4.4 (data-final-fixes.lua)
+   5.782 Loading mod BottleneckLite 1.4.1 (data-final-fixes.lua)
+   5.847 Loading mod holographic_signs 2.1.0 (data-final-fixes.lua)
+   5.901 Loading mod plate-group 1.0.0 (data-final-fixes.lua)
+   5.902 Script @__plate-group__/data-final-fixes.lua:100: [plate-group] 2 sous-groupe(s) et 0 item(s) deplaces dans le groupe 'plate-group'
+   5.950 Loading mod pycoalprocessing 3.1.8 (data-final-fixes.lua)
+   6.018 Loading mod smart-train-combinator 1.10.0 (data-final-fixes.lua)
+   6.074 Loading mod train-foundry-stc 1.4.4 (data-final-fixes.lua)
+   6.144 Loading mod pyindustry 3.1.6 (data-final-fixes.lua)
+   6.338 Loading mod pyrawores 3.1.4 (data-final-fixes.lua)
+   6.428 Loading mod pypetroleumhandling 3.1.5 (data-final-fixes.lua)
+   6.625 Loading mod pyalienlife 3.1.8 (data-final-fixes.lua)
+   6.629 Script @__pypostprocessing__/lib/metas/recipe.lua:89: WARNING @ allow_productivity(): Recipe biomass-1-a does not exist
+   6.629 Script @__pypostprocessing__/lib/metas/recipe.lua:89: WARNING @ allow_productivity(): Recipe biomass-1 does not exist
+   6.629 Script @__pypostprocessing__/lib/metas/recipe.lua:89: WARNING @ allow_productivity(): Recipe biomass-2 does not exist
+   6.629 Script @__pypostprocessing__/lib/metas/recipe.lua:89: WARNING @ allow_productivity(): Recipe fish-oil does not exist
+   6.629 Script @__pypostprocessing__/lib/metas/recipe.lua:89: WARNING @ allow_productivity(): Recipe manure-to-biomass does not exist
+   6.629 Script @__pypostprocessing__/lib/metas/recipe.lua:89: WARNING @ allow_productivity(): Recipe neuromorphic-chip does not exist
+   6.629 Script @__pypostprocessing__/lib/metas/recipe.lua:89: WARNING @ allow_productivity(): Recipe organics-from-wood-2 does not exist
+   6.727 Loading mod pyalternativeenergy 3.2.11 (data-final-fixes.lua)
+   7.095 Loading mod pypostprocessing 3.1.7 (data-final-fixes.lua)
+   7.199 Script @__pypostprocessing__/cached-configs/run.lua:145: Unique best cache file found, applying __pyalternativeenergy__/cached-configs/pyalienlife+pyalternativeenergy+pycoalprocessing+pyfusionenergy+pyhightech+pyindustry+pypetroleumhandling+pyrawores, which is not a PyPP default.
+  16.367 Checksum for core: 3668028660
+  16.367 Checksum of base: 3864816957
+  16.367 Checksum of enable-all-feature-flags: 2393316242
+  16.367 Checksum of pyalienlifegraphics2: 0
+  16.367 Checksum of pyalienlifegraphics3: 0
+  16.367 Checksum of pyalternativeenergygraphics: 0
+  16.367 Checksum of pyfusionenergygraphics: 0
+  16.367 Checksum of pyhightechgraphics: 0
+  16.367 Checksum of pyindustrygraphics: 0
+  16.367 Checksum of pypetroleumhandlinggraphics: 0
+  16.367 Checksum of pyraworesgraphics: 0
+  16.367 Checksum of aai-loaders: 592807329
+  16.367 Checksum of auto-splitter-block: 950832301
+  16.367 Checksum of AutoDeconstruct: 1018364237
+  16.367 Checksum of belt-reverser-forked: 1333502351
+  16.367 Checksum of BeltCapacityHelper: 2240257311
+  16.367 Checksum of btqbuslodtswfowap: 443196903
+  16.367 Checksum of construction-train: 3132390145
+  16.367 Checksum of crash-site-extended: 3554623212
+  16.367 Checksum of DisplayPlatesForked: 659382547
+  16.367 Checksum of DoNotRemove: 3094896482
+  16.367 Checksum of elevated-rails: 1429039930
+  16.368 Checksum of FasterStart: 3626048920
+  16.368 Checksum of filter-combinator-improved: 2599779244
+  16.368 Checksum of flib: 3410458141
+  16.368 Checksum of Flow Control: 1470060538
+  16.368 Checksum of ghost-counter: 961411190
+  16.368 Checksum of lane-balancers: 3127829550
+  16.368 Checksum of mferrari_lib: 3544006531
+  16.368 Checksum of Milestones: 1866874319
+  16.368 Checksum of PatchFR: 2429402184
+  16.368 Checksum of pyalienlifegraphics: 0
+  16.368 Checksum of pycoalprocessinggraphics: 0
+  16.368 Checksum of RoboportRangeMultiplier: 2815742887
+  16.368 Checksum of RobotPowerMultiplier: 3371563132
+  16.368 Checksum of show-max-underground-distance: 4097702189
+  16.368 Checksum of smaller-shortcut-icons: 3738081525
+  16.368 Checksum of snouz-useful-icons: 3247365829
+  16.368 Checksum of sushi-splitters: 3177470717
+  16.368 Checksum of textplates: 3911656979
+  16.368 Checksum of train-foundry: 1872385681
+  16.368 Checksum of BottleneckLite: 4060189417
+  16.368 Checksum of holographic_signs: 710737913
+  16.368 Checksum of plate-group: 401395966
+  16.368 Checksum of pycoalprocessing: 1007884597
+  16.368 Checksum of RateCalculator: 1912923658
+  16.368 Checksum of smart-train-combinator: 1514211898
+  16.368 Checksum of pyfusionenergy: 3463908015
+  16.368 Checksum of train-foundry-stc: 3649455167
+  16.368 Checksum of pyindustry: 2868933854
+  16.368 Checksum of pyrawores: 1243299631
+  16.368 Checksum of pyhightech: 1238856681
+  16.368 Checksum of pypetroleumhandling: 2303866638
+  16.368 Checksum of pyalienlife: 281539468
+  16.368 Checksum of vehicle-loading-dock: 3757710847
+  16.368 Checksum of pyalternativeenergy: 4194555664
+  16.368 Checksum of pypostprocessing: 652219729
+  16.368 Checksum of pymodpack: 0
+  18.006 Prototype list checksum: 3833107629
+  18.377 Info PlayerData.cpp:566: Cloud player-data.json unavailable
+  18.377 Info PlayerData.cpp:582: Local player-data.json unavailable
+  18.378 Info GlobalContext.cpp:1347: Resetting config.
+  18.378 Factorio initialised
+  18.379 Loading map /home/vador/.factorio/saves/ct-debug.zip: 4339442 bytes.
+  18.395 Loading level.dat: 9883085 bytes.
+  18.395 Info Scenario.cpp:152: Map version 2.1.24-1
+  18.873 Blueprint storage "blueprint-storage-2.dat" was not found, trying to load previous version storage "blueprint-storage.dat"
+  18.873 Loading script.dat: 1574517 bytes.
+  18.879 Checksum for script __level__/control.lua: 166680124
+  18.882 Checksum for script __aai-loaders__/control.lua: 1131519574
+  18.885 Checksum for script __auto-splitter-block__/control.lua: 2491610313
+  18.891 Checksum for script __AutoDeconstruct__/control.lua: 417997816
+  18.893 Checksum for script __belt-reverser-forked__/control.lua: 3877799666
+  18.896 Checksum for script __BeltCapacityHelper__/control.lua: 1189563951
+  18.898 Checksum for script __btqbuslodtswfowap__/control.lua: 3586041260
+  18.903 Checksum for script __construction-train__/control.lua: 1203955337
+  18.904 Checksum for script __DisplayPlatesForked__/control.lua: 2199987759
+  18.907 Checksum for script __DoNotRemove__/control.lua: 4030023416
+  18.909 Checksum for script __FasterStart__/control.lua: 3427185898
+  18.917 Script @__filter-combinator-improved__/framework/logger.lua:35: [FiCo] (Framework) [INTERNAL] - ================================================================================
+  18.917 Script @__filter-combinator-improved__/framework/logger.lua:35: [FiCo] (Framework) [INTERNAL] - == mod 'filter-combinator' initialized, run id: 0
+  18.917 Script @__filter-combinator-improved__/framework/logger.lua:35: [FiCo] (Framework) [INTERNAL] - ================================================================================
+  18.931 Checksum for script __filter-combinator-improved__/control.lua: 757367540
+  18.932 Checksum for script __Flow Control__/control.lua: 2185586770
+  18.935 Checksum for script __ghost-counter__/control.lua: 846602495
+  18.947 Checksum for script __mferrari_lib__/control.lua: 1857339043
+  18.958 Checksum for script __Milestones__/control.lua: 3667408274
+  18.959 Checksum for script __RoboportRangeMultiplier__/control.lua: 964223663
+  18.961 Checksum for script __sushi-splitters__/control.lua: 2170471111
+  18.963 Checksum for script __textplates__/control.lua: 3558670443
+  18.975 Checksum for script __train-foundry__/control.lua: 1485104858
+  18.987 Checksum for script __holographic_signs__/control.lua: 532970893
+  18.999 Script @__pypostprocessing__/lib/events.lua:159: Finalized 34 events for pycoalprocessing
+  18.999 Checksum for script __pycoalprocessing__/control.lua: 641120184
+  19.009 Checksum for script __RateCalculator__/control.lua: 1555218232
+  19.016 Checksum for script __smart-train-combinator__/control.lua: 3119352163
+  19.027 Checksum for script __train-foundry-stc__/control.lua: 2955149172
+  19.033 Script @__pypostprocessing__/lib/events.lua:159: Finalized 20 events for pyindustry
+  19.033 Checksum for script __pyindustry__/control.lua: 3266079438
+  19.039 Script @__pypostprocessing__/lib/events.lua:159: Finalized 12 events for pyrawores
+  19.039 Checksum for script __pyrawores__/control.lua: 3589909337
+  19.046 Script @__pypostprocessing__/lib/events.lua:159: Finalized 13 events for pyhightech
+  19.046 Checksum for script __pyhightech__/control.lua: 672736434
+  19.051 Script @__pypostprocessing__/lib/events.lua:159: Finalized 20 events for pypetroleumhandling
+  19.052 Checksum for script __pypetroleumhandling__/control.lua: 2722040780
+  19.067 Script @__pypostprocessing__/lib/events.lua:207: registered delayed_event function draw_alert_with_duration
+  19.293 Script @__pypostprocessing__/lib/events.lua:159: Finalized 49 events for pyalienlife
+  19.293 Checksum for script __pyalienlife__/control.lua: 3340709593
+  19.297 Checksum for script __vehicle-loading-dock__/control.lua: 2115248543
+  19.310 Script @__pypostprocessing__/lib/events.lua:159: Finalized 39 events for pyalternativeenergy
+  19.310 Checksum for script __pyalternativeenergy__/control.lua: 39644649
+  19.316 Script @__pypostprocessing__/lib/events.lua:159: Finalized 12 events for pypostprocessing
+  19.316 Checksum for script __pypostprocessing__/control.lua: 1124727908
+Running update 0
+  19.397 Script @__construction-train__/control.lua:87: CT_DEBUG SIGNALS [{"name":"rail-signal","position":{"y":-229.5,"x":-214.5},"direction":2},{"name":"rail-signal","position":{"y":-234.5,"x":-204.5},"direction":4},{"name":"rail-signal","position":{"y":-234.5,"x":-199.5},"direction":4},{"name":"rail-signal","position":{"y":-230.5,"x":-190.5},"direction":6},{"name":"rail-signal","position":{"y":-225.5,"x":-183.5},"direction":5},{"name":"rail-signal","position":{"y":-225.5,"x":-110.5},"direction":3},{"name":"rail-signal","position":{"y":-229.5,"x":-104.5},"direction":2},{"name":"rail-signal","position":{"y":-234.5,"x":-94.5},"direction":4},{"name":"rail-signal","position":{"y":-234.5,"x":-89.5},"direction":4},{"name":"rail-signal","position":{"y":-230.5,"x":-80.5},"direction":6}]
+  19.398 Script @__construction-train__/control.lua:100: CT_DEBUG STATE {"tick":161109,"id":199,"destination":{"y":-225,"x":-109},"state":"accessories","arrival":"accessory","built":1216,"message":"return","head":{"y":-224.30078125,"x":-110.6171875},"anchor":{"y":-103,"x":-163},"direction":0,"frontiers":1206}
+  19.398 Script @__pypostprocessing__/lib/log.lua:49: INFO: on_nth_tick: registered function wiki from mod pycp
+  19.398 Script @__pypostprocessing__/lib/log.lua:49: INFO: on_nth_tick: registered function generator-equipment-autofill from mod pycp
+  19.398 Script @__pypostprocessing__/lib/log.lua:49: INFO: on_nth_tick: registered function pond153 from mod pycp
+  19.398 Script @__pypostprocessing__/lib/log.lua:49: INFO: on_nth_tick: registered function pond154 from mod pycp
+  19.398 Script @__pypostprocessing__/lib/log.lua:49: INFO: on_nth_tick: registered function drills from mod pyph
+  19.398 Script @__pypostprocessing__/lib/log.lua:49: INFO: on_nth_tick: registered function update-caravans from mod pyal
+  19.398 Script @__pypostprocessing__/lib/log.lua:49: INFO: on_nth_tick: registered function Digosaurus from mod pyal
+  19.398 Script @__pypostprocessing__/lib/log.lua:49: INFO: on_nth_tick: registered function Oculua221 from mod pyal
+  19.398 Script @__pypostprocessing__/lib/log.lua:49: INFO: on_nth_tick: registered function Oculua43 from mod pyal
+  19.398 Script @__pypostprocessing__/lib/log.lua:49: INFO: on_nth_tick: registered function Farming121 from mod pyal
+  19.398 Script @__pypostprocessing__/lib/log.lua:49: INFO: on_nth_tick: registered function bhoddos-turd-update from mod pyal
+  19.398 Script @__pypostprocessing__/lib/log.lua:49: INFO: on_nth_tick: registered function Vatbrain from mod pyal
+  19.398 Script @__pypostprocessing__/lib/log.lua:49: INFO: on_nth_tick: registered function update-ulric-man from mod pyal
+  19.398 Script @__pypostprocessing__/lib/log.lua:49: INFO: on_nth_tick: registered function update-biofluid from mod pyal
+  19.398 Script @__pypostprocessing__/lib/log.lua:49: INFO: on_nth_tick: registered function update-mounts from mod pyal
+  19.398 Script @__pypostprocessing__/lib/log.lua:49: INFO: on_nth_tick: registered function update-guis from mod pyal
+  19.399 Script @__pypostprocessing__/lib/log.lua:49: INFO: on_nth_tick: registered function sut from mod pyae
+  19.399 Script @__pypostprocessing__/lib/log.lua:49: INFO: on_nth_tick: registered function heliostat from mod pyae
+  19.399 Script @__pypostprocessing__/lib/log.lua:49: INFO: on_nth_tick: registered function thermosolar from mod pyae
+  19.399 Script @__pypostprocessing__/lib/log.lua:49: INFO: on_nth_tick: registered function wind from mod pyae
+  19.399 Script @__pypostprocessing__/lib/log.lua:49: INFO: on_nth_tick: registered function tidal from mod pyae
+  19.399 Script @__pypostprocessing__/lib/log.lua:49: INFO: on_nth_tick: registered function aerial117 from mod pyae
+  19.399 Script @__pypostprocessing__/lib/log.lua:49: INFO: on_nth_tick: registered function aerial301 from mod pyae
+  19.399 Script @__pypostprocessing__/lib/log.lua:49: INFO: on_nth_tick: registered function aerialfuckinghuge from mod pyae
+  19.399 Script @__pypostprocessing__/lib/log.lua:49: INFO: on_nth_tick: registered function aerial9 from mod pyae
+  19.547 Script @__construction-train__/control.lua:100: CT_DEBUG STATE {"tick":161151,"id":199,"accessory":268,"accessory_position":{"y":-220.5,"x":-218.5},"destination":{"y":-222,"x":-217},"state":"travelling","arrival":"accessory","built":1216,"message":"return","head":{"y":-224.296875,"x":-110.625},"anchor":{"y":-103,"x":-163},"direction":0,"frontiers":1206}
+Running update 100
+Running update 200
+  20.145 Script @__construction-train__/control.lua:100: CT_DEBUG STATE {"tick":161351,"id":199,"accessory":268,"accessory_position":{"y":-220.5,"x":-218.5},"destination":{"y":-222,"x":-217},"state":"accessory","arrival":"accessory","built":1216,"message":"return","head":{"y":-232.625,"x":-206.375},"anchor":{"y":-103,"x":-163},"direction":0,"frontiers":1206}
+  20.177 Script @__construction-train__/control.lua:100: CT_DEBUG STATE {"tick":161361,"id":199,"destination":{"y":-222,"x":-217},"state":"accessories","arrival":"accessory","built":1217,"message":"return","head":{"y":-232.625,"x":-206.375},"anchor":{"y":-103,"x":-163},"direction":0,"frontiers":1206}
+  20.276 Script @__construction-train__/control.lua:94: CT_DEBUG PROGRESS {"tick":161400,"built":1217,"initial":1216,"rail_ghosts":0}
+  20.277 Script @__construction-train__/control.lua:100: CT_DEBUG STATE {"tick":161400,"id":199,"destination":{"y":-222,"x":-217},"state":"accessories","arrival":"accessory","built":1217,"message":"return","head":{"y":-232.625,"x":-206.375},"anchor":{"y":-103,"x":-163},"direction":0,"frontiers":1206}
+Running update 300
+Running update 400
+Running update 500
+Running update 600
+  21.146 Script @__construction-train__/control.lua:100: CT_DEBUG STATE {"tick":161741,"id":199,"accessory":271,"accessory_position":{"y":-220.5,"x":-185.5},"destination":{"y":-222,"x":-187},"state":"travelling","arrival":"accessory","built":1217,"message":"return","head":{"y":-232.625,"x":-206.3828125},"anchor":{"y":-103,"x":-163},"direction":0,"frontiers":1206}
+Running update 700
+  21.644 Script @__construction-train__/control.lua:100: CT_DEBUG STATE {"tick":161891,"id":199,"accessory":271,"accessory_position":{"y":-220.5,"x":-185.5},"destination":{"y":-222,"x":-187},"state":"accessory","arrival":"accessory","built":1217,"message":"return","head":{"y":-208.0078125,"x":-190.1484375},"anchor":{"y":-103,"x":-163},"direction":0,"frontiers":1206}
+  21.668 Script @__construction-train__/control.lua:100: CT_DEBUG STATE {"tick":161901,"id":199,"destination":{"y":-222,"x":-187},"state":"accessories","arrival":"accessory","built":1218,"message":"return","head":{"y":-208.0078125,"x":-190.1484375},"anchor":{"y":-103,"x":-163},"direction":0,"frontiers":1206}
+Running update 800
+  21.966 Script @__construction-train__/control.lua:94: CT_DEBUG PROGRESS {"tick":162000,"built":1218,"initial":1216,"rail_ghosts":0}
+  21.966 Script @__construction-train__/control.lua:100: CT_DEBUG STATE {"tick":162000,"id":199,"destination":{"y":-222,"x":-187},"state":"accessories","arrival":"accessory","built":1218,"message":"return","head":{"y":-208.0078125,"x":-190.1484375},"anchor":{"y":-103,"x":-163},"direction":0,"frontiers":1206}
+Running update 900
+Running update 1000
+Running update 1100
+  22.657 Script @__construction-train__/control.lua:100: CT_DEBUG STATE {"tick":162281,"id":199,"accessory":272,"accessory_position":{"y":-220.5,"x":-108.5},"destination":{"y":-222,"x":-107},"state":"travelling","arrival":"accessory","built":1218,"message":"return","head":{"y":-208.015625,"x":-190.14453125},"anchor":{"y":-103,"x":-163},"direction":0,"frontiers":1206}
+Running update 1200
+Running update 1300
+Running update 1400
+  23.470 Script @__construction-train__/control.lua:94: CT_DEBUG PROGRESS {"tick":162600,"built":1218,"initial":1216,"rail_ghosts":0}
+  23.470 Script @__construction-train__/control.lua:100: CT_DEBUG STATE {"tick":162600,"id":199,"accessory":272,"accessory_position":{"y":-220.5,"x":-108.5},"destination":{"y":-222,"x":-107},"state":"travelling","arrival":"accessory","built":1218,"message":"return","head":{"y":-232.625,"x":-96.375},"anchor":{"y":-103,"x":-163},"direction":0,"frontiers":1206}
+Running update 1500
+  23.494 Script @__construction-train__/control.lua:100: CT_DEBUG STATE {"tick":162611,"id":199,"accessory":272,"accessory_position":{"y":-220.5,"x":-108.5},"destination":{"y":-222,"x":-107},"state":"accessory","arrival":"accessory","built":1218,"message":"return","head":{"y":-232.625,"x":-96.375},"anchor":{"y":-103,"x":-163},"direction":0,"frontiers":1206}
+  23.519 Script @__construction-train__/control.lua:100: CT_DEBUG STATE {"tick":162621,"id":199,"destination":{"y":-222,"x":-107},"state":"accessories","arrival":"accessory","built":1219,"message":"return","head":{"y":-232.625,"x":-96.375},"anchor":{"y":-103,"x":-163},"direction":0,"frontiers":1206}
+Running update 1600
+Running update 1700
+Running update 1800
+  24.446 Script @__construction-train__/control.lua:100: CT_DEBUG STATE {"tick":163001,"id":199,"accessory":275,"accessory_position":{"y":-220.5,"x":-75.5},"destination":{"y":-222,"x":-77},"state":"travelling","arrival":"accessory","built":1219,"message":"return","head":{"y":-232.625,"x":-96.3828125},"anchor":{"y":-103,"x":-163},"direction":0,"frontiers":1206}
+Running update 1900
+Running update 2000
+  24.757 Script @__construction-train__/control.lua:100: CT_DEBUG STATE {"tick":163151,"id":199,"accessory":275,"accessory_position":{"y":-220.5,"x":-75.5},"destination":{"y":-222,"x":-77},"state":"accessory","arrival":"accessory","built":1219,"message":"return","head":{"y":-208.0078125,"x":-80.1484375},"anchor":{"y":-103,"x":-163},"direction":0,"frontiers":1206}
+  24.781 Script @__construction-train__/control.lua:100: CT_DEBUG STATE {"tick":163161,"id":199,"destination":{"y":-222,"x":-77},"state":"accessories","arrival":"accessory","built":1220,"message":"return","head":{"y":-208.0078125,"x":-80.1484375},"anchor":{"y":-103,"x":-163},"direction":0,"frontiers":1206}
+  24.850 Script @__construction-train__/control.lua:94: CT_DEBUG PROGRESS {"tick":163200,"built":1220,"initial":1216,"rail_ghosts":0}
+  24.850 Script @__construction-train__/control.lua:100: CT_DEBUG STATE {"tick":163200,"id":199,"destination":{"y":-222,"x":-77},"state":"accessories","arrival":"accessory","built":1220,"message":"return","head":{"y":-208.0078125,"x":-80.1484375},"anchor":{"y":-103,"x":-163},"direction":0,"frontiers":1206}
+Running update 2100
+Running update 2200
+Running update 2300
+Running update 2400
+  25.509 Script @__construction-train__/control.lua:100: CT_DEBUG STATE {"tick":163541,"id":199,"accessory":293,"accessory_position":{"y":-215.5,"x":-218.5},"destination":{"y":-214,"x":-217},"state":"travelling","arrival":"accessory","built":1220,"message":"return","head":{"y":-208.00390625,"x":-80.15234375},"anchor":{"y":-103,"x":-163},"direction":0,"frontiers":1206}
+Running update 2500
+Running update 2600
+  26.039 Script @__construction-train__/control.lua:100: CT_DEBUG STATE {"tick":163781,"id":199,"accessory":293,"accessory_position":{"y":-215.5,"x":-218.5},"destination":{"y":-214,"x":-217},"state":"accessory","arrival":"accessory","built":1220,"message":"return","head":{"y":-212.1171875,"x":-216.22265625},"anchor":{"y":-103,"x":-163},"direction":0,"frontiers":1206}
+  26.055 Script @__construction-train__/control.lua:100: CT_DEBUG STATE {"tick":163791,"id":199,"destination":{"y":-214,"x":-217},"state":"accessories","arrival":"accessory","built":1221,"message":"return","head":{"y":-212.1171875,"x":-216.22265625},"anchor":{"y":-103,"x":-163},"direction":0,"frontiers":1206}
+  26.070 Script @__construction-train__/control.lua:94: CT_DEBUG PROGRESS {"tick":163800,"built":1221,"initial":1216,"rail_ghosts":0}
+  26.070 Script @__construction-train__/control.lua:100: CT_DEBUG STATE {"tick":163800,"id":199,"destination":{"y":-214,"x":-217},"state":"accessories","arrival":"accessory","built":1221,"message":"return","head":{"y":-212.1171875,"x":-216.22265625},"anchor":{"y":-103,"x":-163},"direction":0,"frontiers":1206}
+Running update 2700
+Running update 2800
+Running update 2900
+Running update 3000
+  26.940 Script @__construction-train__/control.lua:100: CT_DEBUG STATE {"tick":164171,"id":199,"accessory":294,"accessory_position":{"y":-215.5,"x":-185.5},"destination":{"y":-214,"x":-187},"state":"travelling","arrival":"accessory","built":1221,"message":"return","head":{"y":-212.109375,"x":-216.21875},"anchor":{"y":-103,"x":-163},"direction":0,"frontiers":1206}
+Running update 3100
+  27.123 Script @__construction-train__/control.lua:100: CT_DEBUG STATE {"tick":164271,"id":199,"accessory":294,"accessory_position":{"y":-215.5,"x":-185.5},"destination":{"y":-214,"x":-187},"state":"accessory","arrival":"accessory","built":1221,"message":"return","head":{"y":-203.37109375,"x":-197.62109375},"anchor":{"y":-103,"x":-163},"direction":0,"frontiers":1206}
+  27.148 Script @__construction-train__/control.lua:100: CT_DEBUG STATE {"tick":164281,"id":199,"destination":{"y":-214,"x":-187},"state":"accessories","arrival":"accessory","built":1222,"message":"return","head":{"y":-203.37109375,"x":-197.62109375},"anchor":{"y":-103,"x":-163},"direction":0,"frontiers":1206}
+Running update 3200
+  27.380 Script @__construction-train__/control.lua:94: CT_DEBUG PROGRESS {"tick":164400,"built":1222,"initial":1216,"rail_ghosts":0}
+  27.380 Script @__construction-train__/control.lua:100: CT_DEBUG STATE {"tick":164400,"id":199,"destination":{"y":-214,"x":-187},"state":"accessories","arrival":"accessory","built":1222,"message":"return","head":{"y":-203.37109375,"x":-197.62109375},"anchor":{"y":-103,"x":-163},"direction":0,"frontiers":1206}
+Running update 3300
+Running update 3400
+Running update 3500
+  27.972 Script @__construction-train__/control.lua:100: CT_DEBUG STATE {"tick":164661,"id":199,"accessory":295,"accessory_position":{"y":-215.5,"x":-108.5},"destination":{"y":-214,"x":-107},"state":"travelling","arrival":"accessory","built":1222,"message":"return","head":{"y":-203.375,"x":-197.61328125},"anchor":{"y":-103,"x":-163},"direction":0,"frontiers":1206}
+Running update 3600
+Running update 3700
+Running update 3800
+  28.684 Script @__construction-train__/control.lua:94: CT_DEBUG PROGRESS {"tick":165000,"built":1222,"initial":1216,"rail_ghosts":0}
+  28.684 Script @__construction-train__/control.lua:100: CT_DEBUG STATE {"tick":165000,"id":199,"accessory":295,"accessory_position":{"y":-215.5,"x":-108.5},"destination":{"y":-214,"x":-107},"state":"travelling","arrival":"accessory","built":1222,"message":"return","head":{"y":-227.98828125,"x":-103.84765625},"anchor":{"y":-103,"x":-163},"direction":0,"frontiers":1206}
+  28.686 Script @__construction-train__/control.lua:100: CT_DEBUG STATE {"tick":165001,"id":199,"accessory":295,"accessory_position":{"y":-215.5,"x":-108.5},"destination":{"y":-214,"x":-107},"state":"accessory","arrival":"accessory","built":1222,"message":"return","head":{"y":-227.98828125,"x":-103.84765625},"anchor":{"y":-103,"x":-163},"direction":0,"frontiers":1206}
+Running update 3900
+  28.705 Script @__construction-train__/control.lua:100: CT_DEBUG STATE {"tick":165011,"id":199,"destination":{"y":-214,"x":-107},"state":"accessories","arrival":"accessory","built":1223,"message":"return","head":{"y":-227.98828125,"x":-103.84765625},"anchor":{"y":-103,"x":-163},"direction":0,"frontiers":1206}
+Running update 4000
+Running update 4100
+Running update 4200
+  29.583 Script @__construction-train__/control.lua:100: CT_DEBUG STATE {"tick":165391,"id":199,"accessory":296,"accessory_position":{"y":-215.5,"x":-75.5},"destination":{"y":-214,"x":-77},"state":"travelling","arrival":"accessory","built":1223,"message":"return","head":{"y":-227.98046875,"x":-103.85546875},"anchor":{"y":-103,"x":-163},"direction":0,"frontiers":1206}
+Running update 4300
+Running update 4400
+  29.857 Script @__construction-train__/control.lua:100: CT_DEBUG STATE {"tick":165521,"id":199,"accessory":296,"accessory_position":{"y":-215.5,"x":-75.5},"destination":{"y":-214,"x":-77},"state":"accessory","arrival":"accessory","built":1223,"message":"return","head":{"y":-203.37109375,"x":-87.62109375},"anchor":{"y":-103,"x":-163},"direction":0,"frontiers":1206}
+  29.876 Script @__construction-train__/control.lua:100: CT_DEBUG STATE {"tick":165531,"id":199,"destination":{"y":-214,"x":-77},"state":"accessories","arrival":"accessory","built":1224,"message":"return","head":{"y":-203.37109375,"x":-87.62109375},"anchor":{"y":-103,"x":-163},"direction":0,"frontiers":1206}
+  30.039 Script @__construction-train__/control.lua:94: CT_DEBUG PROGRESS {"tick":165600,"built":1224,"initial":1216,"rail_ghosts":0}
+  30.039 Script @__construction-train__/control.lua:100: CT_DEBUG STATE {"tick":165600,"id":199,"destination":{"y":-214,"x":-77},"state":"accessories","arrival":"accessory","built":1224,"message":"return","head":{"y":-203.37109375,"x":-87.62109375},"anchor":{"y":-103,"x":-163},"direction":0,"frontiers":1206}
+Running update 4500
+Running update 4600
+Running update 4700
+Running update 4800
+  30.922 Script @__construction-train__/control.lua:100: CT_DEBUG STATE {"tick":165911,"id":199,"accessory":337,"accessory_position":{"y":-210.5,"x":-183.5},"destination":{"y":-211,"x":-185},"state":"travelling","arrival":"accessory","built":1224,"message":"return","head":{"y":-203.37109375,"x":-87.62890625},"anchor":{"y":-103,"x":-163},"direction":0,"frontiers":1206}
+Running update 4900
+Running update 5000
+  31.476 Script @__construction-train__/control.lua:100: CT_DEBUG STATE {"tick":166111,"id":199,"accessory":337,"accessory_position":{"y":-210.5,"x":-183.5},"destination":{"y":-211,"x":-185},"state":"accessory","arrival":"accessory","built":1224,"message":"return","head":{"y":-211.69921875,"x":-183.3828125},"anchor":{"y":-103,"x":-163},"direction":0,"frontiers":1206}
+  31.494 Script @__construction-train__/control.lua:100: CT_DEBUG STATE {"tick":166121,"id":199,"accessory":337,"accessory_position":{"y":-210.5,"x":-183.5},"destination":{"y":-211,"x":-185},"state":"accessories","arrival":"accessory","built":1224,"message":"return","head":{"y":-211.69921875,"x":-183.3828125},"anchor":{"y":-103,"x":-163},"direction":0,"frontiers":1206}
+  31.643 Script @__construction-train__/control.lua:94: CT_DEBUG PROGRESS {"tick":166200,"built":1224,"initial":1216,"rail_ghosts":0}
+  31.643 Script @__construction-train__/control.lua:100: CT_DEBUG STATE {"tick":166200,"id":199,"accessory":337,"accessory_position":{"y":-210.5,"x":-183.5},"destination":{"y":-211,"x":-185},"state":"accessories","arrival":"accessory","built":1224,"message":"return","head":{"y":-211.69921875,"x":-183.3828125},"anchor":{"y":-103,"x":-163},"direction":0,"frontiers":1206}
+Running update 5100
+Running update 5200
+Running update 5300
+  32.411 Script @__construction-train__/control.lua:100: CT_DEBUG STATE {"tick":166501,"id":199,"accessory":338,"accessory_position":{"y":-210.5,"x":-110.5},"destination":{"y":-211,"x":-109},"state":"travelling","arrival":"accessory","built":1224,"message":"return","head":{"y":-211.703125,"x":-183.375},"anchor":{"y":-103,"x":-163},"direction":0,"frontiers":1206}
+Running update 5400
+Running update 5500
+  32.744 Script @__construction-train__/control.lua:100: CT_DEBUG STATE {"tick":166651,"id":199,"accessory":338,"accessory_position":{"y":-210.5,"x":-110.5},"destination":{"y":-211,"x":-109},"state":"accessory","arrival":"accessory","built":1224,"message":"return","head":{"y":-213,"x":-124.39453125},"anchor":{"y":-103,"x":-163},"direction":0,"frontiers":1206}
+  32.760 Script @__construction-train__/control.lua:100: CT_DEBUG STATE {"tick":166661,"id":199,"destination":{"y":-211,"x":-109},"state":"accessories","arrival":"accessory","built":1225,"message":"return","head":{"y":-213,"x":-124.39453125},"anchor":{"y":-103,"x":-163},"direction":0,"frontiers":1206}
+Running update 5600
+  32.979 Script @__construction-train__/control.lua:94: CT_DEBUG PROGRESS {"tick":166800,"built":1225,"initial":1216,"rail_ghosts":0}
+  32.979 Script @__construction-train__/control.lua:100: CT_DEBUG STATE {"tick":166800,"id":199,"destination":{"y":-211,"x":-109},"state":"accessories","arrival":"accessory","built":1225,"message":"return","head":{"y":-213,"x":-124.39453125},"anchor":{"y":-103,"x":-163},"direction":0,"frontiers":1206}
+Running update 5700
+Running update 5800
+Running update 5900
+  33.589 Script @__construction-train__/control.lua:100: CT_DEBUG STATE {"tick":167041,"id":199,"accessory":346,"accessory_position":{"y":-206.5,"x":-189.5},"destination":{"y":-209,"x":-189},"state":"travelling","arrival":"accessory","built":1225,"message":"return","head":{"y":-213,"x":-124.38671875},"anchor":{"y":-103,"x":-163},"direction":0,"frontiers":1206}
+Running update 6000
+Running update 6100
+Running update 6200
+  34.609 Script @__construction-train__/control.lua:100: CT_DEBUG STATE {"tick":167361,"id":199,"accessory":346,"accessory_position":{"y":-206.5,"x":-189.5},"destination":{"y":-209,"x":-189},"state":"accessory","arrival":"accessory","built":1225,"message":"return","head":{"y":-203.0078125,"x":-202.7109375},"anchor":{"y":-103,"x":-163},"direction":0,"frontiers":1206}
+  34.656 Script @__construction-train__/control.lua:100: CT_DEBUG STATE {"tick":167371,"id":199,"destination":{"y":-209,"x":-189},"state":"accessories","arrival":"accessory","built":1226,"message":"return","head":{"y":-203.0078125,"x":-202.7109375},"anchor":{"y":-103,"x":-163},"direction":0,"frontiers":1206}
+  34.733 Script @__construction-train__/control.lua:94: CT_DEBUG PROGRESS {"tick":167400,"built":1226,"initial":1216,"rail_ghosts":0}
+  34.733 Script @__construction-train__/control.lua:100: CT_DEBUG STATE {"tick":167400,"id":199,"destination":{"y":-209,"x":-189},"state":"accessories","arrival":"accessory","built":1226,"message":"return","head":{"y":-203.0078125,"x":-202.7109375},"anchor":{"y":-103,"x":-163},"direction":0,"frontiers":1206}
+Running update 6300
+Running update 6400
+Running update 6500
+Running update 6600
+  35.930 Script @__construction-train__/control.lua:100: CT_DEBUG STATE {"tick":167751,"id":199,"accessory":347,"accessory_position":{"y":-206.5,"x":-79.5},"destination":{"y":-209,"x":-79},"state":"travelling","arrival":"accessory","built":1226,"message":"return","head":{"y":-203.0078125,"x":-202.703125},"anchor":{"y":-103,"x":-163},"direction":0,"frontiers":1206}
+Running update 6700
+Running update 6800
+  36.616 Script @__construction-train__/control.lua:94: CT_DEBUG PROGRESS {"tick":168000,"built":1226,"initial":1216,"rail_ghosts":0}
+  36.616 Script @__construction-train__/control.lua:100: CT_DEBUG STATE {"tick":168000,"id":199,"accessory":347,"accessory_position":{"y":-206.5,"x":-79.5},"destination":{"y":-209,"x":-79},"state":"travelling","arrival":"accessory","built":1226,"message":"return","head":{"y":-209.14453125,"x":-105.75390625},"anchor":{"y":-103,"x":-163},"direction":0,"frontiers":1206}
+Running update 6900
+  36.771 Script @__construction-train__/control.lua:100: CT_DEBUG STATE {"tick":168041,"id":199,"accessory":347,"accessory_position":{"y":-206.5,"x":-79.5},"destination":{"y":-209,"x":-79},"state":"accessory","arrival":"accessory","built":1226,"message":"return","head":{"y":-203.0078125,"x":-92.7109375},"anchor":{"y":-103,"x":-163},"direction":0,"frontiers":1206}
+  36.816 Script @__construction-train__/control.lua:100: CT_DEBUG STATE {"tick":168051,"id":199,"destination":{"y":-209,"x":-79},"state":"accessories","arrival":"accessory","built":1227,"message":"return","head":{"y":-203.0078125,"x":-92.7109375},"anchor":{"y":-103,"x":-163},"direction":0,"frontiers":1206}
+Running update 7000
+Running update 7100
+Running update 7200
+Running update 7300
+  37.755 Script @__construction-train__/control.lua:100: CT_DEBUG STATE {"tick":168431,"id":199,"accessory":337,"accessory_position":{"y":-210.5,"x":-183.5},"destination":{"y":-211,"x":-185},"state":"travelling","arrival":"accessory","built":1227,"message":"return","head":{"y":-203.0078125,"x":-92.703125},"anchor":{"y":-103,"x":-163},"direction":0,"frontiers":1206}
+Running update 7400
+  38.149 Script @__construction-train__/control.lua:94: CT_DEBUG PROGRESS {"tick":168600,"built":1227,"initial":1216,"rail_ghosts":0}
+  38.149 Script @__construction-train__/control.lua:100: CT_DEBUG STATE {"tick":168600,"id":199,"accessory":337,"accessory_position":{"y":-210.5,"x":-183.5},"destination":{"y":-211,"x":-185},"state":"travelling","arrival":"accessory","built":1227,"message":"return","head":{"y":-223,"x":-142.63671875},"anchor":{"y":-103,"x":-163},"direction":0,"frontiers":1206}
+Running update 7500
+Running update 7600
+  38.490 Script @__construction-train__/control.lua:100: CT_DEBUG STATE {"tick":168731,"id":199,"accessory":337,"accessory_position":{"y":-210.5,"x":-183.5},"destination":{"y":-211,"x":-185},"state":"accessory","arrival":"accessory","built":1227,"message":"return","head":{"y":-203.26953125,"x":-198.265625},"anchor":{"y":-103,"x":-163},"direction":0,"frontiers":1206}
+  38.516 Script @__construction-train__/control.lua:100: CT_DEBUG STATE {"tick":168741,"id":199,"destination":{"y":-211,"x":-185},"state":"accessories","arrival":"accessory","built":1228,"message":"return","head":{"y":-203.26953125,"x":-198.265625},"anchor":{"y":-103,"x":-163},"direction":0,"frontiers":1206}
+Running update 7700
+Running update 7800
+Running update 7900
+Running update 8000
+  39.629 Script @__construction-train__/control.lua:100: CT_DEBUG STATE {"tick":169121,"id":199,"accessory":348,"accessory_position":{"y":-205.5,"x":-213.5},"destination":{"y":-205,"x":-211},"state":"travelling","arrival":"accessory","built":1228,"message":"return","head":{"y":-203.26953125,"x":-198.2578125},"anchor":{"y":-103,"x":-163},"direction":0,"frontiers":1206}
+  39.775 Script @__construction-train__/control.lua:94: CT_DEBUG PROGRESS {"tick":169200,"built":1228,"initial":1216,"rail_ghosts":0}
+  39.776 Script @__construction-train__/control.lua:100: CT_DEBUG STATE {"tick":169200,"id":199,"accessory":348,"accessory_position":{"y":-205.5,"x":-213.5},"destination":{"y":-205,"x":-211},"state":"travelling","arrival":"accessory","built":1228,"message":"return","head":{"y":-212.9765625,"x":-177.1171875},"anchor":{"y":-103,"x":-163},"direction":0,"frontiers":1206}
+Running update 8100
+Running update 8200
+Running update 8300
+  40.540 Script @__construction-train__/control.lua:100: CT_DEBUG STATE {"tick":169491,"id":199,"accessory":348,"accessory_position":{"y":-205.5,"x":-213.5},"destination":{"y":-205,"x":-211},"state":"accessory","arrival":"accessory","built":1228,"message":"return","head":{"y":-218.7109375,"x":-216.9921875},"anchor":{"y":-103,"x":-163},"direction":0,"frontiers":1206}
+  40.574 Script @__construction-train__/control.lua:100: CT_DEBUG STATE {"tick":169501,"id":199,"destination":{"y":-205,"x":-211},"state":"accessories","arrival":"accessory","built":1229,"message":"return","head":{"y":-218.7109375,"x":-216.9921875},"anchor":{"y":-103,"x":-163},"direction":0,"frontiers":1206}
+Running update 8400
+Running update 8500
+Running update 8600
+  41.377 Script @__construction-train__/control.lua:94: CT_DEBUG PROGRESS {"tick":169800,"built":1229,"initial":1216,"rail_ghosts":0}
+  41.377 Script @__construction-train__/control.lua:100: CT_DEBUG STATE {"tick":169800,"id":199,"destination":{"y":-205,"x":-211},"state":"accessories","arrival":"accessory","built":1229,"message":"return","head":{"y":-218.7109375,"x":-216.9921875},"anchor":{"y":-103,"x":-163},"direction":0,"frontiers":1206}
+Running update 8700
+  41.556 Script @__construction-train__/control.lua:100: CT_DEBUG STATE {"tick":169881,"id":199,"accessory":353,"accessory_position":{"y":-205.5,"x":-103.5},"destination":{"y":-205,"x":-101},"state":"travelling","arrival":"accessory","built":1229,"message":"return","head":{"y":-218.703125,"x":-216.9921875},"anchor":{"y":-103,"x":-163},"direction":0,"frontiers":1206}
+Running update 8800
+Running update 8900
+  Performed 9000 updates in 22797.225 ms
+  avg: 2.533 ms, min: 0.558 ms, max: 29.226 ms
+  checksum: 702645539
+  42.887 Goodbye

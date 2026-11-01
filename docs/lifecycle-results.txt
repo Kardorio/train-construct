@@ -1,0 +1,146 @@
+   0.000 2026-10-30 10:43:33; Factorio 2.1.24 (build 87808, linux64, steam, space-age)
+   0.012 Operating system: Linux (Ubuntu 24.04)
+   0.012 Program arguments: "/home/vador/.steam/steam/steamapps/common/Factorio/bin/x64/../x64_/factorio" "--config" "/tmp/ct-lifecycle-wnn9m00n/config.ini" "--mod-directory" "/tmp/ct-lifecycle-wnn9m00n/mods" "--disable-audio" "--create" "/tmp/ct-lifecycle-wnn9m00n/probe.zip" 
+   0.012 Config path: /tmp/ct-lifecycle-wnn9m00n/config.ini
+   0.012 Read data path: /home/vador/.steam/debian-installation/steamapps/common/Factorio/data
+   0.012 Write data path: /tmp/ct-lifecycle-wnn9m00n/write [36673/475492MB]
+   0.012 Binaries path: /home/vador/.steam/debian-installation/steamapps/common/Factorio/bin
+   0.027 System info: [CPU: 13th Gen Intel(R) Core(TM) i5-1345U, 12 cores, RAM: 63959 MB]
+   0.027 Environment: DISPLAY=<unset> WAYLAND_DISPLAY=<unset> DESKTOP_SESSION=<unset> XDG_SESSION_DESKTOP=<unset> XDG_CURRENT_DESKTOP=<unset> SDL_VIDEO_DRIVER=<unset> SDL_ENABLE_STEAM_SCREEN_KEYBOARD=<unset> SteamDeck=<unset> __GL_FSAA_MODE=<unset> __GL_LOG_MAX_ANISO=<unset> __GL_SYNC_TO_VBLANK=<unset> __GL_SORT_FBCONFIGS=<unset> __GL_YIELD=<unset>
+   0.030 Running in headless mode
+   0.030 Audio is disabled
+   0.044 Info ModManager.cpp:455: FeatureFlag: 
+   0.047 Loading mod core 0.0.0 (data.lua)
+   0.056 Loading mod base 2.1.24 (data.lua)
+   0.148 Loading mod base 2.1.24 (data-updates.lua)
+   0.177 Checksum for core: 3668028660
+   0.177 Checksum of base: 3864816957
+   0.177 Checksum of ct-lifecycle-probe: 0
+   0.287 Prototype list checksum: 1805372151
+   0.308 Info PlayerData.cpp:566: Cloud player-data.json unavailable
+   0.308 Info PlayerData.cpp:582: Local player-data.json unavailable
+   0.308 Info GlobalContext.cpp:1347: Resetting config.
+   0.308 Factorio initialised
+   0.308 Info Create.cpp:32: Creating new map /tmp/ct-lifecycle-wnn9m00n/probe.zip
+   0.312 Blueprint storage "blueprint-storage-2.dat" was not found, trying to load previous version storage "blueprint-storage.dat"
+   0.990 Loading level.dat: 822427 bytes.
+   0.990 Info Scenario.cpp:152: Map version 2.1.24-1
+   1.003 Blueprint storage "blueprint-storage-2.dat" was not found, trying to load previous version storage "blueprint-storage.dat"
+   1.005 Checksum for script __level__/control.lua: 3368906707
+   1.006 Checksum for script __ct-lifecycle-probe__/control.lua: 1499003860
+   1.094 Script @__ct-lifecycle-probe__/control.lua:4: CT_LIFECYCLE init {"version":"2.1.24","buildings":0}
+Done.
+   1.152 Goodbye
+   0.000 2026-10-30 10:43:34; Factorio 2.1.24 (build 87808, linux64, steam, space-age)
+   0.007 Operating system: Linux (Ubuntu 24.04)
+   0.007 Program arguments: "/home/vador/.steam/steam/steamapps/common/Factorio/bin/x64/../x64_/factorio" "--config" "/tmp/ct-lifecycle-wnn9m00n/config.ini" "--mod-directory" "/tmp/ct-lifecycle-wnn9m00n/mods" "--disable-audio" "--benchmark" "/tmp/ct-lifecycle-wnn9m00n/probe.zip" "--benchmark-ticks" "7201" "--benchmark-runs" "1" 
+   0.007 Config path: /tmp/ct-lifecycle-wnn9m00n/config.ini
+   0.007 Read data path: /home/vador/.steam/debian-installation/steamapps/common/Factorio/data
+   0.007 Write data path: /tmp/ct-lifecycle-wnn9m00n/write [36673/475492MB]
+   0.007 Binaries path: /home/vador/.steam/debian-installation/steamapps/common/Factorio/bin
+   0.012 System info: [CPU: 13th Gen Intel(R) Core(TM) i5-1345U, 12 cores, RAM: 63959 MB]
+   0.012 Environment: DISPLAY=<unset> WAYLAND_DISPLAY=<unset> DESKTOP_SESSION=<unset> XDG_SESSION_DESKTOP=<unset> XDG_CURRENT_DESKTOP=<unset> SDL_VIDEO_DRIVER=<unset> SDL_ENABLE_STEAM_SCREEN_KEYBOARD=<unset> SteamDeck=<unset> __GL_FSAA_MODE=<unset> __GL_LOG_MAX_ANISO=<unset> __GL_SYNC_TO_VBLANK=<unset> __GL_SORT_FBCONFIGS=<unset> __GL_YIELD=<unset>
+   0.013 Running in headless mode
+   0.013 Audio is disabled
+   0.020 Info ModManager.cpp:455: FeatureFlag: 
+   0.024 Loading mod core 0.0.0 (data.lua)
+   0.039 Loading mod base 2.1.24 (data.lua)
+   0.155 Loading mod base 2.1.24 (data-updates.lua)
+   0.191 Checksum for core: 3668028660
+   0.191 Checksum of base: 3864816957
+   0.191 Checksum of ct-lifecycle-probe: 0
+   0.362 Prototype list checksum: 1805372151
+   0.398 Info PlayerData.cpp:566: Cloud player-data.json unavailable
+   0.398 Info PlayerData.cpp:582: Local player-data.json unavailable
+   0.398 Info GlobalContext.cpp:1347: Resetting config.
+   0.399 Factorio initialised
+   0.399 Loading map /tmp/ct-lifecycle-wnn9m00n/probe.zip: 674350 bytes.
+   0.409 Loading level.dat: 798136 bytes.
+   0.409 Info Scenario.cpp:152: Map version 2.1.24-1
+   0.419 Blueprint storage "blueprint-storage-2.dat" was not found, trying to load previous version storage "blueprint-storage.dat"
+   0.419 Loading script.dat: 1283 bytes.
+   0.422 Checksum for script __level__/control.lua: 3368906707
+   0.423 Checksum for script __ct-lifecycle-probe__/control.lua: 1499003860
+Running update 0
+Running update 100
+Running update 200
+Running update 300
+Running update 400
+Running update 500
+Running update 600
+Running update 700
+Running update 800
+Running update 900
+Running update 1000
+Running update 1100
+Running update 1200
+   0.562 Script @__ct-lifecycle-probe__/control.lua:4: CT_LIFECYCLE enabled {"reserved_force":"ct-lifecycle-reserved"}
+Running update 1300
+Running update 1400
+Running update 1500
+Running update 1600
+Running update 1700
+Running update 1800
+Running update 1900
+Running update 2000
+Running update 2100
+Running update 2200
+Running update 2300
+Running update 2400
+   0.822 Script @__ct-lifecycle-probe__/control.lua:4: CT_LIFECYCLE one_request_remains {"force":"ct-lifecycle-reserved"}
+Running update 2500
+Running update 2600
+Running update 2700
+Running update 2800
+Running update 2900
+Running update 3000
+Running update 3100
+Running update 3200
+Running update 3300
+Running update 3400
+Running update 3500
+Running update 3600
+   1.014 Script @__ct-lifecycle-probe__/control.lua:4: CT_LIFECYCLE released {"force":"player"}
+Running update 3700
+Running update 3800
+Running update 3900
+Running update 4000
+Running update 4100
+Running update 4200
+Running update 4300
+Running update 4400
+Running update 4500
+Running update 4600
+Running update 4700
+Running update 4800
+   1.104 Script @__ct-lifecycle-probe__/control.lua:4: CT_LIFECYCLE release_built {"ok":true}
+Running update 4900
+Running update 5000
+Running update 5100
+Running update 5200
+Running update 5300
+Running update 5400
+Running update 5500
+Running update 5600
+Running update 5700
+Running update 5800
+Running update 5900
+Running update 6000
+Running update 6100
+Running update 6200
+Running update 6300
+Running update 6400
+Running update 6500
+Running update 6600
+Running update 6700
+Running update 6800
+Running update 6900
+Running update 7000
+Running update 7100
+Running update 7200
+   1.248 Script @__ct-lifecycle-probe__/control.lua:4: CT_LIFECYCLE local_recovery {"expected":{"coal|normal":100,"rail|normal":100,"rail-signal|normal":23,"rail-chain-signal|normal":17},"actual":{"coal|normal":100,"rail-signal|normal":23,"rail|normal":100,"rail-chain-signal|normal":17},"vehicles_removed":3}
+   1.248 Script @__ct-lifecycle-probe__/control.lua:4: CT_LIFECYCLE success {"baseline":true,"reservation":true,"remaining_request":true,"last_request_released":true,"disabled_building":true,"no_buildings":true,"recovery":true}
+  Performed 7201 updates in 823.629 ms
+  avg: 0.114 ms, min: 0.028 ms, max: 3.127 ms
+  checksum: 4197426204
+   1.277 Goodbye

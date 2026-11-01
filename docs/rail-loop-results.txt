@@ -1,0 +1,2528 @@
+   0.000 2026-10-30 11:48:52; Factorio 2.1.24 (build 87808, linux64, steam, space-age)
+   0.007 Operating system: Linux (Ubuntu 24.04)
+   0.007 Program arguments: "/home/vador/.steam/steam/steamapps/common/Factorio/bin/x64/../x64_/factorio" "--config" "/tmp/ct-loop-m_bdkqu9/config.ini" "--mod-directory" "/tmp/ct-loop-m_bdkqu9/mods" "--disable-audio" "--create" "/tmp/ct-loop-m_bdkqu9/probe.zip" 
+   0.007 Config path: /tmp/ct-loop-m_bdkqu9/config.ini
+   0.007 Read data path: /home/vador/.steam/debian-installation/steamapps/common/Factorio/data
+   0.007 Write data path: /tmp/ct-loop-m_bdkqu9/write [36239/475492MB]
+   0.007 Binaries path: /home/vador/.steam/debian-installation/steamapps/common/Factorio/bin
+   0.022 System info: [CPU: 13th Gen Intel(R) Core(TM) i5-1345U, 12 cores, RAM: 63959 MB]
+   0.022 Environment: DISPLAY=<unset> WAYLAND_DISPLAY=<unset> DESKTOP_SESSION=<unset> XDG_SESSION_DESKTOP=<unset> XDG_CURRENT_DESKTOP=<unset> SDL_VIDEO_DRIVER=<unset> SDL_ENABLE_STEAM_SCREEN_KEYBOARD=<unset> SteamDeck=<unset> __GL_FSAA_MODE=<unset> __GL_LOG_MAX_ANISO=<unset> __GL_SYNC_TO_VBLANK=<unset> __GL_SORT_FBCONFIGS=<unset> __GL_YIELD=<unset>
+   0.024 Running in headless mode
+   0.024 Audio is disabled
+   0.041 Info ModManager.cpp:455: FeatureFlag: 
+   0.046 Loading mod core 0.0.0 (data.lua)
+   0.055 Loading mod base 2.1.24 (data.lua)
+   0.146 Loading mod base 2.1.24 (data-updates.lua)
+   0.174 Checksum for core: 3668028660
+   0.174 Checksum of base: 3864816957
+   0.174 Checksum of ct-loop-probe: 0
+   0.290 Prototype list checksum: 1805372151
+   0.311 Info PlayerData.cpp:566: Cloud player-data.json unavailable
+   0.311 Info PlayerData.cpp:582: Local player-data.json unavailable
+   0.312 Info GlobalContext.cpp:1347: Resetting config.
+   0.312 Factorio initialised
+   0.312 Info Create.cpp:32: Creating new map /tmp/ct-loop-m_bdkqu9/probe.zip
+   0.316 Blueprint storage "blueprint-storage-2.dat" was not found, trying to load previous version storage "blueprint-storage.dat"
+   0.980 Loading level.dat: 949850 bytes.
+   0.980 Info Scenario.cpp:152: Map version 2.1.24-1
+   0.993 Blueprint storage "blueprint-storage-2.dat" was not found, trying to load previous version storage "blueprint-storage.dat"
+   0.995 Checksum for script __level__/control.lua: 3368906707
+   0.996 Checksum for script __ct-loop-probe__/control.lua: 602765776
+   2.335 Script @__ct-loop-probe__/control.lua:4: CT_LOOP loop_init {"heading":0,"turn":-1,"planned":52,"closure":{"x":1,"y":-37},"accessories":2}
+Done.
+   2.508 Goodbye
+   0.000 2026-10-30 11:48:54; Factorio 2.1.24 (build 87808, linux64, steam, space-age)
+   0.016 Operating system: Linux (Ubuntu 24.04)
+   0.016 Program arguments: "/home/vador/.steam/steam/steamapps/common/Factorio/bin/x64/../x64_/factorio" "--config" "/tmp/ct-loop-m_bdkqu9/config.ini" "--mod-directory" "/tmp/ct-loop-m_bdkqu9/mods" "--disable-audio" "--benchmark" "/tmp/ct-loop-m_bdkqu9/probe.zip" "--benchmark-ticks" "24001" "--benchmark-runs" "1" 
+   0.016 Config path: /tmp/ct-loop-m_bdkqu9/config.ini
+   0.017 Read data path: /home/vador/.steam/debian-installation/steamapps/common/Factorio/data
+   0.017 Write data path: /tmp/ct-loop-m_bdkqu9/write [36238/475492MB]
+   0.017 Binaries path: /home/vador/.steam/debian-installation/steamapps/common/Factorio/bin
+   0.028 System info: [CPU: 13th Gen Intel(R) Core(TM) i5-1345U, 12 cores, RAM: 63959 MB]
+   0.028 Environment: DISPLAY=<unset> WAYLAND_DISPLAY=<unset> DESKTOP_SESSION=<unset> XDG_SESSION_DESKTOP=<unset> XDG_CURRENT_DESKTOP=<unset> SDL_VIDEO_DRIVER=<unset> SDL_ENABLE_STEAM_SCREEN_KEYBOARD=<unset> SteamDeck=<unset> __GL_FSAA_MODE=<unset> __GL_LOG_MAX_ANISO=<unset> __GL_SYNC_TO_VBLANK=<unset> __GL_SORT_FBCONFIGS=<unset> __GL_YIELD=<unset>
+   0.029 Running in headless mode
+   0.029 Audio is disabled
+   0.045 Info ModManager.cpp:455: FeatureFlag: 
+   0.052 Loading mod core 0.0.0 (data.lua)
+   0.066 Loading mod base 2.1.24 (data.lua)
+   0.230 Loading mod base 2.1.24 (data-updates.lua)
+   0.294 Checksum for core: 3668028660
+   0.294 Checksum of base: 3864816957
+   0.294 Checksum of ct-loop-probe: 0
+   0.448 Prototype list checksum: 1805372151
+   0.495 Info PlayerData.cpp:566: Cloud player-data.json unavailable
+   0.495 Info PlayerData.cpp:582: Local player-data.json unavailable
+   0.495 Info GlobalContext.cpp:1347: Resetting config.
+   0.495 Factorio initialised
+   0.496 Loading map /tmp/ct-loop-m_bdkqu9/probe.zip: 796366 bytes.
+   0.506 Loading level.dat: 1084988 bytes.
+   0.506 Info Scenario.cpp:152: Map version 2.1.24-1
+   0.520 Blueprint storage "blueprint-storage-2.dat" was not found, trying to load previous version storage "blueprint-storage.dat"
+   0.520 Loading script.dat: 8439 bytes.
+   0.524 Checksum for script __level__/control.lua: 3368906707
+   0.525 Checksum for script __ct-loop-probe__/control.lua: 602765776
+Running update 0
+Running update 100
+Running update 200
+Running update 300
+Running update 400
+Running update 500
+   0.664 Script @__ct-loop-probe__/control.lua:4: CT_LOOP shortage {"next_index":3,"remaining":1,"signals_built":0}
+Running update 600
+Running update 700
+Running update 800
+Running update 900
+Running update 1000
+   0.748 Script @__ct-loop-probe__/control.lua:4: CT_LOOP refilled {"amount":200,"at":{"x":1,"y":61},"signals_built":0}
+Running update 1100
+Running update 1200
+Running update 1300
+Running update 1400
+Running update 1500
+Running update 1600
+Running update 1700
+Running update 1800
+Running update 1900
+Running update 2000
+Running update 2100
+Running update 2200
+Running update 2300
+Running update 2400
+Running update 2500
+Running update 2600
+Running update 2700
+Running update 2800
+Running update 2900
+Running update 3000
+Running update 3100
+Running update 3200
+Running update 3300
+Running update 3400
+Running update 3500
+Running update 3600
+Running update 3700
+Running update 3800
+Running update 3900
+Running update 4000
+Running update 4100
+Running update 4200
+Running update 4300
+Running update 4400
+Running update 4500
+Running update 4600
+Running update 4700
+Running update 4800
+Running update 4900
+Running update 5000
+Running update 5100
+Running update 5200
+Running update 5300
+Running update 5400
+Running update 5500
+Running update 5600
+Running update 5700
+Running update 5800
+Running update 5900
+Running update 6000
+Running update 6100
+Running update 6200
+Running update 6300
+Running update 6400
+   1.281 Script @__ct-loop-probe__/control.lua:4: CT_LOOP rails_complete {"poses":52,"consumed":84,"refills":1,"signals_built":0}
+Running update 6500
+Running update 6600
+Running update 6700
+   1.312 Script @__ct-loop-probe__/control.lua:4: CT_LOOP signal_contact {"target":{"y":-46.5,"x":-47.5},"head":{"x":-47.44140625,"y":-30.32421875},"rear":{"x":-49,"y":-44},"touch":true,"measurement":{"along":2.5,"side":1.5,"vehicle":85}}
+   1.313 Script @__ct-loop-probe__/control.lua:4: CT_LOOP signal_built {"name":"rail-signal","after_rails":52,"exit_path":true}
+Running update 6800
+Running update 6900
+Running update 7000
+Running update 7100
+   1.342 Script @__ct-loop-probe__/control.lua:4: CT_LOOP signal_contact {"target":{"y":-71.5,"x":-13.5},"head":{"x":-30,"y":-73},"rear":{"x":-16,"y":-73},"touch":true,"measurement":{"along":2.5,"side":1.5,"vehicle":85}}
+   1.342 Script @__ct-loop-probe__/control.lua:4: CT_LOOP signal_built {"name":"rail-chain-signal","after_rails":52,"exit_path":true}
+Running update 7200
+Running update 7300
+Running update 7400
+Running update 7500
+Running update 7600
+   1.386 Script @__ct-loop-probe__/control.lua:4: CT_LOOP success {"heading":0,"turn":-1,"poses":52,"consumed":84,"refills":1,"accessories":2,"returned":true,"premature_signals":0}
+Running update 7700
+Running update 7800
+Running update 7900
+Running update 8000
+Running update 8100
+Running update 8200
+Running update 8300
+Running update 8400
+Running update 8500
+Running update 8600
+Running update 8700
+Running update 8800
+Running update 8900
+Running update 9000
+Running update 9100
+Running update 9200
+Running update 9300
+Running update 9400
+Running update 9500
+Running update 9600
+Running update 9700
+Running update 9800
+Running update 9900
+Running update 10000
+Running update 10100
+Running update 10200
+Running update 10300
+Running update 10400
+Running update 10500
+Running update 10600
+Running update 10700
+Running update 10800
+Running update 10900
+Running update 11000
+Running update 11100
+Running update 11200
+Running update 11300
+Running update 11400
+Running update 11500
+Running update 11600
+Running update 11700
+Running update 11800
+Running update 11900
+Running update 12000
+Running update 12100
+Running update 12200
+Running update 12300
+Running update 12400
+Running update 12500
+Running update 12600
+Running update 12700
+Running update 12800
+Running update 12900
+Running update 13000
+Running update 13100
+Running update 13200
+Running update 13300
+Running update 13400
+Running update 13500
+Running update 13600
+Running update 13700
+Running update 13800
+Running update 13900
+Running update 14000
+Running update 14100
+Running update 14200
+Running update 14300
+Running update 14400
+Running update 14500
+Running update 14600
+Running update 14700
+Running update 14800
+Running update 14900
+Running update 15000
+Running update 15100
+Running update 15200
+Running update 15300
+Running update 15400
+Running update 15500
+Running update 15600
+Running update 15700
+Running update 15800
+Running update 15900
+Running update 16000
+Running update 16100
+Running update 16200
+Running update 16300
+Running update 16400
+Running update 16500
+Running update 16600
+Running update 16700
+Running update 16800
+Running update 16900
+Running update 17000
+Running update 17100
+Running update 17200
+Running update 17300
+Running update 17400
+Running update 17500
+Running update 17600
+Running update 17700
+Running update 17800
+Running update 17900
+Running update 18000
+Running update 18100
+Running update 18200
+Running update 18300
+Running update 18400
+Running update 18500
+Running update 18600
+Running update 18700
+Running update 18800
+Running update 18900
+Running update 19000
+Running update 19100
+Running update 19200
+Running update 19300
+Running update 19400
+Running update 19500
+Running update 19600
+Running update 19700
+Running update 19800
+Running update 19900
+Running update 20000
+Running update 20100
+Running update 20200
+Running update 20300
+Running update 20400
+Running update 20500
+Running update 20600
+Running update 20700
+Running update 20800
+Running update 20900
+Running update 21000
+Running update 21100
+Running update 21200
+Running update 21300
+Running update 21400
+Running update 21500
+Running update 21600
+Running update 21700
+Running update 21800
+Running update 21900
+Running update 22000
+Running update 22100
+Running update 22200
+Running update 22300
+Running update 22400
+Running update 22500
+Running update 22600
+Running update 22700
+Running update 22800
+Running update 22900
+Running update 23000
+Running update 23100
+Running update 23200
+Running update 23300
+Running update 23400
+Running update 23500
+Running update 23600
+Running update 23700
+Running update 23800
+Running update 23900
+Running update 24000
+  Performed 24001 updates in 2395.068 ms
+  avg: 0.100 ms, min: 0.033 ms, max: 5.082 ms
+  checksum: 1852812676
+   2.949 Goodbye
+   0.000 2026-10-30 11:48:57; Factorio 2.1.24 (build 87808, linux64, steam, space-age)
+   0.007 Operating system: Linux (Ubuntu 24.04)
+   0.007 Program arguments: "/home/vador/.steam/steam/steamapps/common/Factorio/bin/x64/../x64_/factorio" "--config" "/tmp/ct-loop-20fmh9qh/config.ini" "--mod-directory" "/tmp/ct-loop-20fmh9qh/mods" "--disable-audio" "--create" "/tmp/ct-loop-20fmh9qh/probe.zip" 
+   0.007 Config path: /tmp/ct-loop-20fmh9qh/config.ini
+   0.007 Read data path: /home/vador/.steam/debian-installation/steamapps/common/Factorio/data
+   0.007 Write data path: /tmp/ct-loop-20fmh9qh/write [36239/475492MB]
+   0.007 Binaries path: /home/vador/.steam/debian-installation/steamapps/common/Factorio/bin
+   0.017 System info: [CPU: 13th Gen Intel(R) Core(TM) i5-1345U, 12 cores, RAM: 63959 MB]
+   0.017 Environment: DISPLAY=<unset> WAYLAND_DISPLAY=<unset> DESKTOP_SESSION=<unset> XDG_SESSION_DESKTOP=<unset> XDG_CURRENT_DESKTOP=<unset> SDL_VIDEO_DRIVER=<unset> SDL_ENABLE_STEAM_SCREEN_KEYBOARD=<unset> SteamDeck=<unset> __GL_FSAA_MODE=<unset> __GL_LOG_MAX_ANISO=<unset> __GL_SYNC_TO_VBLANK=<unset> __GL_SORT_FBCONFIGS=<unset> __GL_YIELD=<unset>
+   0.018 Running in headless mode
+   0.018 Audio is disabled
+   0.027 Info ModManager.cpp:455: FeatureFlag: 
+   0.031 Loading mod core 0.0.0 (data.lua)
+   0.043 Loading mod base 2.1.24 (data.lua)
+   0.131 Loading mod base 2.1.24 (data-updates.lua)
+   0.160 Checksum for core: 3668028660
+   0.160 Checksum of base: 3864816957
+   0.160 Checksum of ct-loop-probe: 0
+   0.275 Prototype list checksum: 1805372151
+   0.297 Info PlayerData.cpp:566: Cloud player-data.json unavailable
+   0.297 Info PlayerData.cpp:582: Local player-data.json unavailable
+   0.297 Info GlobalContext.cpp:1347: Resetting config.
+   0.297 Factorio initialised
+   0.297 Info Create.cpp:32: Creating new map /tmp/ct-loop-20fmh9qh/probe.zip
+   0.302 Blueprint storage "blueprint-storage-2.dat" was not found, trying to load previous version storage "blueprint-storage.dat"
+   1.008 Loading level.dat: 1007049 bytes.
+   1.008 Info Scenario.cpp:152: Map version 2.1.24-1
+   1.028 Blueprint storage "blueprint-storage-2.dat" was not found, trying to load previous version storage "blueprint-storage.dat"
+   1.031 Checksum for script __level__/control.lua: 3368906707
+   1.033 Checksum for script __ct-loop-probe__/control.lua: 3957744091
+   2.500 Script @__ct-loop-probe__/control.lua:4: CT_LOOP loop_init {"heading":0,"turn":1,"planned":52,"closure":{"x":1,"y":-37},"accessories":2}
+Done.
+   2.676 Goodbye
+   0.000 2026-10-30 11:49:00; Factorio 2.1.24 (build 87808, linux64, steam, space-age)
+   0.008 Operating system: Linux (Ubuntu 24.04)
+   0.008 Program arguments: "/home/vador/.steam/steam/steamapps/common/Factorio/bin/x64/../x64_/factorio" "--config" "/tmp/ct-loop-20fmh9qh/config.ini" "--mod-directory" "/tmp/ct-loop-20fmh9qh/mods" "--disable-audio" "--benchmark" "/tmp/ct-loop-20fmh9qh/probe.zip" "--benchmark-ticks" "24001" "--benchmark-runs" "1" 
+   0.008 Config path: /tmp/ct-loop-20fmh9qh/config.ini
+   0.008 Read data path: /home/vador/.steam/debian-installation/steamapps/common/Factorio/data
+   0.008 Write data path: /tmp/ct-loop-20fmh9qh/write [36238/475492MB]
+   0.008 Binaries path: /home/vador/.steam/debian-installation/steamapps/common/Factorio/bin
+   0.016 System info: [CPU: 13th Gen Intel(R) Core(TM) i5-1345U, 12 cores, RAM: 63959 MB]
+   0.016 Environment: DISPLAY=<unset> WAYLAND_DISPLAY=<unset> DESKTOP_SESSION=<unset> XDG_SESSION_DESKTOP=<unset> XDG_CURRENT_DESKTOP=<unset> SDL_VIDEO_DRIVER=<unset> SDL_ENABLE_STEAM_SCREEN_KEYBOARD=<unset> SteamDeck=<unset> __GL_FSAA_MODE=<unset> __GL_LOG_MAX_ANISO=<unset> __GL_SYNC_TO_VBLANK=<unset> __GL_SORT_FBCONFIGS=<unset> __GL_YIELD=<unset>
+   0.018 Running in headless mode
+   0.018 Audio is disabled
+   0.031 Info ModManager.cpp:455: FeatureFlag: 
+   0.037 Loading mod core 0.0.0 (data.lua)
+   0.053 Loading mod base 2.1.24 (data.lua)
+   0.151 Loading mod base 2.1.24 (data-updates.lua)
+   0.180 Checksum for core: 3668028660
+   0.180 Checksum of base: 3864816957
+   0.180 Checksum of ct-loop-probe: 0
+   0.295 Prototype list checksum: 1805372151
+   0.318 Info PlayerData.cpp:566: Cloud player-data.json unavailable
+   0.318 Info PlayerData.cpp:582: Local player-data.json unavailable
+   0.318 Info GlobalContext.cpp:1347: Resetting config.
+   0.318 Factorio initialised
+   0.318 Loading map /tmp/ct-loop-20fmh9qh/probe.zip: 873224 bytes.
+   0.329 Loading level.dat: 1156348 bytes.
+   0.329 Info Scenario.cpp:152: Map version 2.1.24-1
+   0.338 Blueprint storage "blueprint-storage-2.dat" was not found, trying to load previous version storage "blueprint-storage.dat"
+   0.338 Loading script.dat: 8439 bytes.
+   0.340 Checksum for script __level__/control.lua: 3368906707
+   0.341 Checksum for script __ct-loop-probe__/control.lua: 3957744091
+Running update 0
+Running update 100
+Running update 200
+Running update 300
+Running update 400
+Running update 500
+   0.377 Script @__ct-loop-probe__/control.lua:4: CT_LOOP shortage {"next_index":3,"remaining":1,"signals_built":0}
+Running update 600
+Running update 700
+Running update 800
+Running update 900
+Running update 1000
+   0.512 Script @__ct-loop-probe__/control.lua:4: CT_LOOP refilled {"amount":200,"at":{"x":1,"y":61},"signals_built":0}
+Running update 1100
+Running update 1200
+Running update 1300
+Running update 1400
+Running update 1500
+Running update 1600
+Running update 1700
+Running update 1800
+Running update 1900
+Running update 2000
+Running update 2100
+Running update 2200
+Running update 2300
+Running update 2400
+Running update 2500
+Running update 2600
+Running update 2700
+Running update 2800
+Running update 2900
+Running update 3000
+Running update 3100
+Running update 3200
+Running update 3300
+Running update 3400
+Running update 3500
+Running update 3600
+Running update 3700
+Running update 3800
+Running update 3900
+Running update 4000
+Running update 4100
+Running update 4200
+Running update 4300
+Running update 4400
+Running update 4500
+Running update 4600
+Running update 4700
+Running update 4800
+Running update 4900
+Running update 5000
+Running update 5100
+Running update 5200
+Running update 5300
+Running update 5400
+Running update 5500
+Running update 5600
+Running update 5700
+Running update 5800
+Running update 5900
+Running update 6000
+Running update 6100
+Running update 6200
+Running update 6300
+Running update 6400
+   1.441 Script @__ct-loop-probe__/control.lua:4: CT_LOOP rails_complete {"poses":52,"consumed":84,"refills":1,"signals_built":0}
+Running update 6500
+Running update 6600
+Running update 6700
+   1.484 Script @__ct-loop-probe__/control.lua:4: CT_LOOP signal_contact {"target":{"y":-46.5,"x":52.5},"head":{"x":49.44140625,"y":-30.32421875},"rear":{"x":51,"y":-44},"touch":true,"measurement":{"along":2.5,"side":1.5,"vehicle":75}}
+   1.484 Script @__ct-loop-probe__/control.lua:4: CT_LOOP signal_built {"name":"rail-signal","after_rails":52,"exit_path":true}
+Running update 6800
+Running update 6900
+Running update 7000
+Running update 7100
+   1.594 Script @__ct-loop-probe__/control.lua:4: CT_LOOP signal_contact {"target":{"y":-74.5,"x":15.5},"head":{"x":32,"y":-73},"rear":{"x":18,"y":-73},"touch":true,"measurement":{"along":2.5,"side":1.5,"vehicle":75}}
+   1.594 Script @__ct-loop-probe__/control.lua:4: CT_LOOP signal_built {"name":"rail-chain-signal","after_rails":52,"exit_path":true}
+Running update 7200
+Running update 7300
+Running update 7400
+Running update 7500
+Running update 7600
+   1.660 Script @__ct-loop-probe__/control.lua:4: CT_LOOP success {"heading":0,"turn":1,"poses":52,"consumed":84,"refills":1,"accessories":2,"returned":true,"premature_signals":0}
+Running update 7700
+Running update 7800
+Running update 7900
+Running update 8000
+Running update 8100
+Running update 8200
+Running update 8300
+Running update 8400
+Running update 8500
+Running update 8600
+Running update 8700
+Running update 8800
+Running update 8900
+Running update 9000
+Running update 9100
+Running update 9200
+Running update 9300
+Running update 9400
+Running update 9500
+Running update 9600
+Running update 9700
+Running update 9800
+Running update 9900
+Running update 10000
+Running update 10100
+Running update 10200
+Running update 10300
+Running update 10400
+Running update 10500
+Running update 10600
+Running update 10700
+Running update 10800
+Running update 10900
+Running update 11000
+Running update 11100
+Running update 11200
+Running update 11300
+Running update 11400
+Running update 11500
+Running update 11600
+Running update 11700
+Running update 11800
+Running update 11900
+Running update 12000
+Running update 12100
+Running update 12200
+Running update 12300
+Running update 12400
+Running update 12500
+Running update 12600
+Running update 12700
+Running update 12800
+Running update 12900
+Running update 13000
+Running update 13100
+Running update 13200
+Running update 13300
+Running update 13400
+Running update 13500
+Running update 13600
+Running update 13700
+Running update 13800
+Running update 13900
+Running update 14000
+Running update 14100
+Running update 14200
+Running update 14300
+Running update 14400
+Running update 14500
+Running update 14600
+Running update 14700
+Running update 14800
+Running update 14900
+Running update 15000
+Running update 15100
+Running update 15200
+Running update 15300
+Running update 15400
+Running update 15500
+Running update 15600
+Running update 15700
+Running update 15800
+Running update 15900
+Running update 16000
+Running update 16100
+Running update 16200
+Running update 16300
+Running update 16400
+Running update 16500
+Running update 16600
+Running update 16700
+Running update 16800
+Running update 16900
+Running update 17000
+Running update 17100
+Running update 17200
+Running update 17300
+Running update 17400
+Running update 17500
+Running update 17600
+Running update 17700
+Running update 17800
+Running update 17900
+Running update 18000
+Running update 18100
+Running update 18200
+Running update 18300
+Running update 18400
+Running update 18500
+Running update 18600
+Running update 18700
+Running update 18800
+Running update 18900
+Running update 19000
+Running update 19100
+Running update 19200
+Running update 19300
+Running update 19400
+Running update 19500
+Running update 19600
+Running update 19700
+Running update 19800
+Running update 19900
+Running update 20000
+Running update 20100
+Running update 20200
+Running update 20300
+Running update 20400
+Running update 20500
+Running update 20600
+Running update 20700
+Running update 20800
+Running update 20900
+Running update 21000
+Running update 21100
+Running update 21200
+Running update 21300
+Running update 21400
+Running update 21500
+Running update 21600
+Running update 21700
+Running update 21800
+Running update 21900
+Running update 22000
+Running update 22100
+Running update 22200
+Running update 22300
+Running update 22400
+Running update 22500
+Running update 22600
+Running update 22700
+Running update 22800
+Running update 22900
+Running update 23000
+Running update 23100
+Running update 23200
+Running update 23300
+Running update 23400
+Running update 23500
+Running update 23600
+Running update 23700
+Running update 23800
+Running update 23900
+Running update 24000
+  Performed 24001 updates in 3165.177 ms
+  avg: 0.132 ms, min: 0.031 ms, max: 10.263 ms
+  checksum: 3007963199
+   3.533 Goodbye
+   0.000 2026-10-30 11:49:04; Factorio 2.1.24 (build 87808, linux64, steam, space-age)
+   0.006 Operating system: Linux (Ubuntu 24.04)
+   0.006 Program arguments: "/home/vador/.steam/steam/steamapps/common/Factorio/bin/x64/../x64_/factorio" "--config" "/tmp/ct-loop-phmtig3o/config.ini" "--mod-directory" "/tmp/ct-loop-phmtig3o/mods" "--disable-audio" "--create" "/tmp/ct-loop-phmtig3o/probe.zip" 
+   0.006 Config path: /tmp/ct-loop-phmtig3o/config.ini
+   0.006 Read data path: /home/vador/.steam/debian-installation/steamapps/common/Factorio/data
+   0.006 Write data path: /tmp/ct-loop-phmtig3o/write [36238/475492MB]
+   0.006 Binaries path: /home/vador/.steam/debian-installation/steamapps/common/Factorio/bin
+   0.015 System info: [CPU: 13th Gen Intel(R) Core(TM) i5-1345U, 12 cores, RAM: 63959 MB]
+   0.015 Environment: DISPLAY=<unset> WAYLAND_DISPLAY=<unset> DESKTOP_SESSION=<unset> XDG_SESSION_DESKTOP=<unset> XDG_CURRENT_DESKTOP=<unset> SDL_VIDEO_DRIVER=<unset> SDL_ENABLE_STEAM_SCREEN_KEYBOARD=<unset> SteamDeck=<unset> __GL_FSAA_MODE=<unset> __GL_LOG_MAX_ANISO=<unset> __GL_SYNC_TO_VBLANK=<unset> __GL_SORT_FBCONFIGS=<unset> __GL_YIELD=<unset>
+   0.018 Running in headless mode
+   0.018 Audio is disabled
+   0.026 Info ModManager.cpp:455: FeatureFlag: 
+   0.029 Loading mod core 0.0.0 (data.lua)
+   0.040 Loading mod base 2.1.24 (data.lua)
+   0.151 Loading mod base 2.1.24 (data-updates.lua)
+   0.193 Checksum for core: 3668028660
+   0.193 Checksum of base: 3864816957
+   0.193 Checksum of ct-loop-probe: 0
+   0.320 Prototype list checksum: 1805372151
+   0.341 Info PlayerData.cpp:566: Cloud player-data.json unavailable
+   0.341 Info PlayerData.cpp:582: Local player-data.json unavailable
+   0.342 Info GlobalContext.cpp:1347: Resetting config.
+   0.342 Factorio initialised
+   0.342 Info Create.cpp:32: Creating new map /tmp/ct-loop-phmtig3o/probe.zip
+   0.346 Blueprint storage "blueprint-storage-2.dat" was not found, trying to load previous version storage "blueprint-storage.dat"
+   1.034 Loading level.dat: 602830 bytes.
+   1.035 Info Scenario.cpp:152: Map version 2.1.24-1
+   1.042 Blueprint storage "blueprint-storage-2.dat" was not found, trying to load previous version storage "blueprint-storage.dat"
+   1.044 Checksum for script __level__/control.lua: 3368906707
+   1.045 Checksum for script __ct-loop-probe__/control.lua: 724783195
+   1.838 Script @__ct-loop-probe__/control.lua:4: CT_LOOP loop_init {"heading":4,"turn":-1,"planned":52,"closure":{"x":39,"y":1},"accessories":2}
+Done.
+   1.921 Goodbye
+   0.000 2026-10-30 11:49:05; Factorio 2.1.24 (build 87808, linux64, steam, space-age)
+   0.011 Operating system: Linux (Ubuntu 24.04)
+   0.011 Program arguments: "/home/vador/.steam/steam/steamapps/common/Factorio/bin/x64/../x64_/factorio" "--config" "/tmp/ct-loop-phmtig3o/config.ini" "--mod-directory" "/tmp/ct-loop-phmtig3o/mods" "--disable-audio" "--benchmark" "/tmp/ct-loop-phmtig3o/probe.zip" "--benchmark-ticks" "24001" "--benchmark-runs" "1" 
+   0.011 Config path: /tmp/ct-loop-phmtig3o/config.ini
+   0.011 Read data path: /home/vador/.steam/debian-installation/steamapps/common/Factorio/data
+   0.011 Write data path: /tmp/ct-loop-phmtig3o/write [36238/475492MB]
+   0.011 Binaries path: /home/vador/.steam/debian-installation/steamapps/common/Factorio/bin
+   0.027 System info: [CPU: 13th Gen Intel(R) Core(TM) i5-1345U, 12 cores, RAM: 63959 MB]
+   0.027 Environment: DISPLAY=<unset> WAYLAND_DISPLAY=<unset> DESKTOP_SESSION=<unset> XDG_SESSION_DESKTOP=<unset> XDG_CURRENT_DESKTOP=<unset> SDL_VIDEO_DRIVER=<unset> SDL_ENABLE_STEAM_SCREEN_KEYBOARD=<unset> SteamDeck=<unset> __GL_FSAA_MODE=<unset> __GL_LOG_MAX_ANISO=<unset> __GL_SYNC_TO_VBLANK=<unset> __GL_SORT_FBCONFIGS=<unset> __GL_YIELD=<unset>
+   0.031 Running in headless mode
+   0.031 Audio is disabled
+   0.044 Info ModManager.cpp:455: FeatureFlag: 
+   0.046 Loading mod core 0.0.0 (data.lua)
+   0.054 Loading mod base 2.1.24 (data.lua)
+   0.159 Loading mod base 2.1.24 (data-updates.lua)
+   0.191 Checksum for core: 3668028660
+   0.191 Checksum of base: 3864816957
+   0.191 Checksum of ct-loop-probe: 0
+   0.314 Prototype list checksum: 1805372151
+   0.362 Info PlayerData.cpp:566: Cloud player-data.json unavailable
+   0.362 Info PlayerData.cpp:582: Local player-data.json unavailable
+   0.362 Info GlobalContext.cpp:1347: Resetting config.
+   0.363 Factorio initialised
+   0.363 Loading map /tmp/ct-loop-phmtig3o/probe.zip: 527029 bytes.
+   0.372 Loading level.dat: 665903 bytes.
+   0.372 Info Scenario.cpp:152: Map version 2.1.24-1
+   0.380 Blueprint storage "blueprint-storage-2.dat" was not found, trying to load previous version storage "blueprint-storage.dat"
+   0.380 Loading script.dat: 8439 bytes.
+   0.382 Checksum for script __level__/control.lua: 3368906707
+   0.383 Checksum for script __ct-loop-probe__/control.lua: 724783195
+Running update 0
+Running update 100
+Running update 200
+Running update 300
+Running update 400
+Running update 500
+   0.420 Script @__ct-loop-probe__/control.lua:4: CT_LOOP shortage {"next_index":3,"remaining":1,"signals_built":0}
+Running update 600
+Running update 700
+Running update 800
+Running update 900
+Running update 1000
+   0.459 Script @__ct-loop-probe__/control.lua:4: CT_LOOP refilled {"amount":200,"at":{"x":-59,"y":1},"signals_built":0}
+Running update 1100
+Running update 1200
+Running update 1300
+Running update 1400
+Running update 1500
+Running update 1600
+Running update 1700
+Running update 1800
+Running update 1900
+Running update 2000
+Running update 2100
+Running update 2200
+Running update 2300
+Running update 2400
+Running update 2500
+Running update 2600
+Running update 2700
+Running update 2800
+Running update 2900
+Running update 3000
+Running update 3100
+Running update 3200
+Running update 3300
+Running update 3400
+Running update 3500
+Running update 3600
+Running update 3700
+Running update 3800
+Running update 3900
+Running update 4000
+Running update 4100
+Running update 4200
+Running update 4300
+Running update 4400
+Running update 4500
+Running update 4600
+Running update 4700
+Running update 4800
+Running update 4900
+Running update 5000
+Running update 5100
+Running update 5200
+Running update 5300
+Running update 5400
+Running update 5500
+Running update 5600
+Running update 5700
+Running update 5800
+Running update 5900
+Running update 6000
+Running update 6100
+Running update 6200
+Running update 6300
+Running update 6400
+   0.923 Script @__ct-loop-probe__/control.lua:4: CT_LOOP rails_complete {"poses":52,"consumed":84,"refills":1,"signals_built":0}
+Running update 6500
+Running update 6600
+Running update 6700
+   0.949 Script @__ct-loop-probe__/control.lua:4: CT_LOOP signal_contact {"target":{"y":-47.5,"x":48.5},"head":{"x":32.32421875,"y":-47.44140625},"rear":{"x":46,"y":-49},"touch":true,"measurement":{"along":2.5,"side":1.5,"vehicle":76}}
+   0.950 Script @__ct-loop-probe__/control.lua:4: CT_LOOP signal_built {"name":"rail-signal","after_rails":52,"exit_path":true}
+Running update 6800
+Running update 6900
+Running update 7000
+Running update 7100
+   0.975 Script @__ct-loop-probe__/control.lua:4: CT_LOOP signal_contact {"target":{"y":-13.5,"x":73.5},"head":{"x":75,"y":-30},"rear":{"x":75,"y":-16},"touch":true,"measurement":{"along":2.5,"side":1.5,"vehicle":76}}
+   0.975 Script @__ct-loop-probe__/control.lua:4: CT_LOOP signal_built {"name":"rail-chain-signal","after_rails":52,"exit_path":true}
+Running update 7200
+Running update 7300
+Running update 7400
+Running update 7500
+Running update 7600
+   1.015 Script @__ct-loop-probe__/control.lua:4: CT_LOOP success {"heading":4,"turn":-1,"poses":52,"consumed":84,"refills":1,"accessories":2,"returned":true,"premature_signals":0}
+Running update 7700
+Running update 7800
+Running update 7900
+Running update 8000
+Running update 8100
+Running update 8200
+Running update 8300
+Running update 8400
+Running update 8500
+Running update 8600
+Running update 8700
+Running update 8800
+Running update 8900
+Running update 9000
+Running update 9100
+Running update 9200
+Running update 9300
+Running update 9400
+Running update 9500
+Running update 9600
+Running update 9700
+Running update 9800
+Running update 9900
+Running update 10000
+Running update 10100
+Running update 10200
+Running update 10300
+Running update 10400
+Running update 10500
+Running update 10600
+Running update 10700
+Running update 10800
+Running update 10900
+Running update 11000
+Running update 11100
+Running update 11200
+Running update 11300
+Running update 11400
+Running update 11500
+Running update 11600
+Running update 11700
+Running update 11800
+Running update 11900
+Running update 12000
+Running update 12100
+Running update 12200
+Running update 12300
+Running update 12400
+Running update 12500
+Running update 12600
+Running update 12700
+Running update 12800
+Running update 12900
+Running update 13000
+Running update 13100
+Running update 13200
+Running update 13300
+Running update 13400
+Running update 13500
+Running update 13600
+Running update 13700
+Running update 13800
+Running update 13900
+Running update 14000
+Running update 14100
+Running update 14200
+Running update 14300
+Running update 14400
+Running update 14500
+Running update 14600
+Running update 14700
+Running update 14800
+Running update 14900
+Running update 15000
+Running update 15100
+Running update 15200
+Running update 15300
+Running update 15400
+Running update 15500
+Running update 15600
+Running update 15700
+Running update 15800
+Running update 15900
+Running update 16000
+Running update 16100
+Running update 16200
+Running update 16300
+Running update 16400
+Running update 16500
+Running update 16600
+Running update 16700
+Running update 16800
+Running update 16900
+Running update 17000
+Running update 17100
+Running update 17200
+Running update 17300
+Running update 17400
+Running update 17500
+Running update 17600
+Running update 17700
+Running update 17800
+Running update 17900
+Running update 18000
+Running update 18100
+Running update 18200
+Running update 18300
+Running update 18400
+Running update 18500
+Running update 18600
+Running update 18700
+Running update 18800
+Running update 18900
+Running update 19000
+Running update 19100
+Running update 19200
+Running update 19300
+Running update 19400
+Running update 19500
+Running update 19600
+Running update 19700
+Running update 19800
+Running update 19900
+Running update 20000
+Running update 20100
+Running update 20200
+Running update 20300
+Running update 20400
+Running update 20500
+Running update 20600
+Running update 20700
+Running update 20800
+Running update 20900
+Running update 21000
+Running update 21100
+Running update 21200
+Running update 21300
+Running update 21400
+Running update 21500
+Running update 21600
+Running update 21700
+Running update 21800
+Running update 21900
+Running update 22000
+Running update 22100
+Running update 22200
+Running update 22300
+Running update 22400
+Running update 22500
+Running update 22600
+Running update 22700
+Running update 22800
+Running update 22900
+Running update 23000
+Running update 23100
+Running update 23200
+Running update 23300
+Running update 23400
+Running update 23500
+Running update 23600
+Running update 23700
+Running update 23800
+Running update 23900
+Running update 24000
+  Performed 24001 updates in 1997.196 ms
+  avg: 0.083 ms, min: 0.030 ms, max: 2.684 ms
+  checksum: 2723656231
+   2.410 Goodbye
+   0.000 2026-10-30 11:49:08; Factorio 2.1.24 (build 87808, linux64, steam, space-age)
+   0.009 Operating system: Linux (Ubuntu 24.04)
+   0.010 Program arguments: "/home/vador/.steam/steam/steamapps/common/Factorio/bin/x64/../x64_/factorio" "--config" "/tmp/ct-loop-n7hpi5zd/config.ini" "--mod-directory" "/tmp/ct-loop-n7hpi5zd/mods" "--disable-audio" "--create" "/tmp/ct-loop-n7hpi5zd/probe.zip" 
+   0.010 Config path: /tmp/ct-loop-n7hpi5zd/config.ini
+   0.010 Read data path: /home/vador/.steam/debian-installation/steamapps/common/Factorio/data
+   0.010 Write data path: /tmp/ct-loop-n7hpi5zd/write [36238/475492MB]
+   0.010 Binaries path: /home/vador/.steam/debian-installation/steamapps/common/Factorio/bin
+   0.034 System info: [CPU: 13th Gen Intel(R) Core(TM) i5-1345U, 12 cores, RAM: 63959 MB]
+   0.034 Environment: DISPLAY=<unset> WAYLAND_DISPLAY=<unset> DESKTOP_SESSION=<unset> XDG_SESSION_DESKTOP=<unset> XDG_CURRENT_DESKTOP=<unset> SDL_VIDEO_DRIVER=<unset> SDL_ENABLE_STEAM_SCREEN_KEYBOARD=<unset> SteamDeck=<unset> __GL_FSAA_MODE=<unset> __GL_LOG_MAX_ANISO=<unset> __GL_SYNC_TO_VBLANK=<unset> __GL_SORT_FBCONFIGS=<unset> __GL_YIELD=<unset>
+   0.041 Running in headless mode
+   0.041 Audio is disabled
+   0.068 Info ModManager.cpp:455: FeatureFlag: 
+   0.075 Loading mod core 0.0.0 (data.lua)
+   0.090 Loading mod base 2.1.24 (data.lua)
+   0.181 Loading mod base 2.1.24 (data-updates.lua)
+   0.210 Checksum for core: 3668028660
+   0.210 Checksum of base: 3864816957
+   0.210 Checksum of ct-loop-probe: 0
+   0.323 Prototype list checksum: 1805372151
+   0.343 Info PlayerData.cpp:566: Cloud player-data.json unavailable
+   0.343 Info PlayerData.cpp:582: Local player-data.json unavailable
+   0.343 Info GlobalContext.cpp:1347: Resetting config.
+   0.344 Factorio initialised
+   0.344 Info Create.cpp:32: Creating new map /tmp/ct-loop-n7hpi5zd/probe.zip
+   0.347 Blueprint storage "blueprint-storage-2.dat" was not found, trying to load previous version storage "blueprint-storage.dat"
+   0.958 Loading level.dat: 529735 bytes.
+   0.958 Info Scenario.cpp:152: Map version 2.1.24-1
+   0.964 Blueprint storage "blueprint-storage-2.dat" was not found, trying to load previous version storage "blueprint-storage.dat"
+   0.966 Checksum for script __level__/control.lua: 3368906707
+   0.967 Checksum for script __ct-loop-probe__/control.lua: 1492305814
+   1.497 Script @__ct-loop-probe__/control.lua:4: CT_LOOP loop_init {"heading":4,"turn":1,"planned":52,"closure":{"x":39,"y":1},"accessories":2}
+Done.
+   1.588 Goodbye
+   0.000 2026-10-30 11:49:09; Factorio 2.1.24 (build 87808, linux64, steam, space-age)
+   0.007 Operating system: Linux (Ubuntu 24.04)
+   0.007 Program arguments: "/home/vador/.steam/steam/steamapps/common/Factorio/bin/x64/../x64_/factorio" "--config" "/tmp/ct-loop-n7hpi5zd/config.ini" "--mod-directory" "/tmp/ct-loop-n7hpi5zd/mods" "--disable-audio" "--benchmark" "/tmp/ct-loop-n7hpi5zd/probe.zip" "--benchmark-ticks" "24001" "--benchmark-runs" "1" 
+   0.007 Config path: /tmp/ct-loop-n7hpi5zd/config.ini
+   0.007 Read data path: /home/vador/.steam/debian-installation/steamapps/common/Factorio/data
+   0.007 Write data path: /tmp/ct-loop-n7hpi5zd/write [36238/475492MB]
+   0.007 Binaries path: /home/vador/.steam/debian-installation/steamapps/common/Factorio/bin
+   0.012 System info: [CPU: 13th Gen Intel(R) Core(TM) i5-1345U, 12 cores, RAM: 63959 MB]
+   0.012 Environment: DISPLAY=<unset> WAYLAND_DISPLAY=<unset> DESKTOP_SESSION=<unset> XDG_SESSION_DESKTOP=<unset> XDG_CURRENT_DESKTOP=<unset> SDL_VIDEO_DRIVER=<unset> SDL_ENABLE_STEAM_SCREEN_KEYBOARD=<unset> SteamDeck=<unset> __GL_FSAA_MODE=<unset> __GL_LOG_MAX_ANISO=<unset> __GL_SYNC_TO_VBLANK=<unset> __GL_SORT_FBCONFIGS=<unset> __GL_YIELD=<unset>
+   0.013 Running in headless mode
+   0.013 Audio is disabled
+   0.021 Info ModManager.cpp:455: FeatureFlag: 
+   0.023 Loading mod core 0.0.0 (data.lua)
+   0.034 Loading mod base 2.1.24 (data.lua)
+   0.143 Loading mod base 2.1.24 (data-updates.lua)
+   0.173 Checksum for core: 3668028660
+   0.173 Checksum of base: 3864816957
+   0.173 Checksum of ct-loop-probe: 0
+   0.305 Prototype list checksum: 1805372151
+   0.325 Info PlayerData.cpp:566: Cloud player-data.json unavailable
+   0.325 Info PlayerData.cpp:582: Local player-data.json unavailable
+   0.326 Info GlobalContext.cpp:1347: Resetting config.
+   0.326 Factorio initialised
+   0.326 Loading map /tmp/ct-loop-n7hpi5zd/probe.zip: 430821 bytes.
+   0.332 Loading level.dat: 572135 bytes.
+   0.332 Info Scenario.cpp:152: Map version 2.1.24-1
+   0.339 Blueprint storage "blueprint-storage-2.dat" was not found, trying to load previous version storage "blueprint-storage.dat"
+   0.339 Loading script.dat: 8439 bytes.
+   0.341 Checksum for script __level__/control.lua: 3368906707
+   0.342 Checksum for script __ct-loop-probe__/control.lua: 1492305814
+Running update 0
+Running update 100
+Running update 200
+Running update 300
+Running update 400
+Running update 500
+   0.383 Script @__ct-loop-probe__/control.lua:4: CT_LOOP shortage {"next_index":3,"remaining":1,"signals_built":0}
+Running update 600
+Running update 700
+Running update 800
+Running update 900
+Running update 1000
+   0.429 Script @__ct-loop-probe__/control.lua:4: CT_LOOP refilled {"amount":200,"at":{"x":-59,"y":1},"signals_built":0}
+Running update 1100
+Running update 1200
+Running update 1300
+Running update 1400
+Running update 1500
+Running update 1600
+Running update 1700
+Running update 1800
+Running update 1900
+Running update 2000
+Running update 2100
+Running update 2200
+Running update 2300
+Running update 2400
+Running update 2500
+Running update 2600
+Running update 2700
+Running update 2800
+Running update 2900
+Running update 3000
+Running update 3100
+Running update 3200
+Running update 3300
+Running update 3400
+Running update 3500
+Running update 3600
+Running update 3700
+Running update 3800
+Running update 3900
+Running update 4000
+Running update 4100
+Running update 4200
+Running update 4300
+Running update 4400
+Running update 4500
+Running update 4600
+Running update 4700
+Running update 4800
+Running update 4900
+Running update 5000
+Running update 5100
+Running update 5200
+Running update 5300
+Running update 5400
+Running update 5500
+Running update 5600
+Running update 5700
+Running update 5800
+Running update 5900
+Running update 6000
+Running update 6100
+Running update 6200
+Running update 6300
+Running update 6400
+   0.926 Script @__ct-loop-probe__/control.lua:4: CT_LOOP rails_complete {"poses":52,"consumed":84,"refills":1,"signals_built":0}
+Running update 6500
+Running update 6600
+Running update 6700
+   0.959 Script @__ct-loop-probe__/control.lua:4: CT_LOOP signal_contact {"target":{"y":52.5,"x":48.5},"head":{"x":32.32421875,"y":49.44140625},"rear":{"x":46,"y":51},"touch":true,"measurement":{"along":2.5,"side":1.5,"vehicle":81}}
+   0.959 Script @__ct-loop-probe__/control.lua:4: CT_LOOP signal_built {"name":"rail-signal","after_rails":52,"exit_path":true}
+Running update 6800
+Running update 6900
+Running update 7000
+Running update 7100
+   0.997 Script @__ct-loop-probe__/control.lua:4: CT_LOOP signal_contact {"target":{"y":15.5,"x":76.5},"head":{"x":75,"y":32},"rear":{"x":75,"y":18},"touch":true,"measurement":{"along":2.5,"side":1.5,"vehicle":81}}
+   0.998 Script @__ct-loop-probe__/control.lua:4: CT_LOOP signal_built {"name":"rail-chain-signal","after_rails":52,"exit_path":true}
+Running update 7200
+Running update 7300
+Running update 7400
+Running update 7500
+Running update 7600
+   1.054 Script @__ct-loop-probe__/control.lua:4: CT_LOOP success {"heading":4,"turn":1,"poses":52,"consumed":84,"refills":1,"accessories":2,"returned":true,"premature_signals":0}
+Running update 7700
+Running update 7800
+Running update 7900
+Running update 8000
+Running update 8100
+Running update 8200
+Running update 8300
+Running update 8400
+Running update 8500
+Running update 8600
+Running update 8700
+Running update 8800
+Running update 8900
+Running update 9000
+Running update 9100
+Running update 9200
+Running update 9300
+Running update 9400
+Running update 9500
+Running update 9600
+Running update 9700
+Running update 9800
+Running update 9900
+Running update 10000
+Running update 10100
+Running update 10200
+Running update 10300
+Running update 10400
+Running update 10500
+Running update 10600
+Running update 10700
+Running update 10800
+Running update 10900
+Running update 11000
+Running update 11100
+Running update 11200
+Running update 11300
+Running update 11400
+Running update 11500
+Running update 11600
+Running update 11700
+Running update 11800
+Running update 11900
+Running update 12000
+Running update 12100
+Running update 12200
+Running update 12300
+Running update 12400
+Running update 12500
+Running update 12600
+Running update 12700
+Running update 12800
+Running update 12900
+Running update 13000
+Running update 13100
+Running update 13200
+Running update 13300
+Running update 13400
+Running update 13500
+Running update 13600
+Running update 13700
+Running update 13800
+Running update 13900
+Running update 14000
+Running update 14100
+Running update 14200
+Running update 14300
+Running update 14400
+Running update 14500
+Running update 14600
+Running update 14700
+Running update 14800
+Running update 14900
+Running update 15000
+Running update 15100
+Running update 15200
+Running update 15300
+Running update 15400
+Running update 15500
+Running update 15600
+Running update 15700
+Running update 15800
+Running update 15900
+Running update 16000
+Running update 16100
+Running update 16200
+Running update 16300
+Running update 16400
+Running update 16500
+Running update 16600
+Running update 16700
+Running update 16800
+Running update 16900
+Running update 17000
+Running update 17100
+Running update 17200
+Running update 17300
+Running update 17400
+Running update 17500
+Running update 17600
+Running update 17700
+Running update 17800
+Running update 17900
+Running update 18000
+Running update 18100
+Running update 18200
+Running update 18300
+Running update 18400
+Running update 18500
+Running update 18600
+Running update 18700
+Running update 18800
+Running update 18900
+Running update 19000
+Running update 19100
+Running update 19200
+Running update 19300
+Running update 19400
+Running update 19500
+Running update 19600
+Running update 19700
+Running update 19800
+Running update 19900
+Running update 20000
+Running update 20100
+Running update 20200
+Running update 20300
+Running update 20400
+Running update 20500
+Running update 20600
+Running update 20700
+Running update 20800
+Running update 20900
+Running update 21000
+Running update 21100
+Running update 21200
+Running update 21300
+Running update 21400
+Running update 21500
+Running update 21600
+Running update 21700
+Running update 21800
+Running update 21900
+Running update 22000
+Running update 22100
+Running update 22200
+Running update 22300
+Running update 22400
+Running update 22500
+Running update 22600
+Running update 22700
+Running update 22800
+Running update 22900
+Running update 23000
+Running update 23100
+Running update 23200
+Running update 23300
+Running update 23400
+Running update 23500
+Running update 23600
+Running update 23700
+Running update 23800
+Running update 23900
+Running update 24000
+  Performed 24001 updates in 2320.338 ms
+  avg: 0.097 ms, min: 0.036 ms, max: 3.913 ms
+  checksum: 657311730
+   2.704 Goodbye
+   0.000 2026-10-30 11:49:12; Factorio 2.1.24 (build 87808, linux64, steam, space-age)
+   0.008 Operating system: Linux (Ubuntu 24.04)
+   0.008 Program arguments: "/home/vador/.steam/steam/steamapps/common/Factorio/bin/x64/../x64_/factorio" "--config" "/tmp/ct-loop-xmiusolz/config.ini" "--mod-directory" "/tmp/ct-loop-xmiusolz/mods" "--disable-audio" "--create" "/tmp/ct-loop-xmiusolz/probe.zip" 
+   0.008 Config path: /tmp/ct-loop-xmiusolz/config.ini
+   0.008 Read data path: /home/vador/.steam/debian-installation/steamapps/common/Factorio/data
+   0.008 Write data path: /tmp/ct-loop-xmiusolz/write [36238/475492MB]
+   0.008 Binaries path: /home/vador/.steam/debian-installation/steamapps/common/Factorio/bin
+   0.018 System info: [CPU: 13th Gen Intel(R) Core(TM) i5-1345U, 12 cores, RAM: 63959 MB]
+   0.018 Environment: DISPLAY=<unset> WAYLAND_DISPLAY=<unset> DESKTOP_SESSION=<unset> XDG_SESSION_DESKTOP=<unset> XDG_CURRENT_DESKTOP=<unset> SDL_VIDEO_DRIVER=<unset> SDL_ENABLE_STEAM_SCREEN_KEYBOARD=<unset> SteamDeck=<unset> __GL_FSAA_MODE=<unset> __GL_LOG_MAX_ANISO=<unset> __GL_SYNC_TO_VBLANK=<unset> __GL_SORT_FBCONFIGS=<unset> __GL_YIELD=<unset>
+   0.020 Running in headless mode
+   0.020 Audio is disabled
+   0.029 Info ModManager.cpp:455: FeatureFlag: 
+   0.032 Loading mod core 0.0.0 (data.lua)
+   0.048 Loading mod base 2.1.24 (data.lua)
+   0.260 Loading mod base 2.1.24 (data-updates.lua)
+   0.296 Checksum for core: 3668028660
+   0.296 Checksum of base: 3864816957
+   0.296 Checksum of ct-loop-probe: 0
+   0.469 Prototype list checksum: 1805372151
+   0.497 Info PlayerData.cpp:566: Cloud player-data.json unavailable
+   0.497 Info PlayerData.cpp:582: Local player-data.json unavailable
+   0.497 Info GlobalContext.cpp:1347: Resetting config.
+   0.498 Factorio initialised
+   0.498 Info Create.cpp:32: Creating new map /tmp/ct-loop-xmiusolz/probe.zip
+   0.503 Blueprint storage "blueprint-storage-2.dat" was not found, trying to load previous version storage "blueprint-storage.dat"
+   1.186 Loading level.dat: 610862 bytes.
+   1.186 Info Scenario.cpp:152: Map version 2.1.24-1
+   1.193 Blueprint storage "blueprint-storage-2.dat" was not found, trying to load previous version storage "blueprint-storage.dat"
+   1.195 Checksum for script __level__/control.lua: 3368906707
+   1.196 Checksum for script __ct-loop-probe__/control.lua: 844180166
+   1.857 Script @__ct-loop-probe__/control.lua:4: CT_LOOP loop_init {"heading":8,"turn":-1,"planned":52,"closure":{"x":1,"y":39},"accessories":2}
+Done.
+   1.959 Goodbye
+   0.000 2026-10-30 11:49:14; Factorio 2.1.24 (build 87808, linux64, steam, space-age)
+   0.007 Operating system: Linux (Ubuntu 24.04)
+   0.007 Program arguments: "/home/vador/.steam/steam/steamapps/common/Factorio/bin/x64/../x64_/factorio" "--config" "/tmp/ct-loop-xmiusolz/config.ini" "--mod-directory" "/tmp/ct-loop-xmiusolz/mods" "--disable-audio" "--benchmark" "/tmp/ct-loop-xmiusolz/probe.zip" "--benchmark-ticks" "24001" "--benchmark-runs" "1" 
+   0.007 Config path: /tmp/ct-loop-xmiusolz/config.ini
+   0.007 Read data path: /home/vador/.steam/debian-installation/steamapps/common/Factorio/data
+   0.007 Write data path: /tmp/ct-loop-xmiusolz/write [36237/475492MB]
+   0.007 Binaries path: /home/vador/.steam/debian-installation/steamapps/common/Factorio/bin
+   0.013 System info: [CPU: 13th Gen Intel(R) Core(TM) i5-1345U, 12 cores, RAM: 63959 MB]
+   0.013 Environment: DISPLAY=<unset> WAYLAND_DISPLAY=<unset> DESKTOP_SESSION=<unset> XDG_SESSION_DESKTOP=<unset> XDG_CURRENT_DESKTOP=<unset> SDL_VIDEO_DRIVER=<unset> SDL_ENABLE_STEAM_SCREEN_KEYBOARD=<unset> SteamDeck=<unset> __GL_FSAA_MODE=<unset> __GL_LOG_MAX_ANISO=<unset> __GL_SYNC_TO_VBLANK=<unset> __GL_SORT_FBCONFIGS=<unset> __GL_YIELD=<unset>
+   0.014 Running in headless mode
+   0.014 Audio is disabled
+   0.022 Info ModManager.cpp:455: FeatureFlag: 
+   0.025 Loading mod core 0.0.0 (data.lua)
+   0.035 Loading mod base 2.1.24 (data.lua)
+   0.146 Loading mod base 2.1.24 (data-updates.lua)
+   0.179 Checksum for core: 3668028660
+   0.179 Checksum of base: 3864816957
+   0.179 Checksum of ct-loop-probe: 0
+   0.323 Prototype list checksum: 1805372151
+   0.349 Info PlayerData.cpp:566: Cloud player-data.json unavailable
+   0.349 Info PlayerData.cpp:582: Local player-data.json unavailable
+   0.349 Info GlobalContext.cpp:1347: Resetting config.
+   0.350 Factorio initialised
+   0.350 Loading map /tmp/ct-loop-xmiusolz/probe.zip: 539751 bytes.
+   0.357 Loading level.dat: 684918 bytes.
+   0.358 Info Scenario.cpp:152: Map version 2.1.24-1
+   0.370 Blueprint storage "blueprint-storage-2.dat" was not found, trying to load previous version storage "blueprint-storage.dat"
+   0.370 Loading script.dat: 8439 bytes.
+   0.373 Checksum for script __level__/control.lua: 3368906707
+   0.374 Checksum for script __ct-loop-probe__/control.lua: 844180166
+Running update 0
+Running update 100
+Running update 200
+Running update 300
+Running update 400
+Running update 500
+   0.430 Script @__ct-loop-probe__/control.lua:4: CT_LOOP shortage {"next_index":3,"remaining":1,"signals_built":0}
+Running update 600
+Running update 700
+Running update 800
+Running update 900
+Running update 1000
+   0.470 Script @__ct-loop-probe__/control.lua:4: CT_LOOP refilled {"amount":200,"at":{"x":1,"y":-59},"signals_built":0}
+Running update 1100
+Running update 1200
+Running update 1300
+Running update 1400
+Running update 1500
+Running update 1600
+Running update 1700
+Running update 1800
+Running update 1900
+Running update 2000
+Running update 2100
+Running update 2200
+Running update 2300
+Running update 2400
+Running update 2500
+Running update 2600
+Running update 2700
+Running update 2800
+Running update 2900
+Running update 3000
+Running update 3100
+Running update 3200
+Running update 3300
+Running update 3400
+Running update 3500
+Running update 3600
+Running update 3700
+Running update 3800
+Running update 3900
+Running update 4000
+Running update 4100
+Running update 4200
+Running update 4300
+Running update 4400
+Running update 4500
+Running update 4600
+Running update 4700
+Running update 4800
+Running update 4900
+Running update 5000
+Running update 5100
+Running update 5200
+Running update 5300
+Running update 5400
+Running update 5500
+Running update 5600
+Running update 5700
+Running update 5800
+Running update 5900
+Running update 6000
+Running update 6100
+Running update 6200
+Running update 6300
+Running update 6400
+   1.002 Script @__ct-loop-probe__/control.lua:4: CT_LOOP rails_complete {"poses":52,"consumed":84,"refills":1,"signals_built":0}
+Running update 6500
+Running update 6600
+Running update 6700
+   1.048 Script @__ct-loop-probe__/control.lua:4: CT_LOOP signal_contact {"target":{"y":48.5,"x":49.5},"head":{"x":49.44140625,"y":32.32421875},"rear":{"x":51,"y":46},"touch":true,"measurement":{"along":2.5,"side":1.5,"vehicle":84}}
+   1.048 Script @__ct-loop-probe__/control.lua:4: CT_LOOP signal_built {"name":"rail-signal","after_rails":52,"exit_path":true}
+Running update 6800
+Running update 6900
+Running update 7000
+Running update 7100
+   1.101 Script @__ct-loop-probe__/control.lua:4: CT_LOOP signal_contact {"target":{"y":73.5,"x":15.5},"head":{"x":32,"y":75},"rear":{"x":18,"y":75},"touch":true,"measurement":{"along":2.5,"side":1.5,"vehicle":84}}
+   1.101 Script @__ct-loop-probe__/control.lua:4: CT_LOOP signal_built {"name":"rail-chain-signal","after_rails":52,"exit_path":true}
+Running update 7200
+Running update 7300
+Running update 7400
+Running update 7500
+Running update 7600
+   1.172 Script @__ct-loop-probe__/control.lua:4: CT_LOOP success {"heading":8,"turn":-1,"poses":52,"consumed":84,"refills":1,"accessories":2,"returned":true,"premature_signals":0}
+Running update 7700
+Running update 7800
+Running update 7900
+Running update 8000
+Running update 8100
+Running update 8200
+Running update 8300
+Running update 8400
+Running update 8500
+Running update 8600
+Running update 8700
+Running update 8800
+Running update 8900
+Running update 9000
+Running update 9100
+Running update 9200
+Running update 9300
+Running update 9400
+Running update 9500
+Running update 9600
+Running update 9700
+Running update 9800
+Running update 9900
+Running update 10000
+Running update 10100
+Running update 10200
+Running update 10300
+Running update 10400
+Running update 10500
+Running update 10600
+Running update 10700
+Running update 10800
+Running update 10900
+Running update 11000
+Running update 11100
+Running update 11200
+Running update 11300
+Running update 11400
+Running update 11500
+Running update 11600
+Running update 11700
+Running update 11800
+Running update 11900
+Running update 12000
+Running update 12100
+Running update 12200
+Running update 12300
+Running update 12400
+Running update 12500
+Running update 12600
+Running update 12700
+Running update 12800
+Running update 12900
+Running update 13000
+Running update 13100
+Running update 13200
+Running update 13300
+Running update 13400
+Running update 13500
+Running update 13600
+Running update 13700
+Running update 13800
+Running update 13900
+Running update 14000
+Running update 14100
+Running update 14200
+Running update 14300
+Running update 14400
+Running update 14500
+Running update 14600
+Running update 14700
+Running update 14800
+Running update 14900
+Running update 15000
+Running update 15100
+Running update 15200
+Running update 15300
+Running update 15400
+Running update 15500
+Running update 15600
+Running update 15700
+Running update 15800
+Running update 15900
+Running update 16000
+Running update 16100
+Running update 16200
+Running update 16300
+Running update 16400
+Running update 16500
+Running update 16600
+Running update 16700
+Running update 16800
+Running update 16900
+Running update 17000
+Running update 17100
+Running update 17200
+Running update 17300
+Running update 17400
+Running update 17500
+Running update 17600
+Running update 17700
+Running update 17800
+Running update 17900
+Running update 18000
+Running update 18100
+Running update 18200
+Running update 18300
+Running update 18400
+Running update 18500
+Running update 18600
+Running update 18700
+Running update 18800
+Running update 18900
+Running update 19000
+Running update 19100
+Running update 19200
+Running update 19300
+Running update 19400
+Running update 19500
+Running update 19600
+Running update 19700
+Running update 19800
+Running update 19900
+Running update 20000
+Running update 20100
+Running update 20200
+Running update 20300
+Running update 20400
+Running update 20500
+Running update 20600
+Running update 20700
+Running update 20800
+Running update 20900
+Running update 21000
+Running update 21100
+Running update 21200
+Running update 21300
+Running update 21400
+Running update 21500
+Running update 21600
+Running update 21700
+Running update 21800
+Running update 21900
+Running update 22000
+Running update 22100
+Running update 22200
+Running update 22300
+Running update 22400
+Running update 22500
+Running update 22600
+Running update 22700
+Running update 22800
+Running update 22900
+Running update 23000
+Running update 23100
+Running update 23200
+Running update 23300
+Running update 23400
+Running update 23500
+Running update 23600
+Running update 23700
+Running update 23800
+Running update 23900
+Running update 24000
+  Performed 24001 updates in 3321.027 ms
+  avg: 0.138 ms, min: 0.034 ms, max: 7.247 ms
+  checksum: 185879201
+   3.727 Goodbye
+   0.000 2026-10-30 11:49:18; Factorio 2.1.24 (build 87808, linux64, steam, space-age)
+   0.008 Operating system: Linux (Ubuntu 24.04)
+   0.008 Program arguments: "/home/vador/.steam/steam/steamapps/common/Factorio/bin/x64/../x64_/factorio" "--config" "/tmp/ct-loop-tl7s9d7g/config.ini" "--mod-directory" "/tmp/ct-loop-tl7s9d7g/mods" "--disable-audio" "--create" "/tmp/ct-loop-tl7s9d7g/probe.zip" 
+   0.008 Config path: /tmp/ct-loop-tl7s9d7g/config.ini
+   0.008 Read data path: /home/vador/.steam/debian-installation/steamapps/common/Factorio/data
+   0.008 Write data path: /tmp/ct-loop-tl7s9d7g/write [36235/475492MB]
+   0.008 Binaries path: /home/vador/.steam/debian-installation/steamapps/common/Factorio/bin
+   0.016 System info: [CPU: 13th Gen Intel(R) Core(TM) i5-1345U, 12 cores, RAM: 63959 MB]
+   0.016 Environment: DISPLAY=<unset> WAYLAND_DISPLAY=<unset> DESKTOP_SESSION=<unset> XDG_SESSION_DESKTOP=<unset> XDG_CURRENT_DESKTOP=<unset> SDL_VIDEO_DRIVER=<unset> SDL_ENABLE_STEAM_SCREEN_KEYBOARD=<unset> SteamDeck=<unset> __GL_FSAA_MODE=<unset> __GL_LOG_MAX_ANISO=<unset> __GL_SYNC_TO_VBLANK=<unset> __GL_SORT_FBCONFIGS=<unset> __GL_YIELD=<unset>
+   0.018 Running in headless mode
+   0.018 Audio is disabled
+   0.027 Info ModManager.cpp:455: FeatureFlag: 
+   0.033 Loading mod core 0.0.0 (data.lua)
+   0.047 Loading mod base 2.1.24 (data.lua)
+   0.157 Loading mod base 2.1.24 (data-updates.lua)
+   0.200 Checksum for core: 3668028660
+   0.200 Checksum of base: 3864816957
+   0.200 Checksum of ct-loop-probe: 0
+   0.348 Prototype list checksum: 1805372151
+   0.432 Info PlayerData.cpp:566: Cloud player-data.json unavailable
+   0.432 Info PlayerData.cpp:582: Local player-data.json unavailable
+   0.432 Info GlobalContext.cpp:1347: Resetting config.
+   0.432 Factorio initialised
+   0.433 Info Create.cpp:32: Creating new map /tmp/ct-loop-tl7s9d7g/probe.zip
+   0.442 Blueprint storage "blueprint-storage-2.dat" was not found, trying to load previous version storage "blueprint-storage.dat"
+   1.094 Loading level.dat: 610944 bytes.
+   1.094 Info Scenario.cpp:152: Map version 2.1.24-1
+   1.101 Blueprint storage "blueprint-storage-2.dat" was not found, trying to load previous version storage "blueprint-storage.dat"
+   1.103 Checksum for script __level__/control.lua: 3368906707
+   1.104 Checksum for script __ct-loop-probe__/control.lua: 1455303424
+   1.821 Script @__ct-loop-probe__/control.lua:4: CT_LOOP loop_init {"heading":8,"turn":1,"planned":52,"closure":{"x":1,"y":39},"accessories":2}
+Done.
+   1.934 Goodbye
+   0.000 2026-10-30 11:49:20; Factorio 2.1.24 (build 87808, linux64, steam, space-age)
+   0.020 Operating system: Linux (Ubuntu 24.04)
+   0.020 Program arguments: "/home/vador/.steam/steam/steamapps/common/Factorio/bin/x64/../x64_/factorio" "--config" "/tmp/ct-loop-tl7s9d7g/config.ini" "--mod-directory" "/tmp/ct-loop-tl7s9d7g/mods" "--disable-audio" "--benchmark" "/tmp/ct-loop-tl7s9d7g/probe.zip" "--benchmark-ticks" "24001" "--benchmark-runs" "1" 
+   0.020 Config path: /tmp/ct-loop-tl7s9d7g/config.ini
+   0.020 Read data path: /home/vador/.steam/debian-installation/steamapps/common/Factorio/data
+   0.020 Write data path: /tmp/ct-loop-tl7s9d7g/write [36235/475492MB]
+   0.020 Binaries path: /home/vador/.steam/debian-installation/steamapps/common/Factorio/bin
+   0.027 System info: [CPU: 13th Gen Intel(R) Core(TM) i5-1345U, 12 cores, RAM: 63959 MB]
+   0.027 Environment: DISPLAY=<unset> WAYLAND_DISPLAY=<unset> DESKTOP_SESSION=<unset> XDG_SESSION_DESKTOP=<unset> XDG_CURRENT_DESKTOP=<unset> SDL_VIDEO_DRIVER=<unset> SDL_ENABLE_STEAM_SCREEN_KEYBOARD=<unset> SteamDeck=<unset> __GL_FSAA_MODE=<unset> __GL_LOG_MAX_ANISO=<unset> __GL_SYNC_TO_VBLANK=<unset> __GL_SORT_FBCONFIGS=<unset> __GL_YIELD=<unset>
+   0.028 Running in headless mode
+   0.028 Audio is disabled
+   0.036 Info ModManager.cpp:455: FeatureFlag: 
+   0.039 Loading mod core 0.0.0 (data.lua)
+   0.053 Loading mod base 2.1.24 (data.lua)
+   0.164 Loading mod base 2.1.24 (data-updates.lua)
+   0.197 Checksum for core: 3668028660
+   0.197 Checksum of base: 3864816957
+   0.197 Checksum of ct-loop-probe: 0
+   0.340 Prototype list checksum: 1805372151
+   0.368 Info PlayerData.cpp:566: Cloud player-data.json unavailable
+   0.368 Info PlayerData.cpp:582: Local player-data.json unavailable
+   0.369 Info GlobalContext.cpp:1347: Resetting config.
+   0.369 Factorio initialised
+   0.369 Loading map /tmp/ct-loop-tl7s9d7g/probe.zip: 538016 bytes.
+   0.377 Loading level.dat: 682368 bytes.
+   0.377 Info Scenario.cpp:152: Map version 2.1.24-1
+   0.388 Blueprint storage "blueprint-storage-2.dat" was not found, trying to load previous version storage "blueprint-storage.dat"
+   0.389 Loading script.dat: 8439 bytes.
+   0.392 Checksum for script __level__/control.lua: 3368906707
+   0.393 Checksum for script __ct-loop-probe__/control.lua: 1455303424
+Running update 0
+Running update 100
+Running update 200
+Running update 300
+Running update 400
+Running update 500
+   0.445 Script @__ct-loop-probe__/control.lua:4: CT_LOOP shortage {"next_index":3,"remaining":1,"signals_built":0}
+Running update 600
+Running update 700
+Running update 800
+Running update 900
+Running update 1000
+   0.494 Script @__ct-loop-probe__/control.lua:4: CT_LOOP refilled {"amount":200,"at":{"x":1,"y":-59},"signals_built":0}
+Running update 1100
+Running update 1200
+Running update 1300
+Running update 1400
+Running update 1500
+Running update 1600
+Running update 1700
+Running update 1800
+Running update 1900
+Running update 2000
+Running update 2100
+Running update 2200
+Running update 2300
+Running update 2400
+Running update 2500
+Running update 2600
+Running update 2700
+Running update 2800
+Running update 2900
+Running update 3000
+Running update 3100
+Running update 3200
+Running update 3300
+Running update 3400
+Running update 3500
+Running update 3600
+Running update 3700
+Running update 3800
+Running update 3900
+Running update 4000
+Running update 4100
+Running update 4200
+Running update 4300
+Running update 4400
+Running update 4500
+Running update 4600
+Running update 4700
+Running update 4800
+Running update 4900
+Running update 5000
+Running update 5100
+Running update 5200
+Running update 5300
+Running update 5400
+Running update 5500
+Running update 5600
+Running update 5700
+Running update 5800
+Running update 5900
+Running update 6000
+Running update 6100
+Running update 6200
+Running update 6300
+Running update 6400
+   1.213 Script @__ct-loop-probe__/control.lua:4: CT_LOOP rails_complete {"poses":52,"consumed":84,"refills":1,"signals_built":0}
+Running update 6500
+Running update 6600
+Running update 6700
+   1.260 Script @__ct-loop-probe__/control.lua:4: CT_LOOP signal_contact {"target":{"y":48.5,"x":-50.5},"head":{"x":-47.44140625,"y":32.32421875},"rear":{"x":-49,"y":46},"touch":true,"measurement":{"along":2.5,"side":1.5,"vehicle":88}}
+   1.260 Script @__ct-loop-probe__/control.lua:4: CT_LOOP signal_built {"name":"rail-signal","after_rails":52,"exit_path":true}
+Running update 6800
+Running update 6900
+Running update 7000
+Running update 7100
+   1.291 Script @__ct-loop-probe__/control.lua:4: CT_LOOP signal_contact {"target":{"y":76.5,"x":-13.5},"head":{"x":-30,"y":75},"rear":{"x":-16,"y":75},"touch":true,"measurement":{"along":2.5,"side":1.5,"vehicle":88}}
+   1.291 Script @__ct-loop-probe__/control.lua:4: CT_LOOP signal_built {"name":"rail-chain-signal","after_rails":52,"exit_path":true}
+Running update 7200
+Running update 7300
+Running update 7400
+Running update 7500
+Running update 7600
+   1.336 Script @__ct-loop-probe__/control.lua:4: CT_LOOP success {"heading":8,"turn":1,"poses":52,"consumed":84,"refills":1,"accessories":2,"returned":true,"premature_signals":0}
+Running update 7700
+Running update 7800
+Running update 7900
+Running update 8000
+Running update 8100
+Running update 8200
+Running update 8300
+Running update 8400
+Running update 8500
+Running update 8600
+Running update 8700
+Running update 8800
+Running update 8900
+Running update 9000
+Running update 9100
+Running update 9200
+Running update 9300
+Running update 9400
+Running update 9500
+Running update 9600
+Running update 9700
+Running update 9800
+Running update 9900
+Running update 10000
+Running update 10100
+Running update 10200
+Running update 10300
+Running update 10400
+Running update 10500
+Running update 10600
+Running update 10700
+Running update 10800
+Running update 10900
+Running update 11000
+Running update 11100
+Running update 11200
+Running update 11300
+Running update 11400
+Running update 11500
+Running update 11600
+Running update 11700
+Running update 11800
+Running update 11900
+Running update 12000
+Running update 12100
+Running update 12200
+Running update 12300
+Running update 12400
+Running update 12500
+Running update 12600
+Running update 12700
+Running update 12800
+Running update 12900
+Running update 13000
+Running update 13100
+Running update 13200
+Running update 13300
+Running update 13400
+Running update 13500
+Running update 13600
+Running update 13700
+Running update 13800
+Running update 13900
+Running update 14000
+Running update 14100
+Running update 14200
+Running update 14300
+Running update 14400
+Running update 14500
+Running update 14600
+Running update 14700
+Running update 14800
+Running update 14900
+Running update 15000
+Running update 15100
+Running update 15200
+Running update 15300
+Running update 15400
+Running update 15500
+Running update 15600
+Running update 15700
+Running update 15800
+Running update 15900
+Running update 16000
+Running update 16100
+Running update 16200
+Running update 16300
+Running update 16400
+Running update 16500
+Running update 16600
+Running update 16700
+Running update 16800
+Running update 16900
+Running update 17000
+Running update 17100
+Running update 17200
+Running update 17300
+Running update 17400
+Running update 17500
+Running update 17600
+Running update 17700
+Running update 17800
+Running update 17900
+Running update 18000
+Running update 18100
+Running update 18200
+Running update 18300
+Running update 18400
+Running update 18500
+Running update 18600
+Running update 18700
+Running update 18800
+Running update 18900
+Running update 19000
+Running update 19100
+Running update 19200
+Running update 19300
+Running update 19400
+Running update 19500
+Running update 19600
+Running update 19700
+Running update 19800
+Running update 19900
+Running update 20000
+Running update 20100
+Running update 20200
+Running update 20300
+Running update 20400
+Running update 20500
+Running update 20600
+Running update 20700
+Running update 20800
+Running update 20900
+Running update 21000
+Running update 21100
+Running update 21200
+Running update 21300
+Running update 21400
+Running update 21500
+Running update 21600
+Running update 21700
+Running update 21800
+Running update 21900
+Running update 22000
+Running update 22100
+Running update 22200
+Running update 22300
+Running update 22400
+Running update 22500
+Running update 22600
+Running update 22700
+Running update 22800
+Running update 22900
+Running update 23000
+Running update 23100
+Running update 23200
+Running update 23300
+Running update 23400
+Running update 23500
+Running update 23600
+Running update 23700
+Running update 23800
+Running update 23900
+Running update 24000
+  Performed 24001 updates in 2604.362 ms
+  avg: 0.109 ms, min: 0.037 ms, max: 4.986 ms
+  checksum: 241295819
+   3.034 Goodbye
+   0.000 2026-10-30 11:49:23; Factorio 2.1.24 (build 87808, linux64, steam, space-age)
+   0.008 Operating system: Linux (Ubuntu 24.04)
+   0.008 Program arguments: "/home/vador/.steam/steam/steamapps/common/Factorio/bin/x64/../x64_/factorio" "--config" "/tmp/ct-loop-zow61y1k/config.ini" "--mod-directory" "/tmp/ct-loop-zow61y1k/mods" "--disable-audio" "--create" "/tmp/ct-loop-zow61y1k/probe.zip" 
+   0.008 Config path: /tmp/ct-loop-zow61y1k/config.ini
+   0.008 Read data path: /home/vador/.steam/debian-installation/steamapps/common/Factorio/data
+   0.008 Write data path: /tmp/ct-loop-zow61y1k/write [36235/475492MB]
+   0.008 Binaries path: /home/vador/.steam/debian-installation/steamapps/common/Factorio/bin
+   0.020 System info: [CPU: 13th Gen Intel(R) Core(TM) i5-1345U, 12 cores, RAM: 63959 MB]
+   0.020 Environment: DISPLAY=<unset> WAYLAND_DISPLAY=<unset> DESKTOP_SESSION=<unset> XDG_SESSION_DESKTOP=<unset> XDG_CURRENT_DESKTOP=<unset> SDL_VIDEO_DRIVER=<unset> SDL_ENABLE_STEAM_SCREEN_KEYBOARD=<unset> SteamDeck=<unset> __GL_FSAA_MODE=<unset> __GL_LOG_MAX_ANISO=<unset> __GL_SYNC_TO_VBLANK=<unset> __GL_SORT_FBCONFIGS=<unset> __GL_YIELD=<unset>
+   0.023 Running in headless mode
+   0.023 Audio is disabled
+   0.032 Info ModManager.cpp:455: FeatureFlag: 
+   0.035 Loading mod core 0.0.0 (data.lua)
+   0.049 Loading mod base 2.1.24 (data.lua)
+   0.202 Loading mod base 2.1.24 (data-updates.lua)
+   0.248 Checksum for core: 3668028660
+   0.248 Checksum of base: 3864816957
+   0.248 Checksum of ct-loop-probe: 0
+   0.371 Prototype list checksum: 1805372151
+   0.393 Info PlayerData.cpp:566: Cloud player-data.json unavailable
+   0.393 Info PlayerData.cpp:582: Local player-data.json unavailable
+   0.394 Info GlobalContext.cpp:1347: Resetting config.
+   0.394 Factorio initialised
+   0.394 Info Create.cpp:32: Creating new map /tmp/ct-loop-zow61y1k/probe.zip
+   0.398 Blueprint storage "blueprint-storage-2.dat" was not found, trying to load previous version storage "blueprint-storage.dat"
+   1.058 Loading level.dat: 831994 bytes.
+   1.058 Info Scenario.cpp:152: Map version 2.1.24-1
+   1.069 Blueprint storage "blueprint-storage-2.dat" was not found, trying to load previous version storage "blueprint-storage.dat"
+   1.071 Checksum for script __level__/control.lua: 3368906707
+   1.072 Checksum for script __ct-loop-probe__/control.lua: 3945862733
+   2.164 Script @__ct-loop-probe__/control.lua:4: CT_LOOP loop_init {"heading":12,"turn":-1,"planned":52,"closure":{"x":-37,"y":1},"accessories":2}
+Done.
+   2.256 Goodbye
+   0.000 2026-10-30 11:49:25; Factorio 2.1.24 (build 87808, linux64, steam, space-age)
+   0.010 Operating system: Linux (Ubuntu 24.04)
+   0.010 Program arguments: "/home/vador/.steam/steam/steamapps/common/Factorio/bin/x64/../x64_/factorio" "--config" "/tmp/ct-loop-zow61y1k/config.ini" "--mod-directory" "/tmp/ct-loop-zow61y1k/mods" "--disable-audio" "--benchmark" "/tmp/ct-loop-zow61y1k/probe.zip" "--benchmark-ticks" "24001" "--benchmark-runs" "1" 
+   0.010 Config path: /tmp/ct-loop-zow61y1k/config.ini
+   0.010 Read data path: /home/vador/.steam/debian-installation/steamapps/common/Factorio/data
+   0.010 Write data path: /tmp/ct-loop-zow61y1k/write [36235/475492MB]
+   0.010 Binaries path: /home/vador/.steam/debian-installation/steamapps/common/Factorio/bin
+   0.021 System info: [CPU: 13th Gen Intel(R) Core(TM) i5-1345U, 12 cores, RAM: 63959 MB]
+   0.021 Environment: DISPLAY=<unset> WAYLAND_DISPLAY=<unset> DESKTOP_SESSION=<unset> XDG_SESSION_DESKTOP=<unset> XDG_CURRENT_DESKTOP=<unset> SDL_VIDEO_DRIVER=<unset> SDL_ENABLE_STEAM_SCREEN_KEYBOARD=<unset> SteamDeck=<unset> __GL_FSAA_MODE=<unset> __GL_LOG_MAX_ANISO=<unset> __GL_SYNC_TO_VBLANK=<unset> __GL_SORT_FBCONFIGS=<unset> __GL_YIELD=<unset>
+   0.023 Running in headless mode
+   0.023 Audio is disabled
+   0.030 Info ModManager.cpp:455: FeatureFlag: 
+   0.032 Loading mod core 0.0.0 (data.lua)
+   0.041 Loading mod base 2.1.24 (data.lua)
+   0.144 Loading mod base 2.1.24 (data-updates.lua)
+   0.178 Checksum for core: 3668028660
+   0.178 Checksum of base: 3864816957
+   0.178 Checksum of ct-loop-probe: 0
+   0.318 Prototype list checksum: 1805372151
+   0.347 Info PlayerData.cpp:566: Cloud player-data.json unavailable
+   0.347 Info PlayerData.cpp:582: Local player-data.json unavailable
+   0.348 Info GlobalContext.cpp:1347: Resetting config.
+   0.348 Factorio initialised
+   0.348 Loading map /tmp/ct-loop-zow61y1k/probe.zip: 730765 bytes.
+   0.359 Loading level.dat: 998724 bytes.
+   0.359 Info Scenario.cpp:152: Map version 2.1.24-1
+   0.370 Blueprint storage "blueprint-storage-2.dat" was not found, trying to load previous version storage "blueprint-storage.dat"
+   0.371 Loading script.dat: 8439 bytes.
+   0.373 Checksum for script __level__/control.lua: 3368906707
+   0.374 Checksum for script __ct-loop-probe__/control.lua: 3945862733
+Running update 0
+Running update 100
+Running update 200
+Running update 300
+Running update 400
+Running update 500
+   0.432 Script @__ct-loop-probe__/control.lua:4: CT_LOOP shortage {"next_index":3,"remaining":1,"signals_built":0}
+Running update 600
+Running update 700
+Running update 800
+Running update 900
+Running update 1000
+   0.482 Script @__ct-loop-probe__/control.lua:4: CT_LOOP refilled {"amount":200,"at":{"x":61,"y":1},"signals_built":0}
+Running update 1100
+Running update 1200
+Running update 1300
+Running update 1400
+Running update 1500
+Running update 1600
+Running update 1700
+Running update 1800
+Running update 1900
+Running update 2000
+Running update 2100
+Running update 2200
+Running update 2300
+Running update 2400
+Running update 2500
+Running update 2600
+Running update 2700
+Running update 2800
+Running update 2900
+Running update 3000
+Running update 3100
+Running update 3200
+Running update 3300
+Running update 3400
+Running update 3500
+Running update 3600
+Running update 3700
+Running update 3800
+Running update 3900
+Running update 4000
+Running update 4100
+Running update 4200
+Running update 4300
+Running update 4400
+Running update 4500
+Running update 4600
+Running update 4700
+Running update 4800
+Running update 4900
+Running update 5000
+Running update 5100
+Running update 5200
+Running update 5300
+Running update 5400
+Running update 5500
+Running update 5600
+Running update 5700
+Running update 5800
+Running update 5900
+Running update 6000
+Running update 6100
+Running update 6200
+Running update 6300
+Running update 6400
+   1.195 Script @__ct-loop-probe__/control.lua:4: CT_LOOP rails_complete {"poses":52,"consumed":84,"refills":1,"signals_built":0}
+Running update 6500
+Running update 6600
+Running update 6700
+   1.247 Script @__ct-loop-probe__/control.lua:4: CT_LOOP signal_contact {"target":{"y":49.5,"x":-46.5},"head":{"x":-30.32421875,"y":49.44140625},"rear":{"x":-44,"y":51},"touch":true,"measurement":{"along":2.5,"side":1.5,"vehicle":81}}
+   1.247 Script @__ct-loop-probe__/control.lua:4: CT_LOOP signal_built {"name":"rail-signal","after_rails":52,"exit_path":true}
+Running update 6800
+Running update 6900
+Running update 7000
+Running update 7100
+   1.294 Script @__ct-loop-probe__/control.lua:4: CT_LOOP signal_contact {"target":{"y":15.5,"x":-71.5},"head":{"x":-73,"y":32},"rear":{"x":-73,"y":18},"touch":true,"measurement":{"along":2.5,"side":1.5,"vehicle":81}}
+   1.294 Script @__ct-loop-probe__/control.lua:4: CT_LOOP signal_built {"name":"rail-chain-signal","after_rails":52,"exit_path":true}
+Running update 7200
+Running update 7300
+Running update 7400
+Running update 7500
+Running update 7600
+   1.367 Script @__ct-loop-probe__/control.lua:4: CT_LOOP success {"heading":12,"turn":-1,"poses":52,"consumed":84,"refills":1,"accessories":2,"returned":true,"premature_signals":0}
+Running update 7700
+Running update 7800
+Running update 7900
+Running update 8000
+Running update 8100
+Running update 8200
+Running update 8300
+Running update 8400
+Running update 8500
+Running update 8600
+Running update 8700
+Running update 8800
+Running update 8900
+Running update 9000
+Running update 9100
+Running update 9200
+Running update 9300
+Running update 9400
+Running update 9500
+Running update 9600
+Running update 9700
+Running update 9800
+Running update 9900
+Running update 10000
+Running update 10100
+Running update 10200
+Running update 10300
+Running update 10400
+Running update 10500
+Running update 10600
+Running update 10700
+Running update 10800
+Running update 10900
+Running update 11000
+Running update 11100
+Running update 11200
+Running update 11300
+Running update 11400
+Running update 11500
+Running update 11600
+Running update 11700
+Running update 11800
+Running update 11900
+Running update 12000
+Running update 12100
+Running update 12200
+Running update 12300
+Running update 12400
+Running update 12500
+Running update 12600
+Running update 12700
+Running update 12800
+Running update 12900
+Running update 13000
+Running update 13100
+Running update 13200
+Running update 13300
+Running update 13400
+Running update 13500
+Running update 13600
+Running update 13700
+Running update 13800
+Running update 13900
+Running update 14000
+Running update 14100
+Running update 14200
+Running update 14300
+Running update 14400
+Running update 14500
+Running update 14600
+Running update 14700
+Running update 14800
+Running update 14900
+Running update 15000
+Running update 15100
+Running update 15200
+Running update 15300
+Running update 15400
+Running update 15500
+Running update 15600
+Running update 15700
+Running update 15800
+Running update 15900
+Running update 16000
+Running update 16100
+Running update 16200
+Running update 16300
+Running update 16400
+Running update 16500
+Running update 16600
+Running update 16700
+Running update 16800
+Running update 16900
+Running update 17000
+Running update 17100
+Running update 17200
+Running update 17300
+Running update 17400
+Running update 17500
+Running update 17600
+Running update 17700
+Running update 17800
+Running update 17900
+Running update 18000
+Running update 18100
+Running update 18200
+Running update 18300
+Running update 18400
+Running update 18500
+Running update 18600
+Running update 18700
+Running update 18800
+Running update 18900
+Running update 19000
+Running update 19100
+Running update 19200
+Running update 19300
+Running update 19400
+Running update 19500
+Running update 19600
+Running update 19700
+Running update 19800
+Running update 19900
+Running update 20000
+Running update 20100
+Running update 20200
+Running update 20300
+Running update 20400
+Running update 20500
+Running update 20600
+Running update 20700
+Running update 20800
+Running update 20900
+Running update 21000
+Running update 21100
+Running update 21200
+Running update 21300
+Running update 21400
+Running update 21500
+Running update 21600
+Running update 21700
+Running update 21800
+Running update 21900
+Running update 22000
+Running update 22100
+Running update 22200
+Running update 22300
+Running update 22400
+Running update 22500
+Running update 22600
+Running update 22700
+Running update 22800
+Running update 22900
+Running update 23000
+Running update 23100
+Running update 23200
+Running update 23300
+Running update 23400
+Running update 23500
+Running update 23600
+Running update 23700
+Running update 23800
+Running update 23900
+Running update 24000
+  Performed 24001 updates in 2653.249 ms
+  avg: 0.111 ms, min: 0.039 ms, max: 9.191 ms
+  checksum: 2174898990
+   3.060 Goodbye
+   0.000 2026-10-30 11:49:28; Factorio 2.1.24 (build 87808, linux64, steam, space-age)
+   0.009 Operating system: Linux (Ubuntu 24.04)
+   0.009 Program arguments: "/home/vador/.steam/steam/steamapps/common/Factorio/bin/x64/../x64_/factorio" "--config" "/tmp/ct-loop-avcs2qnr/config.ini" "--mod-directory" "/tmp/ct-loop-avcs2qnr/mods" "--disable-audio" "--create" "/tmp/ct-loop-avcs2qnr/probe.zip" 
+   0.009 Config path: /tmp/ct-loop-avcs2qnr/config.ini
+   0.009 Read data path: /home/vador/.steam/debian-installation/steamapps/common/Factorio/data
+   0.009 Write data path: /tmp/ct-loop-avcs2qnr/write [36235/475492MB]
+   0.009 Binaries path: /home/vador/.steam/debian-installation/steamapps/common/Factorio/bin
+   0.020 System info: [CPU: 13th Gen Intel(R) Core(TM) i5-1345U, 12 cores, RAM: 63959 MB]
+   0.020 Environment: DISPLAY=<unset> WAYLAND_DISPLAY=<unset> DESKTOP_SESSION=<unset> XDG_SESSION_DESKTOP=<unset> XDG_CURRENT_DESKTOP=<unset> SDL_VIDEO_DRIVER=<unset> SDL_ENABLE_STEAM_SCREEN_KEYBOARD=<unset> SteamDeck=<unset> __GL_FSAA_MODE=<unset> __GL_LOG_MAX_ANISO=<unset> __GL_SYNC_TO_VBLANK=<unset> __GL_SORT_FBCONFIGS=<unset> __GL_YIELD=<unset>
+   0.022 Running in headless mode
+   0.022 Audio is disabled
+   0.030 Info ModManager.cpp:455: FeatureFlag: 
+   0.033 Loading mod core 0.0.0 (data.lua)
+   0.048 Loading mod base 2.1.24 (data.lua)
+   0.184 Loading mod base 2.1.24 (data-updates.lua)
+   0.244 Checksum for core: 3668028660
+   0.244 Checksum of base: 3864816957
+   0.244 Checksum of ct-loop-probe: 0
+   0.418 Prototype list checksum: 1805372151
+   0.440 Info PlayerData.cpp:566: Cloud player-data.json unavailable
+   0.440 Info PlayerData.cpp:582: Local player-data.json unavailable
+   0.440 Info GlobalContext.cpp:1347: Resetting config.
+   0.440 Factorio initialised
+   0.440 Info Create.cpp:32: Creating new map /tmp/ct-loop-avcs2qnr/probe.zip
+   0.445 Blueprint storage "blueprint-storage-2.dat" was not found, trying to load previous version storage "blueprint-storage.dat"
+   1.163 Loading level.dat: 952767 bytes.
+   1.163 Info Scenario.cpp:152: Map version 2.1.24-1
+   1.186 Blueprint storage "blueprint-storage-2.dat" was not found, trying to load previous version storage "blueprint-storage.dat"
+   1.190 Checksum for script __level__/control.lua: 3368906707
+   1.191 Checksum for script __ct-loop-probe__/control.lua: 3772284137
+   2.609 Script @__ct-loop-probe__/control.lua:4: CT_LOOP loop_init {"heading":12,"turn":1,"planned":52,"closure":{"x":-37,"y":1},"accessories":2}
+Done.
+   2.740 Goodbye
+   0.000 2026-10-30 11:49:31; Factorio 2.1.24 (build 87808, linux64, steam, space-age)
+   0.011 Operating system: Linux (Ubuntu 24.04)
+   0.011 Program arguments: "/home/vador/.steam/steam/steamapps/common/Factorio/bin/x64/../x64_/factorio" "--config" "/tmp/ct-loop-avcs2qnr/config.ini" "--mod-directory" "/tmp/ct-loop-avcs2qnr/mods" "--disable-audio" "--benchmark" "/tmp/ct-loop-avcs2qnr/probe.zip" "--benchmark-ticks" "24001" "--benchmark-runs" "1" 
+   0.011 Config path: /tmp/ct-loop-avcs2qnr/config.ini
+   0.011 Read data path: /home/vador/.steam/debian-installation/steamapps/common/Factorio/data
+   0.011 Write data path: /tmp/ct-loop-avcs2qnr/write [36235/475492MB]
+   0.011 Binaries path: /home/vador/.steam/debian-installation/steamapps/common/Factorio/bin
+   0.027 System info: [CPU: 13th Gen Intel(R) Core(TM) i5-1345U, 12 cores, RAM: 63959 MB]
+   0.027 Environment: DISPLAY=<unset> WAYLAND_DISPLAY=<unset> DESKTOP_SESSION=<unset> XDG_SESSION_DESKTOP=<unset> XDG_CURRENT_DESKTOP=<unset> SDL_VIDEO_DRIVER=<unset> SDL_ENABLE_STEAM_SCREEN_KEYBOARD=<unset> SteamDeck=<unset> __GL_FSAA_MODE=<unset> __GL_LOG_MAX_ANISO=<unset> __GL_SYNC_TO_VBLANK=<unset> __GL_SORT_FBCONFIGS=<unset> __GL_YIELD=<unset>
+   0.029 Running in headless mode
+   0.029 Audio is disabled
+   0.042 Info ModManager.cpp:455: FeatureFlag: 
+   0.048 Loading mod core 0.0.0 (data.lua)
+   0.075 Loading mod base 2.1.24 (data.lua)
+   0.169 Loading mod base 2.1.24 (data-updates.lua)
+   0.212 Checksum for core: 3668028660
+   0.212 Checksum of base: 3864816957
+   0.212 Checksum of ct-loop-probe: 0
+   0.326 Prototype list checksum: 1805372151
+   0.349 Info PlayerData.cpp:566: Cloud player-data.json unavailable
+   0.349 Info PlayerData.cpp:582: Local player-data.json unavailable
+   0.349 Info GlobalContext.cpp:1347: Resetting config.
+   0.349 Factorio initialised
+   0.349 Loading map /tmp/ct-loop-avcs2qnr/probe.zip: 794584 bytes.
+   0.359 Loading level.dat: 1081399 bytes.
+   0.359 Info Scenario.cpp:152: Map version 2.1.24-1
+   0.370 Blueprint storage "blueprint-storage-2.dat" was not found, trying to load previous version storage "blueprint-storage.dat"
+   0.370 Loading script.dat: 8439 bytes.
+   0.373 Checksum for script __level__/control.lua: 3368906707
+   0.373 Checksum for script __ct-loop-probe__/control.lua: 3772284137
+Running update 0
+Running update 100
+Running update 200
+Running update 300
+Running update 400
+Running update 500
+   0.417 Script @__ct-loop-probe__/control.lua:4: CT_LOOP shortage {"next_index":3,"remaining":1,"signals_built":0}
+Running update 600
+Running update 700
+Running update 800
+Running update 900
+Running update 1000
+   0.469 Script @__ct-loop-probe__/control.lua:4: CT_LOOP refilled {"amount":200,"at":{"x":61,"y":1},"signals_built":0}
+Running update 1100
+Running update 1200
+Running update 1300
+Running update 1400
+Running update 1500
+Running update 1600
+Running update 1700
+Running update 1800
+Running update 1900
+Running update 2000
+Running update 2100
+Running update 2200
+Running update 2300
+Running update 2400
+Running update 2500
+Running update 2600
+Running update 2700
+Running update 2800
+Running update 2900
+Running update 3000
+Running update 3100
+Running update 3200
+Running update 3300
+Running update 3400
+Running update 3500
+Running update 3600
+Running update 3700
+Running update 3800
+Running update 3900
+Running update 4000
+Running update 4100
+Running update 4200
+Running update 4300
+Running update 4400
+Running update 4500
+Running update 4600
+Running update 4700
+Running update 4800
+Running update 4900
+Running update 5000
+Running update 5100
+Running update 5200
+Running update 5300
+Running update 5400
+Running update 5500
+Running update 5600
+Running update 5700
+Running update 5800
+Running update 5900
+Running update 6000
+Running update 6100
+Running update 6200
+Running update 6300
+Running update 6400
+   1.027 Script @__ct-loop-probe__/control.lua:4: CT_LOOP rails_complete {"poses":52,"consumed":84,"refills":1,"signals_built":0}
+Running update 6500
+Running update 6600
+Running update 6700
+   1.056 Script @__ct-loop-probe__/control.lua:4: CT_LOOP signal_contact {"target":{"y":-50.5,"x":-46.5},"head":{"x":-30.32421875,"y":-47.44140625},"rear":{"x":-44,"y":-49},"touch":true,"measurement":{"along":2.5,"side":1.5,"vehicle":83}}
+   1.057 Script @__ct-loop-probe__/control.lua:4: CT_LOOP signal_built {"name":"rail-signal","after_rails":52,"exit_path":true}
+Running update 6800
+Running update 6900
+Running update 7000
+Running update 7100
+   1.081 Script @__ct-loop-probe__/control.lua:4: CT_LOOP signal_contact {"target":{"y":-13.5,"x":-74.5},"head":{"x":-73,"y":-30},"rear":{"x":-73,"y":-16},"touch":true,"measurement":{"along":2.5,"side":1.5,"vehicle":83}}
+   1.081 Script @__ct-loop-probe__/control.lua:4: CT_LOOP signal_built {"name":"rail-chain-signal","after_rails":52,"exit_path":true}
+Running update 7200
+Running update 7300
+Running update 7400
+Running update 7500
+Running update 7600
+   1.121 Script @__ct-loop-probe__/control.lua:4: CT_LOOP success {"heading":12,"turn":1,"poses":52,"consumed":84,"refills":1,"accessories":2,"returned":true,"premature_signals":0}
+Running update 7700
+Running update 7800
+Running update 7900
+Running update 8000
+Running update 8100
+Running update 8200
+Running update 8300
+Running update 8400
+Running update 8500
+Running update 8600
+Running update 8700
+Running update 8800
+Running update 8900
+Running update 9000
+Running update 9100
+Running update 9200
+Running update 9300
+Running update 9400
+Running update 9500
+Running update 9600
+Running update 9700
+Running update 9800
+Running update 9900
+Running update 10000
+Running update 10100
+Running update 10200
+Running update 10300
+Running update 10400
+Running update 10500
+Running update 10600
+Running update 10700
+Running update 10800
+Running update 10900
+Running update 11000
+Running update 11100
+Running update 11200
+Running update 11300
+Running update 11400
+Running update 11500
+Running update 11600
+Running update 11700
+Running update 11800
+Running update 11900
+Running update 12000
+Running update 12100
+Running update 12200
+Running update 12300
+Running update 12400
+Running update 12500
+Running update 12600
+Running update 12700
+Running update 12800
+Running update 12900
+Running update 13000
+Running update 13100
+Running update 13200
+Running update 13300
+Running update 13400
+Running update 13500
+Running update 13600
+Running update 13700
+Running update 13800
+Running update 13900
+Running update 14000
+Running update 14100
+Running update 14200
+Running update 14300
+Running update 14400
+Running update 14500
+Running update 14600
+Running update 14700
+Running update 14800
+Running update 14900
+Running update 15000
+Running update 15100
+Running update 15200
+Running update 15300
+Running update 15400
+Running update 15500
+Running update 15600
+Running update 15700
+Running update 15800
+Running update 15900
+Running update 16000
+Running update 16100
+Running update 16200
+Running update 16300
+Running update 16400
+Running update 16500
+Running update 16600
+Running update 16700
+Running update 16800
+Running update 16900
+Running update 17000
+Running update 17100
+Running update 17200
+Running update 17300
+Running update 17400
+Running update 17500
+Running update 17600
+Running update 17700
+Running update 17800
+Running update 17900
+Running update 18000
+Running update 18100
+Running update 18200
+Running update 18300
+Running update 18400
+Running update 18500
+Running update 18600
+Running update 18700
+Running update 18800
+Running update 18900
+Running update 19000
+Running update 19100
+Running update 19200
+Running update 19300
+Running update 19400
+Running update 19500
+Running update 19600
+Running update 19700
+Running update 19800
+Running update 19900
+Running update 20000
+Running update 20100
+Running update 20200
+Running update 20300
+Running update 20400
+Running update 20500
+Running update 20600
+Running update 20700
+Running update 20800
+Running update 20900
+Running update 21000
+Running update 21100
+Running update 21200
+Running update 21300
+Running update 21400
+Running update 21500
+Running update 21600
+Running update 21700
+Running update 21800
+Running update 21900
+Running update 22000
+Running update 22100
+Running update 22200
+Running update 22300
+Running update 22400
+Running update 22500
+Running update 22600
+Running update 22700
+Running update 22800
+Running update 22900
+Running update 23000
+Running update 23100
+Running update 23200
+Running update 23300
+Running update 23400
+Running update 23500
+Running update 23600
+Running update 23700
+Running update 23800
+Running update 23900
+Running update 24000
+  Performed 24001 updates in 2585.110 ms
+  avg: 0.108 ms, min: 0.035 ms, max: 3.200 ms
+  checksum: 770439681
+   2.999 Goodbye
