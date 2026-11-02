@@ -5,12 +5,15 @@ import os
 from pathlib import Path
 import shutil
 import subprocess
+import sys
 import tempfile
 import time
 import zipfile
 
 ROOT=Path(__file__).resolve().parents[1]
-BINARY=Path(os.environ.get("FACTORIO_BIN",Path.home()/".steam/steam/steamapps/common/Factorio/bin/x64/factorio"))
+sys.path.insert(0,str(ROOT/"tools"))
+from factorio_test_engine import executable, isolated_environment
+BINARY=executable(graphical=True)
 def main():
     subprocess.run([str(ROOT/"build.sh"),"package"],check=True,stdout=subprocess.PIPE)
     info=json.loads((ROOT/"info.json").read_text())
@@ -22,7 +25,7 @@ def main():
         (mods/"mod-list.json").write_text(json.dumps({"mods":[{"name":"base","enabled":True},{"name":info["name"],"enabled":True}]+[{"name":n,"enabled":False} for n in ("space-age","quality","elevated-rails","recycler")]}))
         config=work/"config.ini"
         config.write_text(f"[path]\nread-data={BINARY.parents[2]/'data'}\nwrite-data={write}\n[general]\nlocale=fr\n[other]\ncheck-updates=false\n[graphics]\nfull-screen=false\ngraphics-quality=normal\nmax-threads=4\n")
-        env={**os.environ,"SDL_VIDEODRIVER":"offscreen","SteamAppId":"427520","SteamGameId":"427520"}
+        env={**isolated_environment(),"SDL_VIDEODRIVER":"offscreen"}
         env.pop("DISPLAY",None);env.pop("WAYLAND_DISPLAY",None)
         base=[str(BINARY),"--config",str(config),"--mod-directory",str(mods),"--disable-audio"]
         created=subprocess.run(base+["--create",str(work/"test.zip")],env=env,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,text=True,timeout=55)

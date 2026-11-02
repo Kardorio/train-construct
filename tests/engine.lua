@@ -1,119 +1,33 @@
 local inventory=require("scripts.inventory")
-local HEADING=8
-
-local function emit(label,data) log("CT_LOOP "..label.." "..helpers.table_to_json(data)) end
-local function point(v) return {x=v.x,y=v.y} end
--- Physical candidate: pivot three tiles ahead, short articulated tool.
--- The fixture must reject out-of-envelope targets before any material debit.
-local function contact(head,joint)
- local a=head.orientation*2*math.pi
- local vx,vy=math.sin(a),-math.cos(a)
- local dx,dy=joint.x-head.position.x,joint.y-head.position.y
- local along,side=dx*vx+dy*vy,dx*(-vy)+dy*vx
- local rod_x=along-3
- local length=math.sqrt(rod_x*rod_x+side*side)
- local angle=math.atan2(side,rod_x)
- if length<0.8 or length>1.2 or math.abs(angle)>math.pi/6 then return nil end
- local tip={x=head.position.x+3*vx+length*math.sin(a+angle),y=head.position.y+3*vy-length*math.cos(a+angle)}
- local error=math.sqrt((tip.x-joint.x)^2+(tip.y-joint.y)^2)
- if error>1/256 then return nil end
- return {length=length,angle=angle,error=error,along=along,side=side}
-end
-local function finish()
- local t=storage.head.train
- local remaining=storage.cargo.get_inventory(defines.inventory.cargo_wagon).get_item_count("rail")
- assert(remaining==500-storage.cost)
- assert(storage.checked==storage.poses)
- storage.done=true;t.manual_mode=true
- emit("success",{heading=HEADING,turn=TURN,poses=storage.poses,contacts=storage.checked,remaining=remaining,consumed=storage.cost,types=storage.types,max_angle_degrees=storage.max_angle*180/math.pi,min_extension=storage.min_extension,max_extension=storage.max_extension})
-end
-local function find_end(rail, goal)
- for _,d in ipairs{defines.rail_direction.front,defines.rail_direction.back} do
-  local ending=rail.get_rail_end(d)
-  local l=ending.location
-  if l.direction==goal.direction and math.abs(l.position.x-goal.position.x)<0.01 and math.abs(l.position.y-goal.position.y)<0.01 then return d end
- end
- error("No rail end matches extension goal")
-end
-local function outward(rail,heading)
- for _,d in ipairs{defines.rail_direction.front,defines.rail_direction.back} do
-  if rail.get_rail_end(d).location.direction==heading then return d end
- end
- error("No rail end matches heading")
-end
-local function choose(ending,turn)
- local entries=ending.get_rail_extensions("rail")
- table.sort(entries,function(a,b) return a.name<b.name end)
- for _,e in ipairs(entries) do
-  local delta=(e.goal.direction-ending.location.direction+8)%16-8
-  if e.name~="rail-ramp" and ((turn==0 and delta==0) or (turn~=0 and delta*turn>0 and math.abs(delta)<=2)) then return e end
- end
- emit("extensions_unmatched",{turn=turn,location=ending.location,entries=entries})
- error("No requested extension")
-end
-
-local function loop_plan(surface,anchor,direction,turn)
- local planned={}
- local current,d=anchor,direction
- local closed,closure=false,nil
- local function append(t)
-  if closed then return end
-  local ext=choose(current.get_rail_end(d),t)
-  for _,existing in pairs(surface.find_entities_filtered{name=ext.name,position=ext.position}) do
-   if existing.direction==ext.direction and math.abs(existing.position.x-ext.position.x)<1/256 and math.abs(existing.position.y-ext.position.y)<1/256 then
-    closure=existing;closed=true;return
-   end
-  end
-  local rail=surface.create_entity{name=ext.name,position=ext.position,direction=ext.direction,force="player"}
-  assert(rail and rail.valid,"Loop planning placement failed")
-  d=find_end(rail,ext.goal)
-  planned[#planned+1]={real=rail,name=rail.name,position=point(rail.position),direction=rail.direction,end_direction=d}
-  current=rail
- end
- local initial=anchor.get_rail_end(direction).location.direction
- for corner=1,4 do
-  local target=(initial+corner*4*turn)%16
-  for step=1,12 do
-   if closed or current.get_rail_end(d).location.direction==target then break end
-   append(turn)
-  end
-  if closed then break end
-  assert(current.get_rail_end(d).location.direction==target,"Corner did not reach expected direction")
-  local amount=corner==4 and 40 or 12
-  for i=1,amount do append(0);if closed then break end end
- end
- assert(closed and closure and closure.valid,"Loop did not reconnect to real backbone")
- local final=current
- local connected=false
- for _,c in ipairs{defines.rail_connection_direction.straight,defines.rail_connection_direction.left,defines.rail_connection_direction.right} do
-  local next=final.get_connected_rail{rail_direction=d,rail_connection_direction=c}
-  if next==closure then connected=true end
- end
- assert(connected,"Loop geometric closure is not an actual native connection")
- local accessories={}
- for i,node in ipairs(planned) do
-  if node.name=="straight-rail" and (#accessories==0 or i>math.floor(#planned/2)) then
-   local location=node.real.get_rail_end(node.end_direction).in_signal_location
-   local name=#accessories==0 and "rail-chain-signal" or "rail-signal"
-   accessories[#accessories+1]={name=name,position=location.position,direction=location.direction,anchor_index=i}
-   if #accessories==2 then break end
-  end
- end
- assert(#accessories==2)
- for i=#planned,1,-1 do assert(planned[i].real.destroy());planned[i].real=nil end
- for _,node in ipairs(planned) do
-  node.ghost=surface.create_entity{name="entity-ghost",inner_name=node.name,position=node.position,direction=node.direction,force="player"}
-  assert(node.ghost and node.ghost.valid)
- end
- for _,a in ipairs(accessories) do
-  a.ghost=surface.create_entity{name="entity-ghost",inner_name=a.name,position=a.position,direction=a.direction,force="player"}
-  assert(a.ghost and a.ghost.valid)
- end
- return planned,accessories,closure
-end
+local Fixture=require("test-fixtures.rail_loop")
+local loop_plan,outward=Fixture.loop,Fixture.outward
 local C=require("scripts.constants")
 local I=require("scripts.inventory")
+local Geometry=require("scripts.geometry")
+if stopped then Runtime.worker.motion=function() end end
 local test={}
+local revive=I.revive
+I.revive=function(d,ghost)
+ local state=storage.ct_test
+ local moving=d.head.train.speed~=0
+ local rail=C.rail_types[ghost.ghost_name]
+ if not rail and ghost.ghost_name~="train-stop" and state then
+  for _,node in ipairs(state.route) do assert(not node.ghost.valid,"Unpaired signal built before rail frontiers completed") end
+ end
+ if rail then
+  local joint=d.anchor.get_rail_end(d.direction).location.position
+  assert(Geometry.rail_contact(d.head,joint) or Geometry.rail_contact(d.rear,joint),"Rail built without contact")
+ else
+  assert(Geometry.side_contact(d.head,ghost.position) or Geometry.side_contact(d.rear,ghost.position),"Accessory built without contact")
+ end
+ local entity,reason=revive(d,ghost)
+ if state and entity and moving then
+  local key=rail and "moving_rails" or "moving_accessories"
+  state[key]=(state[key] or 0)+1
+  if not rail and entity.type~="train-stop" then state.moving_signals=(state.moving_signals or 0)+1 end
+ end
+ return entity,reason
+end
 script.on_init(function()
  Runtime.initialize()
  local surface=game.surfaces[1]
@@ -204,8 +118,36 @@ script.on_init(function()
  for _,loco in ipairs{d.head,d.rear} do loco.burner.currently_burning=nil end
  stock.insert{name="coal",count=100}
  log("CT_TEST compatible-fuels SUCCESS solid/rocket/nuclear, incompatible rejected, active fuel counted")
- local direction=outward(last,defines.direction.south)
- local route,accessories=loop_plan(s,last,direction,1)
+ local anchor=north and first or last
+ local direction=outward(anchor,north and defines.direction.north or defines.direction.south)
+ local pairs_checked,alternatives_checked=0,0
+ local function inspect_pairing(rail)
+  for _,end_direction in ipairs{0,1} do
+   local ending=rail.get_rail_end(end_direction)
+   local other=rail.get_rail_end(1-end_direction)
+   for _,pair in ipairs{
+    {ending.out_signal_location,ending.in_signal_location,other.out_signal_location},
+    {ending.in_signal_location,ending.out_signal_location,other.in_signal_location},
+    {ending.alternative_out_signal_location,ending.in_signal_location,other.out_signal_location,true},
+    {ending.alternative_in_signal_location,ending.out_signal_location,other.in_signal_location,true}
+   } do
+    local spot,opposite,wrong=pair[1],pair[2],pair[3]
+    if spot then
+     local decoy=s.create_entity{name="rail-signal",position=wrong.position,direction=wrong.direction,force="player"}
+     assert(decoy and not Geometry.paired_signal(rail,spot,game.forces.player),"Other end was mistaken for a paired signal")
+     decoy.destroy()
+     local actual=s.create_entity{name="rail-chain-signal",position=opposite.position,direction=opposite.direction,force="player"}
+     assert(actual and Geometry.paired_signal(rail,spot,game.forces.player),"Native opposite signal was not recognized")
+     actual.destroy()
+     pairs_checked=pairs_checked+1
+     if pair[4] then alternatives_checked=alternatives_checked+1 end
+    end
+   end
+  end
+ end
+ local route,accessories=loop_plan(s,anchor,direction,1,inspect_pairing)
+ assert(pairs_checked>0 and alternatives_checked>0,"Native alternative signal locations were not exercised")
+ log("CT_TEST signal-pairing SUCCESS "..helpers.table_to_json{checks=pairs_checked,alternatives=alternatives_checked})
  for i,node in ipairs(route) do
   if node.name=="straight-rail" and i>=8 then
    local vertical=node.direction==defines.direction.north or node.direction==defines.direction.south
@@ -277,15 +219,11 @@ script.on_event(defines.events.on_tick,function(event)
  end
  if d.arrival=="refill" and not state.refill_prepared then
   -- 001-AC8 / 001-AC10: after the first shortage the supply target is raised.
-  for _,a in ipairs(state.accessories) do assert(a.ghost.valid,"Signal built before refill") end
   d.targets.rail=200;state.refill_prepared=true
   log("CT_TEST shortage-return")
  end
  local remaining=0
  for _,node in ipairs(state.route) do if node.ghost.valid then remaining=remaining+1 end end
- if remaining>0 then
-  for _,a in ipairs(state.accessories) do assert(a.ghost.valid,"Accessory built before all rails") end
- end
  local built_accessories=0
  for _,a in ipairs(state.accessories) do if not a.ghost.valid then built_accessories=built_accessories+1 end end
  if remaining==0 and built_accessories==3 and Runtime.factory.at_home(d) then
@@ -296,29 +234,33 @@ script.on_event(defines.events.on_tick,function(event)
    assert(d.entity.surface.find_entity(a.name,a.position),"Accessory ghost vanished without its real entity: "..a.name)
   end
   assert(d.built==55,"Wrong number of paid constructions")
-  for _,phase in ipairs{"build","accessory","accessories","idle","loading"} do assert(state.manual_checks and state.manual_checks[phase],"Manual takeover transition not tested: "..phase) end
+  if stopped then assert((state.moving_rails or 0)==0,"Stopped baseline still built rails in motion")
+  else assert((state.moving_rails or 0)>0,"No rail was built in motion") end
+  assert((state.moving_accessories or 0)>0,"No accessory was built in motion")
+  assert((state.moving_signals or 0)>0,"No signal was built in motion")
+  for _,phase in ipairs{"travelling","loading"} do assert(state.manual_checks and state.manual_checks[phase],"Manual takeover transition not tested: "..phase) end
   assert(d.head.train.id==state.original_train)
   assert((d.refills or 0)>0)
   local stock=d.entity.get_inventory(defines.inventory.chest)
   local cargo=I.cargo(d)
   assert(stock.get_item_count("rail")+cargo.get_item_count("rail")==416,"Incorrect rail payment")
-  -- 001-AC13 / AC17: two buildings own two independent machines and requests.
+  -- 001-AC17: a second building is refunded without creating a machine.
   Runtime.worker.pause(d)
   local surface=d.entity.surface
   for y=-16,16,2 do surface.create_entity{name="straight-rail",position={40,y},direction=defines.direction.north,force="player"} end
   local other_entity=surface.create_entity{name=C.depot,position={46,0},force="player"}
   local other=Runtime.on_built{entity=other_entity}
-  assert(other and other.head.train.id~=state.original_train)
-  Runtime.worker.pause(other)
+  assert(not other and not other_entity.valid,"Second depot was accepted")
+  local refunds=surface.find_entities_filtered{type="item-entity",position={46,0},radius=3}
+  for _,item in pairs(refunds) do item.destroy() end
+  assert(#surface.find_entities_filtered{name=C.locomotive}==2,"Rejected depot created vehicles")
   state.isolated=surface.create_entity{name="entity-ghost",inner_name="straight-rail",position={150,150},direction=defines.direction.north,force="player"}
   Runtime.on_built{entity=state.isolated}
   assert(state.isolated.force~=game.forces.player)
   Runtime.registry.policy(d,false)
-  assert(Runtime.registry.active(d.force_index,d.surface_index),"Second building request was lost")
-  assert(Runtime.factory.withdraw(other,false))
   assert(not Runtime.registry.active(d.force_index,d.surface_index))
   state.phase="release";state.release_tick=event.tick+100
-  log("CT_TEST loop-and-requests "..helpers.table_to_json{tick=event.tick,built=d.built,refills=d.refills,train=d.head.train.id})
+  log("CT_TEST loop-and-requests "..helpers.table_to_json{tick=event.tick,built=d.built,refills=d.refills,train=d.head.train.id,moving_rails=state.moving_rails or 0,moving_accessories=state.moving_accessories,moving_signals=state.moving_signals,stopped=stopped or false,north=north or false})
  elseif event.tick%1800==0 then
   log("CT_TEST progress "..helpers.table_to_json{tick=event.tick,state=d.state,arrival=d.arrival,message=d.message,remaining=remaining,accessories=built_accessories,head=d.head.position,wagon=d.wagon.position})
  end
@@ -328,7 +270,7 @@ local worker_tick=Runtime.worker.tick
 Runtime.worker.tick=function(d)
  local state=storage.ct_test
  if state and d.id==state.id and d.enabled and d.auto_controlled and
-  (d.state=="build" or d.state=="accessory" or d.state=="accessories" or d.state=="idle" or d.state=="loading") then
+  (d.state=="travelling" or d.state=="build" or d.state=="accessory" or d.state=="accessories" or d.state=="idle" or d.state=="loading") then
   state.manual_checks=state.manual_checks or {}
   if not state.manual_checks[d.state] then
    local before,phase=d.built,d.state

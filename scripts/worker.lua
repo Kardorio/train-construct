@@ -14,7 +14,19 @@ local function guard(callback)
  if not ok then error(result) end
  return result
 end
+function W.fleet_limit(d)
+ if not F.conflict(d) then return false end
+ W.pause(d)
+ d.state="fleet-limit"
+ for _,field in ipairs{"head","wagon","rear"} do
+  local entity=d[field]
+  local current=entity and entity.valid and entity.train
+  if current and #current.passengers==0 then current.manual_mode=true;current.speed=0 end
+ end
+ return true
+end
 local function drive(d,rail,direction,arrival)
+ if W.fleet_limit(d) then return false end
  if not (rail and rail.valid and F.valid(d)) then d.state="damaged";return false end
  local t=train(d)
  guard(function()
@@ -25,6 +37,7 @@ local function drive(d,rail,direction,arrival)
  return true
 end
 function W.home(d,reason)
+ if W.fleet_limit(d) then return false end
  local goals=F.home_goals(d)
  if #goals==0 then d.state="damaged";return false end
  d.return_reason=reason or "home"
@@ -84,6 +97,7 @@ function W.block(d,state,message)
  if t and t.speed==0 then t.manual_mode=true;d.auto_controlled=false end
 end
 function W.start(d)
+ if W.fleet_limit(d) then return end
  if not F.valid(d) then d.state="damaged";return end
  d.enabled=true;d.auto_controlled=false;d.retry_at=nil;d.message=nil;d.return_search=nil;d.return_attempts=nil;d.blocked_return=nil;d.frontier_checked=0;d.frontier_anchor=1
  d.state=F.at_home(d) and "loading" or "idle"
@@ -201,7 +215,13 @@ local function native_exit(d,full)
 end
 local function signal_safe(d,job)
  if not job.permit then return true end
- local result=native_exit(d,true)
+ local record=storage.ct.ghosts[job.id or d.accessory]
+ local paired=record and record.entity.valid and G.paired_signal(job.rail,record.entity,game.forces[d.force_index])
+ if (d.state=="build" or (d.state=="travelling" and d.arrival=="build")) and #R.frontier_ids(d.force_index,d.surface_index)>0 then
+  -- An unpaired signal can make its whole unfinished segment one-way.
+  if not paired then return false end
+ end
+ local function allows(result)
  if not result.found_path then return false end
  for index,rail in ipairs(result.path or {}) do
   if rail==job.rail then
@@ -214,14 +234,20 @@ local function signal_safe(d,job)
     end
    end
    if needed==nil or needed==job.permit then return true end
-   -- An already installed opposite signal preserves the other travel direction.
-   local ending=rail.get_rail_end(needed)
-   local spot=ending.out_signal_location
-   for _,real in pairs(rail.surface.find_entities_filtered{position=spot.position,type={"rail-signal","rail-chain-signal"},force=game.forces[d.force_index]}) do
-    if real.direction==spot.direction and G.same(real.position,spot.position) then return true end
-   end
-   return false
+   return paired or false
   end
+ end
+ return true
+ end
+ if not allows(native_exit(d,true)) then return false end
+ if (d.state=="build" or (d.state=="travelling" and d.arrival=="build")) and d.anchor and d.anchor.valid then
+  local starts={}
+  for _,goal in ipairs(F.home_goals(d)) do
+   for _,direction in ipairs(directions) do starts[#starts+1]={rail=goal.rail,direction=direction} end
+  end
+  if #starts==0 then return false end
+  local approach=game.train_manager.request_train_path{starts=starts,goals={{rail=d.anchor,direction=d.direction}},return_path=true,steps_limit=16384}
+  if not allows(approach) then return false end
  end
  return true
 end
@@ -308,8 +334,11 @@ local function build(d)
  d.anchor=real;d.direction=direction;d.task=nil
  drive(d,real,direction,"build")
 end
-finish_accessory=function(d)
- if I.low_fuel(d) then d.refill_mode="accessories";W.home(d,"refill");return end
+finish_accessory=function(d,moving)
+ if I.low_fuel(d) then
+  if not moving then d.refill_mode="accessories";W.home(d,"refill") end
+  return
+ end
  local id=d.accessory;local record=storage.ct.ghosts[id];local job=d.pending[id]
  if not (record and record.entity.valid and job and job.rail.valid) then d.pending[id]=nil;d.state="accessories";return end
  if not (G.side_contact(d.head,record.entity.position) or G.side_contact(d.rear,record.entity.position)) then
@@ -320,7 +349,8 @@ finish_accessory=function(d)
  end
  local real,reason=I.revive(d,record.entity)
  if not real then
-  if reason=="materials" then d.refill_mode="accessories";W.home(d,"refill")
+  if reason=="materials" then
+   if moving then job.retry=game.tick+300 else d.refill_mode="accessories";W.home(d,"refill") end
   else job.retry=game.tick+1800;d.state="accessories" end
   return
  end
@@ -335,14 +365,48 @@ finish_accessory=function(d)
  local exit=native_exit(d,false)
  if not exit.found_path then W.block(d,"no-path","return") end
 end
+local function pass_accessory(d)
+ local chosen
+ for id,job in pairs(d.pending) do
+  local record=storage.ct.ghosts[id]
+  if record and record.entity.valid and job.rail.valid and (not job.retry or game.tick>=job.retry) and
+   (not storage.ct.claims[id] or storage.ct.claims[id]==d.id) and
+   (G.side_contact(d.head,record.entity.position) or G.side_contact(d.rear,record.entity.position)) and (not chosen or id<chosen) then chosen=id end
+ end
+ if not chosen then return end
+ local state,accessory=d.state,d.accessory
+ claim(d,chosen);d.accessory=chosen
+ local missing=d.missing
+ finish_accessory(d,true)
+ if d.state==state or d.state=="accessories" then d.state=state;d.accessory=accessory;d.missing=missing end
+end
+function W.motion(d)
+ if not (d.enabled and d.auto_controlled and d.state=="travelling" and
+  (d.arrival=="build" or d.arrival=="accessory") and F.valid(d)) then return end
+ local t=train(d)
+ if t.manual_mode or #t.passengers>0 then W.pause(d);return end
+ if W.fleet_limit(d) then return end
+ if d.arrival=="build" and d.anchor and d.anchor.valid then
+  local joint=d.anchor.get_rail_end(d.direction).location.position
+  if math.min(G.distance(d.head.position,joint),G.distance(d.rear.position,joint))<144 then
+   if math.abs(t.speed)>C.work_speed then t.speed=t.speed<0 and -C.work_speed or C.work_speed end
+   if t.speed~=0 and (G.rail_contact(d.head,joint) or G.rail_contact(d.rear,joint)) and next_ghost(d,d.anchor,d.direction) then build(d) end
+  end
+ end
+end
 function W.tick(d)
  if d.pending_removal then F.withdraw(d,d.refund);return end
+ if W.fleet_limit(d) then return end
  if not F.valid(d) then d.state="damaged";d.enabled=false;F.release_claims(d);return end
  local t=train(d);d.train_id=t.id
  if #t.passengers>0 then if d.enabled then W.pause(d) end;return end
  if not d.enabled then return end
  if d.auto_controlled==nil then d.auto_controlled=d.state=="travelling" or d.state=="build" or d.state=="accessory" or d.state=="accessories" end
  if d.auto_controlled and t.manual_mode then W.pause(d);return end
+ if d.auto_controlled and t.speed~=0 and (d.state=="build" or (d.state=="travelling" and (d.arrival=="build" or d.arrival=="accessory"))) then
+  pass_accessory(d)
+  if d.state~="travelling" and d.state~="build" then return end
+ end
  if blocked_states[d.state] then
   if not d.retry_at then W.block(d,d.state,d.message) end
   if game.tick>=d.retry_at then

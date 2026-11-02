@@ -2,6 +2,7 @@ local Runtime=require("scripts.runtime")
 script.on_init(Runtime.initialize)
 script.on_configuration_changed(Runtime.initialize)
 script.on_nth_tick(10,Runtime.tick)
+script.on_nth_tick(1,Runtime.motion)
 script.on_event({defines.events.on_built_entity,defines.events.on_robot_built_entity,
  defines.events.script_raised_built,defines.events.script_raised_revive,defines.events.on_entity_cloned},Runtime.on_built)
 script.on_event({defines.events.on_player_mined_entity,defines.events.on_robot_mined_entity,

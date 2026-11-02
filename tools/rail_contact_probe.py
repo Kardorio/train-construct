@@ -8,7 +8,8 @@ import subprocess
 import tempfile
 
 ROOT = Path(__file__).resolve().parents[1]
-BINARY = Path(os.environ.get("FACTORIO_BIN", Path.home()/".steam/steam/steamapps/common/Factorio/bin/x64/factorio"))
+from factorio_test_engine import executable
+BINARY = executable()
 
 def main():
     logs = []
@@ -29,7 +30,7 @@ def main():
             (work/"mods"/"mod-list.json").write_text(json.dumps({"mods":[{"name":"base","enabled":True},{"name":"ct-contact-probe","enabled":True}]+[{"name":n,"enabled":False} for n in ("space-age","quality","elevated-rails","recycler")]}))
             config = work/"config.ini"
             config.write_text(f"[path]\nread-data={BINARY.parents[2]/'data'}\nwrite-data={write}\n[other]\ncheck-updates=false\n")
-            base = [str(BINARY),"--config",str(config),"--mod-directory",str(work/"mods"),"--disable-audio"]
+            base = [str(BINARY),"--config",str(config),"--mod-directory",str(work/"mods")]
             case_logs = []
             try:
                 for arguments in (["--create",str(work/"probe.zip")],["--benchmark",str(work/"probe.zip"),"--benchmark-ticks","18001","--benchmark-runs","1"]):

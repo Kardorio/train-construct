@@ -3,7 +3,8 @@
 import hashlib,json,os,shutil,subprocess,sys,tempfile
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
-BINARY=Path(os.environ.get("FACTORIO_BIN",Path.home()/".steam/steam/steamapps/common/Factorio/bin/x64/factorio"))
+from factorio_test_engine import executable
+BINARY=executable()
 def main():
     save=Path(sys.argv[1]).resolve()
     original=hashlib.sha256(save.read_bytes()).hexdigest()
@@ -20,14 +21,16 @@ def main():
         for name in ("scripts","prototypes","locale"):shutil.copytree(ROOT/name,mod/name)
         if "--baseline" in sys.argv:
             p=mod/"prototypes/entities.lua";p.write_text(p.read_text().replace('locomotive.max_power = "2400kW"','locomotive.max_power = "600kW"').replace('locomotive.braking_force = 40','locomotive.braking_force = 10'))
-        with (mod/"control.lua").open("a") as stream:stream.write("\nlocal CT_IGNORE_SIGNALS="+str("--without-signals" in sys.argv).lower()+"\n"+(ROOT/"tools/probes/debug-save.lua").read_text())
+        probe=next((arg.split("=",1)[1] for arg in sys.argv if arg.startswith("--probe=")),"debug-save.lua")
+        assert Path(probe).name==probe
+        with (mod/"control.lua").open("a") as stream:stream.write("\nlocal CT_IGNORE_SIGNALS="+str("--without-signals" in sys.argv).lower()+"\n"+(ROOT/"tools/probes"/probe).read_text())
         config=work/"config.ini";config.write_text(f"[path]\nread-data={BINARY.parents[2]/'data'}\nwrite-data={write}\n[other]\ncheck-updates=false\n")
         ticks=next((arg.split("=",1)[1] for arg in sys.argv if arg.startswith("--ticks=")),"9000")
-        result=subprocess.run([str(BINARY),"--config",str(config),"--mod-directory",str(mods),"--disable-audio","--benchmark",str(save),"--benchmark-ticks",ticks,"--benchmark-runs","1"],stdout=subprocess.PIPE,stderr=subprocess.STDOUT,text=True,timeout=180)
+        result=subprocess.run([str(BINARY),"--config",str(config),"--mod-directory",str(mods),"--benchmark",str(save),"--benchmark-ticks",ticks,"--benchmark-runs","1"],stdout=subprocess.PIPE,stderr=subprocess.STDOUT,text=True,timeout=180)
         report=next((arg.split("=",1)[1] for arg in sys.argv if arg.startswith("--report=")),"debug-save-results.txt")
         assert Path(report).name==report
         target=ROOT/"docs"/report;target.write_text(result.stdout)
-        print("\n".join(line for line in result.stdout.splitlines() if "CT_DEBUG" in line and ("PROGRESS" in line or "HOME" in line or "SIGNALS" in line))[-6000:],flush=True)
+        print("\n".join(line for line in result.stdout.splitlines() if "CT_TRAFFIC" in line or ("CT_DEBUG" in line and ("PROGRESS" in line or "HOME" in line or "SIGNALS" in line)))[-6000:],flush=True)
         if result.returncode:raise RuntimeError(result.stdout[-8000:])
         assert hashlib.sha256(save.read_bytes()).hexdigest()==original,"Original save was modified"
         if "--verify" in sys.argv:

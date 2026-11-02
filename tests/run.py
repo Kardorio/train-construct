@@ -36,7 +36,13 @@ def main():
         if result:raise RuntimeError(library.lua_tolstring(state,-1,None).decode())
     finally:library.lua_close(state)
     print("Syntaxe Lua/Python et métadonnées : OK",flush=True)
+    subprocess.run([sys.executable,str(ROOT/"tests/test_launcher.py")],check=True)
     if "--lint" not in sys.argv:
         subprocess.run([sys.executable,str(ROOT/"tests/regressions.py")],check=True)
         subprocess.run([sys.executable,str(ROOT/"tests/engine.py")],check=True)
+        for scenario in ("engine-north","engine-stop","singleton"):
+            subprocess.run([sys.executable,str(ROOT/"tests/engine.py"),"--scenario",scenario],check=True)
+        subprocess.run([sys.executable,str(ROOT/"tools/compare_motion.py")],check=True)
+        for mutation in ("unpaired-signal","wrong-signal-pair"):
+            subprocess.run([sys.executable,str(ROOT/"tests/engine.py"),"--scenario","engine-stop","--mutation",mutation],check=True)
 if __name__=="__main__":main()

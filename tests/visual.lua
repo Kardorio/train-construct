@@ -84,9 +84,17 @@ script.on_event(defines.events.on_tick,function(event)
   local invalid=surface.create_entity{name="ct-construction-depot",position={46,0},force=player.force}
   local rejected=Runtime.on_built{entity=invalid}
   check(not rejected and not invalid.valid,"incomplete neighboring lane rejected before train generation")
+  local refund=0
+  for _,item in pairs(surface.find_entities_filtered{position={46,0},radius=3,type="item-entity"}) do
+   if item.stack.name=="ct-construction-depot" then refund=refund+item.stack.count;item.destroy() end
+  end
+  check(refund==1,"scripted rejected placement refunds exactly one building")
   check(#surface.find_entities_filtered{name="ct-construction-locomotive"}==2,"invalid lane leaves no extra locomotive")
   local entity=surface.create_entity{name="ct-construction-depot",position={6,30},force=player.force}
+  local conflict=Runtime.factory.conflict
+  Runtime.factory.conflict=function() return false end
   local other=Runtime.on_built{entity=entity}
+  Runtime.factory.conflict=conflict
   check(other~=nil,"second actual machine for withdrawal guards")
   Runtime.worker.pause(other)
   other.rear.disconnect_rolling_stock(defines.rail_direction.front)

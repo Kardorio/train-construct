@@ -1,0 +1,37 @@
+{
+  "moving_south": {
+    "tick": 3720,
+    "built": 55,
+    "refills": 2,
+    "train": 13,
+    "moving_rails": 52,
+    "moving_accessories": 3,
+    "moving_signals": 2,
+    "stopped": false,
+    "north": false
+  },
+  "moving_north": {
+    "tick": 3750,
+    "built": 55,
+    "refills": 2,
+    "train": 13,
+    "moving_rails": 52,
+    "moving_accessories": 3,
+    "moving_signals": 2,
+    "stopped": false,
+    "north": true
+  },
+  "stopped_south": {
+    "tick": 5220,
+    "built": 55,
+    "refills": 2,
+    "train": 13,
+    "moving_rails": 0,
+    "moving_accessories": 3,
+    "moving_signals": 2,
+    "stopped": true,
+    "north": false
+  },
+  "time_reduction_percent": 28.74,
+  "scope": "Boucle native de 52 rails et trois accessoires, deux ravitaillements et interruptions manuelles de sécurité. Le témoin conserve la pose mobile des accessoires mais arrête le train pour chaque rail. Ces mesures ne qualifient pas tous les réseaux."
+}

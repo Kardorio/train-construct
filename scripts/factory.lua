@@ -3,9 +3,16 @@ local R=require("scripts.registry")
 local I=require("scripts.inventory")
 local G=require("scripts.geometry")
 local F={}
+function F.conflict(depot)
+ for id,other in pairs(storage.ct.depots) do
+  if id~=depot.id and other.force_index==depot.force_index and other.surface_index==depot.surface_index then return true end
+ end
+ return false
+end
 function F.create(entity)
  local state=storage.ct;local id=entity.unit_number
  if state.depots[id] then return state.depots[id] end
+ if F.conflict{id=id,force_index=entity.force.index,surface_index=entity.surface.index} then return nil,"fleet-limit" end
  local position=entity.position
  local candidates=entity.surface.find_entities_filtered{area={{position.x-8,position.y-2},{position.x-3,position.y+2}},type="straight-rail",force=entity.force}
  table.sort(candidates,function(a,b) return G.distance(a.position,position)<G.distance(b.position,position) end)

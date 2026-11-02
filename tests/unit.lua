@@ -53,7 +53,7 @@ back.passengers={}
 assert(F.withdraw(d,false))
 assert(drops==0,"Native mining must suppress the queued scripted refund")
 defines={rail_direction={front=0,back=1},rail_connection_direction={straight=0,left=1,right=2}}
-package.loaded["scripts.factory"]={home_goals=function() return {} end,valid=function() return true end,release_claims=function(depot)
+package.loaded["scripts.factory"]={conflict=function() return false end,home_goals=function() return {} end,valid=function() return true end,release_claims=function(depot)
  for id,owner in pairs(storage.ct.claims) do if owner==depot.id then storage.ct.claims[id]=nil end end
 end}
 package.loaded["scripts.worker"]=nil
@@ -251,4 +251,47 @@ do
  W.tick(d)
  assert(revived and not d.pending[303],"Released accessory slept until an unrelated retry deadline")
  print("CT_UNIT SUCCESS: local routes, immediate contact and deferred waiting")
+end
+
+do
+ reset()
+ defines.inventory={cargo_wagon=1}
+ local inventory=assert(loadfile("scripts/inventory.lua"))()
+ local counts={rail=200}
+ local cargo={get_item_count=function(item) return counts[type(item)=="table" and item.name or item] or 0 end}
+ prototypes={item={coal={fuel_value=4000000},rail={localised_name="Rail"},["rail-signal"]={localised_name="Signal"}}}
+ local loco={valid=true,burner={remaining_burning_fuel=0},get_fuel_inventory=function() return {} end}
+ local depot={wagon={valid=true,get_inventory=function() return cargo end},head=loco,rear=loco,fuel_target=0,targets={rail=200,["rail-signal"]=2}}
+ assert(not inventory.ready(depot),"Initial loading ignored configured accessories")
+ depot.refill_mode="rails"
+ assert(inventory.ready(depot),"Rail refill waited for optional accessories")
+ depot.refill_mode="accessories";depot.missing={name="rail-signal",quality="normal",count=2}
+ assert(not inventory.ready(depot),"Accessory refill ignored its required material")
+ counts.rail=0;counts["rail-signal"]=2
+ assert(inventory.ready(depot),"Accessory refill waited for unrelated rails")
+ for _,state in ipairs{"travelling","build"} do
+  local t={id=1,manual_mode=true,passengers={},speed=.1}
+  local d={id=1,enabled=true,auto_controlled=true,state=state,arrival="build",head={valid=true,train=t}}
+  W.motion(d)
+  if state=="travelling" then assert(d.state=="paused" and not d.enabled,"Moving worker ignored manual takeover") end
+ end
+ print("CT_UNIT SUCCESS: phase-specific refill and manual takeover before moving construction")
+end
+
+do
+ reset()
+ local t={id=1,manual_mode=false,passengers={},speed=.5}
+ local head={valid=true,train=t,position={x=0,y=10},orientation=0}
+ local rear={valid=true,position={x=0,y=20},orientation=0}
+ local anchor={valid=true,get_rail_end=function() return {location={position={x=0,y=0}}} end}
+ local d={id=1,enabled=true,auto_controlled=true,state="travelling",arrival="build",head=head,rear=rear,anchor=anchor,direction=0}
+ W.motion(d)
+ assert(t.speed==C.work_speed,"Forward work speed was not capped")
+ t.speed=-.5;W.motion(d)
+ assert(t.speed==-C.work_speed,"Backward work speed was not capped")
+ t.speed=0;W.motion(d)
+ assert(t.speed==0 and t.schedule==nil,"Moving construction restarted a stopped native train")
+ head.position.y=100;rear.position.y=110;t.speed=.5;W.motion(d)
+ assert(t.speed==.5,"Transit speed was capped away from the work front")
+ print("CT_UNIT SUCCESS: work cap only reduces speed and preserves native stops")
 end

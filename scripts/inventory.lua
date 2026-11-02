@@ -128,7 +128,9 @@ function I.ready(depot)
  end
  for name,count in pairs(depot.targets) do
   local deficit=count-cargo.get_item_count{name=name,quality="normal"}
-  if deficit>0 then return false,{"ct.missing",prototypes.item[name].localised_name,"normal",deficit} end
+  if deficit>0 and (not depot.refill_mode or (depot.refill_mode=="rails" and name=="rail")) then
+   return false,{"ct.missing",prototypes.item[name].localised_name,"normal",deficit}
+  end
  end
  for index,loco in ipairs{depot.head,depot.rear} do
   local deficit=fuel_goal(depot)-I.fuel_energy(loco)

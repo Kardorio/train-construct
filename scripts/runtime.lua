@@ -21,12 +21,14 @@ function Runtime.on_built(event)
    local position,surface=entity.position,entity.surface
    local refund={name=C.depot,count=1,quality=entity.quality.name}
    local player=event.player_index and game.get_player(event.player_index)
-   if player then player.print({"ct.invalid-placement"}) end
+   if player then player.print({reason=="fleet-limit" and "ct.fleet-limit" or "ct.invalid-placement"}) end
    if event.robot and event.robot.valid then
     local cargo=event.robot.get_inventory(defines.inventory.robot_cargo)
     if cargo.insert(refund)==0 then surface.spill_item_stack{position=position,stack=refund,allow_belts=false} end
    elseif player then
     if player.insert(refund)==0 then surface.spill_item_stack{position=position,stack=refund,allow_belts=false} end
+   else
+    surface.spill_item_stack{position=position,stack=refund,allow_belts=false}
    end
    entity.destroy()
    return nil,reason
@@ -68,6 +70,9 @@ function Runtime.tick()
   storage.ct.worker_cursor=cursor
  end
  if game.tick%30==0 then for _,player in pairs(game.connected_players) do Gui.update(player) end end
+end
+function Runtime.motion()
+ for _,depot in pairs(storage.ct.depots) do W.motion(depot) end
 end
 function Runtime.gui_opened(event)
  local entity=event.entity

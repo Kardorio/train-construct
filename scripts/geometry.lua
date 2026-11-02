@@ -37,4 +37,24 @@ function G.find_end(rail, location)
  end
 end
 function G.distance(a,b) return (a.x-b.x)^2+(a.y-b.y)^2 end
+function G.paired_signal(rail,signal,force)
+ for _,direction in ipairs{defines.rail_direction.front,defines.rail_direction.back} do
+  local ending=rail.get_rail_end(direction)
+  local outgoing={ending.out_signal_location,ending.alternative_out_signal_location}
+  local incoming={ending.in_signal_location,ending.alternative_in_signal_location}
+  for _,pair in ipairs{{outgoing,incoming},{incoming,outgoing}} do
+   for _,spot in ipairs(pair[1]) do
+    if signal.direction==spot.direction and G.same(signal.position,spot.position) then
+     for _,opposite in ipairs(pair[2]) do
+      for _,real in pairs(rail.surface.find_entities_filtered{position=opposite.position,type={"rail-signal","rail-chain-signal"},force=force}) do
+       if real.direction==opposite.direction and G.same(real.position,opposite.position) then return true end
+      end
+     end
+     return false
+    end
+   end
+  end
+ end
+ return false
+end
 return G
