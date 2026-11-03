@@ -1,0 +1,9 @@
+Use case: stylized-concept.
+Asset type: sprite RGBA d'un stock enfant de dépôt Factorio.
+Référence : bâtiment industriel de depot-faithful-study.png ; reprendre exactement ses matériaux, son jaune ocre patiné, son acier charbon, ses rivets et son niveau de détail.
+
+Créer un seul bloc de stockage industriel indépendant, compact et carré, isolé sur fond réellement transparent. C'est un grand coffre ferroviaire d'environ trois cases au sol et une case et demie de haut : caisson lourd d'acier riveté, panneaux jaune chantier patinés, couvercle mécanique fermé en quatre panneaux identiques autour d'une trappe centrale, quatre coins renforcés, petites poignées et grilles. Les quatre côtés sont identiques, pour que ce coffre symétrique garde le même aspect lorsqu'on le tourne de 90 degrés dans le plan du sol. Aucun symbole orienté, aucune inscription ni flèche. Pas de rails ou de wagons.
+
+Caméra fixe orthographique plongeante de Factorio, lumière douce du haut gauche, cohérente avec la référence. Montrer le volume et les faces avant, sans perspective de fuite. Une petite embase carrée de béton sale ou d'acier peut entourer le caisson, sans dépasser beaucoup son empreinte. L'ensemble garde les mêmes détails et la même finition que le bâtiment de référence, pas de style jouet, pas d'objet low poly ni cube propre.
+
+Cadrage carré avec marge transparente, objet centré horizontalement, base du caisson dans la partie inférieure et totalité du couvercle visible. Aucun arrière-plan, aucun sol extérieur, aucun second objet, aucun bras, aucun personnage, aucun texte, aucune interface, aucun contour coloré ni frange rouge. Surfaces entièrement opaques ; alpha uniquement autour de l'objet et dans les interstices.

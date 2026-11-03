@@ -10,7 +10,12 @@ function Runtime.initialize()
  R.initialize()
  storage.ct.path_budget=1
  for _,depot in pairs(storage.ct.depots) do
-  if depot.entity and depot.entity.valid and depot.entity.name==C.module then depot.entity.rotatable=false end
+  if depot.entity and depot.entity.valid and depot.entity.name==C.module then
+   depot.entity.rotatable=false
+   if depot.stock and depot.stock.valid then depot.stock.direction=depot.entity.direction end
+   D.clear_decor(depot)
+   D.ensure_barriers(depot)
+  end
   if depot.entity and depot.entity.valid and depot.bot_enabled then R.technical(depot.force_index) end
  end
 end

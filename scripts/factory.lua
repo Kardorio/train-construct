@@ -99,7 +99,8 @@ function F.create(entity)
   entity.proxy_target_entity=layout.stock
   entity.proxy_target_inventory=defines.inventory.chest
   entity.rotatable=false
-  D.decorate(layout,entity.surface);depot.decor=layout.decor
+  depot.decor={}
+  D.ensure_barriers(depot)
  end
  head.train.manual_mode=true
  R.policy(depot,true)
@@ -199,6 +200,7 @@ function F.withdraw(depot,refund,origin)
  if depot.stock and depot.stock.valid then storage.ct.components[depot.stock.unit_number]=nil;depot.stock.destroy() end
  for _,rail in ipairs(depot.rails or {}) do if rail.valid then storage.ct.components[rail.unit_number]=nil;rail.destroy() end end
  D.clear_decor(depot)
+ D.clear_barriers(depot)
  if depot.entity and depot.entity.valid then depot.entity.destroy() end
  if depot.refund then surface.spill_item_stack{position=depot.position,stack={name=C.depot,count=1,quality=depot.quality},allow_belts=false} end
  if depot.recovery.valid then depot.recovery.destroy() end

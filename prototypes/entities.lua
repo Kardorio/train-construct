@@ -1,3 +1,4 @@
+local Graphics=require("prototypes.depot-graphics")
 local depot = table.deepcopy(data.raw.container["steel-chest"])
 depot.name = "ct-construction-depot"
 depot.icon = "__base__/graphics/icons/train-stop.png"
@@ -20,6 +21,19 @@ stock.name="ct-depot-stock"
 stock.minable=nil
 stock.placeable_by=nil
 stock.flags={"placeable-player","player-creation","not-blueprintable","not-deconstructable","not-rotatable"}
+local empty={filename="__core__/graphics/empty.png",width=1,height=1}
+stock.picture={north=empty,east=empty,south=empty,west=empty}
+stock.selectable_in_game=false
+stock.hidden_in_factoriopedia=true
+stock.direction_count=4
+-- L'emprise logistique s'allonge sans déplacer l'inventaire des sauvegardes.
+stock.tile_width=3;stock.tile_height=3
+stock.collision_box={{-1.3,-15.3},{1.3,15.3}}
+stock.selection_box={{-1.5,-15.5},{1.5,15.5}}
+if stock.circuit_connector then
+ local connector=stock.circuit_connector[1]
+ stock.circuit_connector={table.deepcopy(connector),table.deepcopy(connector),table.deepcopy(connector),table.deepcopy(connector)}
+end
 local module=table.deepcopy(depot)
 module.type="proxy-container"
 module.name="ct-construction-module"
@@ -34,14 +48,30 @@ module.tile_width=12;module.tile_height=32;module.build_grid_size=2
 module.direction_count=4;module.inventory_size=nil;module.inventory_type=nil
 module.circuit_connector=nil;module.circuit_wire_max_distance=0
 module.next_upgrade=nil;module.fast_replaceable_group=nil
-local empty={filename="__core__/graphics/empty.png",width=1,height=1}
-module.picture={north=empty,east=empty,south=empty,west=empty}
+module.picture=Graphics.depot()
+module.integration_patch=Graphics.floor()
+module.integration_patch_render_layer="ground-layer-1"
 local rail=table.deepcopy(data.raw["straight-rail"]["straight-rail"])
 rail.name="ct-depot-rail";rail.minable=nil;rail.next_upgrade=nil;rail.fast_replaceable_group=nil
 rail.selectable_in_game=false;rail.hidden_in_factoriopedia=true
 rail.flags={"not-blueprintable","not-deconstructable","not-upgradable","no-copy-paste"}
+for _,picture in pairs(rail.pictures) do
+ if type(picture)=="table" then picture.stone_path=nil;picture.stone_path_background=nil end
+end
 local connector=table.deepcopy(rail)
 connector.name="ct-depot-connector";connector.selectable_in_game=true
+local barriers={}
+for _,horizontal in ipairs{false,true} do
+ for _,side in ipairs{"workshop","walkway"} do
+  local width=side=="workshop" and 5 or 2
+  barriers[#barriers+1]={type="simple-entity-with-owner",name="ct-depot-barrier-"..side..(horizontal and "-horizontal" or "-vertical"),
+   flags={"not-blueprintable","not-deconstructable","not-on-map"},
+   collision_box=horizontal and {{-16,-width/2},{16,width/2}} or {{-width/2,-16},{width/2,16}},
+   collision_mask={layers={object=true}},selectable_in_game=false,hidden_in_factoriopedia=true,
+   picture=table.deepcopy(empty),max_health=100}
+ end
+end
+data:extend(barriers)
 local locomotive = table.deepcopy(data.raw.locomotive.locomotive)
 locomotive.name = "ct-construction-locomotive"
 locomotive.minable = nil

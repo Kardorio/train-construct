@@ -79,6 +79,13 @@ local function setup()
  assert(foreign.valid,"Rejected module removed the existing train")
  for _,rail in ipairs(old_track) do assert(rail.valid);rail.destroy() end
  foreign.destroy()
+ for _,name in ipairs{"stone-furnace","train-stop"} do
+  local obstructing=assert(surface.create_entity{name=name,position=offset({x=151,y=151},0,3),direction=heading,force="player"})
+  local blocked_module=surface.create_entity{name=C.module,position={150,150},direction=heading,force="player"}
+  local blocked_result=Runtime.on_built{entity=blocked_module}
+  assert(not blocked_result and not blocked_module.valid and obstructing.valid,"Module overlapped or removed an existing workshop obstruction: "..name)
+  obstructing.destroy()
+ end
  for _,item in pairs(surface.find_entities_filtered{type="item-entity"}) do item.destroy() end
  assert(#surface.find_entities_filtered{name={C.rail,C.connector,C.stock,C.locomotive,C.wagon,C.stop}}==0,"Rejected terrain or occupancy left module components")
  -- 002-AC8: the principal is naturally rotatable before its components are generated.
@@ -97,8 +104,31 @@ local function setup()
  assert(not entity.rotatable and not entity.rotate(),"Placed module rotated without its components")
  assert(d.head.orientation==heading/16 and d.rear.orientation==((heading+8)%16)/16)
  assert(d.stop.direction==heading and d.stock.valid and F.at_home(d))
+ assert(#d.barriers==2,"Workshop collision barriers are missing")
+ for _,along in ipairs{-15,-8,8,15} do for _,across in ipairs{-2.5,2.5} do
+  assert(not surface.can_place_entity{name="stone-furnace",position=offset(d.wagon.position,along,across),force="player"},"Machine can be placed over the workshop or walkway")
+ end end
  assert(entity.proxy_target_entity==d.stock and entity.proxy_target_inventory==defines.inventory.chest,"Module proxy does not target its stock")
  assert(entity.get_inventory(defines.inventory.proxy_main)==I.stock(d) and #entity.get_inventory(defines.inventory.proxy_main)==100,"Module principal does not expose the real stock")
+ assert(not d.stock.prototype.selectable_in_game,"Integrated stock remains separately selectable")
+ assert(#d.decor==0,"New module still creates prototype floor decorations")
+ local stock=d.stock;local train_id=d.head.train.id
+ I.stock(d).insert{name="iron-plate",count=17}
+ local floor=rendering.draw_rectangle{color={r=0.15,g=0.16,b=0.18,a=0.35},filled=true,left_top={-3,-16},right_bottom={9,16},surface=surface}
+ local border=rendering.draw_rectangle{color={r=1,g=0.7,b=0.1},filled=false,left_top={-3,-16},right_bottom={9,16},surface=surface}
+ d.decor={floor,border}
+ for _,barrier in ipairs(d.barriers) do barrier.destroy() end
+ d.barriers=nil
+ local existing=assert(surface.create_entity{name="stone-furnace",position=offset(d.wagon.position,-8,2.5),force="player"})
+ existing.get_fuel_inventory().insert{name="coal",count=7}
+ d.stock.direction=0
+ Runtime.initialize();Runtime.initialize()
+ assert(#d.barriers==2 and d.barriers[1].valid and d.barriers[2].valid,"Existing module did not receive its collision barriers")
+ assert(existing.valid and existing.get_fuel_inventory().get_item_count("coal")==7,"Collision migration removed an existing player machine")
+ existing.destroy()
+ assert(d.stock.direction==heading,"Existing stock did not follow its module orientation")
+ assert(not floor.valid and not border.valid and #d.decor==0,"Existing module retained obsolete floor decorations")
+ assert(d.stock==stock and d.head.train.id==train_id and I.stock(d).get_item_count("iron-plate")==17,"Visual migration replaced the machine or lost stock")
  assert(#F.home_goals(d)==2,"Module has no mirrored docking goal")
  if player then
   player.opened=entity;Runtime.gui_opened{entity=entity,player_index=player.index}
@@ -139,7 +169,17 @@ local function setup()
  for _,node in ipairs(route) do Runtime.on_built{entity=node.ghost} end
  d.targets={rail=7,["rail-signal"]=0,["rail-chain-signal"]=0,["train-stop"]=0};d.fuel_target=10
  I.stock(d).insert{name="rail",count=500};I.stock(d).insert{name="coal",count=100}
- storage.ct_module_test={id=d.id,train=d.head.train.id,route=route,backbone=backbone,center=center,player=player and player.index,moving=0,phase="mission"}
+ local inputs={}
+ for _,along in ipairs{-10,10} do
+  local source=assert(surface.create_entity{name="steel-chest",position=offset(d.stock.position,along,3),force="player"})
+  local placement={name="burner-inserter",position=offset(d.stock.position,along,2),direction=(heading+4)%16,force="player"}
+  assert(surface.can_place_entity(placement),"Loading inserter collides with the workshop stock")
+  local inserter=assert(surface.create_entity(placement))
+  source.insert{name="iron-plate",count=1};inserter.get_fuel_inventory().insert{name="coal",count=5}
+  inputs[#inputs+1]={source=source,inserter=inserter}
+ end
+ Runtime.worker.pause(d)
+ storage.ct_module_test={id=d.id,train=d.head.train.id,route=route,backbone=backbone,center=center,player=player and player.index,moving=0,phase="stock-input",inputs=inputs,input_deadline=game.tick+600}
  log("CT_TEST module-generated "..helpers.table_to_json{heading=heading,rails=#d.rails,train=d.head.train.id,stock=d.stock.position})
 end
 script.on_event(defines.events.on_tick,function(event)
@@ -150,7 +190,18 @@ script.on_event(defines.events.on_tick,function(event)
  assert(d.head.valid and d.head.train.id==test.train,"Module machine changed across the mission")
  if test.phase~="damage-stop" then assert(F.valid(d),"Module components disappeared before the damage test") end
  local t=d.head.train
- if test.phase=="mission" then
+ if test.phase=="stock-input" then
+  assert(game.tick<test.input_deadline,"Inserters cannot supply the stock along the building perimeter")
+  local supplied=true
+  for _,input in ipairs(test.inputs) do
+   if input.source.get_item_count("iron-plate")>0 or input.inserter.held_stack.valid_for_read then supplied=false end
+  end
+  if supplied and I.stock(d).get_item_count("iron-plate")==19 then
+   for _,input in ipairs(test.inputs) do input.source.destroy();input.inserter.destroy() end
+   test.inputs=nil
+   Runtime.worker.start(d);test.phase="mission"
+  end
+ elseif test.phase=="mission" then
   if d.arrival=="refill" and not test.expanded then test.expanded=true;d.targets.rail=200 end
   if (d.refills or 0)>0 and not test.checkpoint then test.checkpoint=true;game.auto_save("ct-midmission") end
   local remaining=0;for _,node in ipairs(test.route) do if node.ghost.valid then remaining=remaining+1 end end
@@ -189,8 +240,10 @@ script.on_event(defines.events.on_tick,function(event)
   for _,loco in ipairs{d.head,d.rear} do count(loco.get_fuel_inventory());count(loco.get_burnt_result_inventory()) end
   expected[C.depot.."|normal"]=1
   local owned=d.rails;local stock=d.stock;local module=d.entity;local site=module.position;test.site=site
+  local barriers=d.barriers
   assert(F.withdraw(d,true),"Module recovery never completed")
   assert(not stock.valid and not module.valid and not d.head.valid and not d.rear.valid and not d.stop.valid)
+  for _,barrier in ipairs(barriers) do assert(not barrier.valid,"Module recovery left a collision barrier") end
   for _,rail in ipairs(owned) do assert(not rail.valid,"Module recovery left an owned rail") end
   for _,rail in ipairs(test.backbone) do assert(rail.valid,"Module recovery destroyed the player's connection") end
   local actual={}

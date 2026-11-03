@@ -39,6 +39,7 @@ def main():
     subprocess.run([sys.executable,str(ROOT/"tests/test_launcher.py")],check=True)
     if "--lint" not in sys.argv:
         subprocess.run([sys.executable,str(ROOT/"tests/regressions.py")],check=True)
+        subprocess.run([sys.executable,str(ROOT/"tests/graphics.py")],check=True)
         subprocess.run([sys.executable,str(ROOT/"tests/engine.py")],check=True)
         for scenario in ("engine-north","engine-stop","singleton","module-north","module-east","module-south","module-west"):
             subprocess.run([sys.executable,str(ROOT/"tests/engine.py"),"--scenario",scenario],check=True)

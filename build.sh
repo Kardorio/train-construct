@@ -9,6 +9,16 @@ case "${1:-}" in
    else python3 tests/run.py
    fi
    ;;
- lint) bash -n build.sh; python3 tests/run.py --lint ;;
- *) echo 'Usage: ./build.sh {test|lint|package|devlink|unlink|clean}'; [[ $# -eq 0 ]] ;;
+ lint) bash -n build.sh tools/art_setup.sh tools/art.sh tools/art_preview.sh; python3 tests/run.py --lint ;;
+ art-setup) bash tools/art_setup.sh ;;
+ art-experiment) bash tools/art.sh "${@:2}" ;;
+ sprites-preview)
+   python3 tools/art/make_preview.py
+   bash tools/art_preview.sh
+   ;;
+ sprites-check)
+   python3 tools/art/prepare_sprites.py --check
+   python3 tests/graphics.py
+   ;;
+ *) echo 'Usage: ./build.sh {test|lint|package|devlink|unlink|clean|art-setup|art-experiment|sprites-check|sprites-preview}'; [[ $# -eq 0 ]] ;;
 esac

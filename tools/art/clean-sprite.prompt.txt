@@ -1,0 +1,4 @@
+Use case: background-extraction.
+Retouche technique extrêmement ciblée du sprite fourni. Conserver strictement le bâtiment, tous ses détails, toutes ses couleurs, son orientation, son cadrage et son échelle. Ne pas redessiner le bâtiment, ne pas ajouter d'objets, ne pas déplacer les éléments, ne pas réinterpréter sa perspective.
+
+Corriger uniquement le détourage : de petits pixels rouge vif presque pur (#ff0000), étrangers au bâtiment, longent certains contours extérieurs. Supprimer ces franges rouges et rendre ces pixels transparents, avec un bord antialiasé propre. Préserver les vrais feux rouges des signaux à l'intérieur de l'atelier. Le fond extérieur et tout le couloir entre les deux bandes restent réellement transparents, sans nouveau halo, sans fond blanc ou noir opaque. Garder les surfaces du bâtiment opaques. Ne pas changer les dimensions de l'image ni son rapport d'aspect.

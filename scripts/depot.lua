@@ -12,6 +12,31 @@ function D.rollback(layout)
 end
 function D.clear_decor(depot)
  for _,object in ipairs(depot.decor or {}) do if object.valid then object.destroy() end end
+ depot.decor={}
+end
+local function barriers(entity,center,frame)
+ local result={}
+ for _,side in ipairs{"workshop","walkway"} do
+  result[#result+1]={name="ct-depot-barrier-"..side..(frame.direction%8==4 and "-horizontal" or "-vertical"),
+   position=G.offset(center,frame,0,side=="workshop" and 4 or -3),force=entity.force}
+ end
+ return result
+end
+function D.ensure_barriers(depot)
+ local entity=depot.entity
+ if not (entity and entity.valid and entity.name==C.module) then return end
+ depot.barriers=depot.barriers or {}
+ for i,definition in ipairs(barriers(entity,depot.position,G.frame(entity.direction))) do
+  if not (depot.barriers[i] and depot.barriers[i].valid) then
+   local barrier=assert(entity.surface.create_entity(definition))
+   barrier.minable_flag=false;barrier.destructible=false
+   depot.barriers[i]=barrier
+  end
+ end
+end
+function D.clear_barriers(depot)
+ for _,barrier in ipairs(depot.barriers or {}) do if barrier.valid then barrier.destroy() end end
+ depot.barriers={}
 end
 function D.prepare(entity)
  local frame=G.frame(entity.direction)
@@ -20,6 +45,17 @@ function D.prepare(entity)
  local layout={center=center,frame=frame,created={},rails={},track={},decor={}}
  local surface,force=entity.surface,entity.force
  if #surface.find_entities_filtered{area=D.area(center,frame),type=vehicles}>0 then return nil,"occupied" end
+ for _,definition in ipairs(barriers(entity,center,frame)) do
+  local box=prototypes.entity[definition.name].collision_box
+  local p=definition.position
+  local area={{p.x+box.left_top.x+C.epsilon,p.y+box.left_top.y+C.epsilon},
+              {p.x+box.right_bottom.x-C.epsilon,p.y+box.right_bottom.y-C.epsilon}}
+  for _,other in pairs(surface.find_entities_filtered{area=area}) do
+   -- Seul l'emplacement exact du quai est vérifié après la création de la voie.
+   local planned_stop=other.type=="train-stop" and G.same(other.position,G.offset(center,frame,10,2))
+   if not planned_stop and other.prototype.collision_mask.layers.object then return nil,"placement" end
+  end
+ end
  local positions,definitions={},{}
  for along=-14,14,2 do
   local position=G.offset(center,frame,along)
@@ -34,7 +70,7 @@ function D.prepare(entity)
    definitions[#definitions+1]=definition
   end
  end
- local stock={name=C.stock,position=G.offset(center,frame,0,6),force=force}
+ local stock={name=C.stock,position=G.offset(center,frame,0,6),direction=frame.direction,force=force}
  if not surface.can_place_entity(stock) then return nil,"placement" end
  for _,definition in ipairs(definitions) do
   local rail=surface.create_entity(definition)
@@ -57,15 +93,6 @@ function D.prepare(entity)
  layout.stock.minable_flag=false
  layout.created[#layout.created+1]=layout.stock
  return layout
-end
-function D.decorate(layout,surface)
- local a,b=G.offset(layout.center,layout.frame,-15,-2),G.offset(layout.center,layout.frame,15,8)
- local left_top={x=math.min(a.x,b.x),y=math.min(a.y,b.y)}
- local right_bottom={x=math.max(a.x,b.x),y=math.max(a.y,b.y)}
- layout.decor={
-  rendering.draw_rectangle{surface=surface,left_top=left_top,right_bottom=right_bottom,color={r=0.2,g=0.25,b=0.28,a=0.35},filled=true,draw_on_ground=true},
-  rendering.draw_rectangle{surface=surface,left_top=left_top,right_bottom=right_bottom,color={r=0.9,g=0.65,b=0.15,a=0.8},filled=false,width=2,draw_on_ground=true}
- }
 end
 function D.foreign_train(depot)
  local track=depot.track or depot.rails
