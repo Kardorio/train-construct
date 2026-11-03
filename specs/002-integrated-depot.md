@@ -1,6 +1,6 @@
 # 002 — Dépôt avec voie traversante intégrée
 
-**Statut** : implémenté et qualifié dans le moteur le 3 novembre 2026 ; contrôle graphique et recette sandbox du nouveau module à effectuer.
+**Statut** : implémenté et qualifié dans le moteur ; recette sandbox validée par Geoffrey le 3 novembre 2026. Le contrôle graphique automatisé reste indisponible.
 **Demandé par** : Geoffrey.
 **Date** : 2026-11-02.
 
@@ -49,6 +49,8 @@ Création de raccords extérieurs, génération de réseau, terrassement, voies 
 **Définition de terminé** : suite moteur sans Steam, pose sur terrain vierge, raccords réels dans les deux sens, retour/ravitaillement, retrait et reprise après sauvegarde vérifiés ; revue sans défaut restant. Le contrôle graphique attend un client autonome et n'autorise aucun repli vers Steam.
 
 **Preuves du 3 novembre 2026** : `./build.sh lint`, `./build.sh test` et `./build.sh test --scenario legacy-upgrade` réussissent. Les quatre orientations terminent les missions, les deux essais de panne et les rechargements ; huit mutations du module sont rejetées. Les revues runtime et tests/documentation ne relèvent aucun défaut restant. `python3 tests/visual.py` s'arrête explicitement faute de client graphique autonome : aucune capture ni interaction graphique du nouveau module n'est déclarée validée.
+
+**Recette utilisateur du 3 novembre 2026** : Geoffrey confirme « all good » après livraison du module pour essai en sandbox. Cette validation ne remplace pas une capture du nouveau bâtiment ni le contrôle graphique automatisé.
 
 ## Questions ouvertes
 
