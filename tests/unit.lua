@@ -53,7 +53,7 @@ back.passengers={}
 assert(F.withdraw(d,false))
 assert(drops==0,"Native mining must suppress the queued scripted refund")
 defines={rail_direction={front=0,back=1},rail_connection_direction={straight=0,left=1,right=2}}
-package.loaded["scripts.factory"]={conflict=function() return false end,home_goals=function() return {} end,valid=function() return true end,release_claims=function(depot)
+package.loaded["scripts.factory"]={damage=F.damage,conflict=function() return false end,home_goals=function() return {} end,valid=function() return true end,release_claims=function(depot)
  for id,owner in pairs(storage.ct.claims) do if owner==depot.id then storage.ct.claims[id]=nil end end
 end}
 package.loaded["scripts.worker"]=nil
@@ -294,4 +294,34 @@ do
  head.position.y=100;rear.position.y=110;t.speed=.5;W.motion(d)
  assert(t.speed==.5,"Transit speed was capped away from the work front")
  print("CT_UNIT SUCCESS: work cap only reduces speed and preserves native stops")
+end
+
+do
+ reset()
+ local depot,front,rear=machine()
+ local composite=require("scripts.depot")
+ local foreign=composite.foreign_train
+ composite.foreign_train=function() return true end
+ front.speed=.1;front.manual_mode=false;rear.manual_mode=false
+ assert(not F.withdraw(depot,true) and front.manual_mode and rear.manual_mode,"Recovery did not stop its own train before waiting for foreign traffic")
+ assert(depot.head.valid and depot.wagon.valid and depot.rear.valid)
+ front.speed=0
+ assert(not F.withdraw(depot,true) and depot.state=="occupied-track","Foreign traffic did not defer rail removal")
+ composite.foreign_train=foreign
+ print("CT_UNIT SUCCESS: withdrawal stops the construction train before waiting for foreign traffic")
+end
+
+do
+ reset()
+ local depot,front,rear=machine()
+ depot.enabled=true;depot.auto_controlled=true;depot.task=77
+ front.manual_mode=false;rear.manual_mode=false;front.speed=.3;rear.speed=.2
+ F.damage(depot)
+ assert(not depot.enabled and not depot.auto_controlled and depot.state=="damaged")
+ assert(front.manual_mode and rear.manual_mode and storage.ct.claims[77]==nil,"Damaged components did not suspend their native trains")
+ assert(front.speed==.3 and rear.speed==.2,"Damage transition forced an unsafe speed change")
+ rear.passengers={{}};rear.manual_mode=false
+ F.damage(depot)
+ assert(not rear.manual_mode,"Damage transition overrode an occupied train")
+ print("CT_UNIT SUCCESS: damaged components suspend all unoccupied native trains")
 end

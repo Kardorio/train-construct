@@ -1,4 +1,5 @@
 
+local I=require("scripts.inventory")
 local function check(value,message)
  assert(value,"CT_VISUAL "..message)
  log("CT_VISUAL PASS "..message)
@@ -29,7 +30,7 @@ script.on_event(defines.events.on_tick,function(event)
   player.teleport({6,3},surface)
   player.cursor_stack.set_stack{name="ct-construction-depot",count=1}
   player.build_from_cursor{position={6,0}}
-  local entity=surface.find_entity("ct-construction-depot",{6,0})
+  local entity=surface.find_entity("ct-construction-module",{6,0})
   check(entity and entity.valid,"native player placement")
   local d=storage.ct.depots[entity.unit_number]
   -- Forced script placement may omit self-originating callbacks; use the registered handler.
@@ -37,7 +38,7 @@ script.on_event(defines.events.on_tick,function(event)
   check(d and Runtime.factory.valid(d),"one actual machine generated")
   Runtime.worker.pause(d)
   v.id=d.id
-  local stock=entity.get_inventory(defines.inventory.chest)
+  local stock=I.stock(d)
   stock.insert{name="rail",count=400};stock.insert{name="coal",count=100}
   player.opened=entity;Runtime.gui_opened{entity=entity,player_index=player.index}
   local frame=player.gui.relative.ct_window

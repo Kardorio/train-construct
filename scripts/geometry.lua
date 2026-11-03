@@ -1,5 +1,12 @@
 local C = require("scripts.constants")
 local G = {}
+function G.frame(direction)
+ local forward=({[0]={x=0,y=-1},[4]={x=1,y=0},[8]={x=0,y=1},[12]={x=-1,y=0}})[direction]
+ if forward then return {forward=forward,right={x=-forward.y,y=forward.x},direction=direction} end
+end
+function G.offset(position,frame,along,across)
+ return {x=position.x+frame.forward.x*along+frame.right.x*(across or 0),y=position.y+frame.forward.y*along+frame.right.y*(across or 0)}
+end
 function G.key(owner, surface, name, position, direction)
  return table.concat({owner,surface,name,math.floor(position.x*256+0.5),math.floor(position.y*256+0.5),direction},":")
 end

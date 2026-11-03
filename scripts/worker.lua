@@ -27,7 +27,7 @@ function W.fleet_limit(d)
 end
 local function drive(d,rail,direction,arrival)
  if W.fleet_limit(d) then return false end
- if not (rail and rail.valid and F.valid(d)) then d.state="damaged";return false end
+ if not (rail and rail.valid and F.valid(d)) then F.damage(d);return false end
  local t=train(d)
  guard(function()
   t.schedule={current=1,records={{rail=rail,rail_direction=direction,temporary=false,wait_conditions={{type="time",compare_type="and",ticks=100000}}}}}
@@ -39,7 +39,7 @@ end
 function W.home(d,reason)
  if W.fleet_limit(d) then return false end
  local goals=F.home_goals(d)
- if #goals==0 then d.state="damaged";return false end
+ if #goals==0 then F.damage(d);return false end
  d.return_reason=reason or "home"
  local result=game.train_manager.request_train_path{train=train(d),goals=goals,steps_limit=16384}
  if not result.found_path then
@@ -72,7 +72,7 @@ function W.search_return(d)
  search.cursor=search.cursor+1
  if not candidate.rail.valid then return end
  local goals=F.home_goals(d)
- if #goals==0 then d.state="damaged";return end
+ if #goals==0 then F.damage(d);return end
  storage.ct.path_budget=storage.ct.path_budget-1
  local reverse=game.train_manager.request_train_path{starts={{rail=candidate.rail,direction=1-candidate.direction}},goals=goals,steps_limit=8192}
  if not reverse.found_path then return end
@@ -98,7 +98,7 @@ function W.block(d,state,message)
 end
 function W.start(d)
  if W.fleet_limit(d) then return end
- if not F.valid(d) then d.state="damaged";return end
+ if not F.valid(d) then F.damage(d);return end
  d.enabled=true;d.auto_controlled=false;d.retry_at=nil;d.message=nil;d.return_search=nil;d.return_attempts=nil;d.blocked_return=nil;d.frontier_checked=0;d.frontier_anchor=1
  d.state=F.at_home(d) and "loading" or "idle"
 end
@@ -397,7 +397,7 @@ end
 function W.tick(d)
  if d.pending_removal then F.withdraw(d,d.refund);return end
  if W.fleet_limit(d) then return end
- if not F.valid(d) then d.state="damaged";d.enabled=false;F.release_claims(d);return end
+ if not F.valid(d) then F.damage(d);return end
  local t=train(d);d.train_id=t.id
  if #t.passengers>0 then if d.enabled then W.pause(d) end;return end
  if not d.enabled then return end

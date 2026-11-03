@@ -40,9 +40,12 @@ def main():
     if "--lint" not in sys.argv:
         subprocess.run([sys.executable,str(ROOT/"tests/regressions.py")],check=True)
         subprocess.run([sys.executable,str(ROOT/"tests/engine.py")],check=True)
-        for scenario in ("engine-north","engine-stop","singleton"):
+        for scenario in ("engine-north","engine-stop","singleton","module-north","module-east","module-south","module-west"):
             subprocess.run([sys.executable,str(ROOT/"tests/engine.py"),"--scenario",scenario],check=True)
         subprocess.run([sys.executable,str(ROOT/"tools/compare_motion.py")],check=True)
         for mutation in ("unpaired-signal","wrong-signal-pair"):
             subprocess.run([sys.executable,str(ROOT/"tests/engine.py"),"--scenario","engine-stop","--mutation",mutation],check=True)
+        for mutation in ("module-rollback","module-rollback-borrowed","module-rotation","module-foreign-traffic","module-foreign-borrowed","module-borrowed-rails","module-home-axis","module-damage-stop"):
+            subprocess.run([sys.executable,str(ROOT/"tests/engine.py"),"--scenario","module-east","--mutation",mutation],check=True)
+        subprocess.run([sys.executable,str(ROOT/"tests/legacy.py")],check=True)
 if __name__=="__main__":main()

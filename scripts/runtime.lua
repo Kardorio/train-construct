@@ -4,18 +4,20 @@ local R=require("scripts.registry")
 local F=require("scripts.factory")
 local W=require("scripts.worker")
 local Gui=require("scripts.gui")
+local D=require("scripts.depot")
 local Runtime={}
 function Runtime.initialize()
  R.initialize()
  storage.ct.path_budget=1
  for _,depot in pairs(storage.ct.depots) do
+  if depot.entity and depot.entity.valid and depot.entity.name==C.module then depot.entity.rotatable=false end
   if depot.entity and depot.entity.valid and depot.bot_enabled then R.technical(depot.force_index) end
  end
 end
 function Runtime.on_built(event)
  local entity=event.entity or event.created_entity or event.destination
  if not (entity and entity.valid) then return end
- if entity.name==C.depot then
+ if entity.name==C.depot or entity.name==C.module then
   local depot,reason=F.create(entity)
   if not depot then
    local position,surface=entity.position,entity.surface
@@ -49,7 +51,7 @@ function Runtime.on_removed(event)
   local owner=storage.ct.components[id]
   if owner then
    depot=storage.ct.depots[owner]
-   if depot and not depot.pending_removal then depot.state="damaged";depot.enabled=false;F.release_claims(depot) end
+   if depot and not depot.pending_removal then F.damage(depot) end
   end
   if storage.ct.ghosts[id] then R.unregister(id) end
  end
@@ -77,9 +79,14 @@ end
 function Runtime.gui_opened(event)
  local entity=event.entity
  if not (entity and entity.valid) then return end
- local id=entity.name==C.depot and entity.unit_number or storage.ct.components[entity.unit_number]
+ local id=(entity.name==C.depot or entity.name==C.module) and entity.unit_number or storage.ct.components[entity.unit_number]
  local depot=id and storage.ct.depots[id]
- if depot then Gui.open(game.get_player(event.player_index),depot,entity.name==C.depot and defines.relative_gui_type.container_gui or defines.relative_gui_type.train_gui) end
+ if depot then
+  local player=game.get_player(event.player_index)
+  local anchor=entity.name==C.module and defines.relative_gui_type.proxy_container_gui or
+   (entity.name==C.depot or entity.name==C.stock) and defines.relative_gui_type.container_gui or defines.relative_gui_type.train_gui
+  Gui.open(player,depot,anchor)
+ end
 end
 function Runtime.schedule_changed(event)
  if storage.ct.mutating then return end
@@ -91,7 +98,7 @@ function Runtime.schedule_changed(event)
 end
 function Runtime.train_changed(event)
  for _,d in pairs(storage.ct.depots) do
-  if not d.pending_removal and not F.valid(d) then d.state="damaged";d.enabled=false;F.release_claims(d) end
+  if not d.pending_removal and not F.valid(d) then F.damage(d) end
  end
 end
 function Runtime.surface_removed(event)
@@ -101,6 +108,8 @@ function Runtime.surface_removed(event)
  for _,id in ipairs(ids) do
   local d=storage.ct.depots[id]
   R.policy(d,false);F.release_claims(d)
+  D.clear_decor(d)
+  for number,owner in pairs(storage.ct.components) do if owner==id then storage.ct.components[number]=nil end end
   if d.recovery and d.recovery.valid then d.recovery.destroy() end
   storage.ct.depots[id]=nil
  end
@@ -115,7 +124,7 @@ function Runtime.object_destroyed(event)
  local d=storage.ct.depots[object.id]
  if not d then return end
  if object.kind=="depot" then F.withdraw(d,false,"destroyed")
- elseif not d.pending_removal then d.state="damaged";d.enabled=false;F.release_claims(d) end
+ elseif not d.pending_removal then F.damage(d) end
 end
 function Runtime.ghost_changed(event)
  local entity=event.entity or event.ghost

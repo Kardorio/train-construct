@@ -1,4 +1,8 @@
 local I = {}
+function I.stock(depot)
+ local stock=depot.stock or depot.entity
+ if stock and stock.valid then return stock.get_inventory(defines.inventory.chest) end
+end
 function I.cargo(depot)
  if depot.wagon and depot.wagon.valid then return depot.wagon.get_inventory(defines.inventory.cargo_wagon) end
 end
@@ -102,7 +106,8 @@ local function load_fuel(depot,locomotive,source)
 end
 function I.load(depot)
  if not (depot.entity and depot.entity.valid) then return false end
- local source=depot.entity.get_inventory(defines.inventory.chest)
+ local source=I.stock(depot)
+ if not source then return false end
  local target=I.cargo(depot)
  if not target then return false end
  for name,count in pairs(depot.targets) do
