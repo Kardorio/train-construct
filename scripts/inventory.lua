@@ -106,6 +106,36 @@ local function load_fuel(depot,locomotive,source)
   end
  end
 end
+function I.burnt_empty(depot)
+ for _,locomotive in ipairs{depot.head,depot.rear} do
+  if locomotive and locomotive.valid then
+   local residue=locomotive.get_burnt_result_inventory()
+   if residue and not residue.is_empty() then return false end
+  end
+ end
+ return true
+end
+-- The worker checks docking before calling this inventory transfer.
+function I.unload_burnt(depot)
+ local target=I.stock(depot)
+ if not target then return I.burnt_empty(depot) end
+ for _,locomotive in ipairs{depot.head,depot.rear} do
+  if locomotive and locomotive.valid then
+   local residue=locomotive.get_burnt_result_inventory()
+   if residue then
+    for i=1,#residue do
+     local stack=residue[i]
+     if stack.valid_for_read then
+      local inserted=target.insert(stack)
+      if inserted==stack.count then stack.clear()
+      elseif inserted>0 then stack.count=stack.count-inserted end
+     end
+    end
+   end
+  end
+ end
+ return I.burnt_empty(depot)
+end
 function I.load(depot)
  if not (depot.entity and depot.entity.valid) then return false end
  local source=I.stock(depot)
@@ -123,9 +153,11 @@ function I.load(depot)
   load_fuel(depot,locomotive,source)
  end
  if Categories.allowed(depot,"rail") then I.transfer(depot.recovery,target,"rail","normal",depot.recovery.get_item_count("rail")) end
+ I.unload_burnt(depot)
  return true
 end
 function I.ready(depot)
+ if not I.burnt_empty(depot) then return false,{"ct.burnt-full"} end
  local cargo=I.cargo(depot)
  if not cargo then return false,{"ct.cargo-missing"} end
  if depot.missing and Categories.allowed(depot,depot.missing.category or depot.missing.name) then

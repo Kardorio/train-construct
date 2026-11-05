@@ -24,6 +24,7 @@ Mod personnel Factorio 2.1.24+, auteur kardagan. Le socle commun se trouve dans 
 - scripts/gui.lua : panneau relatif à l’inventaire natif.
 - scripts/categories.lua : catégories autorisées, indépendantes des quantités cibles ; les ghosts exclus restent disponibles pour les robots.
 - scripts/circuit.lua : première activation de la lecture native du stock du dépôt ; réglage persistant sans commande du train.
+- scripts/inventory.lua : chargement des matériaux et carburants, déchargement des résidus des deux locomotives dans le stock existant au quai. Le worker contrôle l'accostage, y compris en pause ; le départ attend la fin du déchargement si le stock est plein.
 
 Les unités moteur de tools/probes/ sont des fixtures d’investigation ; elles ne sont pas le runtime du mod. Les tests intégrés doivent appeler le vrai runtime et vérifier les entités réelles et les stocks, pas seulement la disparition des ghosts.
 
@@ -32,6 +33,8 @@ Les unités moteur de tools/probes/ sont des fixtures d’investigation ; elles 
 Utiliser ./build.sh lint, ./build.sh test puis python3 tests/visual.py pour les changements qui touchent la GUI ou la récupération. Le test de sauvegarde utilise un serveur temporaire lié à 127.0.0.1 et recharge une vraie sauvegarde en mission. Les tests graphiques utilisent un profil isolé et SDL offscreen.
 
 ./build.sh test-py utilise les dernières archives Py installées dans quatre profils isolés, dont un sans Py. Il contrôle les prototypes finaux, le déblocage après recherche et la fabrication native avec consommation exacte des ingrédients dans le paquet bêta. Les journaux sont tests/last-py-*.log.
+
+./build.sh test-ashes vérifie les résidus sur de vraies locomotives, les qualités, les stocks pleins/partiels, la pause, la reprise, le refus de transfert sur une voie parallèle ou pendant un déplacement et la combustion Py native. --profile fullPy charge le pack complet ; --mutation doit rejeter une copie sans déchargement worker. Journaux tests/last-ashes-*.log.
 
 Les tests et sondes utilisent le moteur headless officiel dans .tools/factorio-headless et refusent Steam. Les commandes natives du joueur sont exercées par --test-save ; la persistance nécessite la passe serveur distincte, car le mode de test natif ne produit pas les autosauvegardes. La vérification visuelle attend un client autonome désigné par FACTORIO_GUI_BIN ; signaler son absence, sans lancer le client Steam.
 

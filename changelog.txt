@@ -1,0 +1,8 @@
+---------------------------------------------------------------------------------------------------
+Version: 0.1.1
+Date: 2026-11-05
+  Features:
+    - Automatically unload both locomotives' fuel residues into the depot, preserving item qualities.
+    - Wait and resume automatically when the depot has insufficient room for fuel residues.
+  Bugfixes:
+    - Require alignment with the depot track before loading or unloading a construction train.

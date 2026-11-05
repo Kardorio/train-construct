@@ -140,9 +140,12 @@ function F.at_home(depot)
  if not F.valid(depot) then return false end
  local frame=G.frame(depot.stop.direction or defines.direction.north)
  if not frame then return false end
+ local rail=depot.stop.connected_rail
+ if not (rail and rail.valid) then return false end
+ local lateral=(depot.wagon.position.x-rail.position.x)*frame.right.x+(depot.wagon.position.y-rail.position.y)*frame.right.y
  local dx,dy=depot.wagon.position.x-depot.position.x,depot.wagon.position.y-depot.position.y
  return depot.head.train.speed==0 and G.distance(depot.wagon.position,depot.position)<=65 and
-  math.abs(dx*frame.forward.x+dy*frame.forward.y)<3
+  math.abs(dx*frame.forward.x+dy*frame.forward.y)<3 and math.abs(lateral)<0.5
 end
 function F.release_claims(depot)
  for id,owner in pairs(storage.ct.claims) do if owner==depot.id then storage.ct.claims[id]=nil end end

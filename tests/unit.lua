@@ -15,7 +15,7 @@ local function reset()
  end}}}
 end
 package.loaded["scripts.registry"]={policy=function() end,frontier_ids=function() return storage.ct.frontier_order,storage.ct.frontier_revision or 0 end}
-package.loaded["scripts.inventory"]={spill=function() return true end}
+package.loaded["scripts.inventory"]={spill=function() return true end,unload_burnt=function() return true end}
 package.loaded["scripts.geometry"]=Geometry
 local F=require("scripts.factory")
 local function machine()
@@ -53,7 +53,7 @@ back.passengers={}
 assert(F.withdraw(d,false))
 assert(drops==0,"Native mining must suppress the queued scripted refund")
 defines={rail_direction={front=0,back=1},rail_connection_direction={straight=0,left=1,right=2}}
-package.loaded["scripts.factory"]={damage=F.damage,conflict=function() return false end,home_goals=function() return {} end,valid=function() return true end,release_claims=function(depot)
+package.loaded["scripts.factory"]={damage=F.damage,at_home=function() return false end,conflict=function() return false end,home_goals=function() return {} end,valid=function() return true end,release_claims=function(depot)
  for id,owner in pairs(storage.ct.claims) do if owner==depot.id then storage.ct.claims[id]=nil end end
 end}
 package.loaded["scripts.worker"]=nil
@@ -260,7 +260,7 @@ do
  local counts={rail=200}
  local cargo={get_item_count=function(item) return counts[type(item)=="table" and item.name or item] or 0 end}
  prototypes={item={coal={fuel_value=4000000},rail={localised_name="Rail"},["rail-signal"]={localised_name="Signal"}}}
- local loco={valid=true,burner={remaining_burning_fuel=0},get_fuel_inventory=function() return {} end}
+ local loco={valid=true,burner={remaining_burning_fuel=0},get_fuel_inventory=function() return {} end,get_burnt_result_inventory=function() end}
  local depot={wagon={valid=true,get_inventory=function() return cargo end},head=loco,rear=loco,fuel_target=0,targets={rail=200,["rail-signal"]=2}}
  assert(not inventory.ready(depot),"Initial loading ignored configured accessories")
  depot.refill_mode="rails"

@@ -20,6 +20,8 @@ Les côtés de l'atelier empêchent de poser d'autres machines sur le bâtiment.
 
 Cliquer sur le bâtiment ouvre l'inventaire natif de 100 emplacements et le panneau du train. Des bras peuvent alimenter ce même stock le long du côté extérieur de l'atelier, jusque vers les deux extrémités. Le wagon central possède son propre stock de 100 emplacements. Le chargement automatique accepte les carburants compatibles avec les locomotives, y compris ceux des mods et leurs qualités. La réserve est comptée en énergie, en incluant le combustible déjà en cours de consommation ; un carburant plus puissant demande moins d’objets. Le panneau indique les matériaux ou la réserve d’énergie manquants au départ.
 
+Au quai, les résidus de carburant des deux locomotives sont automatiquement transférés dans le stock du dépôt, même lorsque la machine est en pause. Cela comprend les cendres Py et les résidus d'autres carburants, avec leur qualité. Des bras peuvent les extraire du bâtiment ; ils apparaissent aussi dans la lecture du stock par circuit. Si le dépôt manque de place, le surplus reste dans les locomotives et le départ attend avec un message demandant de libérer le stock. Le déchargement et le départ reprennent automatiquement après libération de place. Aucun résidu n'est transféré pendant le mouvement ou loin du quai.
+
 Les anciens dépôts restent fonctionnels dans leur disposition d'origine : aucun train n'est recréé et aucune voie ne leur est ajoutée automatiquement. Les nouveaux objets posent le module traversant. Ce changement de prototypes exige un **redémarrage complet de Factorio**.
 
 Le panneau permet de démarrer, mettre en pause, rappeler la machine ou récupérer l’ensemble. Les locomotives spécialisées disposent d’une puissance et d’un freinage quadruplés, avec la même vitesse maximale ; leur consommation augmente. Les trajets utilisent le moteur et la signalisation de Factorio : aucune navigation sur les ghosts ni génération de tracé.
@@ -93,19 +95,21 @@ Ce premier prototype ne constitue pas la qualification finale du mod : performan
 ./build.sh sprites-check   # PNG, deux bandes natives par vue, couloir dégagé, archive
 ./build.sh test            # non-régressions, boucle et limite de flotte, sauvegardes réelles
 ./build.sh test-py         # profils Py Coal, Py Industry et Py complet depuis les archives installées
+./build.sh test-ashes      # résidus, stock plein, qualités et combustion Py réelle
+./build.sh test-ashes --profile fullPy  # même scénario avec le pack Py complet
 python3 tests/engine.py --scenario singleton         # refus et anciennes flottes
 ./build.sh test --scenario module-east              # module horizontal : joueur natif, mission et sauvegarde
 ./build.sh test --scenario legacy-upgrade           # vraie sauvegarde de l'ancien runtime, mise à jour et rechargement
 python3 tests/visual.py    # GUI, robots personnels, garde de retrait et capture hors écran
 ./build.sh package         # archive dans dist/
-./build.sh package beta    # train-construct_0.1.0.zip pour le portail Factorio
+./build.sh package beta    # train-construct_0.1.1.zip pour le portail Factorio
 ./build.sh devlink         # lien local dans ~/.factorio/mods
 ./build.sh unlink
 ```
 
 Les tests utilisent des profils temporaires isolés et ne modifient pas la partie du joueur. Le test de sauvegarde ouvre un serveur temporaire privé lié uniquement à 127.0.0.1. Les tests graphiques utilisent le pilote SDL hors écran.
 
-La variante bêta destinée au portail porte l'identifiant `train-construct`, le titre `Construction Train (Beta)` et la description exacte `Beta, do not download`. Le nom `construction-train` étant déjà occupé sur le portail par un autre mod, le paquet bêta adapte son identité et ses références graphiques sans modifier les sources ni le lien local du prototype. Les deux variantes sont destinées à des installations distinctes ; ne pas les activer ensemble. Cette variante ne transfère pas les données des sauvegardes du prototype local. Le portail doit recevoir le ZIP `dist/train-construct_0.1.0.zip`, sans décompression.
+La variante bêta destinée au portail porte l'identifiant `train-construct`, le titre `Construction Train (Beta)` et la description exacte `Beta, do not download`. Le nom `construction-train` étant déjà occupé sur le portail par un autre mod, le paquet bêta adapte son identité et ses références graphiques sans modifier les sources ni le lien local du prototype. Les deux variantes sont destinées à des installations distinctes ; ne pas les activer ensemble. Cette variante ne transfère pas les données des sauvegardes du prototype local. Le portail doit recevoir le ZIP `dist/train-construct_0.1.1.zip`, sans décompression.
 
 Les quatre scénarios `module-north`, `module-east`, `module-south` et `module-west` vérifient chacun la pose sur terrain vierge, la rotation native, les raccords des deux côtés, 52 poses en mouvement, deux ravitaillements, les deux accostages et la récupération. Une passe `--test-save` fournit les commandes natives du joueur sans écran ; une passe serveur distincte crée la vraie sauvegarde de mission, puis la recharge. Le rendu graphique ne peut pas être validé par ce mode serveur.
 

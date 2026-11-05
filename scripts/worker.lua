@@ -456,6 +456,10 @@ function W.tick(d)
  if not F.valid(d) then F.damage(d);return end
  local t=train(d);d.train_id=t.id
  if #t.passengers>0 then if d.enabled then W.pause(d) end;return end
+ if F.at_home(d) then
+  local empty=I.unload_burnt(d)
+  if not empty and d.enabled and d.state=="idle" then d.state="loading" end
+ end
  if not d.enabled then return end
  if d.filters_pending then
   if t.speed~=0 then return end

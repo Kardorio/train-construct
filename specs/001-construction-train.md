@@ -56,7 +56,7 @@ Phase de révision — couvre AC8, AC17, AC20, AC21 ; impact : état de conflit 
 
 Le lot 1 constitue le premier point de sauvegarde du prototype jouable. Geoffrey a confirmé sur sa sandbox la construction complète des rails puis des signaux, ainsi que la reprise du chantier après déconstruction par les robots puis restauration du plan. Cette recette manuelle complète les preuves moteur ; elle ne qualifie pas à elle seule tous les critères de la cible complète. Les cases restent ouvertes lorsqu’un critère contient encore des situations non exercées.
 
-Le lot 2 initial étudiait la concurrence : deux machines sur un même réseau, réservation et absence de double paiement. Cette cible est abandonnée le 2 novembre après la collision à quatre trains au profit de la révision machine unique et pose en mouvement ci-dessus. Les cendres Py restent un sujet ultérieur explicitement différé.
+Le lot 2 initial étudiait la concurrence : deux machines sur un même réseau, réservation et absence de double paiement. Cette cible est abandonnée le 2 novembre après la collision à quatre trains au profit de la révision machine unique et pose en mouvement ci-dessus. Le déchargement des cendres Py, initialement différé, est traité dans la spécification 007.
 
 Deux premiers scénarios moteur du lot 2 étudiaient deux boucles reliées au même réseau avec deux travailleurs actifs, puis le retrait d’un travailleur au moment où il avait réservé son prochain rail. Ces fixtures sont conservées comme historique et retirées de la suite courante. Elles ne qualifiaient pas le trafic dense et ne correspondent plus à la cible d’une seule machine.
 

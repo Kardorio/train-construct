@@ -22,6 +22,7 @@ class PackagingTests(unittest.TestCase):
         (self.project/"info.json").write_text(json.dumps(self.info))
         self.lua='return {filename="__construction-train__/graphics/depot.png", name="ct-construction-locomotive"}\n'
         (self.project/"data.lua").write_text(self.lua)
+        (self.project/"changelog.txt").write_text("Version: 0.1.0\n")
         self.final_fixes='require("prototypes.pyanodon")\n'
         (self.project/"data-final-fixes.lua").write_text(self.final_fixes)
         (self.project/"prototypes").mkdir()
@@ -40,6 +41,7 @@ class PackagingTests(unittest.TestCase):
             self.assertEqual(archive.read("train-construct_0.1.0/data.lua").decode(),self.lua.replace("__construction-train__","__train-construct__"))
             self.assertEqual(archive.read("train-construct_0.1.0/data-final-fixes.lua").decode(),self.final_fixes)
             self.assertIn("train-construct_0.1.0/prototypes/pyanodon.lua",archive.namelist())
+            self.assertEqual(archive.read("train-construct_0.1.0/changelog.txt"),b"Version: 0.1.0\n")
         self.assertEqual(json.loads((self.project/"info.json").read_text()),self.info)
         self.assertEqual((self.project/"data.lua").read_text(),self.lua)
 
@@ -50,6 +52,7 @@ class PackagingTests(unittest.TestCase):
             self.assertEqual(json.loads(archive.read("construction-train_0.1.0/info.json")),self.info)
             self.assertEqual(archive.read("construction-train_0.1.0/data.lua").decode(),self.lua)
             self.assertEqual(archive.read("construction-train_0.1.0/data-final-fixes.lua").decode(),self.final_fixes)
+            self.assertEqual(archive.read("construction-train_0.1.0/changelog.txt"),b"Version: 0.1.0\n")
 
     def test_invalid_variant_arguments_do_not_create_an_archive(self):
         for args in (("package","unknown"),("package","beta","extra"),("devlink","beta")):
