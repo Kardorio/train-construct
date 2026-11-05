@@ -1,6 +1,6 @@
 # 005 — Lecture du stock du dépôt par réseau logique
 
-**Statut** : implémenté et qualifié moteur le 5 novembre 2026 ; rendu des fils à vérifier en sandbox.
+**Statut** : implémenté, qualifié moteur et validé par Geoffrey en sandbox le 5 novembre 2026.
 
 ## Problème et solution
 

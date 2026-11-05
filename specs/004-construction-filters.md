@@ -1,6 +1,6 @@
 # 004 — Choisir les éléments construits par le train
 
-**Statut** : implémenté et qualifié moteur le 5 novembre 2026 ; essai visuel du panneau en sandbox à effectuer.
+**Statut** : implémenté, qualifié moteur et validé par Geoffrey en sandbox le 5 novembre 2026.
 **Demandeur** : Geoffrey.
 **Date** : 2026-11-05.
 
