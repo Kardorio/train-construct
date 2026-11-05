@@ -3,6 +3,8 @@ local R=require("scripts.registry")
 local I=require("scripts.inventory")
 local G=require("scripts.geometry")
 local D=require("scripts.depot")
+local Categories=require("scripts.categories")
+local Circuit=require("scripts.circuit")
 local F={}
 function F.conflict(depot)
  for id,other in pairs(storage.ct.depots) do
@@ -91,6 +93,7 @@ function F.create(entity)
   frontier_cursor=1,generation=game.tick
  }
  depot.registrations={R.track(entity,"depot",id)}
+ Categories.initialize(depot)
  for _,component in ipairs(created) do
   depot.registrations[#depot.registrations+1]=R.track(component,"component",id)
  end
@@ -102,6 +105,7 @@ function F.create(entity)
   depot.decor={}
   D.ensure_barriers(depot)
  end
+ Circuit.initialize(depot)
  head.train.manual_mode=true
  R.policy(depot,true)
  R.scan_surface(entity.surface)

@@ -30,10 +30,9 @@ stock.direction_count=4
 stock.tile_width=3;stock.tile_height=3
 stock.collision_box={{-1.3,-15.3},{1.3,15.3}}
 stock.selection_box={{-1.5,-15.5},{1.5,15.5}}
-if stock.circuit_connector then
- local connector=stock.circuit_connector[1]
- stock.circuit_connector={table.deepcopy(connector),table.deepcopy(connector),table.deepcopy(connector),table.deepcopy(connector)}
-end
+-- Only the visible proxy exposes the child inventory to wires.
+stock.circuit_connector=nil
+stock.circuit_wire_max_distance=0
 local module=table.deepcopy(depot)
 module.type="proxy-container"
 module.name="ct-construction-module"
@@ -46,7 +45,28 @@ module.selection_box={{-3,-16},{9,16}}
 module.selection_priority=10
 module.tile_width=12;module.tile_height=32;module.build_grid_size=2
 module.direction_count=4;module.inventory_size=nil;module.inventory_type=nil
-module.circuit_connector=nil;module.circuit_wire_max_distance=0
+-- The rail center is (1,1) relative to the module; the workshop is six
+-- tiles to its right. Keep vanilla chest pins, LEDs and shadows together.
+module.circuit_connector={}
+local function move_connector(value,dx,dy)
+ for key,child in pairs(value) do
+  if type(child)=="table" then
+   if key=="shift" or key=="red" or key=="green" or
+      key=="blue_led_light_offset" or key=="red_green_led_light_offset" then
+    child[1]=(child[1] or child.x or 0)+dx
+    child[2]=(child[2] or child.y or 0)+dy
+    child.x=nil;child.y=nil
+   else move_connector(child,dx,dy) end
+  end
+ end
+end
+for _,position in ipairs{{7,1},{1,7},{-5,1},{1,-5}} do
+ local definition=table.deepcopy(circuit_connector_definitions["chest"][1])
+ move_connector(definition,position[1],position[2])
+ module.circuit_connector[#module.circuit_connector+1]=definition
+end
+module.circuit_wire_max_distance=default_circuit_wire_max_distance
+module.draw_circuit_wires=true
 module.next_upgrade=nil;module.fast_replaceable_group=nil
 module.picture=Graphics.depot()
 module.integration_patch=Graphics.floor()

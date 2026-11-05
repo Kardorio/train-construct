@@ -1,5 +1,6 @@
 local C = require("scripts.constants")
 local G = require("scripts.geometry")
+local Categories=require("scripts.categories")
 local R = {}
 local function data() return storage.ct end
 function R.initialize()
@@ -56,6 +57,13 @@ function R.owner(entity)
 end
 local function domain(owner,surface) return owner..":"..surface end
 function R.active(owner,surface) return (data().policies[domain(owner,surface)] or 0)>0 end
+function R.reserved(owner,surface,name)
+ if not R.active(owner,surface) then return false end
+ for _,depot in pairs(data().depots) do
+  if depot.force_index==owner and depot.surface_index==surface and depot.bot_enabled and Categories.allowed(depot,name) then return true end
+ end
+ return false
+end
 function R.technical(owner)
  local state=data()
  local force=state.forces[owner] and game.forces[state.forces[owner]]
@@ -107,7 +115,8 @@ function R.register(entity)
  record={entity=entity,owner=owner,surface=entity.surface.index,key=key,rail=C.rail_types[entity.ghost_name] or false,id=id}
  record.registration=R.track(entity,"ghost",id)
  state.ghosts[id]=record;state.ghost_order[#state.ghost_order+1]=id;state.index[key]=id
- if R.active(owner,record.surface) then entity.force=R.technical(owner) end
+ if R.reserved(owner,record.surface,entity.ghost_name) then entity.force=R.technical(owner) end
+ state.ghost_revision=(state.ghost_revision or 0)+1
  if record.rail then state.dirty[#state.dirty+1]=id end
  return record
 end
@@ -130,6 +139,7 @@ function R.frontier(record,rail,direction)
 end
 function R.from_rail(rail)
  if not (rail and rail.valid and C.rail_types[rail.name]) then return end
+ data().ghost_revision=(data().ghost_revision or 0)+1
  local owner=rail.force.index
  for _,d in ipairs{defines.rail_direction.front,defines.rail_direction.back} do
   for _,ext in ipairs(rail.get_rail_end(d).get_rail_extensions("rail")) do
@@ -202,7 +212,7 @@ function R.tick()
   local record=state.ghosts[id]
   if record then
    if record.entity.valid then
-    local desired=R.active(record.owner,record.surface) and R.technical(record.owner) or game.forces[record.owner]
+    local desired=R.reserved(record.owner,record.surface,record.entity.ghost_name) and R.technical(record.owner) or game.forces[record.owner]
     if desired and record.entity.force~=desired then record.entity.force=desired end
    else R.unregister(id) end
   end

@@ -21,6 +21,8 @@ Mod personnel Factorio 2.1.24+, auteur kardagan. Le socle commun se trouve dans 
 - scripts/worker.lua : conduite native, contact, paiement via scripts/inventory.lua et passe d’accessoires.
 - scripts/geometry.lua : bras frontal borné et contact latéral.
 - scripts/gui.lua : panneau relatif à l’inventaire natif.
+- scripts/categories.lua : catégories autorisées, indépendantes des quantités cibles ; les ghosts exclus restent disponibles pour les robots.
+- scripts/circuit.lua : première activation de la lecture native du stock du dépôt ; réglage persistant sans commande du train.
 
 Les unités moteur de tools/probes/ sont des fixtures d’investigation ; elles ne sont pas le runtime du mod. Les tests intégrés doivent appeler le vrai runtime et vérifier les entités réelles et les stocks, pas seulement la disparition des ghosts.
 

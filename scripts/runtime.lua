@@ -5,11 +5,15 @@ local F=require("scripts.factory")
 local W=require("scripts.worker")
 local Gui=require("scripts.gui")
 local D=require("scripts.depot")
+local Categories=require("scripts.categories")
+local Circuit=require("scripts.circuit")
 local Runtime={}
 function Runtime.initialize()
  R.initialize()
  storage.ct.path_budget=1
  for _,depot in pairs(storage.ct.depots) do
+  Categories.initialize(depot)
+  Circuit.initialize(depot)
   if depot.entity and depot.entity.valid and depot.entity.name==C.module then
    depot.entity.rotatable=false
    if depot.stock and depot.stock.valid then depot.stock.direction=depot.entity.direction end

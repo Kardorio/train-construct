@@ -219,15 +219,15 @@ do
  local t={id=1,speed=0,passengers={}}
  local near={valid=true,position={x=20,y=0}}
  local far={valid=true,position={x=200,y=0}}
- storage.ct.ghosts[200]={entity={valid=true,position={x=20,y=0}}}
- storage.ct.ghosts[1]={entity={valid=true,position={x=200,y=0}}}
+ storage.ct.ghosts[200]={entity={valid=true,ghost_name="train-stop",position={x=20,y=0}}}
+ storage.ct.ghosts[1]={entity={valid=true,ghost_name="train-stop",position={x=200,y=0}}}
  local d={id=1,head={valid=true,train=t,position={x=0,y=0},orientation=0},rear={valid=true,position={x=0,y=10},orientation=0},enabled=true,state="accessories",pending={[200]={rail=near},[1]={rail=far}}}
  local query
  game.train_manager={request_train_path=function(spec) query=spec;return {found_path=true,goal_index=1} end}
  W.tick(d)
  assert(d.accessory==200 and d.destination==near,"Accessory choice followed IDs instead of proximity")
  assert(query.shortest_path and #query.goals==4,"Nearby accessories were not compared by native route")
- storage.ct.claims={};storage.ct.ghosts={[300]={entity={valid=true,position={x=1,y=0}}}};storage.ct.path_budget=1
+ storage.ct.claims={};storage.ct.ghosts={[300]={entity={valid=true,ghost_name="train-stop",position={x=1,y=0}}}};storage.ct.path_budget=1
  d.pending={[300]={rail=near}};d.state="accessories";d.accessory=nil;t.schedule=nil
  local inventory=package.loaded["scripts.inventory"]
  inventory.low_fuel=function() return false end
@@ -236,14 +236,14 @@ do
  package.loaded["scripts.registry"].unregister=function(id) storage.ct.claims[id]=nil;storage.ct.ghosts[id]=nil end
  W.tick(d)
  assert(revived and not d.pending[300] and t.schedule==nil,"Accessory already in contact caused a new train journey")
- storage.ct.ghosts[302]={entity={valid=true,position={x=1,y=0}}};storage.ct.path_budget=1
+ storage.ct.ghosts[302]={entity={valid=true,ghost_name="train-stop",position={x=1,y=0}}};storage.ct.path_budget=1
  d.pending={[302]={rail=near}};d.state="accessories";t.speed=.1;revived=false
  W.tick(d)
  assert(not revived and d.state=="travelling","Immediate accessory pose occurred while the train was moving")
  t.speed=0;storage.ct.claims={};storage.ct.path_budget=1
  d.pending={[301]={rail=near,retry=game.tick+500},[303]={rail=near}}
- storage.ct.ghosts[301]={entity={valid=true,position={x=20,y=0}}}
- storage.ct.ghosts[303]={entity={valid=true,position={x=1,y=0}}}
+ storage.ct.ghosts[301]={entity={valid=true,ghost_name="train-stop",position={x=20,y=0}}}
+ storage.ct.ghosts[303]={entity={valid=true,ghost_name="train-stop",position={x=1,y=0}}}
  storage.ct.claims[303]=999;storage.ct.depots[999]={};d.state="accessories"
  W.tick(d)
  assert(d.state=="accessories" and d.accessory_wait==game.tick+500,"Deferred accessories caused an unnecessary depot trip")

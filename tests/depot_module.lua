@@ -3,6 +3,7 @@ local G=require("scripts.geometry")
 local I=require("scripts.inventory")
 local F=Runtime.factory
 local Fixture=require("test-fixtures.rail_loop")
+local CircuitTest=require("test-fixtures.circuit_stock")
 local frame=assert(G.frame(heading))
 local function offset(center,along,across) return G.offset(center,frame,along,across) end
 local function native_drive(d,rail,direction)
@@ -117,12 +118,14 @@ local function setup()
  local floor=rendering.draw_rectangle{color={r=0.15,g=0.16,b=0.18,a=0.35},filled=true,left_top={-3,-16},right_bottom={9,16},surface=surface}
  local border=rendering.draw_rectangle{color={r=1,g=0.7,b=0.1},filled=false,left_top={-3,-16},right_bottom={9,16},surface=surface}
  d.decor={floor,border}
+ d.categories=nil
  for _,barrier in ipairs(d.barriers) do barrier.destroy() end
  d.barriers=nil
  local existing=assert(surface.create_entity{name="stone-furnace",position=offset(d.wagon.position,-8,2.5),force="player"})
  existing.get_fuel_inventory().insert{name="coal",count=7}
  d.stock.direction=0
  Runtime.initialize();Runtime.initialize()
+ for name in pairs(C.targets) do assert(d.categories[name]==true,"Existing depot did not enable all construction categories") end
  assert(#d.barriers==2 and d.barriers[1].valid and d.barriers[2].valid,"Existing module did not receive its collision barriers")
  assert(existing.valid and existing.get_fuel_inventory().get_item_count("coal")==7,"Collision migration removed an existing player machine")
  existing.destroy()
@@ -133,6 +136,17 @@ local function setup()
  if player then
   player.opened=entity;Runtime.gui_opened{entity=entity,player_index=player.index}
   assert(player.gui.relative.ct_window and player.gui.relative.ct_window.anchor.gui==defines.relative_gui_type.proxy_container_gui and #I.stock(d)==100,"Module did not select its stock GUI anchor")
+  local targets=player.gui.relative.ct_window.ct_targets
+  local checkbox=targets["ct_category_rail-chain-signal"]
+  assert(checkbox.state and targets["ct_target_rail-chain-signal"].enabled,"Category controls are not initialized")
+  local count=d.targets["rail-chain-signal"]
+  checkbox.state=false;Runtime.gui.event{element=checkbox,player_index=player.index};Runtime.gui.update(player)
+  assert(d.categories["rail-chain-signal"]==false and not targets["ct_target_rail-chain-signal"].enabled and d.targets["rail-chain-signal"]==count,"Native category checkbox changed or retained its loading demand")
+  checkbox.state=true;Runtime.gui.event{element=checkbox,player_index=player.index};Runtime.gui.update(player)
+  assert(d.categories["rail-chain-signal"] and targets["ct_target_rail-chain-signal"].enabled,"Native category reactivation failed")
+  local old=player.gui.relative.ct_window
+  old.ct_targets.destroy();Runtime.gui.update(player)
+  assert(not old.valid and player.gui.relative.ct_window.ct_targets and player.gui.relative.ct_window.ct_targets["ct_category_rail-chain-signal"].state,"Old native GUI was not rebuilt after a layout change")
   Runtime.gui.close(player);player.opened=nil
  end
  local center=d.wagon.position
@@ -175,11 +189,11 @@ local function setup()
   local placement={name="burner-inserter",position=offset(d.stock.position,along,2),direction=(heading+4)%16,force="player"}
   assert(surface.can_place_entity(placement),"Loading inserter collides with the workshop stock")
   local inserter=assert(surface.create_entity(placement))
-  source.insert{name="iron-plate",count=1};inserter.get_fuel_inventory().insert{name="coal",count=5}
   inputs[#inputs+1]={source=source,inserter=inserter}
  end
  Runtime.worker.pause(d)
- storage.ct_module_test={id=d.id,train=d.head.train.id,route=route,backbone=backbone,center=center,player=player and player.index,moving=0,phase="stock-input",inputs=inputs,input_deadline=game.tick+600}
+ local circuit=CircuitTest.setup(d)
+ storage.ct_module_test={id=d.id,train=d.head.train.id,route=route,backbone=backbone,center=center,player=player and player.index,moving=0,phase="circuit",circuit=circuit,inputs=inputs,input_deadline=game.tick+600}
  log("CT_TEST module-generated "..helpers.table_to_json{heading=heading,rails=#d.rails,train=d.head.train.id,stock=d.stock.position})
 end
 script.on_event(defines.events.on_tick,function(event)
@@ -190,7 +204,16 @@ script.on_event(defines.events.on_tick,function(event)
  assert(d.head.valid and d.head.train.id==test.train,"Module machine changed across the mission")
  if test.phase~="damage-stop" then assert(F.valid(d),"Module components disappeared before the damage test") end
  local t=d.head.train
- if test.phase=="stock-input" then
+ if test.circuit and test.circuit.phase=="done" and test.circuit.entity.valid then CircuitTest.persisted(d,test.circuit) end
+ if test.phase=="circuit" then
+  if CircuitTest.check(d,test.circuit) then
+   for _,input in ipairs(test.inputs) do
+    input.source.insert{name="iron-plate",count=1}
+    input.inserter.get_fuel_inventory().insert{name="coal",count=5}
+   end
+   test.phase="stock-input";test.input_deadline=game.tick+600
+  end
+ elseif test.phase=="stock-input" then
   assert(game.tick<test.input_deadline,"Inserters cannot supply the stock along the building perimeter")
   local supplied=true
   for _,input in ipairs(test.inputs) do

@@ -1,3 +1,4 @@
+local Categories=require("scripts.categories")
 local I = {}
 function I.stock(depot)
  local stock=depot.stock or depot.entity
@@ -33,10 +34,11 @@ end
 function I.revive(depot, ghost)
  local inventory=I.cargo(depot)
  if not inventory or not ghost.valid then return nil,"missing" end
+ if not Categories.allowed(depot,ghost.ghost_name) then return nil,"excluded" end
  local cost=I.cost(ghost,inventory)
  if not cost then
   local options=ghost.ghost_prototype.items_to_place_this
-  if options and options[1] then depot.missing={name=options[1].name,quality=ghost.quality.name,count=options[1].count} end
+  if options and options[1] then depot.missing={name=options[1].name,category=Categories.key(ghost.ghost_name),quality=ghost.quality.name,count=options[1].count} end
   return nil,"materials"
  end
  local taken=inventory.remove(cost)
@@ -111,29 +113,29 @@ function I.load(depot)
  local target=I.cargo(depot)
  if not target then return false end
  for name,count in pairs(depot.targets) do
-  I.transfer(source,target,name,"normal",math.max(0,count-target.get_item_count{name=name,quality="normal"}))
+  if Categories.allowed(depot,name) then I.transfer(source,target,name,"normal",math.max(0,count-target.get_item_count{name=name,quality="normal"})) end
  end
- if depot.missing then
+ if depot.missing and Categories.allowed(depot,depot.missing.category or depot.missing.name) then
   local m=depot.missing
   I.transfer(source,target,m.name,m.quality,math.max(0,m.count-target.get_item_count{name=m.name,quality=m.quality}))
  end
  for _,locomotive in ipairs{depot.head,depot.rear} do
   load_fuel(depot,locomotive,source)
  end
- I.transfer(depot.recovery,target,"rail","normal",depot.recovery.get_item_count("rail"))
+ if Categories.allowed(depot,"rail") then I.transfer(depot.recovery,target,"rail","normal",depot.recovery.get_item_count("rail")) end
  return true
 end
 function I.ready(depot)
  local cargo=I.cargo(depot)
  if not cargo then return false,{"ct.cargo-missing"} end
- if depot.missing then
+ if depot.missing and Categories.allowed(depot,depot.missing.category or depot.missing.name) then
   local m=depot.missing
   local deficit=m.count-cargo.get_item_count{name=m.name,quality=m.quality}
   if deficit>0 then return false,{"ct.missing",prototypes.item[m.name].localised_name,m.quality,deficit} end
  end
  for name,count in pairs(depot.targets) do
   local deficit=count-cargo.get_item_count{name=name,quality="normal"}
-  if deficit>0 and (not depot.refill_mode or (depot.refill_mode=="rails" and name=="rail")) then
+  if Categories.allowed(depot,name) and deficit>0 and (not depot.refill_mode or (depot.refill_mode=="rails" and name=="rail")) then
    return false,{"ct.missing",prototypes.item[name].localised_name,"normal",deficit}
   end
  end

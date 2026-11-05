@@ -1,6 +1,6 @@
 # Construction Train — premier prototype
 
-Prochaine évolution à étudier : connexion du dépôt au réseau logique, selon des commandes et signaux à définir.
+Le dépôt dispose de filtres par catégorie et d'une lecture de son stock sur les réseaux logiques rouge et vert.
 
 Mod local pour **Factorio 2.1.24 ou ultérieur**. Une seule machine de chantier **locomotive — wagon central — locomotive** est autorisée par planète et par force. Son bâtiment orientable génère sa propre voie traversante, son stock, son quai et son train. Le joueur raccorde les deux extrémités au réseau. Le train construit les rails planifiés au contact et pose au passage les accessoires compatibles avec son retour et sa reprise de chantier.
 
@@ -15,7 +15,7 @@ Les côtés de l'atelier empêchent de poser d'autres machines sur le bâtiment.
 3. Choisir un terrain libre sur terre. Tenir le dépôt en main et utiliser **R avant la pose** pour orienter sa voie nord-sud ou est-ouest ; les quatre directions cardinales sont possibles.
 4. Poser le module sans préparer de voie. Il génère quinze rails, deux locomotives, le wagon central, le quai et son stock intégré au bâtiment. L'objet inclut le coût des quinze rails internes. Un placement invalide est refusé et remboursé dans sa qualité. Une seconde pose sur la même planète pour la même force est refusée.
 5. Avec des rails vanilla, prolonger les **deux extrémités sélectionnables** et raccorder le module au réseau dans les deux sens. Aucun raccord extérieur n'est créé automatiquement. La rotation du bâtiment est verrouillée après sa pose.
-6. Ouvrir le bâtiment, **y déposer les matériaux et le carburant** dans son stock de 100 emplacements, puis régler les objectifs de chargement. Les objectifs ne fournissent pas les objets : valeurs initiales **400 rails, 50 signaux, 50 chain signals, 10 arrêts et une réserve de carburant équivalant à 100 charbons (50 par locomotive)**. Mettre à zéro les lignes inutiles si leurs matériaux ne doivent pas conditionner le départ.
+6. Ouvrir le bâtiment, **y déposer les matériaux et le carburant** dans son stock de 100 emplacements, puis cocher les catégories à construire et régler les objectifs de chargement. Valeurs initiales : **400 rails, 50 signaux, 50 signaux chaînés, 10 arrêts et une réserve de carburant équivalant à 100 charbons (50 par locomotive)**. Une catégorie décochée ne conditionne pas le départ.
 7. Poser un blueprint ferroviaire raccordé à des rails réels accessibles. Le train cherche son chantier et démarre lorsque son chargement est prêt.
 
 Cliquer sur le bâtiment ouvre l'inventaire natif de 100 emplacements et le panneau du train. Des bras peuvent alimenter ce même stock le long du côté extérieur de l'atelier, jusque vers les deux extrémités. Le wagon central possède son propre stock de 100 emplacements. Le chargement automatique accepte les carburants compatibles avec les locomotives, y compris ceux des mods et leurs qualités. La réserve est comptée en énergie, en incluant le combustible déjà en cours de consommation ; un carburant plus puissant demande moins d’objets. Le panneau indique les matériaux ou la réserve d’énergie manquants au départ.
@@ -25,6 +25,16 @@ Les anciens dépôts restent fonctionnels dans leur disposition d'origine : aucu
 Le panneau permet de démarrer, mettre en pause, rappeler la machine ou récupérer l’ensemble. Les locomotives spécialisées disposent d’une puissance et d’un freinage quadruplés, avec la même vitesse maximale ; leur consommation augmente. Les trajets utilisent le moteur et la signalisation de Factorio : aucune navigation sur les ghosts ni génération de tracé.
 
 ## Pose au passage et ravitaillement
+
+Quatre cases indépendantes choisissent ce que le train construit : rails, signaux ordinaires, signaux chaînés et arrêts. Pour un bloc sans signaux chaînés, cocher seulement rails et signaux ordinaires. Décocher une catégorie conserve sa quantité cible et les objets déjà embarqués, mais arrête son chargement et sa construction. Les ghosts exclus restent disponibles pour les robots, même si la réservation planétaire est activée. Une quantité cible nulle autorise toujours la construction avec les objets déjà embarqués ; elle ne remplace pas le filtre.
+
+Les accessoires peuvent être sélectionnés seuls : le train recherche leurs ghosts sur les voies réelles reliées au dépôt, sans poser de nouveaux rails. Les règles de circulation et de retour restent prioritaires. Si toutes les catégories sont décochées, aucun chantier n'est accepté. Un changement pendant une mission provoque un arrêt natif puis une nouvelle recherche de travail autorisé.
+
+## Lecture du stock par réseau logique
+
+Relier directement le bâtiment avec un fil rouge ou vert à un poteau ou un circuit. Le connecteur se trouve côté atelier et suit les quatre orientations. La lecture native du contenu est activée lors de la première mise à jour du dépôt ; son réglage reste ensuite mémorisé. Chaque réseau reçoit les quantités réelles et leurs qualités présentes dans le stock du dépôt. Les contenus du wagon et des locomotives sont exclus. Ce raccordement sert uniquement à lire le stock : les signaux reçus ne démarrent, ne mettent en pause et ne rappellent pas le train.
+
+## Construction et retour au dépôt
 
 Les matériaux viennent du wagon central. Une rupture de stock pendant la pose des rails provoque un retour au quai, un rechargement et la reprise du chantier. Le dépôt accepte les deux sens d’accostage. Si un retour direct est impossible, le train cherche un dégagement sur les rails déjà desservis pour inverser sa marche ; quatre manœuvres au maximum sont tentées, puis un blocage explicite attend une correction du réseau.
 
@@ -38,7 +48,7 @@ Un ghost ferroviaire isolé n’est pas un chantier accessible. Les arbres, roch
 
 ## Réserver les rails aux trains
 
-Le réglage du bâtiment concerne les **rails au sol, signaux, chain signals et arrêts pris en charge, sur toute la même planète/surface pour la même force**. Il est activé par défaut après la pose réelle du bâtiment et peut être désactivé.
+Le réglage du bâtiment réserve uniquement les **catégories cochées parmi les rails au sol, signaux, signaux chaînés et arrêts pris en charge, sur toute la même planète/surface pour la même force**. Il est activé par défaut après la pose réelle du bâtiment et peut être désactivé.
 
 Dans une ancienne sauvegarde avec plusieurs bâtiments, l’exclusion reste active tant qu’au moins l’un d’eux la demande. Le panneau indique ce nombre. À la dernière désactivation ou au retrait du dernier bâtiment demandeur, les ghosts sont restitués progressivement aux robots. Un robot déjà en route est autorisé à finir sa pose.
 

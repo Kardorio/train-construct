@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Exercise the packaged mod; never change the player's active profile."""
 import argparse
+import fcntl
 import json
 import os
 from pathlib import Path
@@ -18,18 +19,21 @@ from factorio_test_engine import executable
 BINARY=executable()
 def main():
     parser=argparse.ArgumentParser()
-    parser.add_argument("--scenario",choices=("engine","engine-north","engine-stop","singleton","concurrency","concurrency-keep","module-north","module-east","module-south","module-west"),default="engine")
-    parser.add_argument("--mutation",choices=("unpaired-signal","wrong-signal-pair","module-rollback","module-rollback-borrowed","module-rotation","module-foreign-traffic","module-foreign-borrowed","module-borrowed-rails","module-home-axis","module-damage-stop"))
+    parser.add_argument("--scenario",choices=("engine","engine-north","engine-stop","singleton","filters","concurrency","concurrency-keep","module-north","module-east","module-south","module-west"),default="engine")
+    parser.add_argument("--mutation",choices=("unpaired-signal","wrong-signal-pair","module-rollback","module-rollback-borrowed","module-rotation","module-foreign-traffic","module-foreign-borrowed","module-borrowed-rails","module-home-axis","module-damage-stop","filters-reservation","filters-load"))
     args=parser.parse_args()
     scenario=args.scenario
     if args.mutation in ("unpaired-signal","wrong-signal-pair") and scenario!="engine-stop":parser.error("The signal mutation requires the stopped control scenario")
     if args.mutation and args.mutation.startswith("module-") and scenario!="module-east":parser.error("Module mutations require the east-facing module scenario")
-    subprocess.run([str(ROOT/"build.sh"),"package"],check=True,stdout=subprocess.PIPE)
+    if args.mutation and args.mutation.startswith("filters-") and scenario!="filters":parser.error("Filter mutations require the filters scenario")
     info=json.loads((ROOT/"info.json").read_text())
     logs=[]
     with tempfile.TemporaryDirectory(prefix="construction-train-engine-") as directory:
         work=Path(directory);mods=work/"mods";mods.mkdir();write=work/"write";write.mkdir()
-        with zipfile.ZipFile(ROOT/"dist"/f"{info['name']}_{info['version']}.zip") as archive:archive.extractall(mods)
+        with (ROOT/".tools/engine-package.lock").open("w") as lock:
+            fcntl.flock(lock,fcntl.LOCK_EX)
+            subprocess.run([str(ROOT/"build.sh"),"package"],check=True,stdout=subprocess.PIPE)
+            with zipfile.ZipFile(ROOT/"dist"/f"{info['name']}_{info['version']}.zip") as archive:archive.extractall(mods)
         mod=mods/f"{info['name']}_{info['version']}"
         if args.mutation=="unpaired-signal":
             worker=mod/"scripts/worker.lua"
@@ -62,12 +66,24 @@ def main():
             old,new=changes[args.mutation]
             source=factory.read_text();assert old in source,"Module guard not found"
             factory.write_text(source.replace(old,new))
+        elif args.mutation and args.mutation.startswith("filters-"):
+            if args.mutation=="filters-reservation":
+                path=mod/"scripts/registry.lua"
+                old="depot.bot_enabled and Categories.allowed(depot,name)"
+                new="depot.bot_enabled"
+            else:
+                path=mod/"scripts/inventory.lua"
+                old='if Categories.allowed(depot,name) then I.transfer(source,target,name,"normal",math.max(0,count-target.get_item_count{name=name,quality="normal"})) end'
+                new='I.transfer(source,target,name,"normal",math.max(0,count-target.get_item_count{name=name,quality="normal"}))'
+            source=path.read_text();assert old in source,"Filter guard not found"
+            path.write_text(source.replace(old,new))
         test_info=json.loads((mod/"info.json").read_text())
         test_info["spoiling_required"]=True
         (mod/"info.json").write_text(json.dumps(test_info))
         fixtures=mod/"test-fixtures";fixtures.mkdir()
         shutil.copy2(ROOT/"tests/fixtures/rail_loop.lua",fixtures/"rail_loop.lua")
-        source=(ROOT/"tests"/("engine.lua" if scenario.startswith("engine") else "depot_module.lua" if scenario.startswith("module-") else "singleton.lua" if scenario=="singleton" else "concurrency.lua")).read_text()
+        shutil.copy2(ROOT/"tests/circuit_stock.lua",fixtures/"circuit_stock.lua")
+        source=(ROOT/"tests"/("engine.lua" if scenario.startswith("engine") else "depot_module.lua" if scenario.startswith("module-") else "filters.lua" if scenario=="filters" else "singleton.lua" if scenario=="singleton" else "concurrency.lua")).read_text()
         if scenario.startswith("module-"):source="local native_player=true;local heading="+str({"module-north":0,"module-east":4,"module-south":8,"module-west":12}[scenario])+"\n"+source
         if scenario.startswith("engine"):source="local north="+str(scenario=="engine-north").lower()+";local stopped="+str(scenario=="engine-stop").lower()+"\n"+source
         if scenario.startswith("concurrency"):source="local keep_both="+str(scenario=="concurrency-keep").lower()+"\n"+source
@@ -123,6 +139,11 @@ def main():
             output=live_log.read_text();logs.append(output)
             print("\n".join(l for l in output.splitlines() if "CT_TEST" in l),flush=True)
             if args.mutation:
+                if args.mutation.startswith("filters-"):
+                    expected="Rail reservation disagrees with category filter" if args.mutation=="filters-reservation" else "Excluded item loaded"
+                    assert expected in output and not marker.exists(),output[-8000:]
+                    print("CT_MUTATION rejected "+args.mutation,flush=True)
+                    return
                 assert "Unpaired signal built before rail frontiers completed" in output,output[-8000:]
                 assert not marker.exists(),"Signal mutation was not rejected"
                 print("CT_MUTATION rejected unpaired-signal",flush=True)
@@ -131,7 +152,7 @@ def main():
             assert "CT_TEST SUCCESS" in output,"Missing runtime completion marker"
             checkpoints=list(write.rglob("*ct-midmission*.zip"))
             assert checkpoints,"No actual mid-mission save produced"
-            result=subprocess.run(base+["--benchmark",str(checkpoints[0]),"--benchmark-ticks","6001","--benchmark-runs","1"],stdout=subprocess.PIPE,stderr=subprocess.STDOUT,text=True,timeout=55)
+            result=subprocess.run(base+["--benchmark",str(checkpoints[0]),"--benchmark-ticks","12001" if scenario=="filters" else "6001","--benchmark-runs","1"],stdout=subprocess.PIPE,stderr=subprocess.STDOUT,text=True,timeout=55)
             logs.append(result.stdout)
             if result.returncode:raise RuntimeError(result.stdout[-8000:])
             assert "CT_TEST SUCCESS lifecycle" in result.stdout,"Reloaded mission did not finish"

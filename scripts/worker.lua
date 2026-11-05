@@ -3,6 +3,7 @@ local G=require("scripts.geometry")
 local I=require("scripts.inventory")
 local R=require("scripts.registry")
 local F=require("scripts.factory")
+local Categories=require("scripts.categories")
 local W={}
 local directions={defines.rail_direction.front,defines.rail_direction.back}
 local connections={defines.rail_connection_direction.straight,defines.rail_connection_direction.left,defines.rail_connection_direction.right}
@@ -82,6 +83,7 @@ function W.search_return(d)
  drive(d,candidate.rail,candidate.direction,"retreat")
 end
 function W.pause(d)
+ d.filters_pending=nil
  d.enabled=false;d.auto_controlled=false;d.return_search=nil;d.return_attempts=nil;d.blocked_return=nil
  local t=train(d)
  if t then t.manual_mode=true end
@@ -101,15 +103,34 @@ function W.start(d)
  if not F.valid(d) then F.damage(d);return end
  d.enabled=true;d.auto_controlled=false;d.retry_at=nil;d.message=nil;d.return_search=nil;d.return_attempts=nil;d.blocked_return=nil;d.frontier_checked=0;d.frontier_anchor=1
  d.state=F.at_home(d) and "loading" or "idle"
+ if not Categories.any(d) then d.state="no-categories" end
+end
+function W.set_category(d,name,enabled)
+ if C.targets[name]==nil or type(enabled)~="boolean" then return end
+ Categories.initialize(d)
+ if d.categories[name]==enabled then return end
+ local running=d.enabled
+ if running then W.pause(d) else F.release_claims(d);d.task=nil;d.resume_anchor=nil end
+ d.categories[name]=enabled
+ d.missing=nil;d.refill_mode=nil;d.arrival=nil;d.destination=nil;d.accessory=nil
+ d.path_retry=nil;d.next_dispatch=game.tick;d.discovery=nil;d.discovery_revision=nil
+ d.frontier_checked=0;d.frontier_anchor=1;d.frontier_revision=nil
+ for id in pairs(d.pending) do
+  local record=storage.ct.ghosts[id]
+  if not (record and record.entity.valid and Categories.allowed(d,record.entity.ghost_name)) then d.pending[id]=nil end
+ end
+ storage.ct.policy_cursor=1
+ d.filters_pending=running
+ if running then d.enabled=true;d.state="filter-change" end
 end
 local function add_pending(d,record,rail,permit)
- if record and not d.pending[record.id] then
+ if record and Categories.allowed(d,record.entity.ghost_name) and not d.pending[record.id] then
   d.pending[record.id]={id=record.id,rail=rail,permit=permit};d.accessory_wait=nil
  end
 end
-function W.visit(d,rail)
+function W.visit(d,rail,discover_only)
  if not (rail and rail.valid) then return end
- d.visited[rail.unit_number]=rail
+ if not discover_only then d.visited[rail.unit_number]=rail end
  local p=rail.position
  for _,ghost in pairs(rail.surface.find_entities_filtered{area={{p.x-12,p.y-12},{p.x+12,p.y+12}},type="entity-ghost"}) do
   R.register(ghost)
@@ -144,12 +165,46 @@ function W.visit(d,rail)
   end
  end
 end
+local function discover_accessories(d)
+ local filtered=false;local accessories=false
+ for name in pairs(C.targets) do
+  if not Categories.allowed(d,name) then filtered=true
+  elseif name~="rail" then accessories=true end
+ end
+ if not (filtered and accessories) then return end
+ local revision=storage.ct.ghost_revision or 0
+ if not d.discovery and d.discovery_revision~=revision then
+  local seed=(d.track and d.track[1]) or (d.stop.valid and d.stop.connected_rail)
+  if not seed then return end
+  d.discovery={queue={seed},seen={[seed.unit_number]=true},cursor=1,revision=revision}
+ end
+ local scan=d.discovery
+ if not scan then return end
+ for _=1,8 do
+  local rail=scan.queue[scan.cursor]
+  if not rail then
+   d.discovery_revision=scan.revision;d.discovery=nil;d.next_dispatch=game.tick
+   return
+  end
+  scan.queue[scan.cursor]=false;scan.cursor=scan.cursor+1
+  if rail.valid then
+   W.visit(d,rail,true)
+   for _,direction in ipairs(directions) do for _,connection in ipairs(connections) do
+    local other=rail.get_connected_rail{rail_direction=direction,rail_connection_direction=connection}
+    if other and other.force.index==d.force_index and not scan.seen[other.unit_number] then
+     scan.seen[other.unit_number]=true;scan.queue[#scan.queue+1]=other
+    end
+   end end
+  end
+ end
+end
 local function claim(d,id)
  local owner=storage.ct.claims[id]
  if owner and owner~=d.id and storage.ct.depots[owner] then return false end
  storage.ct.claims[id]=d.id;return true
 end
 local function next_ghost(d,rail,direction)
+ if not Categories.allowed(d,"rail") then return end
  local options={}
  for _,ext in ipairs(rail.get_rail_end(direction).get_rail_extensions("rail")) do
   if C.rail_types[ext.name] then
@@ -163,6 +218,7 @@ local function next_ghost(d,rail,direction)
  return options[1]
 end
 local function dispatch(d)
+ if not Categories.allowed(d,"rail") then return false end
  if game.tick<(d.path_retry or 0) then return false end
  if storage.ct.path_budget<=0 then return nil end
  local ids,revision=R.frontier_ids(d.force_index,d.surface_index)
@@ -257,7 +313,7 @@ local function accessory(d)
  local earliest
  for id,job in pairs(d.pending) do
   local record=storage.ct.ghosts[id]
-  if not (record and record.entity.valid and job.rail.valid) then d.pending[id]=nil
+  if not (record and record.entity.valid and job.rail.valid and Categories.allowed(d,record.entity.ghost_name)) then d.pending[id]=nil
   elseif job.retry and game.tick<job.retry then earliest=math.min(earliest or job.retry,job.retry)
   elseif not storage.ct.claims[id] or storage.ct.claims[id]==d.id or not storage.ct.depots[storage.ct.claims[id]] then
    local position=record.entity.position
@@ -340,7 +396,7 @@ finish_accessory=function(d,moving)
   return
  end
  local id=d.accessory;local record=storage.ct.ghosts[id];local job=d.pending[id]
- if not (record and record.entity.valid and job and job.rail.valid) then d.pending[id]=nil;d.state="accessories";return end
+ if not (record and record.entity.valid and job and job.rail.valid and Categories.allowed(d,record.entity.ghost_name)) then d.pending[id]=nil;storage.ct.claims[id]=nil;d.state="accessories";return end
  if not (G.side_contact(d.head,record.entity.position) or G.side_contact(d.rear,record.entity.position)) then
   job.retry=game.tick+1800;storage.ct.claims[id]=nil;d.state="accessories";d.message="accessory-contact";return
  end
@@ -369,7 +425,7 @@ local function pass_accessory(d)
  local chosen
  for id,job in pairs(d.pending) do
   local record=storage.ct.ghosts[id]
-  if record and record.entity.valid and job.rail.valid and (not job.retry or game.tick>=job.retry) and
+  if record and record.entity.valid and Categories.allowed(d,record.entity.ghost_name) and job.rail.valid and (not job.retry or game.tick>=job.retry) and
    (not storage.ct.claims[id] or storage.ct.claims[id]==d.id) and
    (G.side_contact(d.head,record.entity.position) or G.side_contact(d.rear,record.entity.position)) and (not chosen or id<chosen) then chosen=id end
  end
@@ -401,6 +457,12 @@ function W.tick(d)
  local t=train(d);d.train_id=t.id
  if #t.passengers>0 then if d.enabled then W.pause(d) end;return end
  if not d.enabled then return end
+ if d.filters_pending then
+  if t.speed~=0 then return end
+  d.filters_pending=nil;W.start(d)
+ end
+ if not Categories.any(d) then d.state="no-categories";return end
+ discover_accessories(d)
  if d.auto_controlled==nil then d.auto_controlled=d.state=="travelling" or d.state=="build" or d.state=="accessory" or d.state=="accessories" end
  if d.auto_controlled and t.manual_mode then W.pause(d);return end
  if d.auto_controlled and t.speed~=0 and (d.state=="build" or (d.state=="travelling" and (d.arrival=="build" or d.arrival=="accessory"))) then
