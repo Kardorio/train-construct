@@ -12,6 +12,13 @@ def main():
     info=json.loads((ROOT/"info.json").read_text())
     name,version=info["name"],info["version"]
     action=sys.argv[1]
+    beta=len(sys.argv)>2 and sys.argv[2]=="beta"
+    if len(sys.argv)>3 or (len(sys.argv)>2 and (not beta or action!="package")):
+        raise SystemExit("Usage: build.py package [beta]")
+    original_name=name
+    if beta:
+        name="train-construct"
+        info.update(name=name,title="Construction Train (Beta)",description="Beta, do not download")
     dist=ROOT/"dist"
     if action=="clean":
         shutil.rmtree(dist,ignore_errors=True)
@@ -19,11 +26,17 @@ def main():
         dist.mkdir(exist_ok=True)
         target=dist/f"{name}_{version}.zip"
         with zipfile.ZipFile(target,"w",zipfile.ZIP_DEFLATED) as archive:
-            paths=[ROOT/p for p in ("info.json","data.lua","control.lua","README.md","LICENSE") if (ROOT/p).exists()]
+            paths=[ROOT/p for p in ("info.json","data.lua","data-updates.lua","data-final-fixes.lua","control.lua","README.md","LICENSE") if (ROOT/p).exists()]
             for directory in ("prototypes","scripts","locale","graphics"):
                 paths.extend(p for p in (ROOT/directory).rglob("*") if p.is_file() and p.suffix in (".lua",".cfg",".png"))
             for p in sorted(paths):
-                archive.write(p,f"{name}_{version}/{p.relative_to(ROOT)}")
+                member=f"{name}_{version}/{p.relative_to(ROOT)}"
+                if beta and p.name=="info.json":
+                    archive.writestr(member,json.dumps(info,indent=2)+"\n")
+                elif beta and p.suffix==".lua":
+                    archive.writestr(member,p.read_text().replace(f"__{original_name}__",f"__{name}__"))
+                else:
+                    archive.write(p,member)
         print(target)
     else:
         mods=Path(os.environ.get("MODS_DIR",Path.home()/".factorio/mods"))

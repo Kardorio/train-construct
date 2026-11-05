@@ -12,6 +12,7 @@ Mod personnel Factorio 2.1.24+, auteur kardagan. Le socle commun se trouve dans 
 ## Architecture
 
 - data.lua et prototypes/entities.lua : entités, recette du bâtiment complet et technologie.
+- data-final-fixes.lua et prototypes/pyanodon.lua : recette adaptée aux modules Py présents et coût de recherche aligné sur le ferroviaire après pypostprocessing. Sans Py, aucun changement.
 - prototypes/depot-graphics.lua et depot-sprite-layout.lua : sprites du module, échelles et rectangles natifs ; métadonnées générées par tools/art/prepare_sprites.py sans réécrire les PNG.
 - control.lua délègue à scripts/runtime.lua.
 - storage.ct : dépôts, index des ghosts, réservations, objets suivis et files progressives.
@@ -29,6 +30,8 @@ Les unités moteur de tools/probes/ sont des fixtures d’investigation ; elles 
 ## Vérification
 
 Utiliser ./build.sh lint, ./build.sh test puis python3 tests/visual.py pour les changements qui touchent la GUI ou la récupération. Le test de sauvegarde utilise un serveur temporaire lié à 127.0.0.1 et recharge une vraie sauvegarde en mission. Les tests graphiques utilisent un profil isolé et SDL offscreen.
+
+./build.sh test-py utilise les dernières archives Py installées dans quatre profils isolés, dont un sans Py. Il contrôle les prototypes finaux, le déblocage après recherche et la fabrication native avec consommation exacte des ingrédients dans le paquet bêta. Les journaux sont tests/last-py-*.log.
 
 Les tests et sondes utilisent le moteur headless officiel dans .tools/factorio-headless et refusent Steam. Les commandes natives du joueur sont exercées par --test-save ; la persistance nécessite la passe serveur distincte, car le mode de test natif ne produit pas les autosauvegardes. La vérification visuelle attend un client autonome désigné par FACTORIO_GUI_BIN ; signaler son absence, sans lancer le client Steam.
 

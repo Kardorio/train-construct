@@ -24,6 +24,12 @@ Les anciens dépôts restent fonctionnels dans leur disposition d'origine : aucu
 
 Le panneau permet de démarrer, mettre en pause, rappeler la machine ou récupérer l’ensemble. Les locomotives spécialisées disposent d’une puissance et d’un freinage quadruplés, avec la même vitesse maximale ; leur consommation augmente. Les trajets utilisent le moteur et la signalisation de Factorio : aucune navigation sur les ghosts ni génération de tracé.
 
+## Fabrication et recherche avec Pyanodon
+
+Avec Py Coal Processing ou Py Industry, la recherche du dépôt reprend les packs scientifiques, leur quantité et la durée de la recherche ferroviaire automatisée après les ajustements de Py. Celle-ci reste son prérequis.
+
+La recette Py utilise 2 locomotives, 1 wagon de marchandises, 4 coffres en acier, 40 plaques d'acier, 40 petites pièces mécaniques avec Py Petroleum Handling, 15 circuits imprimés et 15 rails. Sans Petroleum Handling, les 40 engrenages sont conservés. Les circuits imprimés Py High Tech utilisent l'identifiant `electronic-circuit`, qui désigne les circuits verts dans le jeu de base. Sans Py, la recette conserve ses 30 circuits verts et ses 40 engrenages, et la recherche vanilla reste inchangée.
+
 ## Pose au passage et ravitaillement
 
 Quatre cases indépendantes choisissent ce que le train construit : rails, signaux ordinaires, signaux chaînés et arrêts. Pour un bloc sans signaux chaînés, cocher seulement rails et signaux ordinaires. Décocher une catégorie conserve sa quantité cible et les objets déjà embarqués, mais arrête son chargement et sa construction. Les ghosts exclus restent disponibles pour les robots, même si la réservation planétaire est activée. Une quantité cible nulle autorise toujours la construction avec les objets déjà embarqués ; elle ne remplace pas le filtre.
@@ -86,16 +92,20 @@ Ce premier prototype ne constitue pas la qualification finale du mod : performan
 ./build.sh lint            # syntaxe, métadonnées et tests ciblés
 ./build.sh sprites-check   # PNG, deux bandes natives par vue, couloir dégagé, archive
 ./build.sh test            # non-régressions, boucle et limite de flotte, sauvegardes réelles
+./build.sh test-py         # profils Py Coal, Py Industry et Py complet depuis les archives installées
 python3 tests/engine.py --scenario singleton         # refus et anciennes flottes
 ./build.sh test --scenario module-east              # module horizontal : joueur natif, mission et sauvegarde
 ./build.sh test --scenario legacy-upgrade           # vraie sauvegarde de l'ancien runtime, mise à jour et rechargement
 python3 tests/visual.py    # GUI, robots personnels, garde de retrait et capture hors écran
 ./build.sh package         # archive dans dist/
+./build.sh package beta    # train-construct_0.1.0.zip pour le portail Factorio
 ./build.sh devlink         # lien local dans ~/.factorio/mods
 ./build.sh unlink
 ```
 
 Les tests utilisent des profils temporaires isolés et ne modifient pas la partie du joueur. Le test de sauvegarde ouvre un serveur temporaire privé lié uniquement à 127.0.0.1. Les tests graphiques utilisent le pilote SDL hors écran.
+
+La variante bêta destinée au portail porte l'identifiant `train-construct`, le titre `Construction Train (Beta)` et la description exacte `Beta, do not download`. Le nom `construction-train` étant déjà occupé sur le portail par un autre mod, le paquet bêta adapte son identité et ses références graphiques sans modifier les sources ni le lien local du prototype. Les deux variantes sont destinées à des installations distinctes ; ne pas les activer ensemble. Cette variante ne transfère pas les données des sauvegardes du prototype local. Le portail doit recevoir le ZIP `dist/train-construct_0.1.0.zip`, sans décompression.
 
 Les quatre scénarios `module-north`, `module-east`, `module-south` et `module-west` vérifient chacun la pose sur terrain vierge, la rotation native, les raccords des deux côtés, 52 poses en mouvement, deux ravitaillements, les deux accostages et la récupération. Une passe `--test-save` fournit les commandes natives du joueur sans écran ; une passe serveur distincte crée la vraie sauvegarde de mission, puis la recharge. Le rendu graphique ne peut pas être validé par ce mode serveur.
 

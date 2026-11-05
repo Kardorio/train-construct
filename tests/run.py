@@ -17,8 +17,9 @@ def main():
     library.lua_tolstring.argtypes=[ctypes.c_void_p,ctypes.c_int,ctypes.c_void_p]
     library.lua_tolstring.restype=ctypes.c_char_p
     library.lua_close.argtypes=[ctypes.c_void_p]
-    for directory in ("prototypes","scripts","tests"):
-        for p in sorted((ROOT/directory).rglob("*.lua")):
+    for directory in (".","prototypes","scripts","tests"):
+        paths=ROOT.glob("*.lua") if directory=="." else (ROOT/directory).rglob("*.lua")
+        for p in sorted(paths):
             state=library.luaL_newstate()
             try:
                 result=library.luaL_loadfilex(state,str(p).encode(),None)
@@ -37,6 +38,7 @@ def main():
     finally:library.lua_close(state)
     print("Syntaxe Lua/Python et métadonnées : OK",flush=True)
     subprocess.run([sys.executable,str(ROOT/"tests/test_launcher.py")],check=True)
+    subprocess.run([sys.executable,str(ROOT/"tests/test_packaging.py")],check=True)
     if "--lint" not in sys.argv:
         subprocess.run([sys.executable,str(ROOT/"tests/regressions.py")],check=True)
         subprocess.run([sys.executable,str(ROOT/"tests/graphics.py")],check=True)
