@@ -19,7 +19,7 @@ class PackagingTests(unittest.TestCase):
         (self.project/"tools").mkdir()
         shutil.copy2(ROOT/"build.sh",self.project/"build.sh")
         shutil.copy2(ROOT/"tools/build.py",self.project/"tools/build.py")
-        self.info={"name":"construction-train","version":"0.1.0","title":"Construction Train","description":"Prototype"}
+        self.info={"name":"construction-train","version":"0.1.0","title":"Construction Train","description":"Build planned railway networks."}
         (self.project/"info.json").write_text(json.dumps(self.info))
         self.lua='return {filename="__construction-train__/graphics/depot.png", name="ct-construction-locomotive"}\n'
         (self.project/"data.lua").write_text(self.lua)
@@ -50,19 +50,26 @@ class PackagingTests(unittest.TestCase):
         self.assertEqual(result.returncode,0,result.stderr)
         self.assertEqual(result.stdout,"local-check\nvalue with spaces\n")
 
-    def test_beta_renames_archive_and_asset_paths_without_changing_sources(self):
-        result=self.build("package","beta")
+    def test_portal_renames_archive_and_asset_paths_without_changing_sources(self):
+        result=self.build("package","portal")
         self.assertEqual(result.returncode,0,result.stderr)
         with zipfile.ZipFile(self.project/"dist/train-construct_0.1.0.zip") as archive:
             self.assertTrue(all(name.startswith("train-construct_0.1.0/") for name in archive.namelist()))
             info=json.loads(archive.read("train-construct_0.1.0/info.json"))
-            self.assertEqual(info,{**self.info,"name":"train-construct","title":"Construction Train (Beta)","description":"Beta, do not download"})
+            self.assertEqual(info,{**self.info,"name":"train-construct"})
             self.assertEqual(archive.read("train-construct_0.1.0/data.lua").decode(),self.lua.replace("__construction-train__","__train-construct__"))
             self.assertEqual(archive.read("train-construct_0.1.0/data-final-fixes.lua").decode(),self.final_fixes)
             self.assertIn("train-construct_0.1.0/prototypes/pyanodon.lua",archive.namelist())
             self.assertEqual(archive.read("train-construct_0.1.0/changelog.txt"),b"Version: 0.1.0\n")
         self.assertEqual(json.loads((self.project/"info.json").read_text()),self.info)
         self.assertEqual((self.project/"data.lua").read_text(),self.lua)
+
+    def test_legacy_beta_argument_uses_public_metadata(self):
+        result=self.build("package","beta")
+        self.assertEqual(result.returncode,0,result.stderr)
+        with zipfile.ZipFile(self.project/"dist/train-construct_0.1.0.zip") as archive:
+            info=json.loads(archive.read("train-construct_0.1.0/info.json"))
+            self.assertEqual(info,{**self.info,"name":"train-construct"})
 
     def test_default_package_keeps_development_identity(self):
         result=self.build("package")

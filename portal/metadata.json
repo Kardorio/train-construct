@@ -1,7 +1,6 @@
 {
   "name": "train-construct",
-  "title": "Construction Train (Beta)",
-  "current_beta_description": "Beta, do not download",
+  "title": "Construction Train",
   "summary_fr": "Un atelier et son train bidirectionnel construisent vos plans ferroviaires : rails, signaux et arrêts, ravitaillement automatique et filtres par catégorie.",
   "summary_en": "A workshop and its bidirectional train build your railway blueprints: rails, signals and stops, automatic resupply and category filters.",
   "description_file": "description.en.md",

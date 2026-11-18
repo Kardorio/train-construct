@@ -12,5 +12,5 @@
     "? pyalienlife",
     "? pypostprocessing"
   ],
-  "description": "Prototype: one depot owns one bidirectional railway construction machine."
+  "description": "Build railway blueprints with a dedicated construction train: rails, signals, train stops and automatic resupply."
 }

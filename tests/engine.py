@@ -19,7 +19,7 @@ from factorio_test_engine import executable
 BINARY=executable()
 def main():
     parser=argparse.ArgumentParser()
-    parser.add_argument("--variant",choices=("prototype","beta"),default="prototype")
+    parser.add_argument("--variant",choices=("prototype","portal","beta"),default="prototype")
     parser.add_argument("--scenario",choices=("engine","engine-north","engine-stop","singleton","filters","concurrency","concurrency-keep","module-north","module-east","module-south","module-west"),default="engine")
     parser.add_argument("--mutation",choices=("unpaired-signal","wrong-signal-pair","module-rollback","module-rollback-borrowed","module-rotation","module-foreign-traffic","module-foreign-borrowed","module-borrowed-rails","module-home-axis","module-damage-stop","filters-reservation","filters-load"))
     args=parser.parse_args()
@@ -28,14 +28,14 @@ def main():
     if args.mutation and args.mutation.startswith("module-") and scenario!="module-east":parser.error("Module mutations require the east-facing module scenario")
     if args.mutation and args.mutation.startswith("filters-") and scenario!="filters":parser.error("Filter mutations require the filters scenario")
     info=json.loads((ROOT/"info.json").read_text())
-    if args.variant=="beta":info.update(name="train-construct",title="Construction Train (Beta)",description="Beta, do not download")
+    if args.variant in ("portal","beta"):info.update(name="train-construct")
     logs=[]
     (ROOT/".tools").mkdir(exist_ok=True)
     with tempfile.TemporaryDirectory(prefix="construction-train-engine-") as directory:
         work=Path(directory);mods=work/"mods";mods.mkdir();write=work/"write";write.mkdir()
         with (ROOT/".tools/engine-package.lock").open("w") as lock:
             fcntl.flock(lock,fcntl.LOCK_EX)
-            subprocess.run([str(ROOT/"build.sh"),"package"]+(["beta"] if args.variant=="beta" else []),check=True,stdout=subprocess.PIPE)
+            subprocess.run([str(ROOT/"build.sh"),"package"]+(["portal"] if args.variant in ("portal","beta") else []),check=True,stdout=subprocess.PIPE)
             with zipfile.ZipFile(ROOT/"dist"/f"{info['name']}_{info['version']}.zip") as archive:archive.extractall(mods)
         mod=mods/f"{info['name']}_{info['version']}"
         if args.mutation=="unpaired-signal":

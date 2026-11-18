@@ -12,13 +12,13 @@ def main():
     info=json.loads((ROOT/"info.json").read_text())
     name,version=info["name"],info["version"]
     action=sys.argv[1]
-    beta=len(sys.argv)>2 and sys.argv[2]=="beta"
-    if len(sys.argv)>3 or (len(sys.argv)>2 and (not beta or action!="package")):
-        raise SystemExit("Usage: build.py package [beta]")
+    portal=len(sys.argv)>2 and sys.argv[2] in ("portal","beta")
+    if len(sys.argv)>3 or (len(sys.argv)>2 and (not portal or action!="package")):
+        raise SystemExit("Usage: build.py package [portal]")
     original_name=name
-    if beta:
+    if portal:
         name="train-construct"
-        info.update(name=name,title="Construction Train (Beta)",description="Beta, do not download")
+        info.update(name=name)
     dist=ROOT/"dist"
     if action=="clean":
         shutil.rmtree(dist,ignore_errors=True)
@@ -31,9 +31,9 @@ def main():
                 paths.extend(p for p in (ROOT/directory).rglob("*") if p.is_file() and p.suffix in (".lua",".cfg",".png"))
             for p in sorted(paths):
                 member=f"{name}_{version}/{p.relative_to(ROOT)}"
-                if beta and p.name=="info.json":
+                if portal and p.name=="info.json":
                     archive.writestr(member,json.dumps(info,indent=2)+"\n")
-                elif beta and p.suffix==".lua":
+                elif portal and p.suffix==".lua":
                     archive.writestr(member,p.read_text().replace(f"__{original_name}__",f"__{name}__"))
                 else:
                     archive.write(p,member)

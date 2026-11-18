@@ -22,7 +22,7 @@ def main():
             raise SystemExit(f'Unrelated existing link: {target}')
     elif target.exists():
         raise SystemExit(f'Unrelated existing installation: {target}')
-    subprocess.run([str(ROOT/'build.sh'),'package','beta'],check=True)
+    subprocess.run([str(ROOT/'build.sh'),'package','portal'],check=True)
     stages.mkdir(parents=True,exist_ok=True)
     work=Path(tempfile.mkdtemp(prefix='local-',dir=stages))
     with zipfile.ZipFile(ROOT/f"dist/{name}_{info['version']}.zip") as archive:

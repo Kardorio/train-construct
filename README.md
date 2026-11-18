@@ -8,7 +8,7 @@ Le module traversant dispose de quatre vues industrielles propres au mod, dériv
 
 Les côtés de l'atelier empêchent de poser d'autres machines sur le bâtiment. La voie centrale et les bras de chargement extérieurs restent utilisables. Les machines déjà présentes sur l'atelier avant cette correction sont conservées ; les retirer manuellement.
 
-## Essayer le prototype
+## Utilisation
 
 1. Activer **Construction Train** dans le menu des mods et redémarrer Factorio.
 2. Rechercher **Construction ferroviaire spécialisée**, après la recherche ferroviaire automatisée.
@@ -70,7 +70,7 @@ Le réglage du bâtiment réserve uniquement les **catégories cochées parmi le
 
 Dans une ancienne sauvegarde avec plusieurs bâtiments, l’exclusion reste active tant qu’au moins l’un d’eux la demande. Le panneau indique ce nombre. À la dernière désactivation ou au retrait du dernier bâtiment demandeur, les ghosts sont restitués progressivement aux robots. Un robot déjà en route est autorisé à finir sa pose.
 
-Le prototype conserve de vrais ghosts dans une force technique amie de leur propriétaire. La copie native de blueprint, les robots de réseau et les robots personnels ont été exercés. L’édition complète des plans, les fils, les upgrades et les interactions avec d’autres mods restent à qualifier.
+Le mod conserve de vrais ghosts dans une force technique amie de leur propriétaire. La copie native de blueprint, les robots de réseau et les robots personnels ont été exercés. L’édition complète des plans, les fils, les upgrades et les interactions avec d’autres mods restent à qualifier.
 
 **Avant de désinstaller le mod**, désactiver l’option dans tous ses bâtiments ou récupérer ces bâtiments, puis laisser le jeu terminer la restitution. L’indexation et la restitution sont progressives ; leur durée augmente avec la carte. Ne pas retirer le mod alors que des ghosts appartiennent encore à sa force technique.
 
@@ -89,16 +89,16 @@ Une ancienne sauvegarde contenant plusieurs dépôts sur une planète suspend ce
 Le dépôt Git contient les sources du mod, ses graphismes et les scripts de fabrication. Python 3 est nécessaire pour créer les archives ; aucune dépendance Python supplémentaire n'est requise pour le build.
 
 ```sh
-./build.sh package beta  # dist/train-construct_0.1.1.zip, pour le portail
-./build.sh devlink-beta  # installer les sources sous l'identifiant public train-construct
+./build.sh package portal # dist/train-construct_0.1.1.zip, pour le portail
+./build.sh devlink-portal # installer les sources sous l'identifiant public train-construct
 ./build.sh package       # archive de la variante locale construction-train
 ./build.sh devlink       # lien de la variante locale dans ~/.factorio/mods
 ./build.sh unlink        # retirer le lien de la variante locale
 ```
 
-Le paquet bêta porte l'identifiant **train-construct**, le titre **Construction Train (Beta)** et la description **Beta, do not download**. La variante locale porte l'identifiant **construction-train**. Les deux variantes sont destinées à des installations distinctes ; ne pas les activer ensemble. Elles ne transfèrent pas automatiquement les données de sauvegarde de l'une à l'autre.
+Le paquet public porte l'identifiant **train-construct** et le titre **Construction Train**. La variante locale porte l'identifiant **construction-train**. Les deux variantes sont destinées à des installations distinctes ; ne pas les activer ensemble. Elles ne transfèrent pas automatiquement les données de sauvegarde de l'une à l'autre.
 
-`devlink-beta` conserve les ZIP publics homonymes en sauvegarde locale et installe les sources sans modifier la liste des mods actifs. `MODS_DIR` permet de choisir le dossier des mods. Redémarrer complètement Factorio pour recharger les prototypes et les sprites.
+`devlink-portal` conserve les ZIP publics homonymes en sauvegarde locale et installe les sources sans modifier la liste des mods actifs. `MODS_DIR` permet de choisir le dossier des mods. Redémarrer complètement Factorio pour recharger les prototypes et les sprites.
 
 La fabrication du ZIP et l'installation locale ne publient rien sur le portail.
 

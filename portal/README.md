@@ -6,7 +6,7 @@ Ce dossier prépare la fiche du portail, sur le modèle de Vehicle Loading Dock.
 - [description.fr.md](description.fr.md) : version française correspondante pour relecture.
 - [metadata.json](metadata.json) : identité publique, propositions de résumés, vignette et galerie.
 
-La bêta conserve sa description demandée **`Beta, do not download`**. Les présentations complètes ci-dessus sont des brouillons pour une future mise à jour de la fiche ; leur création ne change ni le portail ni les métadonnées du paquet bêta.
+Le paquet public conserve l'identifiant **`train-construct`** et porte le titre **Construction Train**. Sa description courte présente les fonctions du mod ; les fichiers ci-dessus préparent la description longue. Leur présence dans Git ne publie pas automatiquement la fiche sur le portail.
 
 Les images des descriptions utilisent des liens absolus vers `https://raw.githubusercontent.com/Kardorio/train-construct/master/portal/`. Les fichiers doivent être poussés sur la branche publique `master` avant de coller la fiche sur le portail ; la présence locale des médias ne les rend pas accessibles à ces adresses. Les deux descriptions ouvrent sur le GIF réel de construction et montrent l'atelier final. L'illustration de couverture reste disponible dans la galerie, distincte des captures de jeu.
 

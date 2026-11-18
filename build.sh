@@ -4,7 +4,7 @@ cd "$(dirname "$0")"
 case "${1:-}" in
  package) python3 tools/build.py "$@" ;;
  devlink|link|unlink|clean) python3 tools/build.py "$1" ;;
- devlink-beta) python3 tools/devlink_beta.py ;;
+ devlink-portal|devlink-beta) python3 tools/devlink_beta.py ;;
  test-py) python3 tests/pyanodon.py "${@:2}" ;;
  test-ashes) python3 tests/ashes.py "${@:2}" ;;
  test-tools) python3 tests/train_tools.py ;;
@@ -26,7 +26,7 @@ case "${1:-}" in
    if [[ $# -gt 0 && -f tools/local_commands.sh ]]; then
      bash tools/local_commands.sh "$@"
    else
-     echo 'Usage: ./build.sh {test|test-py|test-ashes|test-tools|test-blueprints|test-obstacles|lint|package|devlink|devlink-beta|unlink|clean|sprites-check}'
+     echo 'Usage: ./build.sh {test|test-py|test-ashes|test-tools|test-blueprints|test-obstacles|lint|package|devlink|devlink-portal|unlink|clean|sprites-check}'
      [[ $# -eq 0 ]]
    fi
    ;;
