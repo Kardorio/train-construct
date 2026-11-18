@@ -4,7 +4,10 @@ local I=require("scripts.inventory")
 local R=require("scripts.registry")
 local F=require("scripts.factory")
 local Categories=require("scripts.categories")
+local Tools=require("scripts.train-tools")
+local Obstacles=require("scripts.obstacles")
 local W={}
+local next_ghost
 local directions={defines.rail_direction.front,defines.rail_direction.back}
 local connections={defines.rail_connection_direction.straight,defines.rail_connection_direction.left,defines.rail_connection_direction.right}
 local function train(d) return d.head and d.head.valid and d.head.train end
@@ -29,6 +32,10 @@ end
 local function drive(d,rail,direction,arrival)
  if W.fleet_limit(d) then return false end
  if not (rail and rail.valid and F.valid(d)) then F.damage(d);return false end
+ if arrival=="build" then
+  local option=next_ghost(d,rail,direction)
+  if option and not Obstacles.can_place(d,option.record.entity) then return W.obstructed(d) end
+ end
  local t=train(d)
  guard(function()
   t.schedule={current=1,records={{rail=rail,rail_direction=direction,temporary=false,wait_conditions={{type="time",compare_type="and",ticks=100000}}}}}
@@ -83,6 +90,7 @@ function W.search_return(d)
  drive(d,candidate.rail,candidate.direction,"retreat")
 end
 function W.pause(d)
+ Tools.clear(d)
  d.filters_pending=nil
  d.enabled=false;d.auto_controlled=false;d.return_search=nil;d.return_attempts=nil;d.blocked_return=nil
  local t=train(d)
@@ -98,11 +106,25 @@ function W.block(d,state,message)
  local t=train(d)
  if t and t.speed==0 then t.manual_mode=true;d.auto_controlled=false end
 end
+function W.obstructed(d)
+ local t=train(d)
+ if t and (#t.passengers>0 or (t.manual_mode and t.speed~=0)) then W.pause(d);return false end
+ if t then guard(function()
+  t.manual_mode=true
+  if t.valid then t.speed=0 end
+ end) end
+ if not F.valid(d) then F.damage(d);return false end
+ d.auto_controlled=false
+ Tools.clear(d)
+ W.block(d,"obstacle","obstacle")
+ return false
+end
 function W.start(d)
  if W.fleet_limit(d) then return end
  if not F.valid(d) then F.damage(d);return end
  d.enabled=true;d.auto_controlled=false;d.retry_at=nil;d.message=nil;d.return_search=nil;d.return_attempts=nil;d.blocked_return=nil;d.frontier_checked=0;d.frontier_anchor=1
  d.state=F.at_home(d) and "loading" or "idle"
+ d.frontier_obstructed=nil
  if not Categories.any(d) then d.state="no-categories" end
 end
 function W.set_category(d,name,enabled)
@@ -203,7 +225,7 @@ local function claim(d,id)
  if owner and owner~=d.id and storage.ct.depots[owner] then return false end
  storage.ct.claims[id]=d.id;return true
 end
-local function next_ghost(d,rail,direction)
+next_ghost=function(d,rail,direction)
  if not Categories.allowed(d,"rail") then return end
  local options={}
  for _,ext in ipairs(rail.get_rail_end(direction).get_rail_extensions("rail")) do
@@ -214,7 +236,10 @@ local function next_ghost(d,rail,direction)
    end
   end
  end
- table.sort(options,function(a,b) return a.record.key<b.record.key end)
+ table.sort(options,function(a,b)
+  if (a.record.id==d.task)~=(b.record.id==d.task) then return a.record.id==d.task end
+  return a.record.key<b.record.key
+ end)
  return options[1]
 end
 local function dispatch(d)
@@ -224,7 +249,7 @@ local function dispatch(d)
  local ids,revision=R.frontier_ids(d.force_index,d.surface_index)
  if #ids==0 then return false end
  if d.frontier_revision~=revision then
-  d.frontier_revision=revision;d.frontier_checked=0;d.frontier_anchor=1
+  d.frontier_revision=revision;d.frontier_checked=0;d.frontier_anchor=1;d.frontier_obstructed=nil
  end
  if d.frontier_total~=#ids then d.frontier_total=#ids;d.frontier_checked=0;d.frontier_anchor=1 end
  local candidates,goals={},{}
@@ -235,6 +260,7 @@ local function dispatch(d)
   local record=storage.ct.ghosts[id];local frontier=storage.ct.frontiers[id]
   local eligible=record and record.entity.valid and record.owner==d.force_index and record.surface==d.surface_index and frontier and
    (not storage.ct.claims[id] or storage.ct.claims[id]==d.id)
+  if eligible and not Obstacles.can_place(d,record.entity) then d.frontier_obstructed=true;eligible=false end
   local index=d.frontier_anchor or 1
   if eligible then
    while index<=#frontier.anchors and #goals<16 do
@@ -251,8 +277,16 @@ local function dispatch(d)
   else d.frontier_anchor=index;break end
  end
  local complete=d.frontier_checked>=#ids
+ local obstructed=d.frontier_obstructed
  if complete then d.frontier_checked=0;d.frontier_anchor=1 end
- if #goals==0 then if complete then return false else return nil end end
+ if #goals==0 then
+  if complete then
+   d.frontier_obstructed=nil
+   if obstructed then W.obstructed(d);return nil end
+   return false
+  end
+  return nil
+ end
  storage.ct.path_budget=storage.ct.path_budget-1
  local result=game.train_manager.request_train_path{train=train(d),goals=goals,return_path=false,steps_limit=8192}
  if not result.found_path then
@@ -260,6 +294,7 @@ local function dispatch(d)
   return nil
  end
  d.frontier_checked=0;d.frontier_anchor=1;d.path_retry=nil
+ d.frontier_obstructed=nil
  local chosen=candidates[result.goal_index]
  if not claim(d,chosen.id) then return nil end
  d.anchor=chosen.rail;d.direction=chosen.direction;d.task=chosen.id
@@ -368,8 +403,10 @@ local function build(d)
   d.task=nil;d.state="idle";d.next_dispatch=game.tick+30
   return
  end
+ if not Obstacles.can_place(d,option.record.entity) then W.obstructed(d);return end
  local ending=d.anchor.get_rail_end(d.direction)
- if not (G.rail_contact(d.head,ending.location.position) or G.rail_contact(d.rear,ending.location.position)) then
+ local contact=G.rail_contact(d.head,ending.location.position) or G.rail_contact(d.rear,ending.location.position)
+ if not contact then
   W.block(d,"contact","rail");return
  end
  if not claim(d,option.record.id) then d.state="idle";return end
@@ -383,6 +420,7 @@ local function build(d)
   else W.block(d,"obstacle","obstacle") end
   return
  end
+ Tools.pulse(d,contact)
  R.unregister(option.record.id)
  local direction=G.find_end(real,option.extension.goal)
  if not direction then W.block(d,"contact","rail");return end
@@ -443,6 +481,8 @@ function W.motion(d)
  if t.manual_mode or #t.passengers>0 then W.pause(d);return end
  if W.fleet_limit(d) then return end
  if d.arrival=="build" and d.anchor and d.anchor.valid then
+  local option=next_ghost(d,d.anchor,d.direction)
+  if option and not Obstacles.can_place(d,option.record.entity) then W.obstructed(d);return end
   local joint=d.anchor.get_rail_end(d.direction).location.position
   if math.min(G.distance(d.head.position,joint),G.distance(d.rear.position,joint))<144 then
    if math.abs(t.speed)>C.work_speed then t.speed=t.speed<0 and -C.work_speed or C.work_speed end

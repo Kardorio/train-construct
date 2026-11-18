@@ -1,0 +1,19 @@
+{
+  "name": "train-construct",
+  "title": "Construction Train (Beta)",
+  "current_beta_description": "Beta, do not download",
+  "summary_fr": "Un atelier et son train bidirectionnel construisent vos plans ferroviaires : rails, signaux et arrêts, ravitaillement automatique et filtres par catégorie.",
+  "summary_en": "A workshop and its bidirectional train build your railway blueprints: rails, signals and stops, automatic resupply and category filters.",
+  "description_file": "description.en.md",
+  "review_description_file": "description.fr.md",
+  "thumbnail_file": "../thumbnail.png",
+  "factorio_version": "2.1",
+  "repository_url": "https://github.com/Kardorio/train-construct",
+  "gallery_base_url": "https://raw.githubusercontent.com/Kardorio/train-construct/master/portal/gallery/",
+  "gallery_files": [
+    "gallery/construction-block-captioned-v3.gif",
+    "gallery/construction-block-captioned-v3-blueprint.png",
+    "gallery/construction-block-captioned-v3-idle.png",
+    "construction-train-cover-v1.png"
+  ]
+}

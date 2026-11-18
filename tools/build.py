@@ -26,7 +26,7 @@ def main():
         dist.mkdir(exist_ok=True)
         target=dist/f"{name}_{version}.zip"
         with zipfile.ZipFile(target,"w",zipfile.ZIP_DEFLATED) as archive:
-            paths=[ROOT/p for p in ("info.json","data.lua","data-updates.lua","data-final-fixes.lua","control.lua","README.md","changelog.txt","LICENSE") if (ROOT/p).exists()]
+            paths=[ROOT/p for p in ("info.json","data.lua","data-updates.lua","data-final-fixes.lua","control.lua","README.md","changelog.txt","LICENSE","thumbnail.png") if (ROOT/p).exists()]
             for directory in ("prototypes","scripts","locale","graphics"):
                 paths.extend(p for p in (ROOT/directory).rglob("*") if p.is_file() and p.suffix in (".lua",".cfg",".png"))
             for p in sorted(paths):

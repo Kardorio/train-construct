@@ -1,7 +1,7 @@
 local Graphics=require("prototypes.depot-graphics")
 local depot = table.deepcopy(data.raw.container["steel-chest"])
 depot.name = "ct-construction-depot"
-depot.icon = "__base__/graphics/icons/train-stop.png"
+depot.icon = "__construction-train__/graphics/icons/construction-depot-v1.png"
 depot.icon_size = 64
 depot.minable = {mining_time = 0.5, result = "ct-construction-depot"}
 depot.placeable_by = {item="ct-construction-depot",count=1}
@@ -93,6 +93,10 @@ for _,horizontal in ipairs{false,true} do
 end
 data:extend(barriers)
 local locomotive = table.deepcopy(data.raw.locomotive.locomotive)
+local train_graphics=require("prototypes.train-graphics")
+locomotive.pictures=train_graphics.picture("locomotive")
+locomotive.front_light_pictures=nil
+locomotive.water_reflection=nil
 locomotive.name = "ct-construction-locomotive"
 locomotive.minable = nil
 locomotive.max_power = "2400kW"
@@ -100,6 +104,10 @@ locomotive.braking_force = 40
 locomotive.color = {r=0.85,g=0.55,b=0.12}
 locomotive.allow_manual_color = false
 local wagon = table.deepcopy(data.raw["cargo-wagon"]["cargo-wagon"])
+wagon.pictures=train_graphics.picture("wagon")
+wagon.horizontal_doors=nil
+wagon.vertical_doors=nil
+wagon.water_reflection=nil
 wagon.name = "ct-construction-wagon"
 wagon.minable = nil
 wagon.inventory_size = 100
@@ -121,7 +129,7 @@ local recipe = {
 }
 local technology = {
  type="technology",name="ct-railway-construction",
- icon="__base__/graphics/technology/railway.png",icon_size=256,
+ icon="__construction-train__/graphics/technology/railway-construction-v1.png",icon_size=256,
  prerequisites={"automated-rail-transportation"},
  effects={{type="unlock-recipe",recipe=depot.name}},
  unit={count=150,ingredients={{"automation-science-pack",1},{"logistic-science-pack",1}},time=30}

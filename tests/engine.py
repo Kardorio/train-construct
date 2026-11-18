@@ -30,6 +30,7 @@ def main():
     info=json.loads((ROOT/"info.json").read_text())
     if args.variant=="beta":info.update(name="train-construct",title="Construction Train (Beta)",description="Beta, do not download")
     logs=[]
+    (ROOT/".tools").mkdir(exist_ok=True)
     with tempfile.TemporaryDirectory(prefix="construction-train-engine-") as directory:
         work=Path(directory);mods=work/"mods";mods.mkdir();write=work/"write";write.mkdir()
         with (ROOT/".tools/engine-package.lock").open("w") as lock:
@@ -91,6 +92,7 @@ def main():
         if scenario.startswith("concurrency"):source="local keep_both="+str(scenario=="concurrency-keep").lower()+"\n"+source
         with (mod/"control.lua").open("a") as stream:stream.write("\n"+source)
         with (mod/"data.lua").open("a") as stream:
+            stream.write('\nassert(data.raw.locomotive["ct-construction-locomotive"].wheels,"Construction locomotive lost native bogies and couplers")\nassert(data.raw["cargo-wagon"]["ct-construction-wagon"].wheels,"Construction wagon lost native bogies and couplers")\n')
             stream.write('\ndata:extend{{type="item",name="ct-test-perishable-fuel",icon="__base__/graphics/icons/solid-fuel.png",icon_size=64,stack_size=100,fuel_categories={"chemical"},fuel_value="20MJ",spoil_ticks=360000,spoil_result="wood"}}\n')
         (mods/"mod-list.json").write_text(json.dumps({"mods":[{"name":"base","enabled":True},{"name":info["name"],"enabled":True},{"name":"quality","enabled":True},{"name":"recycler","enabled":True}]+[{"name":n,"enabled":False} for n in ("space-age","elevated-rails")]}))
         config=work/"config.ini";config.write_text(f"[path]\nread-data={BINARY.parents[2]/'data'}\nwrite-data={write}\n[other]\ncheck-updates=false\n")

@@ -26,7 +26,15 @@ script.on_init(function()
   assert(F.withdraw(d,false))
  end
  local other_force=game.create_force("ct-test-other")
- independent(surface,other_force,40)
+ local other_robot=surface.create_entity{name="construction-robot",position={40,0},force=other_force}
+ for _,name in ipairs{C.depot,C.module} do
+  local other_depot=surface.create_entity{name=name,position={40,0},force=other_force}
+  local created,denial=Runtime.on_built{entity=other_depot,robot=other_robot}
+  assert(not created and denial=="fleet-limit" and not other_depot.valid,"Other force bypassed the planet limit")
+ end
+ assert(other_robot.get_inventory(defines.inventory.robot_cargo).get_item_count(C.depot)==2,"Other force rejected depots were not refunded")
+ assert(#surface.find_entities_filtered{name=C.locomotive}==2,"Other force rejection created a train")
+ other_robot.destroy()
  local planet=game.create_surface("ct-test-other-surface",{width=64,height=64})
  planet.request_to_generate_chunks({0,0},1);planet.force_generate_chunk_requests()
  local ground={};for x=-20,20 do for y=-20,20 do ground[#ground+1]={name="grass-1",position={x,y}} end end;planet.set_tiles(ground)
@@ -36,7 +44,12 @@ script.on_init(function()
  local conflict=F.conflict
  F.conflict=function() return false end
  local ids={first.id}
- for _,y in ipairs{-20,20,60} do ids[#ids+1]=assert(Runtime.on_built{entity=surface.create_entity{name=C.depot,position={6,y},force="player"}}).id end
+ for index,y in ipairs{-20,20,60} do
+  local x=index==1 and 40 or 0
+  local owner=index==1 and other_force or game.forces.player
+  if index==1 then for ry=-36,-4,2 do surface.create_entity{name="straight-rail",position={x,ry},direction=0,force=owner} end end
+  ids[#ids+1]=assert(Runtime.on_built{entity=surface.create_entity{name=C.depot,position={x+6,y},force=owner}}).id
+ end
  F.conflict=conflict
  for _,id in ipairs(ids) do
   local d=storage.ct.depots[id]
@@ -82,5 +95,5 @@ script.on_event(defines.events.on_tick,function(event)
  assert(#first.entity.surface.find_entities_filtered{name=C.locomotive}==2)
  state.done=true
  helpers.write_file("ct-engine-result.txt","CT ENGINE OK\n",false)
- log("CT_TEST SUCCESS lifecycle singleton: rejected placement, independent domains, legacy recovery and resumption")
+ log("CT_TEST SUCCESS lifecycle singleton: cross-force rejection, independent surfaces, mixed-force legacy recovery and resumption")
 end)

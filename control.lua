@@ -1,4 +1,6 @@
 local Runtime=require("scripts.runtime")
+script.on_event(defines.events.on_player_setup_blueprint,Runtime.blueprint)
+script.on_event(defines.events.on_entity_settings_pasted,Runtime.settings_pasted)
 script.on_init(Runtime.initialize)
 script.on_configuration_changed(Runtime.initialize)
 script.on_nth_tick(10,Runtime.tick)

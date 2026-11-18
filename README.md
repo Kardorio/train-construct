@@ -1,10 +1,10 @@
-# Construction Train — premier prototype
+# Construction Train
 
 Le dépôt dispose de filtres par catégorie et d'une lecture de son stock sur les réseaux logiques rouge et vert.
 
-Mod local pour **Factorio 2.1.24 ou ultérieur**. Une seule machine de chantier **locomotive — wagon central — locomotive** est autorisée par planète et par force. Son bâtiment orientable génère sa propre voie traversante, son stock, son quai et son train. Le joueur raccorde les deux extrémités au réseau. Le train construit les rails planifiés au contact et pose au passage les accessoires compatibles avec son retour et sa reprise de chantier.
+Mod local pour **Factorio 2.1.24 ou ultérieur**. Une seule machine de chantier **locomotive — wagon central — locomotive** est autorisée par planète. Son bâtiment orientable génère sa propre voie traversante, son stock, son quai et son train. Le joueur raccorde les deux extrémités au réseau. Le train construit les rails planifiés au contact et pose au passage les accessoires compatibles avec son retour et sa reprise de chantier.
 
-Le module traversant dispose de quatre vues industrielles propres au mod, dérivées de la référence visuelle. Un sol métallique continu passe sous les rails et relie les deux côtés de l'atelier. Le bâtiment représente visuellement le stock intégré. Les véhicules utilisent encore les modèles vanilla provisoires. La [planche concept](docs/concepts/train-depot-v1.png) reste la référence pour la suite des graphismes ; ce n’est pas une capture du prototype.
+Le module traversant dispose de quatre vues industrielles propres au mod, dérivées de la référence visuelle. Un sol métallique continu passe sous les rails et relie les deux côtés de l'atelier. Le bâtiment représente visuellement le stock intégré. Les véhicules disposent de sprites spécifiques : locomotives jaunes avec cabines extérieures et pinces courtes, wagon ouvert avec rails, signaux et manipulateur replié. Chaque véhicule utilise 64 orientations, obtenues par reprojection des 16 vues de référence conservées. Ce sont des vues intermédiaires en 2D, pas de nouveaux rendus 3D ; les changements de perspective entre références restent à apprécier en jeu. Une pince du nez actif s'anime après chaque pose de rail réussie, sans modifier la conduite ni les matériaux consommés. Le dessin reprend un atelier industriel jaune et patiné.
 
 Les côtés de l'atelier empêchent de poser d'autres machines sur le bâtiment. La voie centrale et les bras de chargement extérieurs restent utilisables. Les machines déjà présentes sur l'atelier avant cette correction sont conservées ; les retirer manuellement.
 
@@ -13,7 +13,7 @@ Les côtés de l'atelier empêchent de poser d'autres machines sur le bâtiment.
 1. Activer **Construction Train** dans le menu des mods et redémarrer Factorio.
 2. Rechercher **Construction ferroviaire spécialisée**, après la recherche ferroviaire automatisée.
 3. Choisir un terrain libre sur terre. Tenir le dépôt en main et utiliser **R avant la pose** pour orienter sa voie nord-sud ou est-ouest ; les quatre directions cardinales sont possibles.
-4. Poser le module sans préparer de voie. Il génère quinze rails, deux locomotives, le wagon central, le quai et son stock intégré au bâtiment. L'objet inclut le coût des quinze rails internes. Un placement invalide est refusé et remboursé dans sa qualité. Une seconde pose sur la même planète pour la même force est refusée.
+4. Poser le module sans préparer de voie. Il génère quinze rails, deux locomotives, le wagon central, le quai et son stock intégré au bâtiment. L'objet inclut le coût des quinze rails internes. Un placement invalide est refusé et remboursé dans sa qualité. Une seconde pose sur la même planète est refusée.
 5. Avec des rails vanilla, prolonger les **deux extrémités sélectionnables** et raccorder le module au réseau dans les deux sens. Aucun raccord extérieur n'est créé automatiquement. La rotation du bâtiment est verrouillée après sa pose.
 6. Ouvrir le bâtiment, **y déposer les matériaux et le carburant** dans son stock de 100 emplacements, puis cocher les catégories à construire et régler les objectifs de chargement. Valeurs initiales : **400 rails, 50 signaux, 50 signaux chaînés, 10 arrêts et une réserve de carburant équivalant à 100 charbons (50 par locomotive)**. Une catégorie décochée ne conditionne pas le départ.
 7. Poser un blueprint ferroviaire raccordé à des rails réels accessibles. Le train cherche son chantier et démarre lorsque son chargement est prêt.
@@ -38,6 +38,12 @@ Quatre cases indépendantes choisissent ce que le train construit : rails, signa
 
 Les accessoires peuvent être sélectionnés seuls : le train recherche leurs ghosts sur les voies réelles reliées au dépôt, sans poser de nouveaux rails. Les règles de circulation et de retour restent prioritaires. Si toutes les catégories sont décochées, aucun chantier n'est accepté. Un changement pendant une mission provoque un arrêt natif puis une nouvelle recherche de travail autorisé.
 
+## Copier les réglages du dépôt
+
+Un blueprint du dépôt conserve les quatre catégories de construction, leurs quantités cibles, la réserve de carburant, la réservation des robots et les options de lecture du stock. Le copier-coller natif de réglages applique les mêmes paramètres ; les autres tags du blueprint restent préservés.
+
+Le dépôt reconstruit avec ces réglages commence **en pause** : cliquer sur **Démarrer** quand ses stocks sont prêts. Les tags ne contiennent ni inventaires, ni identités, ni missions du train ; un module cloné reçoit un stock intégré neuf et vide. La limite d'une machine par planète reste applicable. La conservation concerne les blueprints, la copie des réglages et les clones du module ; un objet ordinaire miné puis reposé ne porte pas ces tags.
+
 ## Lecture du stock par réseau logique
 
 Relier directement le bâtiment avec un fil rouge ou vert à un poteau ou un circuit. Le connecteur se trouve côté atelier et suit les quatre orientations. La lecture native du contenu est activée lors de la première mise à jour du dépôt ; son réglage reste ensuite mémorisé. Chaque réseau reçoit les quantités réelles et leurs qualités présentes dans le stock du dépôt. Les contenus du wagon et des locomotives sont exclus. Ce raccordement sert uniquement à lire le stock : les signaux reçus ne démarrent, ne mettent en pause et ne rappellent pas le train.
@@ -47,6 +53,10 @@ Relier directement le bâtiment avec un fil rouge ou vert à un poteau ou un cir
 Les matériaux viennent du wagon central. Une rupture de stock pendant la pose des rails provoque un retour au quai, un rechargement et la reprise du chantier. Le dépôt accepte les deux sens d’accostage. Si un retour direct est impossible, le train cherche un dégagement sur les rails déjà desservis pour inverser sa marche ; quatre manœuvres au maximum sont tentées, puis un blocage explicite attend une correction du réseau.
 
 Le train prolonge sa destination dès que l’outil atteint le prochain rail, sans imposer un arrêt à chaque pose. La vitesse est limitée à proximité du front de construction ; les trajets sur le réseau existant conservent leur vitesse normale. Des arrêts restent possibles aux embranchements, aux signaux et pendant les manœuvres.
+
+Avant de partir vers un rail fantôme et pendant son approche, le train vérifie que le rail peut réellement être posé. Un arbre, rocher ou bâtiment présent reste bloquant même s'il est marqué à déconstruire. Le panneau indique l'attente de dégagement ; le chantier est réexaminé automatiquement après le nettoyage par les robots ou le joueur. Un obstacle apparu pendant l'approche déclenche l'arrêt du train contrôlé. Les autres frontières constructibles restent candidates.
+
+Le train ne mine ni ne détruit ces obstacles. Ce contrôle concerne les approches de construction ; il ne remplace pas la signalisation et les règles de circulation sur le réseau existant. Le déblaiement par le train est reporté à un lot ultérieur.
 
 Signaux, chain signals et arrêts sont construits uniquement sur les rails desservis, avec vérification du contact et du rattachement. Les accessoires au contact peuvent être posés pendant le déplacement. Pendant la construction des rails, un signal sans signal opposé déjà réel est différé : il pourrait rendre tout le tronçon à sens unique. Les signaux qui compromettraient le retour ou la reprise depuis le dépôt sont également différés. Les accessoires restants font ensuite l’objet de trajets dédiés ; un sens unique impossible ou une branche trop courte peut laisser des travaux en attente.
 
@@ -72,53 +82,38 @@ Les rails internes ne sont pas minables séparément. La récupération retire c
 
 Le minage natif et la récupération par script ne remboursent pas deux fois le bâtiment et conservent sa qualité. Une machine endommagée ne génère pas de remplaçante gratuite. Une modification du planning par le joueur ou une prise de contrôle suspend l’automatisation, y compris juste avant une pose.
 
-Une ancienne sauvegarde contenant plusieurs dépôts de la même force sur une planète suspend ces machines et conserve leurs contenus. Récupérer les bâtiments supplémentaires, puis cliquer sur **Démarrer** pour la machine restante. Le rappel est également bloqué pendant ce conflit ; les bâtiments ne sont jamais supprimés automatiquement.
+Une ancienne sauvegarde contenant plusieurs dépôts sur une planète suspend ces machines et conserve leurs contenus. Récupérer les bâtiments supplémentaires, puis cliquer sur **Démarrer** pour la machine restante. Le rappel est également bloqué pendant ce conflit ; les bâtiments ne sont jamais supprimés automatiquement.
 
-## État de qualification
+## Construire et installer
 
-Le 3 novembre 2026, l'utilisateur a essayé les sprites en jeu et fourni des captures. Il a refusé le coffre visible au milieu de l'atelier ainsi que l'ancien voile gris et son liseré jaune. La correction retient un stock intégré visuellement au bâtiment, sans découpe centrale autour du conteneur. Les quatre PNG du bâtiment restent inchangés ; l'étude du coffre est conservée dans `docs/concepts/stock-study.png`. Au chargement, `Runtime.initialize` supprime l'ancien rendu sans recréer les entités ni leurs inventaires. **La qualification moteur de cette correction est réussie** : suite complète terminée avec un code de sortie 0, lint et `sprites-check` réussis, aperçu inspecté dans le navigateur et archive produite. Le rendu corrigé reste à revoir par l’utilisateur en sandbox.
-
-Le lot 1 a été accepté en sandbox le 1er novembre 2026 : chantier complet rails puis signaux, puis reprise après déconstruction par les robots et restauration du plan. L’essai à quatre trains a ensuite révélé une collision sur un accès sans signaux. Le 2 novembre, la cible devient une machine unique par planète et force avec pose en mouvement.
-
-Le scénario moteur réel exerce la génération unique, la découverte de 52 rails, le ravitaillement, un signal, un chain signal et un arrêt, le retour et le retrait éloigné avec comptage des stocks. Les poses en mouvement sont comptées séparément.
-
-Une sauvegarde créée en cours de mission est rechargée et termine le même scénario. Le test graphique utilise un vrai joueur, les vrais éléments GUI et un roboport personnel. Les corrections de retrait/reprise ont également des tests ciblés et des mutations en copies temporaires : réintroduire les défauts couverts doit faire échouer les tests correspondants.
-
-Le scénario `singleton` vérifie le refus et le remboursement d’un dépôt supplémentaire, l’indépendance des forces et surfaces, puis la suspension et la récupération d’une ancienne flotte de quatre machines. Les anciennes fixtures `concurrency` restent une investigation historique ; elles ne sont plus compatibles avec la limite du produit et sont exclues de la suite courante.
-
-Ce premier prototype ne constitue pas la qualification finale du mod : performances megabase, cohabitation avec les trains de production, toutes les géométries d’accessoires, paramètres copiés dans les blueprints, packs de conversion et graphismes définitifs restent à compléter. Les rails surélevés et rampes sont hors périmètre.
-
-## Développement et installation locale
+Le dépôt Git contient les sources du mod, ses graphismes et les scripts de fabrication. Python 3 est nécessaire pour créer les archives ; aucune dépendance Python supplémentaire n'est requise pour le build.
 
 ```sh
-./build.sh lint            # syntaxe, métadonnées et tests ciblés
-./build.sh sprites-check   # PNG, deux bandes natives par vue, couloir dégagé, archive
-./build.sh test            # non-régressions, boucle et limite de flotte, sauvegardes réelles
-./build.sh test-py         # profils Py Coal, Py Industry et Py complet depuis les archives installées
-./build.sh test-ashes      # résidus, stock plein, qualités et combustion Py réelle
-./build.sh test-ashes --profile fullPy  # même scénario avec le pack Py complet
-python3 tests/engine.py --scenario singleton         # refus et anciennes flottes
-./build.sh test --scenario module-east              # module horizontal : joueur natif, mission et sauvegarde
-./build.sh test --scenario legacy-upgrade           # vraie sauvegarde de l'ancien runtime, mise à jour et rechargement
-python3 tests/visual.py    # GUI, robots personnels, garde de retrait et capture hors écran
-./build.sh package         # archive dans dist/
-./build.sh package beta    # train-construct_0.1.1.zip pour le portail Factorio
-./build.sh devlink         # lien local dans ~/.factorio/mods
-./build.sh unlink
+./build.sh package beta  # dist/train-construct_0.1.1.zip, pour le portail
+./build.sh devlink-beta  # installer les sources sous l'identifiant public train-construct
+./build.sh package       # archive de la variante locale construction-train
+./build.sh devlink       # lien de la variante locale dans ~/.factorio/mods
+./build.sh unlink        # retirer le lien de la variante locale
 ```
 
-Les tests utilisent des profils temporaires isolés et ne modifient pas la partie du joueur. Le test de sauvegarde ouvre un serveur temporaire privé lié uniquement à 127.0.0.1. Les tests graphiques utilisent le pilote SDL hors écran.
+Le paquet bêta porte l'identifiant **train-construct**, le titre **Construction Train (Beta)** et la description **Beta, do not download**. La variante locale porte l'identifiant **construction-train**. Les deux variantes sont destinées à des installations distinctes ; ne pas les activer ensemble. Elles ne transfèrent pas automatiquement les données de sauvegarde de l'une à l'autre.
 
-La variante bêta destinée au portail porte l'identifiant `train-construct`, le titre `Construction Train (Beta)` et la description exacte `Beta, do not download`. Le nom `construction-train` étant déjà occupé sur le portail par un autre mod, le paquet bêta adapte son identité et ses références graphiques sans modifier les sources ni le lien local du prototype. Les deux variantes sont destinées à des installations distinctes ; ne pas les activer ensemble. Cette variante ne transfère pas les données des sauvegardes du prototype local. Le portail doit recevoir le ZIP `dist/train-construct_0.1.1.zip`, sans décompression.
+`devlink-beta` conserve les ZIP publics homonymes en sauvegarde locale et installe les sources sans modifier la liste des mods actifs. `MODS_DIR` permet de choisir le dossier des mods. Redémarrer complètement Factorio pour recharger les prototypes et les sprites.
 
-Les quatre scénarios `module-north`, `module-east`, `module-south` et `module-west` vérifient chacun la pose sur terrain vierge, la rotation native, les raccords des deux côtés, 52 poses en mouvement, deux ravitaillements, les deux accostages et la récupération. Une passe `--test-save` fournit les commandes natives du joueur sans écran ; une passe serveur distincte crée la vraie sauvegarde de mission, puis la recharge. Le rendu graphique ne peut pas être validé par ce mode serveur.
+La fabrication du ZIP et l'installation locale ne publient rien sur le portail.
 
-Le test `legacy-upgrade` crée une sauvegarde avec le code du commit `f14769e`, la charge avec le runtime courant puis recharge une sauvegarde de ce dernier. Le dépôt en pause, les trois véhicules, leurs identités et tous les contenus par objet et qualité doivent rester identiques. Il utilise l'historique Git local et des copies temporaires ; aucune sauvegarde du joueur n'est modifiée.
+La [fiche du portail](portal/README.md), ses présentations française et anglaise ainsi que les médias finaux sont conservés dans `portal/`.
 
-Dépendances locales des tests : Python 3, Pillow, liblua5.4 et le moteur serveur officiel Factorio 2.1.24 avec les modules Quality et Recycler. Les tests et sondes utilisent `.tools/factorio-headless/bin/x64/factorio`, installation locale ignorée par Git, ou le chemin `FACTORIO_BIN`. Le moteur est disponible sur la [page officielle de téléchargement](https://factorio.com/download) : sélectionner la version serveur Linux 2.1.24 et extraire son dossier `factorio` sous `.tools/factorio-headless`.
+## Tests
 
-Les tests graphiques exigent une version autonome avec graphismes, placée sous `.tools/factorio-standalone` ou désignée par `FACTORIO_GUI_BIN`, et un contexte OpenGL hors écran. En son absence, le test s'arrête avec un message explicite : aucun repli vers Steam. Le lanceur refuse aussi les moteurs Steam fournis par variable d'environnement et ne transmet pas les identifiants Steam au test graphique. Le statut Steam du joueur n'est pas modifié. `MODS_DIR` choisit le dossier de mods pour le lien de développement.
+Les tests automatisés et leurs outils nécessaires font partie du dépôt. Les concepts, rendus expérimentaux et médias de travail restent locaux.
 
-Les journaux courants sont dans tests/last-engine.log, tests/last-singleton.log et tests/last-visual.log. La [capture historique](docs/prototype-preview.png) représente l'ancien dépôt, avant le module traversant. Les captures du module essayées par l'utilisateur ont motivé la correction visuelle en cours ; elles ne valident pas son résultat corrigé. Les sondes indépendantes et leurs preuves restent sous tools/ et docs/ ; elles sont distinctes des tests du mod réel.
+```sh
+./build.sh lint          # syntaxe, métadonnées et tests unitaires
+./build.sh test          # scénarios moteur, sauvegardes et non-régressions
+./build.sh test-py       # recettes et recherche avec les archives Py installées
+./build.sh test-ashes    # déchargement des résidus
+./build.sh sprites-check # dimensions, calage et présence des sprites dans les archives
+```
 
-Le [LLD](docs/LLD.md) et la [spécification](specs/001-construction-train.md) décrivent la cible complète. Aucune publication n’est effectuée par le packaging.
+Les tests nécessitent Python 3, Pillow, liblua5.4 et le moteur officiel headless Factorio 2.1.24, installé dans `.tools/factorio-headless` ou désigné par `FACTORIO_BIN`. Les tests graphiques avec joueur exigent un client autonome dans `.tools/factorio-standalone` ou désigné par `FACTORIO_GUI_BIN`. Aucun test ne doit lancer le client Steam. Les journaux et rapports générés restent ignorés par Git.

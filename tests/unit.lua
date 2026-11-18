@@ -33,6 +33,12 @@ local function machine()
  return d,front,back
 end
 reset()
+storage.ct.depots[1]={id=1,force_index=1,surface_index=1}
+assert(F.conflict{id=2,force_index=2,surface_index=1},"Other force bypassed the planet limit")
+assert(not F.conflict{id=1,force_index=1,surface_index=1},"Depot conflicts with itself")
+assert(not F.conflict{id=2,force_index=1,surface_index=2},"Another planet was incorrectly limited")
+print("CT_UNIT SUCCESS: one construction machine per planet across forces")
+reset()
 local d,front,back=machine()
 back.passengers={{}}
 assert(not F.withdraw(d,true),"Occupied detached rear must prevent withdrawal")
@@ -57,6 +63,7 @@ package.loaded["scripts.factory"]={damage=F.damage,at_home=function() return fal
  for id,owner in pairs(storage.ct.claims) do if owner==depot.id then storage.ct.claims[id]=nil end end
 end}
 package.loaded["scripts.worker"]=nil
+package.loaded["scripts.obstacles"]={can_place=function(_,ghost) return ghost.can_place~=false end}
 local W=require("scripts.worker")
 for _,state in ipairs{"obstacle","no-path","contact"} do
  reset()
@@ -283,7 +290,7 @@ do
  local t={id=1,manual_mode=false,passengers={},speed=.5}
  local head={valid=true,train=t,position={x=0,y=10},orientation=0}
  local rear={valid=true,position={x=0,y=20},orientation=0}
- local anchor={valid=true,get_rail_end=function() return {location={position={x=0,y=0}}} end}
+ local anchor={valid=true,get_rail_end=function() return {location={position={x=0,y=0}},get_rail_extensions=function() return {} end} end}
  local d={id=1,enabled=true,auto_controlled=true,state="travelling",arrival="build",head=head,rear=rear,anchor=anchor,direction=0}
  W.motion(d)
  assert(t.speed==C.work_speed,"Forward work speed was not capped")
@@ -294,6 +301,23 @@ do
  head.position.y=100;rear.position.y=110;t.speed=.5;W.motion(d)
  assert(t.speed==.5,"Transit speed was capped away from the work front")
  print("CT_UNIT SUCCESS: work cap only reduces speed and preserves native stops")
+end
+
+do
+ for _,mode in ipairs{"automatic","manual","occupied"} do
+  reset()
+  local t={id=1,valid=true,manual_mode=mode=="manual",passengers=mode=="occupied" and {{}} or {},speed=.4}
+  local d={id=1,enabled=true,auto_controlled=true,state="travelling",head={valid=true,train=t}}
+  W.obstructed(d)
+  assert(storage.ct.claims[77]==nil,"Obstructed worker retained a claim")
+  if mode=="automatic" then
+   assert(d.enabled and d.state=="obstacle" and not d.auto_controlled and t.manual_mode and t.speed==0,"Obstructed automatic train did not stop safely")
+   assert(d.retry_at>game.tick,"Obstructed train cannot retry")
+  else
+   assert(not d.enabled and d.state=="paused" and t.speed==.4,"Obstacle stop overrode manual or occupied movement")
+  end
+ end
+ print("CT_UNIT SUCCESS: obstacle stop retains retry and respects manual/occupied movement")
 end
 
 do

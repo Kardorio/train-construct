@@ -8,13 +8,18 @@ import tempfile
 
 ROOT=Path(__file__).resolve().parents[1]
 def main():
-    for defect in ("detached-occupant","double-refund","blocked-worker","premature-accessories","lost-anchor","single-docking","lost-return","historical-frontiers","accessory-id-order","accessory-contact-trip","foreign-frontier-revision","sleeping-accessory","merged-frontier-cache","manual-takeover","building-quality"):
+    for defect in ("force-scoped-fleet","detached-occupant","double-refund","blocked-worker","premature-accessories","lost-anchor","single-docking","lost-return","historical-frontiers","accessory-id-order","accessory-contact-trip","foreign-frontier-revision","sleeping-accessory","merged-frontier-cache","manual-takeover","building-quality"):
         with tempfile.TemporaryDirectory(prefix="ct-regression-") as directory:
             work=Path(directory)
             shutil.copytree(ROOT/"scripts",work/"scripts")
             factory=work/"scripts/factory.lua"
             worker=work/"scripts/worker.lua"
-            if defect=="manual-takeover":
+            if defect=="force-scoped-fleet":
+                source=factory.read_text()
+                old="if id~=depot.id and other.surface_index==depot.surface_index then"
+                assert source.count(old)==1,"Planet limit mutation hook changed"
+                factory.write_text(source.replace(old,"if id~=depot.id and other.force_index==depot.force_index and other.surface_index==depot.surface_index then"))
+            elif defect=="manual-takeover":
                 worker.write_text(worker.read_text().replace(' if d.auto_controlled and t.manual_mode then W.pause(d);return end',''))
             elif defect=="building-quality":
                 factory.write_text(factory.read_text().replace('stack={name=C.depot,count=1,quality=depot.quality}','stack={name=C.depot,count=1}'))
@@ -62,7 +67,12 @@ def main():
                 factory.write_text(s.replace(" return goals\nend\nfunction F.at_home"," return {goals[1]}\nend\nfunction F.at_home"))
             elif defect=="premature-accessories":
                 s=worker.read_text()
-                worker.write_text(s.replace("if #goals==0 then if complete then return false else return nil end end","if #goals==0 then return false end"))
+                start=s.index(" if #goals==0 then\n",s.index("local function dispatch(d)"))
+                end=s.index(" storage.ct.path_budget=",start)
+                block=s[start:end]
+                old="  return nil\n end\n"
+                assert block.count(old)==1,"Incomplete frontier page mutation hook changed"
+                worker.write_text(s[:start]+block.replace(old,"  return false\n end\n")+s[end:])
             else:
                 s=worker.read_text()
                 start=s.index(" if blocked_states[d.state] then")
@@ -70,7 +80,7 @@ def main():
                 worker.write_text(s[:start]+s[end:])
             run=subprocess.run([sys.executable,str(ROOT/"tests/run.py"),"--lint"],cwd=work,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,text=True)
             assert run.returncode!=0,f"Regression test accepted {defect}"
-            expected={"detached-occupant":"Occupied detached rear must prevent withdrawal","double-refund":"tests/unit.lua","blocked-worker":"Blocked worker kept its claim","premature-accessories":"Accessories started before all frontier pages were scanned","lost-anchor":"Partial frontier was marked complete at the goal limit","single-docking":"Depot must support both docking directions","lost-return":"Failed reversing maneuver lost the pending refill","historical-frontiers":"Historical rail entries delayed accessory selection","accessory-id-order":"Accessory choice followed IDs instead of proximity","accessory-contact-trip":"Accessory already in contact caused a new train journey","foreign-frontier-revision":"Other domain restarted the current rail search","sleeping-accessory":"Released accessory slept until an unrelated retry deadline","merged-frontier-cache":"Merged frontier remains invisible in destination cache","manual-takeover":"Manual takeover was ignored before new work","building-quality":"Building recovery degraded its quality"}[defect]
+            expected={"force-scoped-fleet":"Other force bypassed the planet limit","detached-occupant":"Occupied detached rear must prevent withdrawal","double-refund":"tests/unit.lua","blocked-worker":"Blocked worker kept its claim","premature-accessories":"Accessories started before all frontier pages were scanned","lost-anchor":"Partial frontier was marked complete at the goal limit","single-docking":"Depot must support both docking directions","lost-return":"Failed reversing maneuver lost the pending refill","historical-frontiers":"Historical rail entries delayed accessory selection","accessory-id-order":"Accessory choice followed IDs instead of proximity","accessory-contact-trip":"Accessory already in contact caused a new train journey","foreign-frontier-revision":"Other domain restarted the current rail search","sleeping-accessory":"Released accessory slept until an unrelated retry deadline","merged-frontier-cache":"Merged frontier remains invisible in destination cache","manual-takeover":"Manual takeover was ignored before new work","building-quality":"Building recovery degraded its quality"}[defect]
             assert expected in run.stdout,run.stdout
             print("CT_REGRESSION rejected "+defect,flush=True)
 if __name__=="__main__":main()

@@ -1,0 +1,87 @@
+{
+  "frames": 291,
+  "built": 54,
+  "remaining": 0,
+  "camera": {
+    "x": 31.25,
+    "y": 23.25
+  },
+  "zoom": 0.3827751196172249,
+  "rail_count": 52,
+  "returned": true,
+  "depot": "ct-construction-module",
+  "view": "fixed-aerial",
+  "capture_interval": 12,
+  "timeline": [
+    {
+      "frame": 0,
+      "phase": "blueprint"
+    },
+    {
+      "frame": 15,
+      "phase": "rails"
+    },
+    {
+      "frame": 146,
+      "phase": "signals"
+    },
+    {
+      "frame": 254,
+      "phase": "return"
+    },
+    {
+      "frame": 276,
+      "phase": "idle"
+    }
+  ],
+  "caption_position": {
+    "x": 869,
+    "y": 545
+  },
+  "captions": [
+    {
+      "phase": "blueprint",
+      "start": 0,
+      "end": 1.25,
+      "heading": "CONSTRUCTION TRAIN",
+      "text": "Blueprint ready"
+    },
+    {
+      "phase": "rails",
+      "start": 1.25,
+      "end": 5.616666666666666,
+      "heading": "01  RAIL CONSTRUCTION",
+      "text": "Laying rails"
+    },
+    {
+      "phase": "signals",
+      "start": 5.616666666666666,
+      "end": 9.216666666666667,
+      "heading": "02  SIGNAL INSTALLATION",
+      "text": "Installing signals"
+    },
+    {
+      "phase": "return",
+      "start": 9.216666666666667,
+      "end": 9.95,
+      "heading": "03  RETURN TO BASE",
+      "text": "Returning to depot"
+    },
+    {
+      "phase": "idle",
+      "start": 9.95,
+      "end": 11.95,
+      "heading": "03  JOB COMPLETE",
+      "text": "At depot \u00b7 Idle"
+    }
+  ],
+  "holds_seconds": {
+    "intro": 0.75,
+    "outro": 1.5
+  },
+  "engine": "/home/vador/perso/factoto/todo/.tools/factorio-standalone/bin/x64/factorio",
+  "version": "2.1.24",
+  "capture": "game.take_screenshot",
+  "fps": 10,
+  "playback_speed": 6
+}

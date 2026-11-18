@@ -29,7 +29,9 @@ def main():
         "time_reduction_percent": round(100 * (1 - moving["tick"] / stopped["tick"]), 2),
         "scope": "Boucle native de 52 rails et trois accessoires, deux ravitaillements et interruptions manuelles de sécurité. Le témoin conserve la pose mobile des accessoires mais arrête le train pour chaque rail. Ces mesures ne qualifient pas tous les réseaux.",
     }
-    (ROOT / "docs" / "motion-performance.json").write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n")
+    output=ROOT/".tools/test-output/motion-performance.json"
+    output.parent.mkdir(parents=True,exist_ok=True)
+    output.write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n")
     print(f"CT_MOTION SUCCESS {stopped['tick']} -> {moving['tick']} ticks, {report['time_reduction_percent']} % de temps en moins")
 
 

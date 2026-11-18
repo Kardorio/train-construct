@@ -1,6 +1,7 @@
 local C=require("scripts.constants")
 local R=require("scripts.registry")
 local I=require("scripts.inventory")
+local Tools=require("scripts.train-tools")
 local G=require("scripts.geometry")
 local D=require("scripts.depot")
 local Categories=require("scripts.categories")
@@ -8,7 +9,7 @@ local Circuit=require("scripts.circuit")
 local F={}
 function F.conflict(depot)
  for id,other in pairs(storage.ct.depots) do
-  if id~=depot.id and other.force_index==depot.force_index and other.surface_index==depot.surface_index then return true end
+  if id~=depot.id and other.surface_index==depot.surface_index then return true end
  end
  return false
 end
@@ -151,6 +152,7 @@ function F.release_claims(depot)
  for id,owner in pairs(storage.ct.claims) do if owner==depot.id then storage.ct.claims[id]=nil end end
 end
 function F.damage(depot)
+ Tools.clear(depot)
  depot.state="damaged";depot.enabled=false;depot.auto_controlled=false
  depot.return_search=nil;depot.task=nil;depot.accessory=nil
  F.release_claims(depot)
@@ -163,6 +165,7 @@ function F.damage(depot)
  for _,current in pairs(trains) do if #current.passengers==0 then current.manual_mode=true end end
 end
 function F.withdraw(depot,refund,origin)
+ Tools.clear(depot)
  if depot.retired then return true end
  depot.quality=depot.quality or (depot.entity and depot.entity.valid and depot.entity.quality.name) or "normal"
  depot.pending_removal=true;depot.enabled=false

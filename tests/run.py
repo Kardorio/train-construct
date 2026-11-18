@@ -42,6 +42,7 @@ def main():
     if "--lint" not in sys.argv:
         subprocess.run([sys.executable,str(ROOT/"tests/regressions.py")],check=True)
         subprocess.run([sys.executable,str(ROOT/"tests/graphics.py")],check=True)
+        subprocess.run([sys.executable,str(ROOT/"tests/train_graphics.py")],check=True)
         subprocess.run([sys.executable,str(ROOT/"tests/engine.py")],check=True)
         for scenario in ("engine-north","engine-stop","singleton","filters","module-north","module-east","module-south","module-west"):
             subprocess.run([sys.executable,str(ROOT/"tests/engine.py"),"--scenario",scenario],check=True)
@@ -53,4 +54,7 @@ def main():
         for mutation in ("filters-reservation","filters-load"):
             subprocess.run([sys.executable,str(ROOT/"tests/engine.py"),"--scenario","filters","--mutation",mutation],check=True)
         subprocess.run([sys.executable,str(ROOT/"tests/legacy.py")],check=True)
+        subprocess.run([sys.executable,str(ROOT/"tests/train_tools.py")],check=True)
+        subprocess.run([sys.executable,str(ROOT/"tests/depot_settings.py")],check=True)
+        subprocess.run([sys.executable,str(ROOT/"tests/obstacles.py"),"--mutation","--reload"],check=True)
 if __name__=="__main__":main()

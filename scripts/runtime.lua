@@ -7,6 +7,8 @@ local Gui=require("scripts.gui")
 local D=require("scripts.depot")
 local Categories=require("scripts.categories")
 local Circuit=require("scripts.circuit")
+local Tools=require("scripts.train-tools")
+local Settings=require("scripts.depot-settings")
 local Runtime={}
 function Runtime.initialize()
  R.initialize()
@@ -43,6 +45,11 @@ function Runtime.on_built(event)
    end
    entity.destroy()
    return nil,reason
+  end
+  if event.name==defines.events.on_entity_cloned then
+   Settings.cloned(depot,event.source)
+  else
+   Settings.restore(depot,event.tags)
   end
   return depot
  elseif entity.type=="entity-ghost" then return R.register(entity)
@@ -83,7 +90,7 @@ function Runtime.tick()
  if game.tick%30==0 then for _,player in pairs(game.connected_players) do Gui.update(player) end end
 end
 function Runtime.motion()
- for _,depot in pairs(storage.ct.depots) do W.motion(depot) end
+ for _,depot in pairs(storage.ct.depots) do W.motion(depot);Tools.update(depot) end
 end
 function Runtime.gui_opened(event)
  local entity=event.entity
@@ -116,6 +123,7 @@ function Runtime.surface_removed(event)
  for id,d in pairs(storage.ct.depots) do if d.surface_index==index then ids[#ids+1]=id end end
  for _,id in ipairs(ids) do
   local d=storage.ct.depots[id]
+  Tools.clear(d)
   R.policy(d,false);F.release_claims(d)
   D.clear_decor(d)
   for number,owner in pairs(storage.ct.components) do if owner==id then storage.ct.components[number]=nil end end
@@ -136,6 +144,7 @@ function Runtime.object_destroyed(event)
  elseif not d.pending_removal then F.damage(d) end
 end
 function Runtime.ghost_changed(event)
+ if event.name==defines.events.on_blueprint_settings_pasted then Settings.blueprint_pasted(event) end
  local entity=event.entity or event.ghost
  if entity and entity.valid then
   R.register(entity)
@@ -164,6 +173,8 @@ function Runtime.forces_merged(event)
  storage.ct.policy_cursor=1
 end
 Runtime.gui=Gui
+Runtime.blueprint=Settings.blueprint
+Runtime.settings_pasted=Settings.pasted
 Runtime.registry=R
 Runtime.factory=F
 Runtime.worker=W

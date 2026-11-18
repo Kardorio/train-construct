@@ -51,7 +51,8 @@ def main():
         print("\n".join(l for l in log.splitlines() if "CT_VISUAL" in l),flush=True)
         if not(marker.exists() and marker.read_text()=="CT VISUAL OK\n" and preview.exists()):
             raise RuntimeError(log[-9000:])
-        destination=ROOT/"docs/prototype-preview.png"
+        destination=ROOT/".tools/visual-output/prototype-preview.png"
+        destination.parent.mkdir(parents=True,exist_ok=True)
         shutil.copy2(preview,destination)
         print(str(destination),flush=True)
 if __name__=="__main__":main()

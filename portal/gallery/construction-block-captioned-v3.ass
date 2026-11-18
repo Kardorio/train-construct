@@ -1,0 +1,15 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1280
+PlayResY: 1024
+ScaledBorderAndShadow: yes
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Caption,DejaVu Sans,32,&H00E2EEF5,&H000000FF,&H00191410,&H80000000,-1,0,0,0,100,100,0,0,1,2,1.5,5,0,0,0,1
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:01.25,Caption,,0,0,0,,{\pos(869,545)\fad(80,80)\fs17\c&H59C4F2&}CONSTRUCTION TRAIN\N{\fs32\c&HE2EEF5&}Blueprint ready
+Dialogue: 0,0:00:01.25,0:00:05.62,Caption,,0,0,0,,{\pos(869,545)\fad(80,80)\fs17\c&H59C4F2&}01  RAIL CONSTRUCTION\N{\fs32\c&HE2EEF5&}Laying rails
+Dialogue: 0,0:00:05.62,0:00:09.22,Caption,,0,0,0,,{\pos(869,545)\fad(80,80)\fs17\c&H59C4F2&}02  SIGNAL INSTALLATION\N{\fs32\c&HE2EEF5&}Installing signals
+Dialogue: 0,0:00:09.22,0:00:09.95,Caption,,0,0,0,,{\pos(869,545)\fad(80,80)\fs17\c&H59C4F2&}03  RETURN TO BASE\N{\fs32\c&HE2EEF5&}Returning to depot
+Dialogue: 0,0:00:09.95,0:00:11.95,Caption,,0,0,0,,{\pos(869,545)\fad(80,80)\fs17\c&H59C4F2&}03  JOB COMPLETE\N{\fs32\c&HE2EEF5&}At depot · Idle
