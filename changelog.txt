@@ -1,4 +1,19 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.3.0
+Date: 2026-11-20
+  Changes:
+    - Redesign the settings window.
+---------------------------------------------------------------------------------------------------
+Version: 0.2.0
+Date: 2026-11-18
+  Features:
+    - Add dedicated construction train graphics with animated rail-placement grabbers.
+    - Preserve depot filters, loading targets and options in blueprints, settings copies and clones.
+    - Detect obstructed rail construction, wait for clearance and resume automatically.
+  Changes:
+    - Limit construction to a single train per planet.
+    - Remove beta and placeholder labels from the public mod.
+---------------------------------------------------------------------------------------------------
 Version: 0.1.1
 Date: 2026-11-05
   Features:

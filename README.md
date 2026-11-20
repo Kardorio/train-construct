@@ -24,7 +24,7 @@ Au quai, les résidus de carburant des deux locomotives sont automatiquement tra
 
 Les anciens dépôts restent fonctionnels dans leur disposition d'origine : aucun train n'est recréé et aucune voie ne leur est ajoutée automatiquement. Les nouveaux objets posent le module traversant. Ce changement de prototypes exige un **redémarrage complet de Factorio**.
 
-Le panneau permet de démarrer, mettre en pause, rappeler la machine ou récupérer l’ensemble. Les locomotives spécialisées disposent d’une puissance et d’un freinage quadruplés, avec la même vitesse maximale ; leur consommation augmente. Les trajets utilisent le moteur et la signalisation de Factorio : aucune navigation sur les ghosts ni génération de tracé.
+Le panneau permet de démarrer, mettre en pause ou rappeler la machine. Les locomotives spécialisées disposent d’une puissance et d’un freinage quadruplés, avec la même vitesse maximale ; leur consommation augmente. Les trajets utilisent le moteur et la signalisation de Factorio : aucune navigation sur les ghosts ni génération de tracé.
 
 ## Fabrication et recherche avec Pyanodon
 
@@ -66,9 +66,9 @@ Un ghost ferroviaire isolé n’est pas un chantier accessible. Les arbres, roch
 
 ## Réserver les rails aux trains
 
-Le réglage du bâtiment réserve uniquement les **catégories cochées parmi les rails au sol, signaux, signaux chaînés et arrêts pris en charge, sur toute la même planète/surface pour la même force**. Il est activé par défaut après la pose réelle du bâtiment et peut être désactivé.
+Le réglage du bâtiment réserve uniquement les **catégories activées parmi les rails au sol, signaux, signaux chaînés et arrêts pris en charge, sur toute la même planète/surface pour la même force**. Les boutons verts indiquent les catégories activées et les rouges celles laissées aux robots. La réservation est activée par défaut après la pose réelle du bâtiment et peut être désactivée.
 
-Dans une ancienne sauvegarde avec plusieurs bâtiments, l’exclusion reste active tant qu’au moins l’un d’eux la demande. Le panneau indique ce nombre. À la dernière désactivation ou au retrait du dernier bâtiment demandeur, les ghosts sont restitués progressivement aux robots. Un robot déjà en route est autorisé à finir sa pose.
+Dans une ancienne sauvegarde avec plusieurs bâtiments, l’exclusion reste active tant qu’au moins l’un d’eux la demande. À la dernière désactivation ou au retrait du dernier bâtiment demandeur, les ghosts sont restitués progressivement aux robots. Un robot déjà en route est autorisé à finir sa pose.
 
 Le mod conserve de vrais ghosts dans une force technique amie de leur propriétaire. La copie native de blueprint, les robots de réseau et les robots personnels ont été exercés. L’édition complète des plans, les fils, les upgrades et les interactions avec d’autres mods restent à qualifier.
 
@@ -76,7 +76,7 @@ Le mod conserve de vrais ghosts dans une force technique amie de leur propriéta
 
 ## Récupération et sécurité
 
-Le bouton de récupération retire aussi les véhicules éloignés, après vérification de tous les composants. Les matériaux et carburants stockés sont déposés près des véhicules ; ils ne sont pas téléportés jusqu’au bâtiment. Un joueur à bord ou un véhicule encore mobile diffère l’opération.
+Le panneau permet de démarrer, mettre en pause ou rappeler le train. Pour récupérer l’ensemble, miner le bâtiment ou demander sa déconstruction par les robots. Ce retrait prend aussi en charge les véhicules éloignés, après vérification de tous les composants. Les matériaux et carburants stockés sont déposés près des véhicules ; ils ne sont pas téléportés jusqu’au bâtiment. Un joueur à bord ou un véhicule encore mobile diffère l’opération.
 
 Les rails internes ne sont pas minables séparément. La récupération retire ceux créés par le module et préserve les rails du joueur, y compris des rails déjà présents réutilisés à la pose. Un train tiers sur la voie interne diffère le retrait ; le coffre et le train de chantier ne sont pas supprimés sous le trafic.
 
@@ -89,7 +89,7 @@ Une ancienne sauvegarde contenant plusieurs dépôts sur une planète suspend ce
 Le dépôt Git contient les sources du mod, ses graphismes et les scripts de fabrication. Python 3 est nécessaire pour créer les archives ; aucune dépendance Python supplémentaire n'est requise pour le build.
 
 ```sh
-./build.sh package portal # dist/train-construct_0.1.1.zip, pour le portail
+./build.sh package portal # dist/train-construct_0.3.0.zip, pour le portail
 ./build.sh devlink-portal # installer les sources sous l'identifiant public train-construct
 ./build.sh package       # archive de la variante locale construction-train
 ./build.sh devlink       # lien de la variante locale dans ~/.factorio/mods

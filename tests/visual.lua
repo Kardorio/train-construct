@@ -1,8 +1,42 @@
 
 local I=require("scripts.inventory")
+local Categories=require("scripts.categories")
+local category_names={"rail","rail-signal","rail-chain-signal","train-stop"}
 local function check(value,message)
  assert(value,"CT_VISUAL "..message)
  log("CT_VISUAL PASS "..message)
+end
+local function gui_event(player,element,event_name)
+ local handler=script.get_event_handler(event_name)
+ check(handler==Runtime.gui.event,"real GUI event handler registered")
+ handler{name=event_name,tick=game.tick,element=element,player_index=player.index,button=defines.mouse_button_type.left}
+end
+local function check_gui(player,d)
+ local frame=player.gui.relative.ct_window
+ check(frame and frame.valid and frame.tags.layout_version==5,"actual v5 GUI frame")
+ check(frame.tags.depot_id==d.id and frame.anchor.gui==defines.relative_gui_type.proxy_container_gui and frame.anchor.position==defines.relative_gui_position.left,"native proxy stock anchor")
+ local status=frame.ct_status_section
+ check(status and status.ct_status and status.ct_built and status.ct_missing,"status section and labels")
+ check(status.style.minimal_height==192 and status.style.maximal_height==192 and status.ct_status.style.minimal_height==40 and status.ct_missing.style.minimal_height==60 and status.ct_missing.visible,"stable status and notice space")
+ local options=frame.ct_options_section
+ check(options and options.ct_bots and not options.ct_requests,"options only contain reservation control")
+ check(frame.ct_controls_section~=nil,"commands section")
+ check(#frame.ct_controls_section.children==2 and #frame.ct_controls_section.children[2].children==3,"single row of three train commands")
+ local build=frame.ct_build_section
+ local targets=build and build.ct_targets
+ check(targets and targets.type=="table" and targets.column_count==3,"three-column construction targets")
+ local buttons=0
+ for _,child in pairs(targets.children) do if child.type=="sprite-button" then buttons=buttons+1 end end
+ check(buttons==4,"four category sprite buttons")
+ for _,name in ipairs(category_names) do
+  local button=targets["ct_category_"..name]
+  local field=targets["ct_target_"..name]
+  local allowed=Categories.allowed(d,name)
+  check(button and button.type=="sprite-button" and button.sprite=="item/"..name and not button.auto_toggle,"manual item button "..name)
+  check(button.toggled==allowed and button.style.name==(allowed and "ct_category_on" or "ct_category_off"),"category color "..name)
+  check(field and field.enabled==allowed and tonumber(field.text)==d.targets[name],"preserved target "..name)
+ end
+ return frame,targets
 end
 script.on_init(function()
  Runtime.initialize()
@@ -41,13 +75,25 @@ script.on_event(defines.events.on_tick,function(event)
   local stock=I.stock(d)
   stock.insert{name="rail",count=400};stock.insert{name="coal",count=100}
   player.opened=entity;Runtime.gui_opened{entity=entity,player_index=player.index}
-  local frame=player.gui.relative.ct_window
-  check(frame and frame.valid,"actual GUI frame")
+  local frame,targets=check_gui(player,d)
   check(stock.supports_filters() and #stock==100,"native filtered 100-slot stock")
-  frame.ct_bots.state=false;Runtime.gui.event{element=frame.ct_bots,player_index=player.index}
+  local bots=frame.ct_options_section.ct_bots
+  bots.state=false;gui_event(player,bots,defines.events.on_gui_checked_state_changed)
   check(not d.bot_enabled,"GUI disables reservation")
-  frame.ct_bots.state=true;Runtime.gui.event{element=frame.ct_bots,player_index=player.index}
+  bots.state=true;gui_event(player,bots,defines.events.on_gui_checked_state_changed)
   check(d.bot_enabled,"GUI enables reservation")
+  for index,name in ipairs(category_names) do
+   local field=targets["ct_target_"..name]
+   field.text=tostring(index*25);gui_event(player,field,defines.events.on_gui_text_changed)
+   check(d.targets[name]==index*25,"GUI edits loading target "..name)
+   local button=targets["ct_category_"..name]
+   gui_event(player,button,defines.events.on_gui_click)
+   check(not Categories.allowed(d,name),"registered click disables "..name)
+   check_gui(player,d)
+   gui_event(player,button,defines.events.on_gui_click)
+   check(Categories.allowed(d,name),"registered click enables "..name)
+   check_gui(player,d)
+  end
   Runtime.registry.policy(d,false)
   player.opened=nil;Runtime.gui.close(player)
   player.teleport({35,0},surface)
@@ -120,9 +166,25 @@ script.on_event(defines.events.on_tick,function(event)
   check(extra==0,"no additional scripted building refund")
   player.teleport({6,5},surface);player.zoom=1
   player.opened=d.entity;Runtime.gui_opened{entity=d.entity,player_index=player.index}
-  check(player.gui.relative.ct_window~=nil,"GUI reopens after personal robot scenario")
+  local _,targets=check_gui(player,d)
+  for index,name in ipairs(category_names) do
+   local field=targets["ct_target_"..name]
+   field.text=tostring(index*25);gui_event(player,field,defines.events.on_gui_text_changed)
+   local enabled=name=="rail" or name=="rail-signal"
+   if Categories.allowed(d,name)~=enabled then gui_event(player,targets["ct_category_"..name],defines.events.on_gui_click) end
+  end
+  local _,restored=check_gui(player,d)
+  check(d.state=="paused" and not d.enabled,"final screenshot paused")
+  check(restored.ct_category_rail.toggled and restored["ct_category_rail-signal"].toggled and not restored["ct_category_rail-chain-signal"].toggled and not restored["ct_category_train-stop"].toggled,"final screenshot two green and two red categories")
   v.phase="screenshot";v.deadline=event.tick+30
  elseif v.phase=="screenshot" and event.tick>=v.deadline then
+  local d=storage.ct.depots[v.id]
+  check_gui(player,d)
+  check(d.state=="paused" and not d.enabled,"capture remains paused")
+  for index,name in ipairs(category_names) do
+   check(d.targets[name]==index*25,"capture preserved nonzero target "..name)
+   check(Categories.allowed(d,name)==(name=="rail" or name=="rail-signal"),"capture category selection "..name)
+  end
   game.take_screenshot{player=player,position={2,0},resolution={1280,900},zoom=1,show_gui=true,show_entity_info=true,path="construction-train-prototype.png",force_render=true}
   helpers.write_file("ct-visual-result.txt","CT VISUAL OK\n",false)
   log("CT_VISUAL SUCCESS")

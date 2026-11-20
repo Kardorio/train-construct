@@ -64,7 +64,7 @@ Avec **Pyanodon Coal Processing ou Industry**, la recherche suit celle du ferrov
 
 Les plans de l'atelier mémorisent les filtres de construction, quantités cibles, réserve de carburant, réservation des robots et options de lecture logique. La copie des réglages et le clonage sont pris en charge. Un atelier reconstruit avec ces réglages attend en pause votre démarrage. Miner puis reposer un objet atelier ordinaire ne conserve pas les réglages.
 
-Le panneau de l'atelier permet de démarrer, mettre en pause, rappeler ou récupérer la machine. La récupération prend aussi en charge le train éloigné du dépôt et dépose les objets stockés près de leurs composants respectifs. Un occupant, un véhicule mobile ou un autre train sur la voie de l'atelier diffère cette récupération.
+Le panneau de l'atelier permet de démarrer, mettre en pause ou rappeler la machine. Pour récupérer l'ensemble, minez l'atelier ou demandez sa déconstruction par les robots. La récupération prend aussi en charge le train éloigné du dépôt et dépose les objets stockés près de leurs composants respectifs. Un occupant, un véhicule mobile ou un autre train sur la voie de l'atelier diffère cette récupération.
 
 Avant de désinstaller, désactivez la réservation des robots ou récupérez l'atelier, puis laissez les fantômes réservés terminer leur restitution à votre force.
 

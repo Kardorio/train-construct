@@ -64,7 +64,7 @@ With **Pyanodon Coal Processing or Industry**, research follows the pack's autom
 
 Workshop blueprints preserve construction filters, loading targets, fuel reserve, robot reservation and circuit-reading options. Copying settings and cloning are supported. A workshop rebuilt from these settings waits in pause until you start it. Mining and placing an ordinary workshop item does not preserve settings.
 
-Use the workshop panel to start, pause, recall or recover the machine. Recovery also handles its train away from the depot and drops stored items near their respective components. Occupants, moving vehicles or another train on the workshop's track delay recovery.
+Use the workshop panel to start, pause or recall the machine. To recover it, mine the workshop or mark it for deconstruction by robots. Recovery also handles its train away from the depot and drops stored items near their respective components. Occupants, moving vehicles or another train on the workshop's track delay recovery.
 
 Before uninstalling, disable robot reservation or recover the workshop, then let the reserved ghosts finish returning to your force.
 

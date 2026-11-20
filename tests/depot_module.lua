@@ -4,6 +4,53 @@ local I=require("scripts.inventory")
 local F=Runtime.factory
 local Fixture=require("test-fixtures.rail_loop")
 local CircuitTest=require("test-fixtures.circuit_stock")
+local Categories=require("scripts.categories")
+local category_names={"rail","rail-signal","rail-chain-signal","train-stop"}
+local function gui_event(player,element,event_name)
+ local handler=assert(script.get_event_handler(event_name),"GUI event handler is not registered")
+ assert(handler==Runtime.gui.event,"GUI event bypasses the real registered handler")
+ handler{name=event_name,tick=game.tick,element=element,player_index=player.index,button=defines.mouse_button_type.left}
+end
+local function check_gui(player,d,anchor)
+ local window=assert(player.gui.relative.ct_window,"Module GUI is missing")
+ assert(window.tags.layout_version==5 and window.tags.depot_id==d.id,"Module GUI has obsolete layout tags")
+ assert(window.anchor.gui==anchor and window.anchor.position==defines.relative_gui_position.left,"Module GUI lost its stock anchor")
+ local status=assert(window.ct_status_section,"Status section is missing")
+ assert(status.ct_status and status.ct_built and status.ct_missing,"Status labels are outside their section")
+ local options=assert(window.ct_options_section,"Options section is missing")
+ assert(options.ct_bots and not options.ct_requests,"Options must only contain the reservation control")
+ assert(options.ct_bots.state==d.bot_enabled,"Reservation option lost its value")
+ local controls=assert(window.ct_controls_section,"Controls section is missing")
+ local actions={}
+ local function scan(parent)
+  for _,child in pairs(parent.children) do
+   if child.tags.action then
+    assert(child.type=="button" and child.tags.depot_id==d.id,"Command button lost its action tags")
+    actions[child.tags.action]=child
+   end
+   scan(child)
+  end
+ end
+ scan(controls)
+ for _,action in ipairs{"start","pause","recall"} do assert(actions[action],"Missing command: "..action) end
+ assert(not actions.withdraw and not actions.close,"Obsolete commands are still visible")
+ local build=assert(window.ct_build_section,"Build section is missing")
+ local targets=assert(build.ct_targets,"Target table is outside its section")
+ assert(targets.type=="table" and targets.column_count==3,"Target table does not have three columns")
+ local buttons=0
+ for _,child in pairs(targets.children) do if child.type=="sprite-button" then buttons=buttons+1 end end
+ assert(buttons==4,"Target table must contain four category buttons")
+ for _,name in ipairs(category_names) do
+  local button=assert(targets["ct_category_"..name],"Category button is missing")
+  local field=assert(targets["ct_target_"..name],"Target field is missing")
+  local allowed=Categories.allowed(d,name)
+  assert(button.type=="sprite-button" and button.sprite=="item/"..name and not button.auto_toggle,"Category is not a manually toggled item button")
+  assert(button.tags.category==name and button.tags.depot_id==d.id,"Category button lost its tags")
+  assert(button.toggled==allowed and button.style.name==(allowed and "ct_category_on" or "ct_category_off"),"Category button color differs from its policy")
+  assert(field.enabled==allowed and tonumber(field.text)==d.targets[name],"Category loading target changed or has the wrong enabled state")
+ end
+ return window,targets,actions
+end
 local frame=assert(G.frame(heading))
 local function offset(center,along,across) return G.offset(center,frame,along,across) end
 local function native_drive(d,rail,direction)
@@ -135,18 +182,52 @@ local function setup()
  assert(#F.home_goals(d)==2,"Module has no mirrored docking goal")
  if player then
   player.opened=entity;Runtime.gui_opened{entity=entity,player_index=player.index}
-  assert(player.gui.relative.ct_window and player.gui.relative.ct_window.anchor.gui==defines.relative_gui_type.proxy_container_gui and #I.stock(d)==100,"Module did not select its stock GUI anchor")
-  local targets=player.gui.relative.ct_window.ct_targets
-  local checkbox=targets["ct_category_rail-chain-signal"]
-  assert(checkbox.state and targets["ct_target_rail-chain-signal"].enabled,"Category controls are not initialized")
-  local count=d.targets["rail-chain-signal"]
-  checkbox.state=false;Runtime.gui.event{element=checkbox,player_index=player.index};Runtime.gui.update(player)
-  assert(d.categories["rail-chain-signal"]==false and not targets["ct_target_rail-chain-signal"].enabled and d.targets["rail-chain-signal"]==count,"Native category checkbox changed or retained its loading demand")
-  checkbox.state=true;Runtime.gui.event{element=checkbox,player_index=player.index};Runtime.gui.update(player)
-  assert(d.categories["rail-chain-signal"] and targets["ct_target_rail-chain-signal"].enabled,"Native category reactivation failed")
-  local old=player.gui.relative.ct_window
-  old.ct_targets.destroy();Runtime.gui.update(player)
-  assert(not old.valid and player.gui.relative.ct_window.ct_targets and player.gui.relative.ct_window.ct_targets["ct_category_rail-chain-signal"].state,"Old native GUI was not rebuilt after a layout change")
+  local anchor=defines.relative_gui_type.proxy_container_gui
+  local _,targets=check_gui(player,d,anchor)
+  assert(#I.stock(d)==100,"Module lost its stock inventory")
+  local original={}
+  for index,name in ipairs(category_names) do
+   original[name]=d.targets[name]
+   local field=targets["ct_target_"..name]
+   field.text=tostring(37*index)
+   gui_event(player,field,defines.events.on_gui_text_changed)
+   assert(d.targets[name]==37*index,"Target editing did not reach the registered handler")
+   local button=targets["ct_category_"..name]
+   gui_event(player,button,defines.events.on_gui_click)
+   assert(not Categories.allowed(d,name) and d.targets[name]==37*index,"Category click did not disable construction while preserving its target")
+   check_gui(player,d,anchor)
+   gui_event(player,button,defines.events.on_gui_click)
+   assert(Categories.allowed(d,name) and d.targets[name]==37*index,"Category click did not reactivate construction with its target")
+   check_gui(player,d,anchor)
+  end
+  for _,name in ipairs{"rail-chain-signal","train-stop"} do gui_event(player,targets["ct_category_"..name],defines.events.on_gui_click) end
+  check_gui(player,d,anchor)
+  -- Rebuild both legacy windows and damaged v2 layouts without losing their anchor or settings.
+  for _,opened in ipairs{entity,d.stock} do
+   player.opened=opened;Runtime.gui_opened{entity=opened,player_index=player.index}
+   anchor=opened==entity and defines.relative_gui_type.proxy_container_gui or defines.relative_gui_type.container_gui
+   check_gui(player,d,anchor)
+   Runtime.gui.close(player)
+   local old=player.gui.relative.add{type="frame",name="ct_window",direction="vertical",tags={depot_id=d.id},anchor={gui=anchor,position=defines.relative_gui_position.left}}
+   old.add{type="table",name="ct_targets",column_count=2}
+   Runtime.gui.update(player)
+   assert(not old.valid,"Legacy window survived layout migration")
+   local rebuilt,new_targets=check_gui(player,d,anchor)
+   new_targets.destroy();Runtime.gui.update(player)
+   assert(not rebuilt.valid,"Window survived destruction of its target table")
+   local _,restored,actions=check_gui(player,d,anchor)
+   assert(Categories.allowed(d,"rail") and Categories.allowed(d,"rail-signal") and not Categories.allowed(d,"rail-chain-signal") and not Categories.allowed(d,"train-stop"),"GUI migration changed category policies")
+   for index,name in ipairs(category_names) do assert(d.targets[name]==37*index,"GUI migration lost a loading target") end
+   gui_event(player,actions.pause,defines.events.on_gui_click)
+   assert(d.state=="paused" and not d.enabled,"Pause command lost its action handler")
+   targets=restored
+  end
+  for _,name in ipairs(category_names) do
+   if not Categories.allowed(d,name) then gui_event(player,targets["ct_category_"..name],defines.events.on_gui_click) end
+   targets["ct_target_"..name].text=tostring(original[name]);gui_event(player,targets["ct_target_"..name],defines.events.on_gui_text_changed)
+  end
+  check_gui(player,d,anchor)
+  log("CT_TEST module-gui "..helpers.table_to_json{heading=heading,layout_version=5,buttons=4,registered_click=true,targets_preserved=true,legacy_rebuilt=true,table_rebuilt=true,proxy_anchor=true,container_anchor=true})
   Runtime.gui.close(player);player.opened=nil
  end
  local center=d.wagon.position
